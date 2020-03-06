@@ -6,7 +6,7 @@
                                         <i class="pe-7s-car icon-gradient bg-mean-fruit">
                                         </i>
                                     </div>
-                                    <div>Unidad de Aceleración
+                                    <div>Unidad de Descarga
                                         <div class="page-title-subheading">Descripción de la pagina.
                                         </div>
                                     </div>
@@ -14,7 +14,8 @@
                                 <div class="page-title-actions">
                                     <div class="d-inline-block dropdown">
 
-                                  <button class="btn btn-primary" data-toggle="modal" data-target="#modal-insertar-aceleracion">Agregar Unidad Aceleración <i class="fas fa-plus"></i></button>
+                                  <button class="btn btn-primary" data-toggle="modal" data-target="#modal-insertar-descarga">Agregar Unidad
+                                 Descarga <i class="fas fa-plus"></i></button>
 
 
                                     </div>
@@ -39,6 +40,9 @@
 
                 <th>Motor Usillo</th>
                 <th>Motor Capacidad</th>
+                <th>Tipo Paletas</th>
+                <th>Cantidad Paletas</th>
+
          
 
 
@@ -48,9 +52,11 @@
         </thead>
         <tbody>
 
+
+
                   <?php
 
-          $tabla = ControllerAceleracion::listarAceleracionCtr();
+          $tabla = ControllerDescarga::listarDescargaCtr();
 
 
 
@@ -59,7 +65,7 @@
 
             echo '
 <tr>
-<td>'.nl2br($value["id_unidad_acel"]).'</td>
+<td>'.nl2br($value["id_unidad_descarga"]).'</td>
 <td>'.nl2br($value["serie"]).'</td>
 <td>'.nl2br($value["cantidad_sprocket"]).'</td>
 
@@ -69,12 +75,15 @@
 <td>'.nl2br($value["eje"]).'</td>
 <td>'.nl2br($value["motor_usillo"]).'</td>
 <td>'.nl2br($value["motor_capacidad"]).'</td>
+<td>'.nl2br($value["tipo_paleta"]).'</td>
+<td>'.nl2br($value["cantidad_paletas"]).'</td>
 
 
-<td width="100"> <button class="btn btn-sm btn-info btnEditarAceleracion" idAceleracion="'.$value["id_unidad_acel"].'" data-toggle="modal" data-target="#modal-editar-aceleracion">
+
+<td width="100"> <button class="btn btn-sm btn-info btnEditarDescarga" idDescarga="'.$value["id_unidad_descarga"].'" data-toggle="modal" data-target="#modal-editar-descarga">
                     <i class="far fa-edit"></i>
                   </button>
-    <button class="btn btn-sm btn-danger btnEliminarAceleracion" idAceleracion="'.$value["id_unidad_acel"].'">
+    <button class="btn btn-sm btn-danger btnEliminarDescarga" idDescarga="'.$value["id_unidad_descarga"].'">
                     <i class="far fa-trash-alt"></i>
     </button>
     </td>
@@ -86,7 +95,7 @@
           }
 
 ?>
-
+   
         </tbody>
      
     </table>

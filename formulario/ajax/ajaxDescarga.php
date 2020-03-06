@@ -1,12 +1,12 @@
 <?php
 
-require_once "../controllers/aceleracion.controller.php";
-require_once "../models/aceleracion.modelo.php";
+require_once "../controllers/descarga.controller.php";
+require_once "../models/descarga.modelo.php";
 
-Class ajaxAceleracion {
+Class ajaxDescarga {
 
 
-	public function crearAceleracion(){
+	public function crearDescarga(){
 		$datos = array(
 						
 
@@ -16,31 +16,37 @@ Class ajaxAceleracion {
 						"bandasmedidas"=>$this->bandasmedidas,
 						"eje"=>$this->eje,
 						"motorusillo"=>$this->motorusillo,
-						"motorcapacidad"=>$this->motorcapacidad
+						"motorcapacidad"=>$this->motorcapacidad,
+						"tipopaletas"=>$this->tipopaletas,
+						"cantidadpaletas"=>$this->cantidadpaletas
+
 					
 				
 
 					);
 
-		$respuesta = ControllerAceleracion::ctrCrearAceleracion($datos);
+		$respuesta = ControllerDescarga::ctrCrearDescarga($datos);
 
 		echo $respuesta;
 	}
-	public function editarAceleracion(){
-		$id_aceleracion = $this->id_aceleracion;
+	public function editarDescarga(){
+		$id_descarga = $this->id_descarga;
 
-		$respuesta = ControllerAceleracion::ctrEditarAceleracion($id_aceleracion);
+		$respuesta = ControllerDescarga::ctrEditarDescarga($id_descarga);
 
-		$datos = array("id_unidad_acel"=>$respuesta["id_unidad_acel"],
+		$datos = array("id_unidad_descarga"=>$respuesta["id_unidad_descarga"],
 					
-						"tipo_sprockets"=>$respuesta["tipo_sprockets"],
+						"tipo_sprockets"=>$respuesta["tipo_sprocket"],
 					
 						"cantidad_sprockets"=>$respuesta["cantidad_sprocket"],
 						"banda_modular_tipo"=>$respuesta["tipo_banda"],
 						"banda_medidas"=>$respuesta["medida_banda"],
 						"eje"=>$respuesta["eje"],
 						"motor_usillo"=>$respuesta["motor_usillo"],
-						"motor_capacidad"=>$respuesta["motor_capacidad"]
+						"motor_capacidad"=>$respuesta["motor_capacidad"],
+						"tipo_paletas"=>$respuesta["id_tipo_paletas"],
+						"cantidad_paletas"=>$respuesta["cantidad_paletas"]
+
 					
 
 
@@ -50,30 +56,32 @@ Class ajaxAceleracion {
 		echo json_encode($datos);
 
 	}
-	public function actualizarAceleracion(){
-		$datos = array( "id_aceleracion"=>$this->id_aceleracion,
+	public function actualizarDescarga(){
+		$datos = array( "id_descarga"=>$this->id_descarga,
 						"tipo"=>$this->tipo,
 						"cantidadsprockets"=>$this->cantidadsprockets,
 						"tipobandas"=>$this->tipobandas,
 						"bandasmedidas"=>$this->bandasmedidas,
 						"eje"=>$this->eje,
 						"motorusillo"=>$this->motorusillo,
-						"motorcapacidad"=>$this->motorcapacidad
+						"motorcapacidad"=>$this->motorcapacidad,
+						"tipopaletas"=>$this->tipopaletas,
+						"cantidadpaletas"=>$this->cantidadpaletas
 					
 
 						
 				
 						);
 
-		$respuesta = ControllerAceleracion::ctrActualizarAceleracion($datos);
+		$respuesta = ControllerDescarga::ctrActualizarDescarga($datos);
 
 		echo $respuesta;
 	}
-	public function eliminarAceleracion(){
-		$id_aceleracion = $this->id_aceleracion;
+	public function eliminarDescarga(){
+		$id_descarga = $this->id_descarga;
 
 
-		$respuesta = ControllerAceleracion::ctrEliminarAceleracion($id_aceleracion);
+		$respuesta = ControllerDescarga::ctrEliminarDescarga($id_descarga);
 
 		echo $respuesta;
 
@@ -83,43 +91,48 @@ Class ajaxAceleracion {
 
 $tipoOperacion = $_POST["tipoOperacion"];
 
-if($tipoOperacion == "insertaraceleracion") {
-	$crearNuevoAceleracion = new ajaxAceleracion();
+if($tipoOperacion == "insertardescarga") {
+	$crearNuevoDescarga = new ajaxDescarga();
 
-	$crearNuevoAceleracion -> tipo = $_POST["TipoSprockets"];
-	$crearNuevoAceleracion -> cantidadsprockets = $_POST["CantidadSprockets"];
-	$crearNuevoAceleracion -> tipobandas = $_POST["TipoBandas"];
-	$crearNuevoAceleracion -> bandasmedidas = $_POST["BandasMedidas"];
-	$crearNuevoAceleracion -> eje = $_POST["Eje"];
-	$crearNuevoAceleracion -> motorusillo = $_POST["MotorUsillo"];
-	$crearNuevoAceleracion -> motorcapacidad = $_POST["MotorCapacidad"];
+	$crearNuevoDescarga -> tipo = $_POST["TipoSprockets"];
+	$crearNuevoDescarga -> cantidadsprockets = $_POST["CantidadSprockets"];
+	$crearNuevoDescarga -> tipobandas = $_POST["TipoBandas"];
+	$crearNuevoDescarga -> bandasmedidas = $_POST["BandasMedidas"];
+	$crearNuevoDescarga -> eje = $_POST["Eje"];
+	$crearNuevoDescarga -> motorusillo = $_POST["MotorUsillo"];
+	$crearNuevoDescarga -> motorcapacidad = $_POST["MotorCapacidad"];
+	$crearNuevoDescarga -> tipopaletas = $_POST["TipoPaletas"];
+	$crearNuevoDescarga -> cantidadpaletas = $_POST["CantidadPaletas"];
 
-	$crearNuevoAceleracion ->crearAceleracion();
+
+	$crearNuevoDescarga ->crearDescarga();
 }
 
-if ($tipoOperacion == "editarAceleracion") {
-	$editarAceleracion = new ajaxAceleracion();
-	$editarAceleracion -> id_aceleracion = $_POST["id_aceleracion"];
-	$editarAceleracion -> editarAceleracion();
+if ($tipoOperacion == "editarDescarga") {
+	$editarDescarga = new ajaxDescarga();
+	$editarDescarga -> id_descarga = $_POST["id_descarga"];
+	$editarDescarga -> editarDescarga();
 }
-if ($tipoOperacion == "actualizarAceleracion") {
-	$actualizarAceleracion = new ajaxAceleracion();
-	$actualizarAceleracion -> id_aceleracion = $_POST["id_aceleracion"];
-	$actualizarAceleracion -> tipo = $_POST["TipoSprockets"];
-	$actualizarAceleracion -> cantidadsprockets = $_POST["CantidadSprockets"];
-	$actualizarAceleracion -> tipobandas = $_POST["TipoBandas"];
-	$actualizarAceleracion -> bandasmedidas = $_POST["BandasMedidas"];
-	$actualizarAceleracion -> eje = $_POST["Eje"];
-	$actualizarAceleracion -> motorusillo = $_POST["MotorUsillo"];
-	$actualizarAceleracion -> motorcapacidad = $_POST["MotorCapacidad"];
+if ($tipoOperacion == "actualizarDescarga") {
+	$actualizarDescarga = new ajaxDescarga();
+	$actualizarDescarga -> id_descarga = $_POST["id_descarga"];
+	$actualizarDescarga -> tipo = $_POST["TipoSprockets"];
+	$actualizarDescarga -> cantidadsprockets = $_POST["CantidadSprockets"];
+	$actualizarDescarga -> tipobandas = $_POST["TipoBandas"];
+	$actualizarDescarga -> bandasmedidas = $_POST["BandasMedidas"];
+	$actualizarDescarga -> eje = $_POST["Eje"];
+	$actualizarDescarga -> motorusillo = $_POST["MotorUsillo"];
+	$actualizarDescarga -> motorcapacidad = $_POST["MotorCapacidad"];
+	$actualizarDescarga -> tipopaletas = $_POST["TipoPaletas"];
+	$actualizarDescarga -> cantidadpaletas = $_POST["CantidadPaletas"];
 
 
-	$actualizarAceleracion -> actualizarAceleracion();
+	$actualizarDescarga -> actualizarDescarga();
 }
-if ($tipoOperacion == "eliminarAceleracion") {
-	$eliminarAceleracion = new ajaxAceleracion();
-	$eliminarAceleracion -> id_aceleracion = $_POST["id_aceleracion"];
-	$eliminarAceleracion -> eliminarAceleracion();
+if ($tipoOperacion == "eliminarDescarga") {
+	$eliminarDescarga = new ajaxDescarga();
+	$eliminarDescarga -> id_descarga = $_POST["id_descarga"];
+	$eliminarDescarga -> eliminarDescarga();
 }
 
 ?>

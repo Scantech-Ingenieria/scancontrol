@@ -39,6 +39,12 @@
      include 'views/modulos/modales/modales-sprockets.php';
      include 'views/modulos/modales/modales-vdf.php';
      include 'views/modulos/modales/modales-aceleracion.php';
+     include 'views/modulos/modales/modales-descarga.php';
+     include 'views/modulos/modales/modales-calidad.php';
+     include 'views/modulos/modales/modales-registros.php';
+
+
+
 
 
   
@@ -97,6 +103,12 @@
 <script type="text/javascript" src="views/dist/js/automatico.js"></script>
 <script type="text/javascript" src="views/dist/js/unidad_alimentacion.js"></script>
 <script type="text/javascript" src="views/dist/js/unidad_aceleracion.js"></script>
+<script type="text/javascript" src="views/dist/js/unidad_descarga.js"></script>
+<script type="text/javascript" src="views/dist/js/calidad.js"></script>
+<script type="text/javascript" src="views/dist/js/registros.js"></script>
+
+
+
 
 
 

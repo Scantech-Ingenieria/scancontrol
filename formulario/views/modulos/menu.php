@@ -33,7 +33,15 @@
                             <ul class="vertical-nav-menu">
                                 <li class="app-sidebar__heading">Menú</li>
                                 <li>
-                                    <a href="tabla" class="mm-active">
+                                    <a href="registros" class="mm-active">
+                                        <i class="metismenu-icon pe-7s-plugin  "></i>
+                                       Registro General
+                                    </a>
+                                </li> 
+                           
+
+                                <li>
+                                    <a href="tabla">
                                         <i class="metismenu-icon pe-7s-plugin  "></i>
                                        Balanzas
                                     </a>
@@ -53,13 +61,13 @@
                                     </a>
                                 </li> 
                                      <li>
-                                    <a href="#">
+                                    <a href="unidaddescarga">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                       Unidad Descarga
                                     </a>
                                 </li> 
                                 <li>
-                                    <a href="unidadalimentacion">
+                                    <a href="estacioncalidad">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                       Estación de Calidad
                                     </a>

@@ -1,14 +1,14 @@
-<div class="modal fade" id="modal-insertar-aceleracion"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-insertar-descarga"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Insertar Unidad Aceleración</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Insertar Unidad Descarga</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form id="formu-nuevo-aceleracion">
+        <form id="formu-nuevo-descarga">
        
 
 
@@ -103,10 +103,44 @@ echo'<option value="'.$value["id_banda"].'">Nro° Serie: '.$value["numero_serie"
             </div>
         </div>
     
+
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Tipo Bandas</label> 
+
+             <div class="col-sm-10">
+<select class="form-control" name="TipoPaletas" >
+<?php 
+
+
+$tabla = ControllerPaletas::listarPaletasCtr();
+
+echo '<option selected disabled>Seleccione tipo paleta</option>';
+
+          foreach ($tabla as $key => $value) {
+echo'<option value="'.$value["id_paletas"].'">Tipo Paleta: '.$value["tipo_paleta"].' / Medida Paleta: ' .$value["medida_paleta"].' / Medida Bujes: '.$value["medida_bujes_paleta"].'</option>';
+
+          }
+
+
+ ?>
+</select>
+
+        </div>
+       </div>
+     <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Cantidad Paletas</label> 
+
+             <div class="col-sm-10">
+
+  <input type="text" class="form-control" placeholder="Cantidad Paletas"  name="CantidadPaletas">
+            </div>
+        </div>
+    
  
     
 
-          <input type="hidden" name="tipoOperacion" value="insertaraceleracion">
+          <input type="hidden" name="tipoOperacion" value="insertardescarga">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -121,17 +155,17 @@ echo'<option value="'.$value["id_banda"].'">Nro° Serie: '.$value["numero_serie"
 
 
 <!-- EDITAR SLIDER -->
-<div class="modal fade" id="modal-editar-aceleracion"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-editar-descarga"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar aceleracion</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Editar descarga</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form id="formu-editar-aceleracion">
+        <form id="formu-editar-descarga">
 
       <div class="form-group row">
             <label class="col-sm-2 col-form-label">Tipo Sprockets</label> 
@@ -224,13 +258,41 @@ echo'<option value="'.$value["id_banda"].'">Nro° Serie: '.$value["numero_serie"
             </div>
         </div>
 
-    
-      
-  
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Tipo Bandas</label> 
 
-          <input type="hidden" name="tipoOperacion" value="actualizarAceleracion">
+             <div class="col-sm-10">
+<select class="form-control" name="TipoPaletas" >
+<?php 
+
+
+$tablap = ControllerPaletas::listarPaletasCtr();
+
+echo '<option selected disabled>Seleccione tipo paleta</option>';
+
+          foreach ($tablap as $key => $value) {
+echo'<option value="'.$value["id_paletas"].'">Tipo Paleta: '.$value["tipo_paleta"].' / Medida Paleta: ' .$value["medida_paleta"].' / Medida Bujes: '.$value["medida_bujes_paleta"].'</option>';
+
+          }
+
+
+ ?>
+</select>
+
+        </div>
+       </div>
+     <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Cantidad Paletas</label> 
+
+             <div class="col-sm-10">
+
+  <input type="text" class="form-control" placeholder="Cantidad Paletas"  name="CantidadPaletas">
+            </div>
+        </div>
+
+          <input type="hidden" name="tipoOperacion" value="actualizarDescarga">
   
-          <input type="hidden" name="id_aceleracion">
+          <input type="hidden" name="id_descarga">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

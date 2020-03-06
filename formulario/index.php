@@ -20,6 +20,12 @@ require_once "controllers/sprockets.controller.php";
 require_once "controllers/vdf.controller.php";
 require_once "controllers/automatico.controller.php";
 require_once "controllers/aceleracion.controller.php";
+require_once "controllers/descarga.controller.php";
+require_once "controllers/calidad.controller.php";
+require_once "controllers/registros.controller.php";
+
+
+
 
 
 
@@ -37,6 +43,12 @@ require_once "models/sprockets.modelo.php";
 require_once "models/vdf.modelo.php";
 require_once "models/automatico.modelo.php";
 require_once "models/aceleracion.modelo.php";
+require_once "models/descarga.modelo.php";
+require_once "models/calidad.modelo.php";
+require_once "models/registros.modelo.php";
+
+
+
 
 
 

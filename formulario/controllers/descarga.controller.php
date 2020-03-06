@@ -1,49 +1,49 @@
 <?php
 
-Class ControllerAceleracion {
+Class ControllerDescarga {
 
-	public function listarAceleracionCtr() {
-		$tabla = "unidad_acel";
-		$respuesta = ModeloAceleracion::listarAceleracionMdl($tabla);
+	public function listarDescargaCtr() {
+		$tabla = "unidad_descarga";
+		$respuesta = ModeloDescarga::listarDescargaMdl($tabla);
 
 		return $respuesta;
 	}
 
-	static public function ctrCrearAceleracion($datos) {
-		$tabla = "unidad_acel";
+	static public function ctrCrearDescarga($datos) {
+		$tabla = "unidad_descarga";
 
-		$respuesta = ModeloAceleracion::mdlCrearAceleracion($tabla, $datos);
-
-		return $respuesta;
-
-	}
-
-	static public function ctrEliminarAceleracion($id_aceleracion) {
-
-		$tabla = "unidad_acel";
-
-$respuesta = ModeloAceleracion::mdlEliminarAceleracion($tabla, $id_aceleracion);
-
+		$respuesta = ModeloDescarga::mdlCrearDescarga($tabla, $datos);
 
 		return $respuesta;
 
 	}
 
-	static public function ctrEditarAceleracion($id_aceleracion) {
+	static public function ctrEliminarDescarga($id_descarga) {
 
-		$tabla = "unidad_acel";
-		$respuesta = ModeloAceleracion::mdlEditarAceleracion($tabla, $id_aceleracion);
+		$tabla = "unidad_descarga";
+
+$respuesta = ModeloDescarga::mdlEliminarDescarga($tabla, $id_descarga);
+
+
+		return $respuesta;
+
+	}
+
+	static public function ctrEditarDescarga($id_descarga) {
+
+		$tabla = "unidad_descarga";
+		$respuesta = ModeloDescarga::mdlEditarDescarga($tabla, $id_descarga);
 
 
 		return $respuesta;
 	}
 
-	static public function ctrActualizarAceleracion($datos) {
+	static public function ctrActualizarDescarga($datos) {
 		//Validamos si no viene imagen para actualizar solo la tabla
-		$tabla = "unidad_acel";
+		$tabla = "unidad_descarga";
 		
 
-		$respuesta = ModeloAceleracion::mdlActualizarAceleracion($tabla, $datos);
+		$respuesta = ModeloDescarga::mdlActualizarDescarga($tabla, $datos);
 
 		return $respuesta;
 

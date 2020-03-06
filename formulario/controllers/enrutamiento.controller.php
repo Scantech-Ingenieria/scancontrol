@@ -17,7 +17,9 @@ class ControllerEnrutamiento {
          $ruta == "sprockets" || 
          $ruta == "vdf" || 
          $ruta == "automatico" || 
-         $ruta == "estacioncalidad"
+         $ruta == "estacioncalidad"||
+         $ruta == "registros"
+
 
 		) {
 
