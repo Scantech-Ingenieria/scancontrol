@@ -1,0 +1,56 @@
+<?php
+
+
+session_start();
+
+ if( !isset($_SESSION["nombre"]) ){
+        header("Location:../index.php");
+    }
+ 
+
+error_reporting(0);
+
+require_once "controllers/enrutamiento.controller.php";
+require_once "controllers/template.controller.php";
+require_once "controllers/alimentacion.controller.php";
+require_once "controllers/balanzas.controller.php";
+require_once "controllers/bandas.controller.php";
+require_once "controllers/paletas.controller.php";
+require_once "controllers/sprockets.controller.php";
+require_once "controllers/vdf.controller.php";
+require_once "controllers/automatico.controller.php";
+require_once "controllers/aceleracion.controller.php";
+
+
+
+
+
+
+
+
+
+require_once "controllers/cliente.controller.php";
+require_once "models/alimentacion.modelo.php";
+require_once "models/cliente.modelo.php";
+require_once "models/paletas.modelo.php";
+require_once "models/sprockets.modelo.php";
+require_once "models/vdf.modelo.php";
+require_once "models/automatico.modelo.php";
+require_once "models/aceleracion.modelo.php";
+
+
+
+
+
+
+
+
+require_once "models/balanzas.modelo.php";
+require_once "models/bandas.modelo.php";
+
+
+$template = new ControllerTemplate();
+$template -> template();
+
+
+?>
