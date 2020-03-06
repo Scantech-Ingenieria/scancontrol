@@ -23,18 +23,6 @@ require_once "controllers/aceleracion.controller.php";
 require_once "controllers/descarga.controller.php";
 require_once "controllers/calidad.controller.php";
 require_once "controllers/registros.controller.php";
-
-
-
-
-
-
-
-
-
-
-
-
 require_once "controllers/cliente.controller.php";
 require_once "models/alimentacion.modelo.php";
 require_once "models/cliente.modelo.php";
@@ -46,17 +34,6 @@ require_once "models/aceleracion.modelo.php";
 require_once "models/descarga.modelo.php";
 require_once "models/calidad.modelo.php";
 require_once "models/registros.modelo.php";
-
-
-
-
-
-
-
-
-
-
-
 require_once "models/balanzas.modelo.php";
 require_once "models/bandas.modelo.php";
 

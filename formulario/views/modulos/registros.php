@@ -21,20 +21,6 @@
                                 </div>    </div>
                         </div> 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>

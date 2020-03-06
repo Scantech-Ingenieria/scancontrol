@@ -18,9 +18,6 @@ require_once "model.php";
 			
    
 
-   
-
-
 				echo 'exito';
 
 			} else {
