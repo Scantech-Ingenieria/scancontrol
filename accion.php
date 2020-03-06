@@ -16,7 +16,9 @@ require_once "model.php";
 				$_SESSION["autenticar"] = "ok";
 				$_SESSION["nombre"] = $respuesta["nombre"];
 			
+   
 
+   
 
 
 				echo 'exito';
