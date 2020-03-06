@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-03-2020 a las 13:52:24
+-- Tiempo de generación: 06-03-2020 a las 19:41:08
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -161,6 +161,26 @@ INSERT INTO `clientes` (`id_cliente`, `nombre_cliente`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `estacion_calidad`
+--
+
+CREATE TABLE `estacion_calidad` (
+  `id_calidad` int(11) NOT NULL,
+  `numero_puestos` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `estacion_calidad`
+--
+
+INSERT INTO `estacion_calidad` (`id_calidad`, `numero_puestos`) VALUES
+(1, '1111111'),
+(2, '112'),
+(4, '34');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `paletas`
 --
 
@@ -288,15 +308,24 @@ INSERT INTO `unidad_alim` (`id_unidad_alim`, `tipo_sprockets`, `cantidad_sprocke
 
 CREATE TABLE `unidad_descarga` (
   `id_unidad_descarga` int(11) NOT NULL,
-  `tipo_sprocket` varchar(300) NOT NULL,
+  `tipo_sprocket` int(11) NOT NULL,
   `cantidad_sprocket` varchar(300) NOT NULL,
-  `tipo_banda` varchar(300) NOT NULL,
+  `tipo_banda` int(11) NOT NULL,
   `medida_banda` varchar(300) NOT NULL,
   `eje` varchar(300) NOT NULL,
   `motor_usillo` varchar(300) NOT NULL,
   `motor_capacidad` varchar(300) NOT NULL,
-  `id_tipo_paletas` int(11) NOT NULL
+  `id_tipo_paletas` int(11) NOT NULL,
+  `cantidad_paletas` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `unidad_descarga`
+--
+
+INSERT INTO `unidad_descarga` (`id_unidad_descarga`, `tipo_sprocket`, `cantidad_sprocket`, `tipo_banda`, `medida_banda`, `eje`, `motor_usillo`, `motor_capacidad`, `id_tipo_paletas`, `cantidad_paletas`) VALUES
+(1, 7, '2121', 1, '12', '21', 'wefrwe', '10000', 3, '3'),
+(3, 8, '23', 1, '1212', '2112', '12', '212121', 2, '12112');
 
 -- --------------------------------------------------------
 
@@ -351,6 +380,12 @@ ALTER TABLE `bandas`
 --
 ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id_cliente`);
+
+--
+-- Indices de la tabla `estacion_calidad`
+--
+ALTER TABLE `estacion_calidad`
+  ADD PRIMARY KEY (`id_calidad`);
 
 --
 -- Indices de la tabla `paletas`
@@ -424,6 +459,11 @@ ALTER TABLE `bandas`
 ALTER TABLE `clientes`
   MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
+-- AUTO_INCREMENT de la tabla `estacion_calidad`
+--
+ALTER TABLE `estacion_calidad`
+  MODIFY `id_calidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT de la tabla `paletas`
 --
 ALTER TABLE `paletas`
@@ -452,7 +492,7 @@ ALTER TABLE `unidad_alim`
 -- AUTO_INCREMENT de la tabla `unidad_descarga`
 --
 ALTER TABLE `unidad_descarga`
-  MODIFY `id_unidad_descarga` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_unidad_descarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `variador_frecuencia`
 --
