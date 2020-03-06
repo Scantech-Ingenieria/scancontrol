@@ -1,7 +1,7 @@
 <?php
 
-require_once "../controllers/balanzas.controller.php";
-require_once "../models/balanzas.modelo.php";
+require_once "../controllers/registros.controller.php";
+require_once "../models/registros.modelo.php";
 
 Class ajaxRegistros {
 
@@ -12,12 +12,11 @@ Class ajaxRegistros {
 	public function crearRegistros(){
 		$datos = array(
 						
-						"nombre"=>$this->nombre,
-						"cliente"=>$this->cliente,
-						"descripcion"=>$this->descripcion,
-						"ubicacion"=>$this->ubicacion,
-						"estado"=>$this->estado,
-						"fecha"=>$this->fecha
+						"balanza"=>$this->balanza,
+						"alimentacion"=>$this->alimentacion,
+						"aceleracion"=>$this->aceleracion,
+						"descarga"=>$this->descarga
+			
 
 
 
@@ -76,12 +75,11 @@ if($tipoOperacion == "insertarregistros") {
 	$crearNuevoRegistros = new ajaxRegistros();
 
 
-	$crearNuevoRegistros -> nombre = $_POST["Nombreregistros"];
-	$crearNuevoRegistros -> cliente = $_POST["Clienteregistros"];
-	$crearNuevoRegistros -> descripcion = $_POST["Descripcionregistros"];
-	$crearNuevoRegistros -> ubicacion = $_POST["Ubicacionregistros"];
-	$crearNuevoRegistros -> estado = $_POST["Estadoregistros"];
-	$crearNuevoRegistros -> fecha = $_POST["Fecharegistros"];
+	$crearNuevoRegistros -> balanza = $_POST["Balanza"];
+	$crearNuevoRegistros -> alimentacion = $_POST["Alimentación"];
+	$crearNuevoRegistros -> aceleracion = $_POST["Aceleracion"];
+	$crearNuevoRegistros -> descarga = $_POST["Descarga"];
+	
 
 
 

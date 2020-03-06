@@ -16,17 +16,14 @@ $(document).ready(function(){
 			contentType: false,
 			success: function(respuesta) {
 				console.log(respuesta)
-				console.log(respuesta)
-				console.log(respuesta)
-				console.log(respuesta)
-				console.log(respuesta)
+			
 
 				if (respuesta == "ok") {
 
 
 		Swal.fire(
   'Excelente!',
-  'Balanza registrada con exito!',
+  'Registrado con exito!',
   'success'
 ).then((result) => {
 					  if (result.value) {

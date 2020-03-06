@@ -12,57 +12,29 @@
                                     </div>
                                 </div>
                                 <div class="page-title-actions">
-                                    <div class="d-inline-block dropdown">
-
-                                      
+                                    <div class="d-inline-block dropdown">                                    
  <button class="btn btn-primary" data-toggle="modal" data-target="#modal-insertar-tabla">Agregar Balanza <i class="fas fa-plus"></i></button>
 
                                     </div>
                                 </div>    </div>
                         </div> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>IP</th>
                 <th>Cliente</th>
-    
-
                 <th>Descripción</th>
                 <th>Ubicación</th>
                 <th>Fecha</th>
                 <th>Estado</th>
                 <th>Acciones</th>
-
             </tr>
         </thead>
         <tbody>
-
-
           <?php
-
           $tabla = Controllertabla::listartablaCtr();
-
-
-
           foreach ($tabla as $key => $value) {
-
-
             echo '
 <tr>
 <td>'.nl2br($value["id"]).'</td>
@@ -79,15 +51,9 @@
                     <i class="far fa-trash-alt"></i>
     </button>
     </td>
-</tr>
-
-
-            ';
-              # code...
+</tr>';
           }
-
 ?>
-
         </tbody>
      
     </table>

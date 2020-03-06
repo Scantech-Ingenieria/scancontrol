@@ -12,14 +12,13 @@
       <div class="form-group row">
             <label class="col-sm-2 col-form-label">Balanza</label> 
              <div class="col-sm-10">
-<select class="form-control" name="Clienteregistros" required>
+<select class="form-control" name="Balanza" required>
 <?php 
  $tabla = Controllertabla::listartablaCtr();
-echo '<option selected disabled>Seleccione Balanza</option>';
+echo '<option selected disabled>Seleccione Balanza Requerida</option>';
    foreach ($tabla as $key => $value) {
-echo'<option value="'.$value["id"].'">IP: '.$value["address"].' / Cliente: '.$value["nombre_cliente"].' / Desc: '.$value["descripcion"].'</option>';
+echo'<option value="'.$value["id"].'">IP: '.$value["address"].' / Cliente: '.$value["nombre_cliente"].' / Desc: '.$value["descripcion"].' / Ubicación: '.$value["ubicacion"].' </option>';
    }
-
   ?>
 </select>
       </div>
@@ -27,13 +26,13 @@ echo'<option value="'.$value["id"].'">IP: '.$value["address"].' / Cliente: '.$va
       <div class="form-group row">
             <label class="col-sm-2 col-form-label">Unidad de Alimentación</label> 
              <div class="col-sm-10">
-<select class="form-control" name="Clienteregistros" required>
+<select class="form-control" name="Alimentación" required>
 <?php 
           $tabla = ControllerAlimentacion::listarAlimentacionCtr();
-          echo '<option selected disabled>Seleccione Unidad de Alimentación</option>';
+                 echo '<option selected value="ninguna">Ninguna</option>';
           foreach ($tabla as $key => $value) {
-echo'<option value="'.$value["id_unidad_alim"].'">ID: '.$value["id_unidad_alim"].' Serie Sprockets: '.$value["serie"].' / Tipo Sprockets: '.$value["cantidad_sprockets"].'</option>';
-          }
+echo'<option value="'.$value["id_unidad_alim"].'">ID: '.$value["id_unidad_alim"].' Serie Sprockets: '.$value["serie"].' / Tipo Sprockets: '.$value["cantidad_sprockets"].' / Serie Banda: '.$value["numero_serie"].'</option>';
+ }
 
  ?>
 </select>
@@ -42,16 +41,14 @@ echo'<option value="'.$value["id_unidad_alim"].'">ID: '.$value["id_unidad_alim"]
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Unidad de Aceleración</label> 
              <div class="col-sm-10">
-<select class="form-control" name="Clienteregistros" required>
+<select class="form-control" name="Aceleracion" >
 <?php 
- $Cli = Controllerregistros::listarCliCtr();
-echo '<option selected disabled>Seleccione Unidad de Aceleración</option>';
-   foreach ($Cli as $key => $value) {
-
-echo'<option value="'.$value["id_cliente"].'">'.nl2br($value["nombre_cliente"]).'</option>';
-
-   }
-
+     $tabla = ControllerAceleracion::listarAceleracionCtr();
+  
+       echo '<option selected value="ninguna">Ninguna</option>';
+          foreach ($tabla as $key => $value) {
+echo'<option value="'.$value["id_unidad_acel"].'">ID: '.$value["id_unidad_acel"].' / Serie Sprockets: '.$value["serie"].' / Serie Banda: '.$value["numero_serie"].' / Medida Banda: '.$value["medida_banda"].' / Eje: '.$value["eje"].'</option>';
+          }
  ?>
 </select>
         </div>
@@ -59,12 +56,13 @@ echo'<option value="'.$value["id_cliente"].'">'.nl2br($value["nombre_cliente"]).
             <div class="form-group row">
             <label class="col-sm-2 col-form-label">Unidad de Descarga</label> 
              <div class="col-sm-10">
-<select class="form-control" name="Clienteregistros" required>
+<select class="form-control" name="Descarga" >
 <?php 
- $Cli = Controllerregistros::listarCliCtr();
-echo '<option selected disabled>Seleccione Unidad de Descarga</option>';
-   foreach ($Cli as $key => $value) {
-echo'<option value="'.$value["id_cliente"].'">'.nl2br($value["nombre_cliente"]).'</option>';
+   $tabla = ControllerDescarga::listarDescargaCtr();
+
+  echo '<option selected value="ninguna">Ninguna</option>';
+   foreach ($tabla as $key => $value) {
+echo'<option value="'.$value["id_unidad_descarga"].'">Serie Sprockets: '.$value["serie"].' / Cantidad Sprockets: '.$value["cantidad_sprocket"].' / Serie Banda: '.$value["numero_serie"].' / Medida Banda: '.$value["medida_banda"].' / Eje: '.$value["eje"].'</option>';
 
    }
  ?>
@@ -76,16 +74,14 @@ echo'<option value="'.$value["id_cliente"].'">'.nl2br($value["nombre_cliente"]).
        <div class="form-group row">
             <label class="col-sm-2 col-form-label">Estación de Calidad</label> 
              <div class="col-sm-10">
-<select class="form-control" name="Clienteregistros" required>
+<select class="form-control" name="Calidad">
 <?php 
- $Cli = Controllerregistros::listarCliCtr();
-echo '<option selected disabled>Seleccione Estación de Calidad</option>';
-   foreach ($Cli as $key => $value) {
+      $tabla = ControllerCalidad::listarCalidadCtr();
+  echo '<option selected value="ninguna">Ninguna</option>';
+          foreach ($tabla as $key => $value) {  
+echo'<option value="'.$value["id_calidad"].'">ID: '.$value["id_calidad"].' / Numero de Puestos: '.$value["numero_puestos"].'</option>';
 
-echo'<option value="'.$value["id_cliente"].'">'.nl2br($value["nombre_cliente"]).'</option>';
-
-   }
-
+          }
  ?>
 </select>
         </div>
@@ -118,13 +114,6 @@ echo'<option value="'.$value["id_cliente"].'">'.nl2br($value["nombre_cliente"]).
               <input type="text" class="form-control" placeholder="IP"  name="tituloregistros">
             </div>
           </div>
-         <!--      <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Cliente</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" placeholder="Cliente" name="Clienteregistros">
-            </div>
-          </div>
- -->
       <div class="form-group row">
             <label class="col-sm-2 col-form-label">Cliente</label> 
 

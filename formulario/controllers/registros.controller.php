@@ -15,14 +15,14 @@ Class Controllerregistros {
 
 
 	public function listarregistrosCtr() {
-		$registros = "balanzas";
+		$registros = "unidades_balanza";
 		$respuesta = Modeloregistros::listarregistrosMdl($registros);
 
 		return $respuesta;
 	}
 
-	static public function ctrCrearregistros($datos) {
-		$registros = "balanzas";
+	static public function ctrCrearRegistros($datos) {
+		$registros = "unidades_balanza";
 
 		$respuesta = Modeloregistros::mdlCrearregistros($registros, $datos);
 
@@ -32,7 +32,7 @@ Class Controllerregistros {
 
 	static public function ctrEliminarregistros($id_registros) {
 
-		$registros = "balanzas";
+		$registros = "unidades_balanza";
 
 $respuesta = Modeloregistros::mdlEliminarregistros($registros, $id_registros);
 
@@ -43,7 +43,7 @@ $respuesta = Modeloregistros::mdlEliminarregistros($registros, $id_registros);
 
 	static public function ctrEditarregistros($id_registros) {
 
-		$registros = "balanzas";
+		$registros = "unidades_balanza";
 		$respuesta = Modeloregistros::mdlEditarregistros($registros, $id_registros);
 
 
@@ -52,7 +52,7 @@ $respuesta = Modeloregistros::mdlEliminarregistros($registros, $id_registros);
 
 	static public function ctrActualizarregistros($datos) {
 		//Validamos si no viene imagen para actualizar solo la registros
-		$registros = "balanzas";
+		$registros = "unidades_balanza";
 		
 
 		$respuesta = Modeloregistros::mdlActualizarregistros($registros, $datos);
