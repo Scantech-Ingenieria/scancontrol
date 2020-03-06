@@ -18,9 +18,8 @@
  <button class="btn btn-primary" data-toggle="modal" data-target="#modal-insertar-registros">Agregar Registro <i class="fas fa-plus"></i></button>
 
                                     </div>
-                                </div>    </div>
+                                </div></div>
                         </div> 
-
 <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
@@ -32,7 +31,6 @@
                 <th>Unidad Aceleración</th>
                 <th>Unidad Descarga</th>
                 <th>Estación de Calidad</th>
-             
                 <th>Fecha</th>
                 <th>Estado</th>
                 <th>Acciones</th>
@@ -40,6 +38,8 @@
             </tr>
         </thead>
         <tbody>
+
+
 
 
 

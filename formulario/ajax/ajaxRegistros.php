@@ -15,11 +15,10 @@ Class ajaxRegistros {
 						"balanza"=>$this->balanza,
 						"alimentacion"=>$this->alimentacion,
 						"aceleracion"=>$this->aceleracion,
-						"descarga"=>$this->descarga
+						"descarga"=>$this->descarga,
+						"calidad"=>$this->calidad
+
 			
-
-
-
 					);
 
 		$respuesta = Controllerregistros::ctrCrearRegistros($datos);
@@ -64,28 +63,19 @@ Class ajaxRegistros {
 		$respuesta = Controllerregistros::ctrEliminarRegistros($id_registros);
 
 		echo $respuesta;
-
 	}
-
 }
-
 $tipoOperacion = $_POST["tipoOperacion"];
 
 if($tipoOperacion == "insertarregistros") {
 	$crearNuevoRegistros = new ajaxRegistros();
-
-
 	$crearNuevoRegistros -> balanza = $_POST["Balanza"];
 	$crearNuevoRegistros -> alimentacion = $_POST["Alimentación"];
 	$crearNuevoRegistros -> aceleracion = $_POST["Aceleracion"];
 	$crearNuevoRegistros -> descarga = $_POST["Descarga"];
-	
-
-
-
+	$crearNuevoRegistros -> calidad = $_POST["Calidad"];
 	$crearNuevoRegistros ->crearRegistros();
 }
-
 if ($tipoOperacion == "editarRegistros") {
 	$editarRegistros = new ajaxRegistros();
 	$editarRegistros -> id_registros = $_POST["id_registros"];
@@ -98,8 +88,6 @@ if ($tipoOperacion == "actualizarRegistros") {
 	$actualizarRegistros -> Clienteregistros = $_POST["Clienteregistros"];
 	$actualizarRegistros -> Descripcionregistros = $_POST["Descripcionregistros"];
 	$actualizarRegistros -> Ubicacionregistros = $_POST["Ubicacionregistros"];
-
-
 	$actualizarRegistros -> actualizarRegistros();
 }
 if ($tipoOperacion == "eliminarRegistros") {

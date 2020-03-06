@@ -12,11 +12,13 @@ static public function listarCliMdl($registros) {
 		return $sql -> fetchAll();
 	}
 	static public function mdlCrearregistros($registros, $datos) {
-		$sql = Conexion::conectar()->prepare("INSERT INTO $registros() VALUES (NULL, :balanza,:alimentacion,:aceleracion,:descarga)");
+		$sql = Conexion::conectar()->prepare("INSERT INTO $registros() VALUES (NULL, :balanza,:alimentacion,:aceleracion,:descarga,:calidad)");
 		$sql->bindParam(":balanza", $datos["balanza"], PDO::PARAM_STR);
 		$sql->bindParam(":alimentacion", $datos["alimentacion"], PDO::PARAM_STR);
 		$sql->bindParam(":aceleracion", $datos["aceleracion"], PDO::PARAM_STR);
 		$sql->bindParam(":descarga", $datos["descarga"], PDO::PARAM_STR);
+		$sql->bindParam(":calidad", $datos["calidad"], PDO::PARAM_STR);
+
 		if( $sql -> execute() ) {
 			return "ok";
 		} else {
