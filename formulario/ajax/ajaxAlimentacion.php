@@ -4,12 +4,8 @@ require_once "../controllers/alimentacion.controller.php";
 require_once "../models/alimentacion.modelo.php";
 
 Class ajaxAlimentacion {
-
-
 	public function crearAlimentacion(){
 		$datos = array(
-						
-
 						"tipo"=>$this->tipo,
 						"cantidadsprockets"=>$this->cantidadsprockets,
 						"tipobandas"=>$this->tipobandas,
@@ -17,13 +13,11 @@ Class ajaxAlimentacion {
 						"eje"=>$this->eje,
 						"motorusillo"=>$this->motorusillo,
 						"motorcapacidad"=>$this->motorcapacidad,
-						"motorrpm"=>$this->motorrpm
-				
-
+						"motorrpm"=>$this->motorrpm,
+						"rodamientos"=>$this->rodamientos
 					);
 
 		$respuesta = ControllerAlimentacion::ctrCrearAlimentacion($datos);
-
 		echo $respuesta;
 	}
 	public function editarAlimentacion(){
@@ -32,23 +26,17 @@ Class ajaxAlimentacion {
 		$respuesta = ControllerAlimentacion::ctrEditarAlimentacion($id_alimentacion);
 
 		$datos = array("id_unidad_alim"=>$respuesta["id_unidad_alim"],
-					
 						"tipo_sprockets"=>$respuesta["tipo_sprockets"],
-					
 						"cantidad_sprockets"=>$respuesta["cantidad_sprockets"],
 						"banda_modular_tipo"=>$respuesta["banda_modular_tipo"],
 						"banda_medidas"=>$respuesta["banda_medidas"],
 						"eje"=>$respuesta["eje"],
 						"motor_usillo"=>$respuesta["motor_usillo"],
 						"motor_capacidad"=>$respuesta["motor_capacidad"],
-						"motor_rpm"=>$respuesta["motor_rpm"]
-
-
-
+						"motor_rpm"=>$respuesta["motor_rpm"],
+						"rodamientos"=>$respuesta["rodamientos"]
 						);
-
 		echo json_encode($datos);
-
 	}
 	public function actualizarAlimentacion(){
 		$datos = array( "id_alimentacion"=>$this->id_alimentacion,
@@ -59,33 +47,24 @@ Class ajaxAlimentacion {
 						"eje"=>$this->eje,
 						"motorusillo"=>$this->motorusillo,
 						"motorcapacidad"=>$this->motorcapacidad,
-						"motorrpm"=>$this->motorrpm
-
-						
-				
+						"motorrpm"=>$this->motorrpm,
+						"rodamientos"=>$this->rodamientos
 						);
 
 		$respuesta = ControllerAlimentacion::ctrActualizarAlimentacion($datos);
-
 		echo $respuesta;
 	}
 	public function eliminarAlimentacion(){
 		$id_alimentacion = $this->id_alimentacion;
-
-
 		$respuesta = ControllerAlimentacion::ctrEliminarAlimentacion($id_alimentacion);
-
 		echo $respuesta;
-
 	}
-
 }
 
 $tipoOperacion = $_POST["tipoOperacion"];
 
 if($tipoOperacion == "insertaralimentacion") {
 	$crearNuevoAlimentacion = new ajaxAlimentacion();
-
 	$crearNuevoAlimentacion -> tipo = $_POST["TipoSprockets"];
 	$crearNuevoAlimentacion -> cantidadsprockets = $_POST["CantidadSprockets"];
 	$crearNuevoAlimentacion -> tipobandas = $_POST["TipoBandas"];
@@ -94,10 +73,9 @@ if($tipoOperacion == "insertaralimentacion") {
 	$crearNuevoAlimentacion -> motorusillo = $_POST["MotorUsillo"];
 	$crearNuevoAlimentacion -> motorcapacidad = $_POST["MotorCapacidad"];
 	$crearNuevoAlimentacion -> motorrpm = $_POST["MotorRpm"];
-
+	$crearNuevoAlimentacion -> rodamientos = $_POST["TipoRodamientos"];
 	$crearNuevoAlimentacion ->crearAlimentacion();
 }
-
 if ($tipoOperacion == "editarAlimentacion") {
 	$editarAlimentacion = new ajaxAlimentacion();
 	$editarAlimentacion -> id_alimentacion = $_POST["id_alimentacion"];
@@ -114,7 +92,7 @@ if ($tipoOperacion == "actualizarAlimentacion") {
 	$actualizarAlimentacion -> motorusillo = $_POST["MotorUsillo"];
 	$actualizarAlimentacion -> motorcapacidad = $_POST["MotorCapacidad"];
 	$actualizarAlimentacion -> motorrpm = $_POST["MotorRpm"];
-
+	$actualizarAlimentacion -> rodamientos = $_POST["TipoRodamientos"];
 	$actualizarAlimentacion -> actualizarAlimentacion();
 }
 if ($tipoOperacion == "eliminarAlimentacion") {

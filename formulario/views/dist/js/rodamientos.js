@@ -105,18 +105,10 @@ $(document).ready(function(){
 						})
 					}
 				}
-
 			})
 		  }
 		})
-
-
-
-
-
-
 	})
-
 
 	// PREVISUALIZAR IMAGENES
 

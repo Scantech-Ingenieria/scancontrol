@@ -28,6 +28,7 @@
                 <th>Motor Usillo</th>
                 <th>Motor Capacidad</th>
                 <th>Motor RPM</th>
+                <th>Rodamientos</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -46,6 +47,8 @@
 <td>'.nl2br($value["motor_usillo"]).'</td>
 <td>'.nl2br($value["motor_capacidad"]).'</td>
 <td>'.nl2br($value["motor_rpm"]).'</td>
+<td>'.nl2br($value["modelo"]).'</td>
+
 <td width="100"> <button class="btn btn-sm btn-info btnEditarAlimentacion" idAlimentacion="'.$value["id_unidad_alim"].'" data-toggle="modal" data-target="#modal-editar-alimentacion">
                     <i class="far fa-edit"></i>
                   </button>
