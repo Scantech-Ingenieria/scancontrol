@@ -29,7 +29,7 @@ echo'<option value="'.$value["id"].'">IP: '.$value["address"].' / Cliente: '.$va
 <select class="form-control" name="Alimentación" required>
 <?php 
           $tabla = ControllerAlimentacion::listarAlimentacionCtr();
-                 echo '<option selected value="ninguna">Ninguna</option>';
+                 echo '<option selected value="0">Ninguna</option>';
           foreach ($tabla as $key => $value) {
 echo'<option value="'.$value["id_unidad_alim"].'">ID: '.$value["id_unidad_alim"].' Serie Sprockets: '.$value["serie"].' / Tipo Sprockets: '.$value["cantidad_sprockets"].' / Serie Banda: '.$value["numero_serie"].'</option>';
  }
@@ -45,7 +45,7 @@ echo'<option value="'.$value["id_unidad_alim"].'">ID: '.$value["id_unidad_alim"]
 <?php 
      $tabla = ControllerAceleracion::listarAceleracionCtr();
   
-       echo '<option selected value="ninguna">Ninguna</option>';
+       echo '<option selected value="0">Ninguna</option>';
           foreach ($tabla as $key => $value) {
 echo'<option value="'.$value["id_unidad_acel"].'">ID: '.$value["id_unidad_acel"].' / Serie Sprockets: '.$value["serie"].' / Serie Banda: '.$value["numero_serie"].' / Medida Banda: '.$value["medida_banda"].' / Eje: '.$value["eje"].'</option>';
           }
@@ -60,7 +60,7 @@ echo'<option value="'.$value["id_unidad_acel"].'">ID: '.$value["id_unidad_acel"]
 <?php 
    $tabla = ControllerDescarga::listarDescargaCtr();
 
-  echo '<option selected value="ninguna">Ninguna</option>';
+  echo '<option selected value="0">Ninguna</option>';
    foreach ($tabla as $key => $value) {
 echo'<option value="'.$value["id_unidad_descarga"].'">Serie Sprockets: '.$value["serie"].' / Cantidad Sprockets: '.$value["cantidad_sprocket"].' / Serie Banda: '.$value["numero_serie"].' / Medida Banda: '.$value["medida_banda"].' / Eje: '.$value["eje"].'</option>';
 
@@ -77,7 +77,7 @@ echo'<option value="'.$value["id_unidad_descarga"].'">Serie Sprockets: '.$value[
 <select class="form-control" name="Calidad">
 <?php 
       $tabla = ControllerCalidad::listarCalidadCtr();
-  echo '<option selected value="ninguna">Ninguna</option>';
+  echo '<option selected value="0">Ninguna</option>';
           foreach ($tabla as $key => $value) {  
 echo'<option value="'.$value["id_calidad"].'">ID: '.$value["id_calidad"].' / Numero de Puestos: '.$value["numero_puestos"].'</option>';
 

@@ -60,7 +60,7 @@ Class ajaxRegistros {
 		$id_registros = $this->id_registros;
 
 
-		$respuesta = Controllerregistros::ctrEliminarRegistros($id_registros);
+		$respuesta = Controllerregistros::ctrEliminarregistros($id_registros);
 
 		echo $respuesta;
 	}

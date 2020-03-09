@@ -26,20 +26,52 @@
                 <th>ID</th>
                 <th>IP</th>
                 <th>Cliente</th>
-                 <th>Ubicación</th>
-                <th>Unidad Alimentación</th>
+                <th>ID U.A.</th>
+                <th>U.A. Tipo Sprocket</th>
+                <th>U.A. Tipo banda</th>
+
+
+
                 <th>Unidad Aceleración</th>
                 <th>Unidad Descarga</th>
+   
                 <th>Estación de Calidad</th>
-                <th>Fecha</th>
-                <th>Estado</th>
+
+
+
                 <th>Acciones</th>
 
             </tr>
         </thead>
         <tbody>
 
+              <?php
+          $tabla = Controllerregistros::listarregistrosCtr();
+          foreach ($tabla as $key => $value) {
 
+            echo '
+<tr>
+<td>'.nl2br($value["id_unidad_balanza"]).'</td>
+<td>'.nl2br($value["address"]).'</td>
+<td>'.nl2br($value["nombre_cliente"]).'</td>
+
+<td>'.nl2br($value["id_unidad_alim"]).'</td>
+<td>'.nl2br($value["id_unidad_acel"]).'</td>
+<td>'.nl2br($value["id_unidad_desc"]).'</td>
+<td>'.nl2br($value["id_calidad"]).'</td>
+
+
+<td width="100"> <button class="btn btn-sm btn-info btnEditarRegistros" idResgitros="'.$value["id_unidad_balanza"].'" data-toggle="modal" data-target="#modal-editar-registros">
+                    <i class="far fa-edit"></i>
+                  </button>
+    <button class="btn btn-sm btn-danger btnEliminarRegistros" idRegistros="'.$value["id_unidad_balanza"].'">
+                    <i class="far fa-trash-alt"></i>
+    </button>
+    </td>
+</tr>
+            ';
+          }
+?>
 
 
 

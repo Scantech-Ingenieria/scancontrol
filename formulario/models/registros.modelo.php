@@ -2,10 +2,21 @@
 require_once "conexion.php";
 Class Modeloregistros {
 static public function listarregistrosMdl($registros) {
-		$sql = Conexion::conectar()->prepare("SELECT * FROM $registros b INNER JOIN clientes cli on cli.id_cliente=b.cliente");
+		$sql = Conexion::conectar()->prepare("SELECT * FROM $registros ba
+INNER JOIN balanzas bala on ba.id_balanza=bala.id
+INNER JOIN clientes cli on bala.cliente=cli.id_cliente
+INNER JOIN unidad_acel acel on ba.id_unidad_acel=acel.id_unidad_acel
+INNER JOIN unidad_alim alim on ba.id_unidad_alim=alim.id_unidad_alim
+INNER JOIN unidad_descarga des on ba.id_unidad_desc=des.id_unidad_descarga
+INNER JOIN estacion_calidad ca on ba.id_calidad=ca.id_calidad");
+
+
+
 		$sql -> execute();
 		return $sql -> fetchAll();
 	}
+
+
 static public function listarCliMdl($registros) {
 		$sql = Conexion::conectar()->prepare("SELECT * FROM $registros");
 		$sql -> execute();
@@ -27,7 +38,7 @@ static public function listarCliMdl($registros) {
 	}
 	static public function mdlEliminarregistros($registros, $id_registros) {
 
-		$sql = Conexion::conectar()->prepare("DELETE FROM $registros WHERE id = :id");
+		$sql = Conexion::conectar()->prepare("DELETE FROM $registros WHERE id_unidad_balanza = :id");
 
 		$sql->bindParam(":id", $id_registros, PDO::PARAM_INT);
 

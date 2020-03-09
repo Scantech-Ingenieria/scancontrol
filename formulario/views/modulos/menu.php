@@ -39,7 +39,24 @@
                                     </a>
                                 </li> 
                            
-
+   <li>
+                                    <a href="estacioncalidad">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                      Estación de Calidad
+                                    </a>
+                                </li> 
+                                   <li>
+                                    <a href="unidadalimentacion">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                      Unidad Alimentación
+                                    </a>
+                                </li> 
+                                   <li>
+                                    <a href="unidadaceleracion">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                      Unidad Aceleración
+                                    </a>
+                                </li> 
                                 <li>
                                     <a href="tabla">
                                         <i class="metismenu-icon pe-7s-plugin  "></i>
@@ -48,30 +65,14 @@
                                 </li> 
 
                                
-                                  <li>
-                                    <a href="unidadalimentacion">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                      Unidad Alimentación
-                                    </a>
-                                </li>  
-                                   <li>
-                                    <a href="unidadaceleracion">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                      Unidad Aceleración
-                                    </a>
-                                </li> 
+                    
                                      <li>
                                     <a href="unidaddescarga">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                       Unidad Descarga
                                     </a>
                                 </li> 
-                                <li>
-                                    <a href="estacioncalidad">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                      Estación de Calidad
-                                    </a>
-                                </li> 
+                             
                                   <li class="app-sidebar__heading">Componentes</li>
                                      <li>
                                     <a href="bandas" >
