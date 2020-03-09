@@ -22,11 +22,8 @@ $(document).ready(function(){
 					})
 				}
 			}
-
 		})
-
 	})
-
 
 	$("#formu-editar-pesaje").submit(function (e) {
 		e.preventDefault()
@@ -53,13 +50,8 @@ $(document).ready(function(){
 					})
 				}
 			}
-
 		})
-
 	})
-
-
-
 	$("body #mi_lista").on("click", ".btnEditarPesaje", function(){
 		var idPesaje = $(this).attr("idPesaje")
 		var datos = new FormData()
@@ -86,27 +78,16 @@ $(document).ready(function(){
 				$('#formu-editar-pesaje input[name="Eje"]').val(valor.eje)
 				$('#formu-editar-pesaje input[name="MotorUsillo"]').val(valor.motor_usillo)
 				$('#formu-editar-pesaje input[name="MotorCapacidad"]').val(valor.motor_capacidad)
-		
-		
-		
-
 			}
-
 		})
-
 	})
 
 	$("body #mi_lista").on("click", ".btnEliminarPesaje", function(){
 		var idPesaje = $(this).attr("idPesaje")
-	
 		var datos = new FormData()
 		datos.append("id_pesaje", idPesaje)
 		datos.append("tipoOperacion", "eliminarPesaje")
-
-
 		console.log(idPesaje)
-
-
 		Swal.fire({
 		  title: '¿Estás seguro de eliminar?',
 		  text: "Los cambios no son reversibles!",
@@ -136,50 +117,26 @@ $(document).ready(function(){
 						})
 					}
 				}
-
 			})
 		  }
 		})
-
-
-
-
-
-
 	})
 
-
 	// PREVISUALIZAR IMAGENES
-
 	$("#imagen").change(previsualizarImg)
 	$("#imagenEditar").change(previsualizarImg)
-
-
 	function previsualizarImg(e) {
 		var contenedor = e.target.parentNode
-
 		var identificador = contenedor.classList[1]
-
 		imgSlider = this.files[0];
-
-
-
 		if ( imgSlider["type"] != "image/jpeg" && imgSlider["type"] != "image/png" && imgSlider["type"] != "video/mp4") {
 				$("#imagen").val("")
-
 				swal({
 					type:'error',
 					title: 'No es un archivo valido',
 					text: 'Debe subir archivos formato JPEG , PNG , MP4',
-			
-
 				})
 			}
-
-
-
-
-
 		if ( imgSlider["type"] > 100000000000) {
 				$("#imagenSlider").val("")
 
@@ -190,7 +147,6 @@ $(document).ready(function(){
 					confirmButtonText: "¡Cerrar!",
 				})
 			}
-
 			else {
 				$("#imagenSlider").css("display", "block")
 
@@ -206,7 +162,5 @@ $(document).ready(function(){
 			}
 
 		}
-
-
 
 })
