@@ -65,7 +65,7 @@ Unidades Balanza                                        <i class="metismenu-stat
                                     </a>
                                 </li> 
                                          <li>
-                                    <a href="unidadaceleracion">
+                                    <a href="unidadpesaje">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                       Unidad de Pesaje
                                     </a>

@@ -20,7 +20,9 @@ class ControllerEnrutamiento {
          $ruta == "estacioncalidad"||
          $ruta == "registros"||
          $ruta == "rodamientos"||
-         $ruta == "sensor"
+         $ruta == "sensor"||
+         $ruta == "unidadpesaje"
+
 
 
 

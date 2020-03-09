@@ -1,13 +1,8 @@
 <?php
-
-
 session_start();
-
  if( !isset($_SESSION["nombre"]) ){
         header("Location:../index.php");
     }
- 
-
 error_reporting(0);
 
 require_once "controllers/enrutamiento.controller.php";
@@ -26,6 +21,7 @@ require_once "controllers/registros.controller.php";
 require_once "controllers/cliente.controller.php";
 require_once "controllers/rodamientos.controller.php";
 require_once "controllers/sensor.controller.php";
+require_once "controllers/pesaje.controller.php";
 
 require_once "models/alimentacion.modelo.php";
 require_once "models/cliente.modelo.php";
@@ -41,6 +37,8 @@ require_once "models/balanzas.modelo.php";
 require_once "models/bandas.modelo.php";
 require_once "models/rodamientos.modelo.php";
 require_once "models/sensor.modelo.php";
+require_once "models/pesaje.modelo.php";
+
 
 
 
