@@ -42,6 +42,10 @@
      include 'views/modulos/modales/modales-descarga.php';
      include 'views/modulos/modales/modales-calidad.php';
      include 'views/modulos/modales/modales-registros.php';
+     include 'views/modulos/modales/modales-rodamientos.php';
+     include 'views/modulos/modales/modales-sensor.php';
+
+
 
 
 
@@ -106,6 +110,10 @@
 <script type="text/javascript" src="views/dist/js/unidad_descarga.js"></script>
 <script type="text/javascript" src="views/dist/js/calidad.js"></script>
 <script type="text/javascript" src="views/dist/js/registros.js"></script>
+<script type="text/javascript" src="views/dist/js/rodamientos.js"></script>
+<script type="text/javascript" src="views/dist/js/sensor.js"></script>
+
+
 
 
 

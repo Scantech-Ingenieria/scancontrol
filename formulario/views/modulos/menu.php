@@ -37,8 +37,15 @@
                                         <i class="metismenu-icon pe-7s-plugin  "></i>
                                        Registro General
                                     </a>
-                                </li> 
-                           
+                                </li>
+
+       <li>
+                                    <a href="#">
+                                       <i class="metismenu-icon pe-7s-display2"></i>
+Unidades Balanza                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul>
+                        
    <li>
                                     <a href="estacioncalidad">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
@@ -57,15 +64,13 @@
                                       Unidad Aceleración
                                     </a>
                                 </li> 
-                                <li>
-                                    <a href="tabla">
-                                        <i class="metismenu-icon pe-7s-plugin  "></i>
-                                       Balanzas
+                                         <li>
+                                    <a href="unidadaceleracion">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                      Unidad de Pesaje
                                     </a>
                                 </li> 
 
-                               
-                    
                                      <li>
                                     <a href="unidaddescarga">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
@@ -73,6 +78,15 @@
                                     </a>
                                 </li> 
                              
+                                <li>                                                               
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="tabla">
+                                        <i class="metismenu-icon pe-7s-plugin  "></i>
+                                       Conexión Balanzas
+                                    </a>
+                                </li>          
                                   <li class="app-sidebar__heading">Componentes</li>
                                      <li>
                                     <a href="bandas" >
@@ -93,8 +107,6 @@
                                        Tablero
                                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
-
-
                                     <ul>
                                         <li>
                                             <a href="vdf">
@@ -107,41 +119,40 @@
                                                 <i class="metismenu-icon">
                                                 </i>Automatico
                                             </a>
-                                        </li>
-                                   
-                                       
-                                   
+                                        </li>    
                                     </ul>
                                 </li>
-
                                  <li>
                                     <a href="sprockets" >
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                        Sprockets
                                     </a>
                                 </li> 
+                                  <li>
+                                    <a href="rodamientos" >
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                       Rodamientos
+                                    </a>
+                                </li> 
+                                      <li>
+                                    <a href="sensor" >
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                       Sensores
+                                    </a>
+                                </li> 
                                  <li class="app-sidebar__heading">Datos</li>
                                     <li>
                                     <a href="clientes" >
                                         <i class="metismenu-icon  pe-7s-user"></i>
-
-
-
                                        Clientes
                                     </a>
-                                </li>  
-                              
-                   
-                                
+                                </li>                      
                                 <li>
                                     <a href="#">
                                         <i class="metismenu-icon pe-7s-eyedropper">
                                         </i>Configuración
                                     </a>
-                                </li>
-                                
-                                
-                               
+                                </li>             
                             </ul>
                         </div>
                     </div>

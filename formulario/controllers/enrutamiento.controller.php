@@ -18,7 +18,11 @@ class ControllerEnrutamiento {
          $ruta == "vdf" || 
          $ruta == "automatico" || 
          $ruta == "estacioncalidad"||
-         $ruta == "registros"
+         $ruta == "registros"||
+         $ruta == "rodamientos"||
+         $ruta == "sensor"
+
+
 
 
 		) {

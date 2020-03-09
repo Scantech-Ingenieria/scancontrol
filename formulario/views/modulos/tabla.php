@@ -6,7 +6,7 @@
                                         <i class="pe-7s-plugin icon-gradient bg-malibu-beach">
                                         </i>
                                     </div>
-                                    <div>Balanzas
+                                    <div>Información Conexiones de Balanza
                                         <div class="page-title-subheading">Descripción de la pagina.
                                         </div>
                                     </div>
