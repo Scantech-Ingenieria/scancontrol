@@ -72,12 +72,14 @@ $(document).ready(function(){
 				$('#formu-editar-pesaje input[name="CantidadSensores"]').val(valor.cantidad_sensores)
 				$('#formu-editar-pesaje select[name="TipoSprockets"]').val(valor.tipo_sprockets)
 				$('#formu-editar-pesaje input[name="CantidadSprockets"]').val(valor.cantidad_sprockets)
-
                   $('#formu-editar-pesaje select[name="TipoBandas"]').val(valor.banda_modular_tipo)
 				$('#formu-editar-pesaje input[name="BandasMedidas"]').val(valor.banda_medidas)
 				$('#formu-editar-pesaje input[name="Eje"]').val(valor.eje)
 				$('#formu-editar-pesaje input[name="MotorUsillo"]').val(valor.motor_usillo)
 				$('#formu-editar-pesaje input[name="MotorCapacidad"]').val(valor.motor_capacidad)
+				$('#formu-editar-pesaje input[name="RPM"]').val(valor.rpm)
+				$('#formu-editar-pesaje select[name="TipoRodamientos"]').val(valor.tipo_rodamientos)
+
 			}
 		})
 	})

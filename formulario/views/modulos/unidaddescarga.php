@@ -30,6 +30,8 @@
                 <th>Motor Capacidad</th>
                 <th>Tipo Paletas</th>
                 <th>Cantidad Paletas</th>
+                <th>RPM</th>
+                <th>Tipo Rodamiento</th>
                 <th>Acciones</th>
 
             </tr>
@@ -50,6 +52,8 @@
 <td>'.nl2br($value["motor_capacidad"]).'</td>
 <td>'.nl2br($value["tipo_paleta"]).'</td>
 <td>'.nl2br($value["cantidad_paletas"]).'</td>
+<td>'.nl2br($value["rpm"]).'</td>
+<td>'.nl2br($value["tipo_rodamientos"]).'</td>
 <td width="100"> <button class="btn btn-sm btn-info btnEditarDescarga" idDescarga="'.$value["id_unidad_descarga"].'" data-toggle="modal" data-target="#modal-editar-descarga">
                     <i class="far fa-edit"></i>
                   </button>

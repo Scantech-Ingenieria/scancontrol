@@ -2,7 +2,7 @@
 require_once "conexion.php";
 Class ModeloCalidad {
 static public function listarCalidadMdl($tabla) {
-		$sql = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+		$sql = Conexion::conectar()->prepare("SELECT * FROM $tabla a INNER JOIN sprockets s on s.id_sprockets=a.tipo_sprockets  INNER JOIN bandas b on b.id_banda=a.tipo_banda INNER JOIN rodamientos r on r.id_rodamientos=a.tipo_rodamientos INNER JOIN sensor se on se.id_sensor=a.tipo_sensores");
 		$sql -> execute();
 		return $sql -> fetchAll();
 	}

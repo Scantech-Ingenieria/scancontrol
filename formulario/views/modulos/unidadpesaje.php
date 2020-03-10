@@ -30,6 +30,9 @@
                 <th>Eje</th>
                 <th>Motor Usillo</th>
                 <th>Motor Capacidad</th>
+                <th>RPM</th>
+                <th>Tipo Rodamiento</th>
+
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -50,6 +53,9 @@
 <td>'.nl2br($value["eje"]).'</td>
 <td>'.nl2br($value["motor_usillo"]).'</td>
 <td>'.nl2br($value["motor_capacidad"]).'</td>
+<td>'.nl2br($value["rpm"]).'</td>
+<td>'.nl2br($value["tipo_rodamientos"]).'</td>
+
 <td width="100"> <button class="btn btn-sm btn-info btnEditarPesaje" idPesaje="'.$value["id_unidad_pesaje"].'" data-toggle="modal" data-target="#modal-editar-pesaje">
                     <i class="far fa-edit"></i>
                   </button>

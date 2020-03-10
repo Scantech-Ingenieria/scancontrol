@@ -1,5 +1,5 @@
 <div class="modal fade" id="modal-insertar-registros"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog" role="document" style="max-width: 800px;">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Insertar Nuevo Registro</h5>
@@ -10,12 +10,12 @@
       <div class="modal-body">
         <form id="formu-nuevo-registros">
       <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Balanza</label> 
-             <div class="col-sm-10">
+            <label class="col-sm-3 col-form-label" id="largo">Cliente</label> 
+             <div class="col-sm-9">
 <select class="form-control" name="Balanza" required>
 <?php 
  $tabla = Controllertabla::listartablaCtr();
-echo '<option selected disabled>Seleccione Balanza Requerida</option>';
+echo '<option selected disabled>Seleccione Cliente Requerida</option>';
    foreach ($tabla as $key => $value) {
 echo'<option value="'.$value["id"].'">IP: '.$value["address"].' / Cliente: '.$value["nombre_cliente"].' / Desc: '.$value["descripcion"].' / Ubicación: '.$value["ubicacion"].' </option>';
    }
@@ -23,9 +23,24 @@ echo'<option value="'.$value["id"].'">IP: '.$value["address"].' / Cliente: '.$va
 </select>
       </div>
        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" id="largo">Estación de Calidad</label> 
+             <div class="col-sm-9">
+<select class="form-control" name="Calidad">
+<?php 
+      $tabla = ControllerCalidad::listarCalidadCtr();
+  echo '<option selected value="0">Ninguna</option>';
+          foreach ($tabla as $key => $value) {  
+echo'<option value="'.$value["id_calidad"].'">ID: '.$value["id_calidad"].' / Numero de Puestos: '.$value["numero_puestos"].'</option>';
+
+          }
+ ?>
+</select>
+        </div>
+       </div>
       <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Unidad de Alimentación</label> 
-             <div class="col-sm-10">
+            <label class="col-sm-3 col-form-label" id="largo">Unidad de Alimentación</label> 
+             <div class="col-sm-9">
 <select class="form-control" name="Alimentación" required>
 <?php 
           $tabla = ControllerAlimentacion::listarAlimentacionCtr();
@@ -39,8 +54,8 @@ echo'<option value="'.$value["id_unidad_alim"].'">ID: '.$value["id_unidad_alim"]
         </div>
        </div>
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Unidad de Aceleración</label> 
-             <div class="col-sm-10">
+            <label class="col-sm-3 col-form-label" id="largo">Unidad de Aceleración</label> 
+             <div class="col-sm-9">
 <select class="form-control" name="Aceleracion" >
 <?php 
      $tabla = ControllerAceleracion::listarAceleracionCtr();
@@ -54,8 +69,26 @@ echo'<option value="'.$value["id_unidad_acel"].'">ID: '.$value["id_unidad_acel"]
         </div>
        </div>
             <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Unidad de Descarga</label> 
-             <div class="col-sm-10">
+            <label class="col-sm-3 col-form-label" id="largo">Unidad de Pesaje</label> 
+             <div class="col-sm-9">
+<select class="form-control" name="Pesaje" >
+<?php 
+       $tabla = ControllerPesaje::listarPesajeCtr();
+
+  echo '<option selected value="0">Ninguna</option>';
+   foreach ($tabla as $key => $value) {
+echo'<option value="'.$value["id_unidad_pesaje"].'">ID: '.$value["id_unidad_pesaje"].' / Tipo Sensores: '.$value["tipo_sensor"].' / Cantidad Sensores: '.$value["cantidad_sensores"].' / Tipo Sprocket: '.$value["serie"].' / Cantidad Sprocket: '.$value["cantidad_sprocket"].' / Eje: '.$value["eje"].'</option>';
+
+   }
+ ?>
+
+</select>
+
+        </div>
+       </div>
+            <div class="form-group row">
+            <label class="col-sm-3 col-form-label" id="largo">Unidad de Descarga</label> 
+             <div class="col-sm-9">
 <select class="form-control" name="Descarga" >
 <?php 
    $tabla = ControllerDescarga::listarDescargaCtr();
@@ -71,21 +104,7 @@ echo'<option value="'.$value["id_unidad_descarga"].'">Serie Sprockets: '.$value[
 
         </div>
        </div>
-       <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Estación de Calidad</label> 
-             <div class="col-sm-10">
-<select class="form-control" name="Calidad">
-<?php 
-      $tabla = ControllerCalidad::listarCalidadCtr();
-  echo '<option selected value="0">Ninguna</option>';
-          foreach ($tabla as $key => $value) {  
-echo'<option value="'.$value["id_calidad"].'">ID: '.$value["id_calidad"].' / Numero de Puestos: '.$value["numero_puestos"].'</option>';
-
-          }
- ?>
-</select>
-        </div>
-       </div>
+      
           <input type="hidden" name="tipoOperacion" value="insertarregistros">
       </div>
       <div class="modal-footer">
@@ -98,7 +117,7 @@ echo'<option value="'.$value["id_calidad"].'">ID: '.$value["id_calidad"].' / Num
 </div>
 <!-- EDITAR SLIDER -->
 <div class="modal fade" id="modal-editar-registros"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog" role="document" style="max-width: 800px;">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Editar registros</h5>

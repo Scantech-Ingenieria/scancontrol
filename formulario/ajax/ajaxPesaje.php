@@ -12,7 +12,10 @@ public function crearPesaje(){
 						"motorusillo"=>$this->motorusillo,
 						"motorcapacidad"=>$this->motorcapacidad,
 						"tiposensores"=>$this->tiposensores,
-						"cantidadsensores"=>$this->cantidadsensores
+						"cantidadsensores"=>$this->cantidadsensores,
+						"rpm"=>$this->rpm,
+						"tiporodamientos"=>$this->tiporodamientos
+
 					);
 
 		$respuesta = ControllerPesaje::ctrCrearPesaje($datos);
@@ -32,7 +35,9 @@ public function crearPesaje(){
 						"banda_medidas"=>$respuesta["medida_banda"],
 						"eje"=>$respuesta["eje"],
 						"motor_usillo"=>$respuesta["motor_usillo"],
-						"motor_capacidad"=>$respuesta["motor_capacidad"]
+						"motor_capacidad"=>$respuesta["motor_capacidad"],
+					   "rpm"=>$respuesta["rpm"],
+						"tipo_rodamientos"=>$respuesta["tipo_rodamientos"]
 						);
 		echo json_encode($datos);
 	}
@@ -46,7 +51,9 @@ public function crearPesaje(){
 						"bandasmedidas"=>$this->bandasmedidas,
 						"eje"=>$this->eje,
 						"motorusillo"=>$this->motorusillo,
-						"motorcapacidad"=>$this->motorcapacidad
+						"motorcapacidad"=>$this->motorcapacidad,
+						"rpm"=>$this->rpm,
+						"tiporodamientos"=>$this->tiporodamientos
 					
 						);
 		$respuesta = ControllerPesaje::ctrActualizarPesaje($datos);
@@ -72,6 +79,9 @@ if($tipoOperacion == "insertarpesaje") {
 	$crearNuevoPesaje -> eje = $_POST["Eje"];
 	$crearNuevoPesaje -> motorusillo = $_POST["MotorUsillo"];
 	$crearNuevoPesaje -> motorcapacidad = $_POST["MotorCapacidad"];
+	$crearNuevoPesaje -> rpm = $_POST["RPM"];
+	$crearNuevoPesaje -> tiporodamientos = $_POST["TipoRodamientos"];
+
 
 	$crearNuevoPesaje ->crearPesaje();
 }
@@ -92,6 +102,8 @@ if ($tipoOperacion == "actualizarPesaje") {
 	$actualizarPesaje -> eje = $_POST["Eje"];
 	$actualizarPesaje -> motorusillo = $_POST["MotorUsillo"];
 	$actualizarPesaje -> motorcapacidad = $_POST["MotorCapacidad"];
+	$actualizarPesaje -> rpm = $_POST["RPM"];
+	$actualizarPesaje -> tiporodamientos = $_POST["TipoRodamientos"];
 	$actualizarPesaje -> actualizarPesaje();
 }
 if ($tipoOperacion == "eliminarPesaje") {

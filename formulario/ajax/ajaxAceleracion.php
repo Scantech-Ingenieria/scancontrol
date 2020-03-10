@@ -1,54 +1,38 @@
 <?php
-
 require_once "../controllers/aceleracion.controller.php";
 require_once "../models/aceleracion.modelo.php";
-
 Class ajaxAceleracion {
-
-
 	public function crearAceleracion(){
 		$datos = array(
-						
-
 						"tipo"=>$this->tipo,
 						"cantidadsprockets"=>$this->cantidadsprockets,
 						"tipobandas"=>$this->tipobandas,
 						"bandasmedidas"=>$this->bandasmedidas,
 						"eje"=>$this->eje,
 						"motorusillo"=>$this->motorusillo,
-						"motorcapacidad"=>$this->motorcapacidad
-					
-				
-
+						"motorcapacidad"=>$this->motorcapacidad,
+							"rpm"=>$this->rpm,
+						"tiporodamientos"=>$this->tiporodamientos
 					);
 
 		$respuesta = ControllerAceleracion::ctrCrearAceleracion($datos);
-
 		echo $respuesta;
 	}
 	public function editarAceleracion(){
 		$id_aceleracion = $this->id_aceleracion;
-
 		$respuesta = ControllerAceleracion::ctrEditarAceleracion($id_aceleracion);
-
 		$datos = array("id_unidad_acel"=>$respuesta["id_unidad_acel"],
-					
 						"tipo_sprockets"=>$respuesta["tipo_sprockets"],
-					
 						"cantidad_sprockets"=>$respuesta["cantidad_sprocket"],
 						"banda_modular_tipo"=>$respuesta["tipo_banda"],
 						"banda_medidas"=>$respuesta["medida_banda"],
 						"eje"=>$respuesta["eje"],
 						"motor_usillo"=>$respuesta["motor_usillo"],
-						"motor_capacidad"=>$respuesta["motor_capacidad"]
-					
-
-
-
+						"motor_capacidad"=>$respuesta["motor_capacidad"],
+						"rpm"=>$respuesta["rpm"],
+						"tipo_rodamientos"=>$respuesta["tipo_rodamientos"]
 						);
-
 		echo json_encode($datos);
-
 	}
 	public function actualizarAceleracion(){
 		$datos = array( "id_aceleracion"=>$this->id_aceleracion,
@@ -58,34 +42,24 @@ Class ajaxAceleracion {
 						"bandasmedidas"=>$this->bandasmedidas,
 						"eje"=>$this->eje,
 						"motorusillo"=>$this->motorusillo,
-						"motorcapacidad"=>$this->motorcapacidad
-					
-
-						
-				
+						"motorcapacidad"=>$this->motorcapacidad,
+						"rpm"=>$this->rpm,
+						"tiporodamientos"=>$this->tiporodamientos		
 						);
 
 		$respuesta = ControllerAceleracion::ctrActualizarAceleracion($datos);
-
 		echo $respuesta;
 	}
 	public function eliminarAceleracion(){
 		$id_aceleracion = $this->id_aceleracion;
-
-
 		$respuesta = ControllerAceleracion::ctrEliminarAceleracion($id_aceleracion);
-
 		echo $respuesta;
-
 	}
-
 }
 
 $tipoOperacion = $_POST["tipoOperacion"];
-
 if($tipoOperacion == "insertaraceleracion") {
 	$crearNuevoAceleracion = new ajaxAceleracion();
-
 	$crearNuevoAceleracion -> tipo = $_POST["TipoSprockets"];
 	$crearNuevoAceleracion -> cantidadsprockets = $_POST["CantidadSprockets"];
 	$crearNuevoAceleracion -> tipobandas = $_POST["TipoBandas"];
@@ -93,7 +67,8 @@ if($tipoOperacion == "insertaraceleracion") {
 	$crearNuevoAceleracion -> eje = $_POST["Eje"];
 	$crearNuevoAceleracion -> motorusillo = $_POST["MotorUsillo"];
 	$crearNuevoAceleracion -> motorcapacidad = $_POST["MotorCapacidad"];
-
+	$crearNuevoAceleracion -> rpm = $_POST["RPM"];
+	$crearNuevoAceleracion -> tiporodamientos = $_POST["TipoRodamientos"];
 	$crearNuevoAceleracion ->crearAceleracion();
 }
 
@@ -112,8 +87,8 @@ if ($tipoOperacion == "actualizarAceleracion") {
 	$actualizarAceleracion -> eje = $_POST["Eje"];
 	$actualizarAceleracion -> motorusillo = $_POST["MotorUsillo"];
 	$actualizarAceleracion -> motorcapacidad = $_POST["MotorCapacidad"];
-
-
+	$actualizarAceleracion -> rpm = $_POST["RPM"];
+	$actualizarAceleracion -> tiporodamientos = $_POST["TipoRodamientos"];
 	$actualizarAceleracion -> actualizarAceleracion();
 }
 if ($tipoOperacion == "eliminarAceleracion") {
