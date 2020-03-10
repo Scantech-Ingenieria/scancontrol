@@ -1,21 +1,13 @@
 <?php
-
 Class ControllerPaletas {
-
-
-
 	public function listarPaletasCtr() {
 		$tabla = "paletas";
 		$respuesta = ModeloPaletas::listarPaletasMdl($tabla);
-
 		return $respuesta;
 	}
-
 	static public function ctrCrearPaletas($datos) {
 		$tabla = "paletas";
-
 		$respuesta = ModeloPaletas::mdlCrearPaletas($tabla, $datos);
-
 		return $respuesta;
 
 	}

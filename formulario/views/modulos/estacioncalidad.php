@@ -20,7 +20,22 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Número Puestos</th>
+                <th>N° Puestos</th>
+                <th>Tipo Spro</th>
+                <th>Cant Spro</th>
+                <th>Tipo Banda</th>
+                <th>Banda Medidas</th>
+                <th>Eje</th>
+                <th>Cilindros</th>
+                <th>Tipo Botoneras</th>
+                <th>Cantidad Botoneras</th>
+                <th>Tipo Sensores</th>
+                <th>Cantidad Sensores</th>
+                <th>Racors</th>
+                <th>Motor Usillo</th>
+                <th>Motor Capacidad</th>
+                <th>Motor RPM</th>
+                <th>Rodamientos</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -32,6 +47,21 @@
 <tr>
 <td>'.nl2br($value["id_calidad"]).'</td>
 <td>'.nl2br($value["numero_puestos"]).'</td>
+<td>'.nl2br($value["tipo_sprockets"]).'</td>
+<td>'.nl2br($value["cantidad_scprockets"]).'</td>
+<td>'.nl2br($value["tipo_banda"]).'</td>
+<td>'.nl2br($value["medida_banda"]).'</td>
+<td>'.nl2br($value["eje"]).'</td>
+<td>'.nl2br($value["cilindros"]).'</td>
+<td>'.nl2br($value["tipo_botoneras"]).'</td>
+<td>'.nl2br($value["cantidad_botoneras"]).'</td>
+<td>'.nl2br($value["tipo_sensores"]).'</td>
+<td>'.nl2br($value["cantidad_sensores"]).'</td>
+<td>'.nl2br($value["racors"]).'</td>
+<td>'.nl2br($value["motor_usillos"]).'</td>
+<td>'.nl2br($value["motor_capacidad"]).'</td>
+<td>'.nl2br($value["rpm"]).'</td>
+<td>'.nl2br($value["tipo_rodamientos"]).'</td>
 <td width="100"> <button class="btn btn-sm btn-info btnEditarCalidad" idCalidad="'.$value["id_calidad"].'" data-toggle="modal" data-target="#modal-editar-calidad">
                     <i class="far fa-edit"></i>
                   </button>
