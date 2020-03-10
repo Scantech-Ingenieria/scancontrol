@@ -26,7 +26,11 @@
             <tr>
                 <th>ID</th>
                 <th>Tipo Sensor</th>
+                <th>Marca</th>
                 <th>Modelo</th>
+                <th>Voltaje</th>
+
+                <th>Distancia</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -38,7 +42,14 @@
 <tr>
 <td>'.nl2br($value["id_sensor"]).'</td>
 <td>'.nl2br($value["tipo_sensor"]).'</td>
+<td>'.nl2br($value["marca"]).'</td>
 <td>'.nl2br($value["modelo"]).'</td>
+<td>'.nl2br($value["voltaje"]).'</td>
+<td>'.nl2br($value["distancia"]).'</td>
+
+
+
+
 
 <td width="100"> <button class="btn btn-sm btn-info btnEditarSensor" idSensor="'.$value["id_sensor"].'" data-toggle="modal" data-target="#modal-editar-sensor">
                     <i class="far fa-edit"></i>

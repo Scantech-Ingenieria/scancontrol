@@ -67,8 +67,12 @@ $(document).ready(function(){
 				console.log(valor.id_sensor)
 				$('#formu-editar-sensor input[name="id_sensor"]').val(valor.id_sensor)
 				$('#formu-editar-sensor input[name="TipoSensor"]').val(valor.tipo)
-
+				$('#formu-editar-sensor input[name="Marca"]').val(valor.marca)
 				$('#formu-editar-sensor input[name="Modelo"]').val(valor.modelo)
+				$('#formu-editar-sensor input[name="Voltaje"]').val(valor.voltaje)
+				$('#formu-editar-sensor input[name="Distancia"]').val(valor.distancia)
+
+
 			}
 		})
 	})

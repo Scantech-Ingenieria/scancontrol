@@ -15,13 +15,31 @@
               <input type="text" class="form-control" placeholder="Tipo Sensor" name="TipoSensor">
             </div>
           </div>
-          <div class="form-group row">
+            <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Marca</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Marca" name="Marca">
+            </div>
+          </div>
+             <div class="form-group row">
             <label class="col-sm-2 col-form-label">Modelo</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" placeholder="Modelo" name="Modelo">
             </div>
           </div>
-
+            <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Voltaje</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Voltaje" name="Voltaje">
+            </div>
+          </div>
+            <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Distancia</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Distancia" name="Distancia">
+            </div>
+          </div>
+       
           <input type="hidden" name="tipoOperacion" value="insertarsensor">
       </div>
       <div class="modal-footer">
@@ -54,16 +72,31 @@
               <input type="text" class="form-control" placeholder="Tipo Sensor" name="TipoSensor">
             </div>
           </div>
-          <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Modelo</label>
+                <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Marca</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" placeholder="Modelo" name="Modelo">
+              <input type="text" class="form-control" placeholder="Marca" name="Marca">
             </div>
           </div>
-  
-
+             <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Modelo</label>
+            <div class="col-sm-10">
+             <input type="text" class="form-control" placeholder="Modelo" name="Modelo">
+            </div>
+          </div>
+            <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Voltaje</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Voltaje" name="Voltaje">
+            </div>
+          </div>
+            <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Distancia</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Distancia" name="Distancia">
+            </div>
+          </div>
           <input type="hidden" name="tipoOperacion" value="actualizarSensor">
-  
           <input type="hidden" name="id_sensor">
       </div>
       <div class="modal-footer">
