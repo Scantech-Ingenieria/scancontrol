@@ -117,21 +117,20 @@ document.write( day + " de " + months[month] + " del " + year);
 //]]>
 </script>
 </div>
-	<div style="width:10%;float: right;color:white;margin-top: 5px;">
+	<div style="width:12%;float: right;color:white;margin-top: 5px;">
 <body onload="mueveReloj()">
 <form name="form_reloj">
 <input type="text" name="reloj" size="10" disabled style="background-color : Black;border-color:black; color : White; font-family : Verdana, Arial, Helvetica; font-size : 13pt; text-align : center;" onfocus="window.document.form_reloj.reloj.blur()">
 </form>
 </body>
 </div>
-	<div class="cinta" style="width:60%;float: right;color:white;">
+<div class="cinta" style="width:65%;float: right;color:white;">
 		<MARQUEE id="dolar" SCROLLAMOUNT=30 style="font-family:'PT Serif';font-size: 30px;"></MARQUEE>
 	</div>
 </div>
 </div>
 	</div>
 	<script type="text/javascript">
-	
 $(document).ready(function() {
 var audio = document.getElementById("audio");
 function dolar(){
