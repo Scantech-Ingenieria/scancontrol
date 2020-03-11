@@ -114,16 +114,16 @@ function mueveReloj(){
 	</div>
 
 </div>
-<div class='col-9 col-sm-10 col-md-5'>
+<div class='col-9 col-sm-5 col-md-5'>
 	<MARQUEE id="dolar" SCROLLAMOUNT=30 width="100%" style="font-family:'PT Serif';font-size: 30px;"> 
 	</MARQUEE>
 </div>
-<div class='col-2 col-sm-2 col-md-2' style="padding-right: 0px;
+<div class='col-12 col-sm-2 col-md-2' style="padding-right: 0px;
      padding-left: 0px;">
 <MARQUEE HEIGHT=50 SCROLLDELAY=150 DIRECTION=up id="tiempo"> 
 </MARQUEE>
 </div>
-<div class='col-6 col-sm-2 col-md-1' style="padding-right: 0px;
+<div class='col-6 col-sm-1 col-md-1' style="padding-right: 0px;
      padding-left: 0px;">
 	<body onload="mueveReloj()">
 <form name="form_reloj">
