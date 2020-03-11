@@ -22,8 +22,11 @@
 </head>
 <body class="fondo">
 <style type="text/css">
-.fondo{
+/*.fondo{
 background-image: url('images/fondo4.jpg');	
+}*/
+.fondo{
+	background:  #445275;
 }
 #logo{
 background-image: url('images/logo2.png');
@@ -39,6 +42,13 @@ width:100%;height: 100%;
 	#audio{
 display: none
 }
+hr {
+  height: 1px;
+  background-color: white;
+  margin-bottom: 0px;
+  margin-top: 0px;
+
+}
 </style>
 <?php
 session_start();
@@ -47,29 +57,30 @@ include 'conexion.php';
         header("Location:index.php");
     }
 ?>
-<audio id="audio" controls>
-<source type="audio/mpeg" src="audio/Alarm.mp3">
-</audio>
-<div class="plans-section">
-<div class="plans-main" id="padre">
-	<div id="num0"></div>
-	<div id="num1"></div>
-	<div id="num2"></div>
-	<div id="num3"></div>
-	<div id="num4"></div>
-	<div id="num5"></div>
-	<div id="num6"></div>
-	<div id="num7"></div>
-	<div id="num8"></div>
-	<div id="num9"></div>
-	<div id="num10"></div>
-	<div id="num11"></div>
-	<div id="num12"></div>
-	<div id="num13"></div>
-	<div id="num14"></div>
-	<div id="num15"></div>
-	<div id="num16"></div>
-	</div>
+
+<h4 style="color:white;margin-left: 10px;margin-top: 10px;">Scancontrol</h4>
+<hr>
+
+<div class="row">
+
+	<div id="num0"  class='col-12 col-sm-6 col-md-3'></div>
+	<div id="num1"  class='col-12 col-sm-6 col-md-3'></div>
+	<div id="num2"  class='col-12 col-sm-6 col-md-3'></div>
+	<div id="num3"  class='col-12 col-sm-6 col-md-3'></div>
+	<div id="num4"  class='col-12 col-sm-6 col-md-3'></div>
+	<div id="num5"  class='col-12 col-sm-6 col-md-3'></div>
+	<div id="num6"  class='col-12 col-sm-6 col-md-3'></div>
+	<div id="num7"  class='col-12 col-sm-6 col-md-3'></div>
+	<div id="num8"  class='col-12 col-sm-6 col-md-3'></div>
+	<div id="num9"  class='col-12 col-sm-6 col-md-3'></div>
+	<div id="num10"  class='col-12 col-sm-6 col-md-3'></div>
+	<div id="num11"  class='col-12 col-sm-6 col-md-3'></div>
+	<div id="num12"  class='col-12 col-sm-6 col-md-3'></div>
+	<div id="num13"  class='col-12 col-sm-6 col-md-3'></div>
+	<div id="num14"  class='col-12 col-sm-6 col-md-3'></div>
+	<div id="num15"  class='col-12 col-sm-6 col-md-3'></div>
+	<div id="num16"  class='col-12 col-sm-6 col-md-3'></div>
+
 
 <script language="JavaScript">
 function mueveReloj(){
@@ -87,21 +98,42 @@ function mueveReloj(){
     if (str_hora.length == 1)
        hora = "0" + hora
     horaImprimible = hora + " : " + minuto + " : " + segundo
+    minutos = hora
     document.form_reloj.reloj.value = horaImprimible
     setTimeout("mueveReloj()",1000)
 }
 </script>
 
-
-
-
-	<div style="background:black;height: 40px;width:100%;position:absolute;top:670px;">
-	<div class="logo" style="width:10%;height: 40px; float: left;" ><h1>
+<div class="row" style="width: 100%;background: white; display: flex ;
+   justify-content: center;
+   align-items: center;">
+<div class='col-3 col-sm-2 col-md-2'>
+		<div class="logo" style="width:100%;height: 40px; float: left;" ><h1>
 		<img src="images/logo2.png" width="200px" height="35px" style="vertical-align:inherit;margin-left: 10px;" >
 	</h1>
 	</div>
-	
-<div style="width:13%;float: right;color:white;margin-top: 7px;font-size: 1.1em;"><script type="text/javascript">
+
+</div>
+<div class='col-9 col-sm-10 col-md-5'>
+	<MARQUEE id="dolar" SCROLLAMOUNT=30 width="100%" style="font-family:'PT Serif';font-size: 30px;"> 
+	</MARQUEE>
+</div>
+<div class='col-2 col-sm-2 col-md-2' style="padding-right: 0px;
+     padding-left: 0px;">
+<MARQUEE HEIGHT=50 SCROLLDELAY=150 DIRECTION=up id="tiempo"> 
+</MARQUEE>
+</div>
+<div class='col-6 col-sm-2 col-md-1' style="padding-right: 0px;
+     padding-left: 0px;">
+	<body onload="mueveReloj()">
+<form name="form_reloj">
+<input type="text" name="reloj" size="12" disabled style="background-color : white;border-color:#ffffff00; color : black; font-family : Verdana, Arial, Helvetica; font-size : 13pt; text-align : center;" onfocus="window.document.form_reloj.reloj.blur()">
+</form>
+</body>
+</div>
+<div class='col-6 col-sm-2 col-md-2' style="padding-right: 0px;
+     padding-left: 0px;">
+	<script type="text/javascript">
 //<![CDATA[
 function makeArray() {
 for (i = 0; i<makeArray.arguments.length; i++)
@@ -117,35 +149,51 @@ document.write( day + " de " + months[month] + " del " + year);
 //]]>
 </script>
 </div>
-	<div style="width:12%;float: right;color:white;margin-top: 5px;">
-<body onload="mueveReloj()">
-<form name="form_reloj">
-<input type="text" name="reloj" size="10" disabled style="background-color : Black;border-color:black; color : White; font-family : Verdana, Arial, Helvetica; font-size : 13pt; text-align : center;" onfocus="window.document.form_reloj.reloj.blur()">
-</form>
-</body>
-</div>
-<div class="cinta" style="width:65%;float: right;color:white;">
-		<MARQUEE id="dolar" SCROLLAMOUNT=30 style="font-family:'PT Serif';font-size: 30px;"></MARQUEE>
-	</div>
-</div>
 </div>
 	</div>
 	<script type="text/javascript">
 $(document).ready(function() {
 var audio = document.getElementById("audio");
+
+function tiempo(){
+	var tiempo
+  $.ajax({
+    dataType: 'json',
+    url: 'https://api.tutiempo.net/json/?lan=es&apid=z5Eaazqqazzzc4l&lid=55739',
+    data: tiempo,
+    success: function(tiempo) {
+dia = tiempo.day1.date.substr(7,2)
+mes = tiempo.day1.date.substr(5,1)
+ano=tiempo.day1.date.substr(0,4)
+fechadia1 = dia+'-'+mes+'-'+ano
+dia2 = tiempo.day2.date.substr(7,2)
+mes2 = tiempo.day2.date.substr(5,1)
+ano2=tiempo.day2.date.substr(0,4)
+fechadia2 = dia2+'-'+mes2+'-'+ano2
+dia3 = tiempo.day3.date.substr(7,2)
+mes3 = tiempo.day3.date.substr(5,1)
+ano3=tiempo.day3.date.substr(0,4)
+fechadia3 = dia3+'-'+mes3+'-'+ano3
+
+$("#tiempo").html("<h5 style='font-family:PT Serif;'>"+tiempo.locality.name+"</h5><br><h5 style='font-family:PT Serif;'>Dia "+fechadia1+"</h5><br><h5>Min : "+tiempo.day1.temperature_min+"° Max"+tiempo.day1.temperature_max+"°</h5><br><h5>"+tiempo.day1.text+"<img src='iconostiempo/"+tiempo.day1.icon+".png'></h5><br><h5 style='font-family:PT Serif;'>Dia "+fechadia2+"</h5><br><h5>Min : "+tiempo.day2.temperature_min+"° Max"+tiempo.day2.temperature_max+"°</h5><br><br><h5>"+tiempo.day2.text+"<img src='iconostiempo/"+tiempo.day2.icon+".png'></h5><br><h5 style='font-family:PT Serif;'>Dia "+tiempo.day3.date+"</h5><br><h5>Min : "+tiempo.day3.temperature_min+"° Max"+tiempo.day3.temperature_max+"°</h5><br><h5>"+tiempo.day3.text+"<img src='iconostiempo/"+tiempo.day3.icon+".png'></h5>");
+    }
+})
+}
+
 function dolar(){
  var dolar
   $.ajax({
     dataType: 'json',
-    url: 'https://api.desarrolladores.datos.gob.cl/indicadores-financieros/v1/dolar/hoy.json/?auth_key=095c61666b48a9a8a6e018dc55bbd8c4d7b7a63e&limit=10000',
+    url: 'https://api.desarrolladores.datos.gob.cl/indicadores-financieros/v1/dolar/hoy.json/?auth_key=095c61666b48a9a8a6e018dc55bbd8c4d7b7a63e&limit=1000000',
     data: dolar,
     success: function(dolar) {
-console.log (dolar.dolar.valor)
+console.log (dolar)
 $("#dolar").html("<h2 style='font-family:PT Serif;'>Valor Dolar : $"+dolar.dolar.valor+" con fecha : "+dolar.dolar.fecha+"</h2>");
 
     }
 })
 }
+
 	function datos(){
   var data
   $.ajax({
@@ -157,26 +205,32 @@ var size = data.records.length;
  for(i=0; i<size; i++){
 var cadena= data.records[i].nombre_cliente
 
-				 $("#num"+i+"").html("<div class='price-grid'  style='color:black;padding: 20px;'><div  class='price-block price-block1 agile' style='background: #f5f5f5;    padding: 0px;'><div class='row'><div class='col-4 col-sm-4 col-md-4' id='cam"+i+"' ><h1 style='text-transform: uppercase;margin-top:50px;color:white;'>"+cadena.substr(0,2)+"</h1></div><div class='col-6 col-sm-6 col-md-8'><div class='price-gd-top pric-clr1' style='border-left-color:#92a8d1;' ><h5 style='text-align: left;color:black;font-size: 12px;text-transform: uppercase;font-weight: bold;margin-bottom:0px;'>"+data.records[i].nombre_cliente+"</h5><div class='row'><div class='col-md-10' style='text-align:left;	margin-bottom: 10px;'><span style='text-align: left;color:black; font-size: 12px;'>" + data.records[i].info + " </span><br><span style='font-size: 12px;font-weight: bold;'>"+data.records[i].address+"</span><br><span style='text-align: left;color:black;font-size: 12px;'>"+data.records[i].descripcion+"</span><br><span style='text-align: left;color:black;font-size: 12px;'>"+data.records[i].ubicacion+"</span><br><span style='text-align: left;color:black;font-size: 12px;'>Estado :  <button type='button' id='estado"+i+"' class='btn btn-sm'>"+data.records[i].estado+"</button></span></div></div></div></div></div></div></div>");
+$("#num"+i+"").html("<div style='color:white;padding:5px;'><div style='background: #3A4562; padding: 0px;'><div class='col-12 col-sm-12 col-md-12'><div><h5 style='text-align: left;font-size: 16px;text-transform: uppercase;font-weight: bold;margin-bottom:0px;text-align:center;padding-top:10px;padding-bottom:10px;'>"+data.records[i].nombre_cliente+"</h5><hr><div class='row' style='font-size:12px;'><div class='col-md-12' style='text-align:left;'><div class='col-md-12' style='text-align: left; width:100%;margin-top:5px;'>" + data.records[i].descripcion + " </div><div class='col-md-12' style='text-align: left;font-size: 12px;'>Ultima conexión: "+data.records[i].info+"</div><div class='col-md-12'  style='font-size: 12px;font-weight: bold;'>IP: "+data.records[i].address+"</div><div class='col-md-12' style='text-align: left;font-size: 12px;'>Ubicación: "+data.records[i].ubicacion+"</div><div class='col-md-12'>Contacto :</div><div class='col-md-12' >Mobile :</div><div class='col-md-12'>Anydesk :</div><div class='col-md-12' style='text-align: left;font-size: 12px;'><button type='button' style='width:100%;margin-top:5px;margin-bottom:5px;' id='estado"+i+"' class='btn btn-sm'></button></div></div></div></div></div></div></div></div>");
 if (data.records[i].nombre_cliente=="Caleta Bay") {
 var cb = data.records[i].nombre_cliente.substr(0,1)
 var cb2 = data.records[i].nombre_cliente.substr(7,1)
 $("#cam"+i+"").html("<h1 style='text-transform: uppercase;margin-top:50px;color:white;'>"+cb+cb2+"</h1>"
 	)
 }
-if (data.records[i].estado=='offline') {
+
+if (data.records[i].estado=='offline' || data.records[i].info.substr(11,2) != minutos || data.records[i].info.substr(8,2) != day ) {
 $('#estado'+i+'').addClass('btn-danger');
 $('#cam'+i+'').addClass('desconectado');
+$('#estado'+i+'').text('Desconectado');
 }else{
 	$('#estado'+i+'').addClass('btn-success');
+	$('#estado'+i+'').text('Conectado');
+
 $('#cam'+i+'').addClass('conectado');
 }
                     }
     },
   })
 }
-setInterval(datos,1000);
 setInterval(dolar,1000);
+setInterval(tiempo,1000);
+setInterval(datos,1000);
+
 })
 </script>
 </body>
