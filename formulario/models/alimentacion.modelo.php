@@ -6,9 +6,14 @@ static public function listarAlimentacionMdl($tabla) {
 		$sql -> execute();
 		return $sql -> fetchAll();
 }
+static public function listarAlimentacionRegistroMdl($tabla) {
+		$sql = Conexion::conectar()->prepare("SELECT * FROM $tabla a INNER JOIN sprockets s on s.id_sprockets=a.tipo_sprockets  INNER JOIN bandas b on b.id_banda=a.banda_modular_tipo INNER JOIN rodamientos r on r.id_rodamientos=a.rodamientos WHERE id_unidad_al IS NULL");
+		$sql -> execute();
+		return $sql -> fetchAll();
+}
 	static public function mdlCrearAlimentacion($tabla, $datos) {
 
-		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL,:tipo,:cantidadsprockets,:tipobandas,:bandasmedidas,:eje,:motorusillo,:motorcapacidad,:motorrpm,:rodamientos)");
+		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL,:tipo,:cantidadsprockets,:tipobandas,:bandasmedidas,:eje,:motorusillo,:motorcapacidad,:motorrpm,:rodamientos,NULL)");
 		$sql->bindParam(":tipo", $datos["tipo"], PDO::PARAM_STR);
 		$sql->bindParam(":cantidadsprockets", $datos["cantidadsprockets"], PDO::PARAM_STR);
 		$sql->bindParam(":tipobandas", $datos["tipobandas"], PDO::PARAM_STR);

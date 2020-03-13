@@ -15,35 +15,20 @@
               <input type="text" class="form-control" placeholder="IP"  name="Nombretabla">
             </div>
           </div>
-
-
       <div class="form-group row">
             <label class="col-sm-2 col-form-label">Cliente</label> 
-
              <div class="col-sm-10">
 <select class="form-control" name="Clientetabla" required>
 <?php 
  $Cli = Controllertabla::listarCliCtr();
 echo '<option selected disabled>Seleccione cliente</option>';
    foreach ($Cli as $key => $value) {
-
 echo'<option value="'.$value["id_cliente"].'">'.nl2br($value["nombre_cliente"]).'</option>';
-
    }
-
  ?>
-
 </select>
-
         </div>
        </div>
-      
-
-
-
-          
-        
-
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Descripción</label>
             <div class="col-sm-10">
@@ -56,14 +41,30 @@ echo'<option value="'.$value["id_cliente"].'">'.nl2br($value["nombre_cliente"]).
          <input type="text" class="form-control" placeholder="Ubicacion" name="Ubicaciontabla">
             </div>
           </div>
-
+                 <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Contacto</label>
+            <div class="col-sm-10">
+         <input type="text" class="form-control" placeholder="Contacto" name="Contacto">
+            </div>
+          </div>
+                 <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Mobile</label>
+            <div class="col-sm-10">
+         <input type="text" class="form-control" placeholder="Mobile" name="Mobile">
+            </div>
+          </div>
+                 <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Anydesk</label>
+            <div class="col-sm-10">
+         <input type="text" class="form-control" placeholder="Anydesk" name="Any">
+            </div>
+          </div>
 <div class="form-group row">
             <label class="col-sm-2 col-form-label">Estado</label>
             <div class="col-sm-10">
          <select class="form-control" name="Estadotabla" >
            <option>Online</option>
            <option>Offline</option>
-
          </select>
             </div>
           </div>
@@ -73,8 +74,6 @@ echo'<option value="'.$value["id_cliente"].'">'.nl2br($value["nombre_cliente"]).
               <input type="date" class="form-control"  name="Fechatabla">
             </div>
           </div>
-
-
           <input type="hidden" name="tipoOperacion" value="insertartabla">
       </div>
       <div class="modal-footer">
@@ -85,10 +84,6 @@ echo'<option value="'.$value["id_cliente"].'">'.nl2br($value["nombre_cliente"]).
     </div>
   </div>
 </div>
-
-
-
-
 <!-- EDITAR SLIDER -->
 <div class="modal fade" id="modal-editar-tabla"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -107,17 +102,8 @@ echo'<option value="'.$value["id_cliente"].'">'.nl2br($value["nombre_cliente"]).
               <input type="text" class="form-control" placeholder="IP"  name="titulotabla">
             </div>
           </div>
-         <!--      <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Cliente</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" placeholder="Cliente" name="Clientetabla">
-            </div>
-          </div>
- -->
-
       <div class="form-group row">
             <label class="col-sm-2 col-form-label">Cliente</label> 
-
              <div class="col-sm-10">
 <select class="form-control" name="Clientetabla" required>
 <?php 
@@ -128,18 +114,11 @@ echo'<option value="'.$value["id_cliente"].'">'.nl2br($value["nombre_cliente"]).
 echo'<option value="'.$value["id_cliente"].'">'.nl2br($value["nombre_cliente"]).'</option>';
 
    }
-
  ?>
-
 </select>
 
         </div>
        </div>
-
-
-
-
-
            <div class="form-group row">
             <label class="col-sm-2 col-form-label">Descripción</label>
             <div class="col-sm-10">
@@ -152,11 +131,25 @@ echo'<option value="'.$value["id_cliente"].'">'.nl2br($value["nombre_cliente"]).
          <input type="text" class="form-control" placeholder="Ubicacion" name="Ubicaciontabla">
             </div>
           </div>
-      
-  
-
+                    <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Contacto</label>
+            <div class="col-sm-10">
+         <input type="text" class="form-control" placeholder="Contacto" name="Contacto">
+            </div>
+          </div>
+                 <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Mobile</label>
+            <div class="col-sm-10">
+         <input type="text" class="form-control" placeholder="Mobile" name="Mobile">
+            </div>
+          </div>
+                 <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Anydesk</label>
+            <div class="col-sm-10">
+         <input type="text" class="form-control" placeholder="Anydesk" name="Any">
+            </div>
+          </div>
           <input type="hidden" name="tipoOperacion" value="actualizarTabla">
-  
           <input type="hidden" name="id_tabla">
       </div>
       <div class="modal-footer">

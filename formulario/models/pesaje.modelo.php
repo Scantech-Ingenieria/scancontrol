@@ -6,9 +6,14 @@ static public function listarPesajeMdl($tabla) {
 		$sql -> execute();
 		return $sql -> fetchAll();
 }
+static public function listarPesajeRegistroMdl($tabla) {
+		$sql = Conexion::conectar()->prepare("SELECT * FROM $tabla a INNER JOIN sprockets s on s.id_sprockets=a.tipo_sprocket  INNER JOIN bandas b on b.id_banda=a.tipo_banda INNER JOIN sensor se on se.id_sensor=a.tipo_sensores WHERE a.id_unidad IS NULL");
+		$sql -> execute();
+		return $sql -> fetchAll();
+}
 	static public function mdlCrearPesaje($tabla, $datos) {
 
-		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL,:tiposensores,:cantidadsensores,:tipo,:cantidadsprockets,:tipobandas,:bandasmedidas,:eje,:motorusillo,:motorcapacidad,:rpm,:tiporodamientos)");
+		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL,:tiposensores,:cantidadsensores,:tipo,:cantidadsprockets,:tipobandas,:bandasmedidas,:eje,:motorusillo,:motorcapacidad,:rpm,:tiporodamientos,NULL)");
 	
 		$sql->bindParam(":tipo", $datos["tipo"], PDO::PARAM_STR);
 		$sql->bindParam(":cantidadsprockets", $datos["cantidadsprockets"], PDO::PARAM_STR);

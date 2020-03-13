@@ -6,8 +6,13 @@ static public function listarDescargaMdl($tabla) {
 		$sql -> execute();
 		return $sql -> fetchAll();
 }
+static public function listarDescargaRegistroMdl($tabla) {
+		$sql = Conexion::conectar()->prepare("SELECT * FROM $tabla a INNER JOIN sprockets s on s.id_sprockets=a.tipo_sprocket  INNER JOIN bandas b on b.id_banda=a.tipo_banda INNER JOIN paletas p on p.id_paletas=a.id_tipo_paletas WHERE id_unidad IS NULL");
+		$sql -> execute();
+		return $sql -> fetchAll();
+}
 	static public function mdlCrearDescarga($tabla, $datos) {
-		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL,:tipo,:cantidadsprockets,:tipobandas,:bandasmedidas,:eje,:motorusillo,:motorcapacidad,:tipopaletas,:cantidadpaletas,:rpm,:tiporodamientos)");
+		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL,:tipo,:cantidadsprockets,:tipobandas,:bandasmedidas,:eje,:motorusillo,:motorcapacidad,:tipopaletas,:cantidadpaletas,:rpm,:tiporodamientos,NULL)");
 		$sql->bindParam(":tipo", $datos["tipo"], PDO::PARAM_STR);
 		$sql->bindParam(":cantidadsprockets", $datos["cantidadsprockets"], PDO::PARAM_STR);
 		$sql->bindParam(":tipobandas", $datos["tipobandas"], PDO::PARAM_STR);

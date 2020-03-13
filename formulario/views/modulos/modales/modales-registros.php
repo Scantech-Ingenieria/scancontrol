@@ -28,11 +28,10 @@ echo'<option value="'.$value["id"].'">IP: '.$value["address"].' / Cliente: '.$va
              <div class="col-sm-9">
 <select class="form-control" name="Calidad">
 <?php 
-      $tabla = ControllerCalidad::listarCalidadCtr();
+      $tabla = ControllerCalidad::listarCalidadRegistroCtr();
   echo '<option selected value="0">Ninguna</option>';
           foreach ($tabla as $key => $value) {  
-echo'<option value="'.$value["id_calidad"].'">ID: '.$value["id_calidad"].' / Numero de Puestos: '.$value["numero_puestos"].'</option>';
-
+echo'<option value="'.$value["id_calidad"].'">ID: '.$value["id_calidad"].' / Numero de Puestos: '.$value["numero_puestos"].' / Tipo Sprockets: '.$value["serie"].' / Cantidad Sprockets: '.$value["cantidad_sprockets"].' / Medida Banda: '.$value["ancho"].' / Tipo Banda: '.$value["numero_serie"].'</option>';
           }
  ?>
 </select>
@@ -43,10 +42,10 @@ echo'<option value="'.$value["id_calidad"].'">ID: '.$value["id_calidad"].' / Num
              <div class="col-sm-9">
 <select class="form-control" name="Alimentación" required>
 <?php 
-          $tabla = ControllerAlimentacion::listarAlimentacionCtr();
+          $tabla = ControllerAlimentacion::listarAlimentacionRegistroCtr();
                  echo '<option selected value="0">Ninguna</option>';
           foreach ($tabla as $key => $value) {
-echo'<option value="'.$value["id_unidad_alim"].'">ID: '.$value["id_unidad_alim"].' Serie Sprockets: '.$value["serie"].' / Tipo Sprockets: '.$value["cantidad_sprockets"].' / Serie Banda: '.$value["numero_serie"].'</option>';
+echo'<option value="'.$value["id_unidad_alim"].'">ID: '.$value["id_unidad_alim"].' / Serie Sprockets: '.$value["serie"].' / Tipo Sprockets: '.$value["cantidad_sprockets"].' / Serie Banda: '.$value["numero_serie"].'</option>';
  }
 
  ?>
@@ -58,7 +57,7 @@ echo'<option value="'.$value["id_unidad_alim"].'">ID: '.$value["id_unidad_alim"]
              <div class="col-sm-9">
 <select class="form-control" name="Aceleracion" >
 <?php 
-     $tabla = ControllerAceleracion::listarAceleracionCtr();
+     $tabla = ControllerAceleracion::listarAceleracionRegistroCtr();
   
        echo '<option selected value="0">Ninguna</option>';
           foreach ($tabla as $key => $value) {
@@ -73,7 +72,7 @@ echo'<option value="'.$value["id_unidad_acel"].'">ID: '.$value["id_unidad_acel"]
              <div class="col-sm-9">
 <select class="form-control" name="Pesaje" >
 <?php 
-       $tabla = ControllerPesaje::listarPesajeCtr();
+       $tabla = ControllerPesaje::listarPesajeRegistroCtr();
 
   echo '<option selected value="0">Ninguna</option>';
    foreach ($tabla as $key => $value) {
@@ -91,7 +90,7 @@ echo'<option value="'.$value["id_unidad_pesaje"].'">ID: '.$value["id_unidad_pesa
              <div class="col-sm-9">
 <select class="form-control" name="Descarga" >
 <?php 
-   $tabla = ControllerDescarga::listarDescargaCtr();
+   $tabla = ControllerDescarga::listarDescargaRegistroCtr();
 
   echo '<option selected value="0">Ninguna</option>';
    foreach ($tabla as $key => $value) {

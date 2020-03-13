@@ -6,8 +6,13 @@ static public function listarCalidadMdl($tabla) {
 		$sql -> execute();
 		return $sql -> fetchAll();
 	}
+	static public function listarCalidadRegistroMdl($tabla) {
+		$sql = Conexion::conectar()->prepare("SELECT * FROM $tabla a INNER JOIN sprockets s on s.id_sprockets=a.tipo_sprockets  INNER JOIN bandas b on b.id_banda=a.tipo_banda INNER JOIN rodamientos r on r.id_rodamientos=a.tipo_rodamientos INNER JOIN sensor se on se.id_sensor=a.tipo_sensores WHERE id_unidad IS NULL");
+		$sql -> execute();
+		return $sql -> fetchAll();
+	}
 	static public function mdlCrearCalidad($tabla, $datos) {
-		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :puestos, :tiposprockets, :cantidadsprockets, :tipobandas, :medidabanda, :eje, :cilindros, :tipobotoneras, :cantidadbotoneras, :tiposensores, :cantidadsensores, :racors, :motorusillos, :motorcapacidad, :rpm, :tiporodamientos)");
+		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :puestos, :tiposprockets, :cantidadsprockets, :tipobandas, :medidabanda, :eje, :cilindros, :tipobotoneras, :cantidadbotoneras, :tiposensores, :cantidadsensores, :racors, :motorusillos, :motorcapacidad, :rpm, :tiporodamientos,NULL)");
 		$sql->bindParam(":puestos", $datos["puestos"], PDO::PARAM_STR);
 		$sql->bindParam(":tiposprockets", $datos["tiposprockets"], PDO::PARAM_STR);
 		$sql->bindParam(":cantidadsprockets", $datos["cantidadsprockets"], PDO::PARAM_STR);

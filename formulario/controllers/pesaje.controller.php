@@ -5,6 +5,11 @@ public function listarPesajeCtr() {
 		$respuesta = ModeloPesaje::listarPesajeMdl($tabla);
 		return $respuesta;
 	}
+	public function listarPesajeRegistroCtr() {
+		$tabla = "unidad_pesaje";
+		$respuesta = ModeloPesaje::listarPesajeRegistroMdl($tabla);
+		return $respuesta;
+	}
 	static public function ctrCrearPesaje($datos) {
 		$tabla = "unidad_pesaje";
 		$respuesta = ModeloPesaje::mdlCrearPesaje($tabla, $datos);

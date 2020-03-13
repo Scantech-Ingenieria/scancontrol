@@ -47,7 +47,6 @@ hr {
   background-color: white;
   margin-bottom: 0px;
   margin-top: 0px;
-
 }
 </style>
 <?php
@@ -57,12 +56,9 @@ include 'conexion.php';
         header("Location:index.php");
     }
 ?>
-
 <h4 style="color:white;margin-left: 10px;margin-top: 10px;">Scancontrol</h4>
 <hr>
-
 <div class="row">
-
 	<div id="num0"  class='col-12 col-sm-6 col-md-3'></div>
 	<div id="num1"  class='col-12 col-sm-6 col-md-3'></div>
 	<div id="num2"  class='col-12 col-sm-6 col-md-3'></div>
@@ -80,8 +76,6 @@ include 'conexion.php';
 	<div id="num14"  class='col-12 col-sm-6 col-md-3'></div>
 	<div id="num15"  class='col-12 col-sm-6 col-md-3'></div>
 	<div id="num16"  class='col-12 col-sm-6 col-md-3'></div>
-
-
 <script language="JavaScript">
 function mueveReloj(){
     momentoActual = new Date()
@@ -107,19 +101,19 @@ function mueveReloj(){
 <div class="row" style="width: 100%;background: white; display: flex ;
    justify-content: center;
    align-items: center;">
-<div class='col-3 col-sm-2 col-md-2'>
+<div class='col-4 col-sm-2 col-md-2'>
 		<div class="logo" style="width:100%;height: 40px; float: left;" ><h1>
 		<img src="images/logo2.png" width="200px" height="35px" style="vertical-align:inherit;margin-left: 10px;" >
 	</h1>
 	</div>
 
 </div>
-<div class='col-9 col-sm-5 col-md-5'>
+<div class='col-8 col-sm-5 col-md-5'>
 	<MARQUEE id="dolar" SCROLLAMOUNT=30 width="100%" style="font-family:'PT Serif';font-size: 30px;"> 
 	</MARQUEE>
 </div>
 <div class='col-12 col-sm-2 col-md-2' style="padding-right: 0px;
-     padding-left: 0px;">
+    ">
 <MARQUEE HEIGHT=50 SCROLLDELAY=150 DIRECTION=up id="tiempo"> 
 </MARQUEE>
 </div>
@@ -175,7 +169,7 @@ mes3 = tiempo.day3.date.substr(5,1)
 ano3=tiempo.day3.date.substr(0,4)
 fechadia3 = dia3+'-'+mes3+'-'+ano3
 
-$("#tiempo").html("<h5 style='font-family:PT Serif;'>"+tiempo.locality.name+"</h5><br><h5 style='font-family:PT Serif;'>Dia "+fechadia1+"</h5><br><h5>Min : "+tiempo.day1.temperature_min+"° Max"+tiempo.day1.temperature_max+"°</h5><br><h5>"+tiempo.day1.text+"<img src='iconostiempo/"+tiempo.day1.icon+".png'></h5><br><h5 style='font-family:PT Serif;'>Dia "+fechadia2+"</h5><br><h5>Min : "+tiempo.day2.temperature_min+"° Max"+tiempo.day2.temperature_max+"°</h5><br><br><h5>"+tiempo.day2.text+"<img src='iconostiempo/"+tiempo.day2.icon+".png'></h5><br><h5 style='font-family:PT Serif;'>Dia "+tiempo.day3.date+"</h5><br><h5>Min : "+tiempo.day3.temperature_min+"° Max"+tiempo.day3.temperature_max+"°</h5><br><h5>"+tiempo.day3.text+"<img src='iconostiempo/"+tiempo.day3.icon+".png'></h5>");
+$("#tiempo").html("<h5 style='font-family:PT Serif;'>"+tiempo.locality.name+"</h5><br><h5 style='font-family:PT Serif;'>Dia "+fechadia1+"</h5><br><h5>Min : "+tiempo.day1.temperature_min+"° Max"+tiempo.day1.temperature_max+"°</h5><br><h5>"+tiempo.day1.text+"<img src='iconostiempo/"+tiempo.day1.icon+".png'></h5><br><h5 style='font-family:PT Serif;'>Dia "+fechadia2+"</h5><br><h5>Min : "+tiempo.day2.temperature_min+"° Max"+tiempo.day2.temperature_max+"°</h5><br><br><h5>"+tiempo.day2.text+"<img src='iconostiempo/"+tiempo.day2.icon+".png'></h5><br><h5 style='font-family:PT Serif;'>Dia "+fechadia3+"</h5><br><h5>Min : "+tiempo.day3.temperature_min+"° Max"+tiempo.day3.temperature_max+"°</h5><br><h5>"+tiempo.day3.text+"<img src='iconostiempo/"+tiempo.day3.icon+".png'></h5>");
     }
 })
 }
