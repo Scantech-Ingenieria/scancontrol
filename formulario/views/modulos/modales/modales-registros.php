@@ -80,9 +80,7 @@ echo'<option value="'.$value["id_unidad_pesaje"].'">ID: '.$value["id_unidad_pesa
 
    }
  ?>
-
 </select>
-
         </div>
        </div>
             <div class="form-group row">

@@ -22,10 +22,13 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nro° Serie</th>
-                <th>Descripción</th>
+                <th>Serie</th>
+                <th>Superficie</th>
+                <th>Paso</th>
                 <th>Material</th>
                 <th>Ancho</th>
+                <th>Descripción</th>
+                 <th >Imagen</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -37,13 +40,16 @@
 <tr>
 <td>'.nl2br($value["id_banda"]).'</td>
 <td>'.nl2br($value["numero_serie"]).'</td>
-<td>'.nl2br($value["descripcion"]).'</td>
+<td>'.nl2br($value["material"]).'</td>
+<td>'.nl2br($value["material"]).'</td>
 <td>'.nl2br($value["material"]).'</td>
 <td>'.nl2br($value["ancho"]).'</td>
+<td>'.nl2br($value["descripcion"]).'</td>
+<td><img width="200" src="'.substr($value["rutaImg"], 3).'"></td>
 <td width="100"> <button class="btn btn-sm btn-info btnEditarBanda" idBanda="'.$value["id_banda"].'" data-toggle="modal" data-target="#modal-editar-banda">
                     <i class="far fa-edit"></i>
                   </button>
-    <button class="btn btn-sm btn-danger btnEliminarBanda" idBanda="'.$value["id_banda"].'">
+    <button class="btn btn-sm btn-danger btnEliminarBanda" idBanda="'.$value["id_banda"].'" rutaImagen="'.$value["rutaImg"].'">
                     <i class="far fa-trash-alt"></i>
     </button>
     </td>

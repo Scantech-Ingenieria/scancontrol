@@ -1,13 +1,7 @@
-
-
 $(document).ready(function(){
-
-
 	$("#formu-nuevo-tabla").submit(function (e) {
 		e.preventDefault()
-
 		var datos = new FormData($(this)[0])
-
 		$.ajax({
 			url: 'ajax/ajaxTabla.php',
 			type: 'POST',
@@ -20,9 +14,7 @@ $(document).ready(function(){
 				console.log(respuesta)
 				console.log(respuesta)
 				console.log(respuesta)
-
 				if (respuesta == "ok") {
-
 
 		Swal.fire(
   'Excelente!',
@@ -35,9 +27,7 @@ $(document).ready(function(){
 					})
 				}
 			}
-
 		})
-
 	})
 
 
@@ -87,19 +77,12 @@ $(document).ready(function(){
 			contentType: false,
 			success: function(respuesta) {
 				var valor = JSON.parse(respuesta)
-				
-
+			
 				$('#formu-editar-tabla input[name="id_tabla"]').val(valor.id_tabla)
 				$('#formu-editar-tabla input[name="titulotabla"]').val(valor.ip)
 				$('#formu-editar-tabla input[name="Ubicaciontabla"]').val(valor.ubicacion)
-
 				$('#formu-editar-tabla select[name="Clientetabla"]').val(valor.cliente)
-		
-
 				$('#formu-editar-tabla textarea[name="Descripciontabla"]').val(valor.descripcion)
-		
-		
-
 			}
 
 		})
@@ -108,15 +91,10 @@ $(document).ready(function(){
 
 	$("body #mi_lista").on("click", ".btnEliminarTabla", function(){
 		var idTabla = $(this).attr("idTabla")
-	
 		var datos = new FormData()
 		datos.append("id_tabla", idTabla)
 		datos.append("tipoOperacion", "eliminarTabla")
-
-
 		console.log(idTabla)
-
-
 		Swal.fire({
 		  title: '¿Estás seguro de eliminar?',
 		  text: "Los cambios no son reversibles!",
@@ -150,33 +128,17 @@ $(document).ready(function(){
 			})
 		  }
 		})
-
-
-
-
-
-
 	})
 
-
 	// PREVISUALIZAR IMAGENES
-
 	$("#imagen").change(previsualizarImg)
 	$("#imagenEditar").change(previsualizarImg)
-
-
 	function previsualizarImg(e) {
 		var contenedor = e.target.parentNode
-
 		var identificador = contenedor.classList[1]
-
 		imgSlider = this.files[0];
-
-
-
 		if ( imgSlider["type"] != "image/jpeg" && imgSlider["type"] != "image/png" && imgSlider["type"] != "video/mp4") {
 				$("#imagen").val("")
-
 				swal({
 					type:'error',
 					title: 'No es un archivo valido',
