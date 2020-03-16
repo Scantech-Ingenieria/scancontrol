@@ -18,11 +18,11 @@
               <div class="form-group row">
             <label class="col-sm-2 col-form-label" id="largo">Superficie</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" placeholder="Superficie" name="NumeroSerie">
+              <input type="text" class="form-control" placeholder="Superficie" name="Superficie">
             </div>
             <label class="col-sm-1 col-form-label" id="largo">Paso</label>
             <div class="col-sm-5">
-              <input type="text" class="form-control" placeholder="Paso" name="NumeroSerie">
+              <input type="text" class="form-control" placeholder="Paso" name="Paso">
             </div>
           </div>
            <div class="form-group row">
@@ -79,11 +79,11 @@
             <div class="form-group row">
             <label class="col-sm-2 col-form-label">Superficie</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" placeholder="Numero de Serie" name="NumeroSerie">
+              <input type="text" class="form-control" placeholder="Superficie" name="Superficie">
             </div>
             <label class="col-sm-1 col-form-label">Paso</label>
             <div class="col-sm-5">
-              <input type="text" class="form-control" placeholder="Numero de Serie" name="NumeroSerie">
+              <input type="text" class="form-control" placeholder="Paso" name="Paso">
             </div>
           </div>
            <div class="form-group row">
@@ -105,7 +105,7 @@
              <div class="form-group row">
             <label class="col-sm-2 col-form-label">Imagen</label>
             <div class="col-sm-10 conteNuevaImagen">
-              <input type="file" class="form-control"  id="imagenEditar1" name="imagenBanda" required>
+              <input type="file" class="form-control"  id="imagenEditar1" name="imagenBanda" >
               <img src="" id="imagenSlider" alt="" class="thumbnail" width="200" >
             </div>
           </div>

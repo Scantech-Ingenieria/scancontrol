@@ -28,7 +28,7 @@
                 <th>Material</th>
                 <th>Ancho</th>
                 <th>Descripción</th>
-                 <th >Imagen</th>
+                <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -40,8 +40,8 @@
 <tr>
 <td>'.nl2br($value["id_banda"]).'</td>
 <td>'.nl2br($value["numero_serie"]).'</td>
-<td>'.nl2br($value["material"]).'</td>
-<td>'.nl2br($value["material"]).'</td>
+<td>'.nl2br($value["superficie"]).'</td>
+<td>'.nl2br($value["paso"]).'</td>
 <td>'.nl2br($value["material"]).'</td>
 <td>'.nl2br($value["ancho"]).'</td>
 <td>'.nl2br($value["descripcion"]).'</td>

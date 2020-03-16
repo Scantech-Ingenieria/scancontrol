@@ -1,13 +1,8 @@
 
-
 $(document).ready(function(){
-
-
 	$("#formu-nuevo-paletas").submit(function (e) {
 		e.preventDefault()
-
 		var datos = new FormData($(this)[0])
-
 		$.ajax({
 			url: 'ajax/ajaxPaletas.php',
 			type: 'POST',
@@ -16,11 +11,7 @@ $(document).ready(function(){
 			contentType: false,
 			success: function(respuesta) {
 				console.log(respuesta)
-
-
 				if (respuesta == "ok") {
-
-
 		Swal.fire(
   'Excelente!',
   'Paleta registrada con exito!',
@@ -32,12 +23,8 @@ $(document).ready(function(){
 					})
 				}
 			}
-
 		})
-
 	})
-
-
 	$("#formu-editar-paletas").submit(function (e) {
 		e.preventDefault()
 
@@ -63,19 +50,13 @@ $(document).ready(function(){
 					})
 				}
 			}
-
 		})
-
 	})
-
-
-
 	$("body #mi_lista").on("click", ".btnEditarPaletas", function(){
 		var idPaletas = $(this).attr("idPaletas")
 		var datos = new FormData()
 		datos.append("id_paletas", idPaletas)
 		datos.append("tipoOperacion", "editarPaletas")
-
 		$.ajax({
 			url: 'ajax/ajaxPaletas.php',
 			type: 'POST',
@@ -85,35 +66,40 @@ $(document).ready(function(){
 			success: function(respuesta) {
 				var valor = JSON.parse(respuesta)
 				console.log(valor.id_paletas)
+	$('#formu-editar-paletas input[name="id_paletas"]').val(valor.id_paletas)
+	$('#formu-editar-paletas input[name="TipoPaletas"]').val(valor.tipo_paleta)
+	$('#formu-editar-paletas input[name="MedidaPaletas"]').val(valor.medida_paleta)
+	$('#formu-editar-paletas input[name="Decs"]').val(valor.decs)
+	$('#formu-editar-paletas input[name="Dics"]').val(valor.dics)
+	$('#formu-editar-paletas input[name="Acs"]').val(valor.acs)
+	$('#formu-editar-paletas input[name="Aci"]').val(valor.aci)
+	$('#formu-editar-paletas input[name="Dici"]').val(valor.dici)
+	$('#formu-editar-paletas input[name="Altura"]').val(valor.altura)
+	$('#formu-editar-paletas input[name="Ancho"]').val(valor.ancho)
+	$('#formu-editar-paletas input[name="Fondo"]').val(valor.fondo)
+	$('#formu-editar-paletas input[name="Perfo"]').val(valor.perfo)
+	$('#formu-editar-paletas input[name="Anclaje"]').val(valor.anclaje)
+	$('#formu-editar-paletas input[name="AlturaEje"]').val(valor.alturaeje)
+	$('#formu-editar-paletas input[name="DiametroEje"]').val(valor.diametroeje)
+	$('#formu-editar-paletas input[name="MedidaBrazoLeva"]').val(valor.medidas_brazo_leva)
+	$('#formu-editar-paletas input[name="Clilindrado"]').val(valor.cilindrado)
+	$('#formu-editar-paletas input[name="Racors"]').val(valor.racors)
+	$('#formu-editar-paletas #imagenPaletas').attr("src", valor.imagen)
 
-				$('#formu-editar-paletas input[name="id_paletas"]').val(valor.id_paletas)
-				$('#formu-editar-paletas input[name="TipoPaletas"]').val(valor.tipo_paleta)
-				$('#formu-editar-paletas input[name="MedidaPaletas"]').val(valor.medida_paleta)
-
-				$('#formu-editar-paletas input[name="MedidaBujes"]').val(valor.medida_bujes_paleta)
-				$('#formu-editar-paletas input[name="MedidaHousing"]').val(valor.medidas_housing)
-				$('#formu-editar-paletas input[name="MedidaEje"]').val(valor.medidas_eje_paleta)
-				$('#formu-editar-paletas input[name="MedidaBrazoLeva"]').val(valor.medidas_brazo_leva)
-				$('#formu-editar-paletas input[name="Clilindrado"]').val(valor.cilindrado)
-				$('#formu-editar-paletas input[name="Racors"]').val(valor.racors)
-
-		
-		
+	$('#formu-editar-paletas input[name="rutaActual"]').val(valor.imagen)
 
 			}
-
 		})
-
 	})
-
 	$("body #mi_lista").on("click", ".btnEliminarPaletas", function(){
 		var idPaletas = $(this).attr("idPaletas")
-	
+		var rutaImagen = $(this).attr("rutaImagen")
+
 		var datos = new FormData()
 		datos.append("id_paletas", idPaletas)
 		datos.append("tipoOperacion", "eliminarPaletas")
-
-
+		datos.append("rutaImagen", rutaImagen)
+		
 		console.log(idPaletas)
 		Swal.fire({
 		  title: '¿Estás seguro de eliminar?',
@@ -144,77 +130,44 @@ $(document).ready(function(){
 						})
 					}
 				}
-
 			})
 		  }
 		})
-
-
-
-
-
-
 	})
-
-
 	// PREVISUALIZAR IMAGENES
-
-	$("#imagen").change(previsualizarImg)
-	$("#imagenEditar").change(previsualizarImg)
-
-
+	$("#imagen2").change(previsualizarImg)
+	$("#imagenEditarPaletas").change(previsualizarImg)
 	function previsualizarImg(e) {
 		var contenedor = e.target.parentNode
-
 		var identificador = contenedor.classList[1]
-
 		imgSlider = this.files[0];
-
-
-
 		if ( imgSlider["type"] != "image/jpeg" && imgSlider["type"] != "image/png" && imgSlider["type"] != "video/mp4") {
-				$("#imagen").val("")
+				$("#imagen2").val("")
+				$("#imagenEditarPaletas").val("")
 
-				swal({
-					type:'error',
-					title: 'No es un archivo valido',
-					text: 'Debe subir archivos formato JPEG , PNG , MP4',
-			
-
-				})
+				Swal.fire(
+					  'No es un archivo valido',
+					      'Debe subir archivos formato JPEG , PNG',
+					      'error'
+				)
 			}
+		if ( imgSlider["type"] > 100000) {
+				$("#imagen2").val("")
 
-
-
-
-
-		if ( imgSlider["type"] > 100000000000) {
-				$("#imagenSlider").val("")
-
-				swal({
-					type: "Error al subir la imagen",
-					text: "La imagen debe pesar MAX 2MB",
-					icon: 'error',
-					confirmButtonText: "¡Cerrar!",
-				})
+		Swal.fire(
+					  'Error al subir la imagen',
+					      'La imagen debe pesar MAX 2MB',
+					      'error'
+				)
 			}
-
 			else {
-				$("#imagenSlider").css("display", "block")
-
+				$("#imagenPaletas").css("display", "block")
 				var datosImagen = new FileReader;
 		  		datosImagen.readAsDataURL(imgSlider);
-
 		  		$(datosImagen).on("load", function(event){
-
 		  			var rutaImagen = event.target.result;
-
-		  			$("." + identificador +" #imagenSlider").attr("src", rutaImagen);
+		  			$("." + identificador +" #imagenPaletas").attr("src", rutaImagen);
 		  		})
 			}
-
 		}
-
-
-
 })

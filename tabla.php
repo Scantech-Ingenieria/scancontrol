@@ -174,6 +174,20 @@ $("#tiempo").html("<h5 style='font-family:PT Serif;'>"+tiempo.locality.name+"</h
 })
 }
 
+function virus(){
+
+  $.ajax({
+    dataType: 'json',
+    url: 'https://pomber.github.io/covid19/timeseries.json',
+    data: virus,
+    success: function(virus) {
+console.log (virus['Chile'].length -1)
+$("#virus").html("<h2 style='font-family:PT Serif;'> : "+virus+"</h2>");
+
+    }
+})
+}
+
 function dolar(){
  var dolar
   $.ajax({
@@ -221,6 +235,8 @@ $('#cam'+i+'').addClass('conectado');
     },
   })
 }
+setInterval(virus,10000);
+
 setInterval(dolar,1000);
 setInterval(tiempo,1000);
 setInterval(datos,1000);

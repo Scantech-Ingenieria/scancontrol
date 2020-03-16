@@ -21,7 +21,7 @@
         <thead>
             <tr>
                 <th>ID</th>
-                       <th>Tipo Sensores</th>
+                <th>Tipo Sensores</th>
                 <th>Cantidad Sensores</th>
                  <th>Tipo Sprockets</th>
                 <th>Cantidad Sprockets</th>
@@ -32,7 +32,6 @@
                 <th>Motor Capacidad</th>
                 <th>RPM</th>
                 <th>Tipo Rodamiento</th>
-
                 <th>Acciones</th>
             </tr>
         </thead>

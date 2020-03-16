@@ -8,7 +8,9 @@ Class ajaxBanda {
 						"descripcion"=>$this->descripcion,
 						"ancho"=>$this->ancho,
 						"material"=>$this->material,
-						"imagen"=>$this->imagen_banda
+						"imagen"=>$this->imagen_banda,
+						"superficie"=>$this->superficie,
+						"paso"=>$this->paso
 					);
 
 		$respuesta = ControllerBanda::ctrCrearBanda($datos);
@@ -18,7 +20,9 @@ Class ajaxBanda {
 		$id_banda = $this->id_banda;
 		$respuesta = ControllerBanda::ctrEditarBanda($id_banda);
 		$datos = array("id_banda"=>$respuesta["id_banda"],
-						"numeroserie"=>$respuesta["numero_serie"],
+						"numeroserie"=>$respuesta["numero_serie"], 
+						  "superficie"=>$respuesta["superficie"],
+				          "paso"=>$respuesta["paso"],
 						"descripcion"=>$respuesta["descripcion"],
 				        "ancho"=>$respuesta["ancho"],
 				        "material"=>$respuesta["material"],
@@ -33,7 +37,9 @@ Class ajaxBanda {
 						"ancho"=>$this->ancho,
 						"material"=>$this->material,
 						"imagen"=>$this->imagen_banda,		
-						"rutaActual"=>$this->rutaActual		
+						"rutaActual"=>$this->rutaActual,		
+						"superficie"=>$this->superficie,
+						"paso"=>$this->paso
 
 						);
 		$respuesta = ControllerBanda::ctrActualizarBanda($datos);
@@ -49,6 +55,8 @@ Class ajaxBanda {
 $tipoOperacion = $_POST["tipoOperacion"];
 if($tipoOperacion == "insertarbanda") {
 	$crearNuevoBanda = new ajaxBanda();
+	$crearNuevoBanda -> superficie = $_POST["Superficie"];
+	$crearNuevoBanda -> paso = $_POST["Paso"];
 	$crearNuevoBanda -> numeroserie = $_POST["NumeroSerie"];
 	$crearNuevoBanda -> descripcion = $_POST["DescripcionBanda"];
 	$crearNuevoBanda -> ancho = $_POST["Ancho"];
@@ -71,6 +79,8 @@ if ($tipoOperacion == "actualizarBanda") {
 	$actualizarBanda -> material = $_POST["Material"];
 	$actualizarBanda -> imagen_banda = $_FILES["imagenBanda"];
 	$actualizarBanda -> rutaActual = $_POST["rutaActual"];
+	$actualizarBanda -> superficie = $_POST["Superficie"];
+	$actualizarBanda -> paso = $_POST["Paso"];
 	$actualizarBanda -> actualizarBanda();
 }
 if ($tipoOperacion == "eliminarBanda") {
