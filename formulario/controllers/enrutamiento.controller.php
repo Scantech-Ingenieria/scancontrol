@@ -21,14 +21,9 @@ class ControllerEnrutamiento {
          $ruta == "registros"||
          $ruta == "rodamientos"||
          $ruta == "sensor"||
-         $ruta == "unidadpesaje"
-
-
-
-
-
+         $ruta == "unidadpesaje"||
+         $ruta == "tableroelectrico"
 		) {
-
 			include "views/modulos/".$ruta.".php";
 
 		} else {

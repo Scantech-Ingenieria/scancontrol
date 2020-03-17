@@ -27,9 +27,9 @@
                 <th>ID</th>
                 <th>Tipo Paleta</th>
                 <th>Medida Paleta</th>
-                <th>Medida Bujes<br>decs-dics-acs-aci-dici</th>
-                <th>Medida Housing<br>altura-ancho-fondo-perf-ancl</th>
-                <th>Medida Eje<br>Altura-Diam</th>
+                <th>Medida B.<br>DECS-DICS-ACS-ACI-DICI</th>
+                <th>Medida H.<br>A-AN-FO-P-ANCL</th>
+                <th>Medida Eje<br>A-D</th>
                 <th>Medida Brazo Leva</th>
                 <th>Cilindrado</th>
                 <th>Racors</th> 

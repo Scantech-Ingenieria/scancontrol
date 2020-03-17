@@ -22,6 +22,8 @@ require_once "controllers/cliente.controller.php";
 require_once "controllers/rodamientos.controller.php";
 require_once "controllers/sensor.controller.php";
 require_once "controllers/pesaje.controller.php";
+require_once "controllers/tableroelectrico.controller.php";
+
 
 require_once "models/alimentacion.modelo.php";
 require_once "models/cliente.modelo.php";
@@ -38,6 +40,8 @@ require_once "models/bandas.modelo.php";
 require_once "models/rodamientos.modelo.php";
 require_once "models/sensor.modelo.php";
 require_once "models/pesaje.modelo.php";
+require_once "models/tableroelectrico.modelo.php";
+
 
 
 

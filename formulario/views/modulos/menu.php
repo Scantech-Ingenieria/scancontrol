@@ -100,7 +100,6 @@ Unidades Balanza                                        <i class="metismenu-stat
                                     </a>
                                 </li>  
                                 <li>
-                                  
                                         <a href="#">
                                        <i class="metismenu-icon pe-7s-display2"></i>
                                        Tableros
@@ -115,7 +114,7 @@ Unidades Balanza                                        <i class="metismenu-stat
                                     </a>
                                     <ul>
                                            <li>
-                                            <a href="vdf">
+                                            <a href="tableroelectrico">
                                                 <i class="metismenu-icon"></i>
                                                 Registro Tablero E.
                                             </a>

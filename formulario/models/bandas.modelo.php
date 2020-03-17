@@ -49,6 +49,8 @@ static public function listarBandaMdl($tabla) {
 }else{
 		$sql = Conexion::conectar()->prepare("UPDATE $tabla SET numero_serie = :numeroserie,superficie = :superficie,paso = :paso,descripcion = :descripcion,ancho = :ancho,material=:material, rutaImg = :rutaNueva WHERE id_banda = :id");
 			$sql->bindParam(":numeroserie", $datos["numeroserie"], PDO::PARAM_STR);
+			$sql->bindParam(":superficie", $datos["superficie"], PDO::PARAM_STR);
+			$sql->bindParam(":paso", $datos["paso"], PDO::PARAM_STR);
 			$sql->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
 			$sql->bindParam(":ancho", $datos["ancho"], PDO::PARAM_STR);
 			$sql->bindParam(":material", $datos["material"], PDO::PARAM_STR);

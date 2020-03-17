@@ -28,7 +28,7 @@
            <div class="form-group row">
             <label class="col-sm-2 col-form-label">Ancho</label>
             <div class="col-sm-4">
-              <input type="number" class="form-control" placeholder="Ancho Milimetros" name="Ancho">
+              <input type="text" class="form-control" placeholder="Ancho Milimetros" name="Ancho">
             </div>
              <label class="col-sm-1 col-form-label">Material</label>
             <div class="col-sm-5">
@@ -89,7 +89,7 @@
            <div class="form-group row">
             <label class="col-sm-2 col-form-label">Ancho</label>
             <div class="col-sm-4">
-              <input type="number" class="form-control" placeholder="Ancho Milimetros" name="Ancho">
+              <input type="text" class="form-control" placeholder="Ancho Milimetros" name="Ancho">
             </div>
             <label class="col-sm-1 col-form-label">Material</label>
             <div class="col-sm-5">

@@ -21,7 +21,7 @@
             </div>
             <label class="col-sm-2 col-form-label" id="largo">Medida Paleta :</label>
             <div class="col-sm-4">
-              <input type="number" class="form-control" placeholder="Ancho Milimetros" name="MedidaPaletas">
+              <input type="text" class="form-control" placeholder="Ancho Milimetros" name="MedidaPaletas">
             </div>
           </div>
           <div class="form-group row">
@@ -138,7 +138,7 @@
             </div>
             <label class="col-sm-2 col-form-label" id="largo">Medida Paleta :</label>
             <div class="col-sm-4">
-              <input type="number" class="form-control" placeholder="Ancho Milimetros" name="MedidaPaletas">
+              <input type="text" class="form-control" placeholder="Ancho Milimetros" name="MedidaPaletas">
             </div>
           </div>
           <div class="form-group row">
