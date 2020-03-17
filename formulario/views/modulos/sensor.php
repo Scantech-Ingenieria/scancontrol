@@ -1,5 +1,4 @@
- 
-<div class="app-page-title">
+ <div class="app-page-title">
                             <div class="page-title-wrapper">
                                 <div class="page-title-heading">
                                     <div class="page-title-icon">
@@ -13,14 +12,10 @@
                                 </div>
                                 <div class="page-title-actions">
                                     <div class="d-inline-block dropdown">
-
                                          <button class="btn btn-primary" data-toggle="modal" data-target="#modal-insertar-sensor">Agregar Sensor <i class="fas fa-plus"></i></button>
-
                                     </div>
                                 </div>    </div>
                         </div> 
-
-
 <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
@@ -29,8 +24,9 @@
                 <th>Marca</th>
                 <th>Modelo</th>
                 <th>Voltaje</th>
-
-                <th>Distancia</th>
+                <th>Distancia Máxima</th>
+                <th>Contacto</th>
+                <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -46,15 +42,12 @@
 <td>'.nl2br($value["modelo"]).'</td>
 <td>'.nl2br($value["voltaje"]).'</td>
 <td>'.nl2br($value["distancia"]).'</td>
-
-
-
-
-
+<td>'.nl2br($value["contacto"]).'</td>
+<td><img width="200" src="'.substr($value["rutaImg"], 3).'"></td>
 <td width="100"> <button class="btn btn-sm btn-info btnEditarSensor" idSensor="'.$value["id_sensor"].'" data-toggle="modal" data-target="#modal-editar-sensor">
                     <i class="far fa-edit"></i>
                   </button>
-    <button class="btn btn-sm btn-danger btnEliminarSensor" idSensor="'.$value["id_sensor"].'">
+    <button class="btn btn-sm btn-danger btnEliminarSensor" idSensor="'.$value["id_sensor"].'" rutaImagen="'.$value["rutaImg"].'">
                     <i class="far fa-trash-alt"></i>
     </button>
     </td>
@@ -62,8 +55,6 @@
             ';
           }
 
-?>
-          
+?>      
         </tbody>
-     
     </table>

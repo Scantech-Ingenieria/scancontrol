@@ -22,6 +22,7 @@ Class ajaxPaletas {
 						"medidabrazo"=>$this->medidabrazo,
 						"cilindro"=>$this->cilindro,
 						"racors"=>$this->racors,
+						"orientacion"=>$this->orientacion,							
 						"imagen"=>$this->imagen_paletas
 					);
 
@@ -49,6 +50,7 @@ Class ajaxPaletas {
 				        "medidas_brazo_leva"=>$respuesta["medidas_brazo_leva"],
 				        "cilindrado"=>$respuesta["cilindrado"],
 				        "racors"=>$respuesta["racors"],
+				        "orientacion"=>$respuesta["orientacion"],
 				         "imagen"=>substr($respuesta["rutaImg"], 3)
 
 						);
@@ -74,6 +76,7 @@ Class ajaxPaletas {
 						"medidabrazo"=>$this->medidabrazo,
 						"cilindro"=>$this->cilindro,
 						"racors"=>$this->racors,
+						"orientacion"=>$this->orientacion,				
 						"imagen"=>$this->imagen_paletas,
 						"rutaActual"=>$this->rutaActual		
 
@@ -108,6 +111,7 @@ if($tipoOperacion == "insertarpaletas") {
 	$crearNuevoPaletas -> medidabrazo = $_POST["MedidaBrazoLeva"];
 	$crearNuevoPaletas -> cilindro = $_POST["Clilindrado"];
 	$crearNuevoPaletas -> racors = $_POST["Racors"];
+	$crearNuevoPaletas -> orientacion = $_POST["Orientacion"];
 	 $crearNuevoPaletas -> imagen_paletas = $_FILES["imagenPaletas"];
 	$crearNuevoPaletas ->crearPaletas();
 }
@@ -137,6 +141,7 @@ if ($tipoOperacion == "actualizarPaletas") {
 	$actualizarPaletas -> medidabrazo = $_POST["MedidaBrazoLeva"];
 	$actualizarPaletas -> cilindro = $_POST["Clilindrado"];
 	$actualizarPaletas -> racors = $_POST["Racors"];
+	$actualizarPaletas -> orientacion = $_POST["Orientacion"];
 	$actualizarPaletas -> imagen_paletas = $_FILES["imagenPaletas"];
 	$actualizarPaletas -> rutaActual = $_POST["rutaActual"];
 	$actualizarPaletas -> actualizarPaletas();

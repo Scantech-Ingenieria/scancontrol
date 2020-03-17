@@ -71,6 +71,9 @@ $(document).ready(function(){
 				$('#formu-editar-sensor input[name="Modelo"]').val(valor.modelo)
 				$('#formu-editar-sensor input[name="Voltaje"]').val(valor.voltaje)
 				$('#formu-editar-sensor input[name="Distancia"]').val(valor.distancia)
+				$('#formu-editar-sensor input[name="Contacto"]').val(valor.contacto)
+				$('#formu-editar-sensor #imgSensorEditar').attr("src", valor.imagen)
+				$('#formu-editar-sensor input[name="rutaActual"]').val(valor.imagen)
 
 
 			}
@@ -78,9 +81,11 @@ $(document).ready(function(){
 	})
 	$("body #mi_lista").on("click", ".btnEliminarSensor", function(){
 		var idSensor = $(this).attr("idSensor")
+		var rutaImagen = $(this).attr("rutaImagen")
 		var datos = new FormData()
 		datos.append("id_sensor", idSensor)
 		datos.append("tipoOperacion", "eliminarSensor")
+		datos.append("rutaImagen", rutaImagen)
 		console.log(idSensor)
 		Swal.fire({
 		  title: '¿Estás seguro de eliminar?',
@@ -111,75 +116,46 @@ $(document).ready(function(){
 						})
 					}
 				}
-
 			})
 		  }
 		})
-
-
-
-
-
-
 	})
-
-
 	// PREVISUALIZAR IMAGENES
-
-	$("#imagen").change(previsualizarImg)
-	$("#imagenEditar").change(previsualizarImg)
-
-
+	$("#imagenSensor").change(previsualizarImg)
+	$("#imagenSensor1").change(previsualizarImg)
 	function previsualizarImg(e) {
 		var contenedor = e.target.parentNode
-
 		var identificador = contenedor.classList[1]
-
 		imgSlider = this.files[0];
-
-
-
 		if ( imgSlider["type"] != "image/jpeg" && imgSlider["type"] != "image/png" && imgSlider["type"] != "video/mp4") {
-				$("#imagen").val("")
-
-				swal({
-					type:'error',
-					title: 'No es un archivo valido',
-					text: 'Debe subir archivos formato JPEG , PNG , MP4',
+				$("#imagenSensor").val("")
+				$("#imagenSensor1").val("")
+			Swal.fire(
+					  'No es un archivo valido',
+					      'Debe subir archivos formato JPEG , PNG',
+					      'error'
+				)	
+			}
+		if ( imgSlider["type"] > 100000) {
+				$("#imagenSensor").val("")
+				$("#imagenSensor1").val("")
 			
 
-				})
+Swal.fire(
+					  'Error al subir la imagen',
+					      'La imagen debe pesar MAX 2MB',
+					      'error'
+				)
 			}
-
-
-
-
-
-		if ( imgSlider["type"] > 100000000000) {
-				$("#imagenSlider").val("")
-
-				swal({
-					type: "Error al subir la imagen",
-					text: "La imagen debe pesar MAX 2MB",
-					icon: 'error',
-					confirmButtonText: "¡Cerrar!",
-				})
-			}
-
 			else {
-				$("#imagenSlider").css("display", "block")
-
+				$("#imgSensorEditar").css("display", "block")
 				var datosImagen = new FileReader;
 		  		datosImagen.readAsDataURL(imgSlider);
-
 		  		$(datosImagen).on("load", function(event){
-
 		  			var rutaImagen = event.target.result;
-
-		  			$("." + identificador +" #imagenSlider").attr("src", rutaImagen);
+		  			$("." + identificador +" #imgSensorEditar").attr("src", rutaImagen);
 		  		})
 			}
-
 		}
 
 

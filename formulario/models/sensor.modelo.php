@@ -6,14 +6,15 @@ static public function listarSensorMdl($tabla) {
 		$sql -> execute();
 		return $sql -> fetchAll();
 	}
-	static public function mdlCrearSensor($tabla, $datos) {
-		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL,:tipo,:marca, :modelo,:voltaje,:distancia)");
-
+	static public function mdlCrearSensor($tabla, $datos,$rutaImagen) {
+		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL,:tipo,:marca, :modelo,:voltaje,:distancia,:contacto,:imagen)");
 		$sql->bindParam(":tipo", $datos["tipo"], PDO::PARAM_STR);
 		$sql->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
 		$sql->bindParam(":modelo", $datos["modelo"], PDO::PARAM_STR);
 		$sql->bindParam(":voltaje", $datos["voltaje"], PDO::PARAM_STR);
 		$sql->bindParam(":distancia", $datos["distancia"], PDO::PARAM_STR);
+		$sql->bindParam(":contacto", $datos["contacto"], PDO::PARAM_STR);
+		$sql->bindParam(":imagen", $rutaImagen, PDO::PARAM_STR);
 		if( $sql -> execute() ) {
 			return "ok";
 		} else {
@@ -35,16 +36,27 @@ static public function listarSensorMdl($tabla) {
 		$sql -> execute();
 		return $sql -> fetch();
 	}
-	static public function mdlActualizarSensor($tabla, $datos) {
-
-			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET tipo_sensor=:tipo,marca = :marca,modelo = :modelo,voltaje = :voltaje,distancia = :distancia WHERE id_sensor = :id");
-
+	static public function mdlActualizarSensor($tabla, $datos,$rutaImagen) {
+if( is_null($rutaImagen)) {
+	$sql = Conexion::conectar()->prepare("UPDATE $tabla SET tipo_sensor=:tipo,marca = :marca,modelo = :modelo,voltaje = :voltaje,distancia = :distancia,contacto =:contacto WHERE id_sensor = :id");
 		$sql->bindParam(":tipo", $datos["tipo"], PDO::PARAM_STR);
 		$sql->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
 		$sql->bindParam(":modelo", $datos["modelo"], PDO::PARAM_STR);
 		$sql->bindParam(":voltaje", $datos["voltaje"], PDO::PARAM_STR);
 		$sql->bindParam(":distancia", $datos["distancia"], PDO::PARAM_STR);
+		$sql->bindParam(":contacto", $datos["contacto"], PDO::PARAM_STR);
 		$sql->bindParam(":id", $datos["id_sensor"], PDO::PARAM_INT);
+}else{
+	$sql = Conexion::conectar()->prepare("UPDATE $tabla SET tipo_sensor=:tipo,marca = :marca,modelo = :modelo,voltaje = :voltaje,distancia = :distancia,contacto =:contacto, rutaImg = :rutaNueva WHERE id_sensor = :id");
+	$sql->bindParam(":tipo", $datos["tipo"], PDO::PARAM_STR);
+		$sql->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
+		$sql->bindParam(":modelo", $datos["modelo"], PDO::PARAM_STR);
+		$sql->bindParam(":voltaje", $datos["voltaje"], PDO::PARAM_STR);
+		$sql->bindParam(":distancia", $datos["distancia"], PDO::PARAM_STR);
+		$sql->bindParam(":contacto", $datos["contacto"], PDO::PARAM_STR);
+		$sql->bindParam(":id", $datos["id_sensor"], PDO::PARAM_INT);
+		$sql->bindParam(":rutaNueva", $rutaImagen, PDO::PARAM_STR);
+}
 		if($sql->execute()) {
 			return "ok";
 		} else {

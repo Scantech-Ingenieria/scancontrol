@@ -1,7 +1,6 @@
 <?php
 require_once "../controllers/sensor.controller.php";
 require_once "../models/sensor.modelo.php";
-
 Class ajaxSensor {
 	public function crearSensor(){
 		$datos = array(				
@@ -9,7 +8,9 @@ Class ajaxSensor {
 						"marca"=>$this->marca,
 						"modelo"=>$this->modelo,
 						"voltaje"=>$this->voltaje,
-						"distancia"=>$this->distancia
+						"distancia"=>$this->distancia,
+						"contacto"=>$this->contacto,
+						"imagen"=>$this->imagen_sensor
 					);
 		$respuesta = ControllerSensor::ctrCrearSensor($datos);
 		echo $respuesta;
@@ -22,10 +23,9 @@ Class ajaxSensor {
 						"marca"=>$respuesta["marca"],
 						"modelo"=>$respuesta["modelo"],
 						"voltaje"=>$respuesta["voltaje"],
-						"distancia"=>$respuesta["distancia"]
-
-
-
+						"distancia"=>$respuesta["distancia"],
+						"contacto"=>$respuesta["contacto"],
+				        "imagen"=>substr($respuesta["rutaImg"], 3)
 						);
 		echo json_encode($datos);
 	}
@@ -35,14 +35,18 @@ Class ajaxSensor {
 						"marca"=>$this->marca,
 						"modelo"=>$this->modelo,
 						"voltaje"=>$this->voltaje,
-						"distancia"=>$this->distancia
+						"distancia"=>$this->distancia,
+						"contacto"=>$this->contacto,
+						"imagen"=>$this->imagen_sensor,
+						"rutaActual"=>$this->rutaActual		
 						);
 		$respuesta = ControllerSensor::ctrActualizarSensor($datos);
 		echo $respuesta;
 	}
 	public function eliminarSensor(){
 		$id_sensor = $this->id_sensor;
-		$respuesta = ControllerSensor::ctrEliminarSensor($id_sensor);
+		$ruta = $this->imagen_sensor;
+		$respuesta = ControllerSensor::ctrEliminarSensor($id_sensor,$ruta);
 		echo $respuesta;
 	}
 }
@@ -55,6 +59,8 @@ if($tipoOperacion == "insertarsensor") {
 	$crearNuevoSensor -> distancia = $_POST["Distancia"];
 	$crearNuevoSensor -> voltaje = $_POST["Voltaje"];
 	$crearNuevoSensor -> tipo = $_POST["TipoSensor"];
+	$crearNuevoSensor -> contacto = $_POST["Contacto"];
+    $crearNuevoSensor -> imagen_sensor = $_FILES["imagenSensor"];
 	$crearNuevoSensor ->crearSensor();
 }
 if ($tipoOperacion == "editarSensor") {
@@ -70,11 +76,15 @@ if ($tipoOperacion == "actualizarSensor") {
 	$actualizarSensor -> modelo = $_POST["Modelo"];
 	$actualizarSensor -> distancia = $_POST["Distancia"];
 	$actualizarSensor -> voltaje = $_POST["Voltaje"];
+	$actualizarSensor -> contacto = $_POST["Contacto"];
+ 	$actualizarSensor -> imagen_sensor = $_FILES["imagenSensor"];
+	$actualizarSensor -> rutaActual = $_POST["rutaActual"];
 	$actualizarSensor -> actualizarSensor();
 }
 if ($tipoOperacion == "eliminarSensor") {
 	$eliminarSensor = new ajaxSensor();
 	$eliminarSensor -> id_sensor = $_POST["id_sensor"];
+	$eliminarSensor -> imagen_sensor = $_POST["rutaImagen"];
 	$eliminarSensor -> eliminarSensor();
 }
 

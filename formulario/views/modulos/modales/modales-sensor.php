@@ -34,12 +34,24 @@
             </div>
           </div>
             <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Distancia</label>
+            <label class="col-sm-2 col-form-label">Distancia Máxima</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" placeholder="Distancia" name="Distancia">
+              <input type="text" class="form-control" placeholder="Distancia Máxima" name="Distancia">
             </div>
           </div>
-       
+             <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Contacto</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Contacto" name="Contacto">
+            </div>
+          </div>
+               <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Imagen</label>
+            <div class="col-sm-10 conteNuevaImagen">
+              <input type="file" class="form-control"  id="imagenSensor" name="imagenSensor" required>
+              <img src="" id="imgSensor" alt="" class="thumbnail" width="200" style="display: none">
+            </div>
+          </div>
           <input type="hidden" name="tipoOperacion" value="insertarsensor">
       </div>
       <div class="modal-footer">
@@ -91,13 +103,27 @@
             </div>
           </div>
             <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Distancia</label>
+            <label class="col-sm-2 col-form-label">Distancia Máxima</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" placeholder="Distancia" name="Distancia">
+              <input type="text" class="form-control" placeholder="Distancia Máxima" name="Distancia">
+            </div>
+          </div>
+           <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Contacto</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Contacto" name="Contacto">
+            </div>
+          </div>
+              <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Imagen</label>
+            <div class="col-sm-10 conteNuevaImagen">
+              <input type="file" class="form-control"  id="imagenSensor1" name="imagenSensor" >
+              <img src="" id="imgSensorEditar" alt="" class="thumbnail" width="200">
             </div>
           </div>
           <input type="hidden" name="tipoOperacion" value="actualizarSensor">
           <input type="hidden" name="id_sensor">
+            <input type="hidden" name="rutaActual">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

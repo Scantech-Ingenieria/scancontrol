@@ -27,54 +27,38 @@
                 <th>ID</th>
                 <th>Serie</th>
                 <th>Modelo</th>
+                <th>Dientes</th>
+                <th>Perforación</th>
                 <th>Descripción</th>
-
+                <th>Imagen</th>
                 <th>Acciones</th>
-
             </tr>
         </thead>
         <tbody>
-
-
             <?php
-
           $tabla = ControllerSprockets::listarSprocketsCtr();
-
-
-
           foreach ($tabla as $key => $value) {
-            
-
-
             echo '
 <tr>
 <td>'.nl2br($value["id_sprockets"]).'</td>
-
 <td>'.nl2br($value["serie"]).'</td>
 <td>'.nl2br($value["modelo"]).'</td>
+<td>'.nl2br($value["dientes"]).'</td>
+<td>'.nl2br($value["perforacion"]).'</td>
 <td>'.nl2br($value["descripcion"]).'</td>
-
-
-
-
-
+<td><img width="200" src="'.substr($value["rutaImg"], 3).'"></td>
 <td width="100"> <button class="btn btn-sm btn-info btnEditarSprockets" idSprockets="'.$value["id_sprockets"].'" data-toggle="modal" data-target="#modal-editar-sprockets">
                     <i class="far fa-edit"></i>
                   </button>
-    <button class="btn btn-sm btn-danger btnEliminarSprockets" idSprockets="'.$value["id_sprockets"].'">
+    <button class="btn btn-sm btn-danger btnEliminarSprockets" idSprockets="'.$value["id_sprockets"].'"rutaImagen="'.$value["rutaImg"].'">
                     <i class="far fa-trash-alt"></i>
     </button>
     </td>
 </tr>
-
-
             ';
               # code...
           }
 
 ?>
-
-
         </tbody>
-     
     </table>

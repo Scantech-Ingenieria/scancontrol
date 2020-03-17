@@ -38,7 +38,6 @@
                                        Registro General
                                     </a>
                                 </li>
-
        <li>
                                     <a href="#">
                                        <i class="metismenu-icon pe-7s-display2"></i>
@@ -100,14 +99,27 @@ Unidades Balanza                                        <i class="metismenu-stat
                                        Paletas
                                     </a>
                                 </li>  
-                     
-         <li>
+                                <li>
+                                  
+                                        <a href="#">
+                                       <i class="metismenu-icon pe-7s-display2"></i>
+                                       Tableros
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+<ul>
+ <li>
                                     <a href="#">
                                        <i class="metismenu-icon pe-7s-display2"></i>
-                                       Tablero
+                                       Tablero Eléctrico
                                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
                                     <ul>
+                                           <li>
+                                            <a href="vdf">
+                                                <i class="metismenu-icon"></i>
+                                                Registro Tablero E.
+                                            </a>
+                                        </li>
                                         <li>
                                             <a href="vdf">
                                                 <i class="metismenu-icon"></i>
@@ -117,11 +129,44 @@ Unidades Balanza                                        <i class="metismenu-stat
                                         <li>
                                             <a href="automatico">
                                                 <i class="metismenu-icon">
-                                                </i>Automatico
+                                                </i>Automático
                                             </a>
                                         </li>    
                                     </ul>
                                 </li>
+
+                                      <li>
+                                    <a href="#">
+                                       <i class="metismenu-icon pe-7s-display2"></i>
+                                       Tablero Neumático
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul>
+                                       <li>
+                                            <a href="vdf">
+                                                <i class="metismenu-icon"></i>
+                                                Registro Tablero N.
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="vdf">
+                                                <i class="metismenu-icon"></i>
+                                                PLC
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="automatico">
+                                                <i class="metismenu-icon">
+                                                </i>Manifold
+                                            </a>
+                                        </li>    
+                                    </ul>
+                                </li>
+                                </ul>
+
+                                </li>
+                     
+        
                                  <li>
                                     <a href="sprockets" >
                                         <i class="metismenu-icon pe-7s-rocket"></i>
@@ -131,7 +176,7 @@ Unidades Balanza                                        <i class="metismenu-stat
                                   <li>
                                     <a href="rodamientos" >
                                         <i class="metismenu-icon pe-7s-rocket"></i>
-                                       Rodamientos
+                                       Descanso
                                     </a>
                                 </li> 
                                       <li>

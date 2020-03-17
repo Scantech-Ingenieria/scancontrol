@@ -1,13 +1,7 @@
-
-
 $(document).ready(function(){
-
-
 	$("#formu-nuevo-sprockets").submit(function (e) {
 		e.preventDefault()
-
 		var datos = new FormData($(this)[0])
-
 		$.ajax({
 			url: 'ajax/ajaxSprockets.php',
 			type: 'POST',
@@ -16,11 +10,7 @@ $(document).ready(function(){
 			contentType: false,
 			success: function(respuesta) {
 				console.log(respuesta)
-	
-
 				if (respuesta == "ok") {
-
-
 		Swal.fire(
   'Excelente!',
   'Sprockets registrada con exito!',
@@ -32,17 +22,11 @@ $(document).ready(function(){
 					})
 				}
 			}
-
 		})
-
 	})
-
-
 	$("#formu-editar-sprockets").submit(function (e) {
 		e.preventDefault()
-
 		var datos = new FormData($(this)[0])
-
 		$.ajax({
 			url: 'ajax/ajaxSprockets.php',
 			type: 'POST',
@@ -63,19 +47,13 @@ $(document).ready(function(){
 					})
 				}
 			}
-
 		})
-
 	})
-
-
-
 	$("body #mi_lista").on("click", ".btnEditarSprockets", function(){
 		var idSprockets = $(this).attr("idSprockets")
 		var datos = new FormData()
 		datos.append("id_sprockets", idSprockets)
 		datos.append("tipoOperacion", "editarSprockets")
-
 		$.ajax({
 			url: 'ajax/ajaxSprockets.php',
 			type: 'POST',
@@ -86,33 +64,25 @@ $(document).ready(function(){
 				var valor = JSON.parse(respuesta)
 				console.log(valor.id_sprockets)
 
-				$('#formu-editar-sprockets input[name="id_sprockets"]').val(valor.id_sprockets)
-				$('#formu-editar-sprockets input[name="NumeroSerie"]').val(valor.serie)
-				$('#formu-editar-sprockets input[name="Modelo"]').val(valor.modelo)
-					$('#formu-editar-sprockets textarea[name="DescripcionSprockets"]').val(valor.descripcion)
-
-
-
-
-		
-
+	$('#formu-editar-sprockets input[name="id_sprockets"]').val(valor.id_sprockets)
+	$('#formu-editar-sprockets input[name="NumeroSerie"]').val(valor.serie)
+	$('#formu-editar-sprockets input[name="Modelo"]').val(valor.modelo)
+	$('#formu-editar-sprockets input[name="Dientes"]').val(valor.dientes)
+	$('#formu-editar-sprockets input[name="Perforacion"]').val(valor.perforacion)
+	$('#formu-editar-sprockets textarea[name="DescripcionSprockets"]').val(valor.descripcion)
+	$('#formu-editar-sprockets #imagenSprockets').attr("src", valor.imagen)
+	$('#formu-editar-sprockets input[name="rutaActual"]').val(valor.imagen)
 			}
-
 		})
-
 	})
-
 	$("body #mi_lista").on("click", ".btnEliminarSprockets", function(){
 		var idSprockets = $(this).attr("idSprockets")
-	
+		var rutaImagen = $(this).attr("rutaImagen")
 		var datos = new FormData()
 		datos.append("id_sprockets", idSprockets)
 		datos.append("tipoOperacion", "eliminarSprockets")
-
-
+		datos.append("rutaImagen", rutaImagen)
 		console.log(idSprockets)
-
-
 		Swal.fire({
 		  title: '¿Estás seguro de eliminar?',
 		  text: "Los cambios no son reversibles!",
@@ -142,77 +112,44 @@ $(document).ready(function(){
 						})
 					}
 				}
-
 			})
 		  }
 		})
-
-
-
-
-
-
 	})
-
-
 	// PREVISUALIZAR IMAGENES
-
-	$("#imagen").change(previsualizarImg)
-	$("#imagenEditar").change(previsualizarImg)
-
-
+	$("#imagenspro").change(previsualizarImg)
+	$("#imagenEditarspro").change(previsualizarImg)
 	function previsualizarImg(e) {
 		var contenedor = e.target.parentNode
-
 		var identificador = contenedor.classList[1]
-
 		imgSlider = this.files[0];
-
-
-
 		if ( imgSlider["type"] != "image/jpeg" && imgSlider["type"] != "image/png" && imgSlider["type"] != "video/mp4") {
-				$("#imagen").val("")
-
-				swal({
-					type:'error',
-					title: 'No es un archivo valido',
-					text: 'Debe subir archivos formato JPEG , PNG , MP4',
+				$("#imagenspro").val("")
+				$("#imagenEditarspro").val("")
+			Swal.fire(
+					  'No es un archivo valido',
+					      'Debe subir archivos formato JPEG , PNG',
+					      'error'
+				)	
+			}
+		if ( imgSlider["type"] > 100000) {
+				$("#imagenspro").val("")
 			
 
-				})
+Swal.fire(
+					  'Error al subir la imagen',
+					      'La imagen debe pesar MAX 2MB',
+					      'error'
+				)
 			}
-
-
-
-
-
-		if ( imgSlider["type"] > 100000000000) {
-				$("#imagenSlider").val("")
-
-				swal({
-					type: "Error al subir la imagen",
-					text: "La imagen debe pesar MAX 2MB",
-					icon: 'error',
-					confirmButtonText: "¡Cerrar!",
-				})
-			}
-
 			else {
-				$("#imagenSlider").css("display", "block")
-
+				$("#imagenSprockets").css("display", "block")
 				var datosImagen = new FileReader;
 		  		datosImagen.readAsDataURL(imgSlider);
-
 		  		$(datosImagen).on("load", function(event){
-
 		  			var rutaImagen = event.target.result;
-
-		  			$("." + identificador +" #imagenSlider").attr("src", rutaImagen);
+		  			$("." + identificador +" #imagenSprockets").attr("src", rutaImagen);
 		  		})
 			}
-
 		}
-
-
-
 })

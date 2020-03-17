@@ -96,6 +96,12 @@
               <input type="text" class="form-control" placeholder="Racors" name="Racors">
             </div>
           </div>
+           <div class="form-group row">
+               <label class="col-sm-2 col-form-label" id="largo">Orientación :</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Orientación" name="Orientacion">
+            </div>
+          </div>
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Imagen</label>
             <div class="col-sm-10 conteNuevaImagen">
@@ -207,10 +213,16 @@
               <input type="text" class="form-control" placeholder="Racors" name="Racors">
             </div>
           </div>
+           <div class="form-group row">
+               <label class="col-sm-2 col-form-label" id="largo">Orientación :</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Orientación" name="Orientacion">
+            </div>
+          </div>
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Imagen</label>
             <div class="col-sm-10 conteNuevaImagen">
-              <input type="file" class="form-control"  id="imagenEditarPaletas" name="imagenPaletas" required>
+              <input type="file" class="form-control"  id="imagenEditarPaletas" name="imagenPaletas" >
               <img src="" id="imagenPaletas" alt="" class="thumbnail" width="200" >
             </div>
           </div>
