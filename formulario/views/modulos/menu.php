@@ -161,6 +161,13 @@ Unidades Balanza                                        <i class="metismenu-stat
                                         </li>    
                                     </ul>
                                 </li>
+                                <li>
+                                    <a href="fuentepoder">
+                                       <i class="metismenu-icon pe-7s-display2"></i>
+                                       Fuente de Poder
+                                  
+                                    </a>
+                                </li>
                                 </ul>
 
                                 </li>

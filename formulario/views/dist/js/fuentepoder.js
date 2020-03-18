@@ -1,10 +1,10 @@
 
 $(document).ready(function(){
-	$("#formu-nuevo-tableroelectrico").submit(function (e) {
+	$("#formu-nuevo-fuentepoder").submit(function (e) {
 		e.preventDefault()
 		var datos = new FormData($(this)[0])
 		$.ajax({
-			url: 'ajax/ajaxTableroelectricos.php',
+			url: 'ajax/ajaxFuentePoder.php',
 			type: 'POST',
 			data: datos,
 			processData: false,
@@ -15,22 +15,22 @@ $(document).ready(function(){
 
 		Swal.fire(
   'Excelente!',
-  'Tableroelectrico registrada con exito!',
+  'Fuente de Poder registrada con exito!',
   'success'
 ).then((result) => {
 					  if (result.value) {
-					    window.location = "tableroelectricos"
+					    window.location = "fuentepoder"
 					  }
 					})
 				}
 			}
 		})
 	})
-	$("#formu-editar-tableroelectrico").submit(function (e) {
+	$("#formu-editar-fuentepoder").submit(function (e) {
 		e.preventDefault()
 		var datos = new FormData($(this)[0])
 		$.ajax({
-			url: 'ajax/ajaxTableroelectricos.php',
+			url: 'ajax/ajaxFuentePoder.php',
 			type: 'POST',
 			data: datos,
 			processData: false,
@@ -44,48 +44,45 @@ $(document).ready(function(){
   'success'
 ).then((result) => {
 					  if (result.value) {
-					    window.location = "tableroelectricos"
+					    window.location = "fuentepoder"
 					  }
 					})
 				}
 			}
 		})
 	})
-	$("body #mi_lista").on("click", ".btnEditarTableroelectrico", function(){
-		var idTableroelectrico = $(this).attr("idTableroelectrico")
+	$("body #mi_lista").on("click", ".btnEditarFuentePoder", function(){
+		var idFuentePoder = $(this).attr("idFuentePoder")
 		var datos = new FormData()
-		datos.append("id_tableroelectrico", idTableroelectrico)
-		datos.append("tipoOperacion", "editarTableroelectrico")
+		datos.append("id_fuentepoder", idFuentePoder)
+		datos.append("tipoOperacion", "editarFuentePoder")
 		$.ajax({
-			url: 'ajax/ajaxTableroelectricos.php',
+			url: 'ajax/ajaxFuentePoder.php',
 			type: 'POST',
 			data: datos,
 			processData: false,
 			contentType: false,
 			success: function(respuesta) {
 				var valor = JSON.parse(respuesta)
-				console.log(valor.id_tableroelectrico)
+				console.log(valor.id_fuentepoder)
 				console.log(valor.imagen)
-$('#formu-editar-tableroelectrico input[name="id_tableroelectrico"]').val(valor.id_tableroelectrico)
-$('#formu-editar-tableroelectrico input[name="NumeroSerie"]').val(valor.numeroserie)
-$('#formu-editar-tableroelectrico input[name="Superficie"]').val(valor.superficie)
-$('#formu-editar-tableroelectrico input[name="Paso"]').val(valor.paso)
-$('#formu-editar-tableroelectrico textarea[name="DescripcionTableroelectrico"]').val(valor.descripcion)
-$('#formu-editar-tableroelectrico input[name="Ancho"]').val(valor.ancho)
-$('#formu-editar-tableroelectrico input[name="Material"]').val(valor.material)
-$('#formu-editar-tableroelectrico #imagenSlider').attr("src", valor.imagen)
-$('#formu-editar-tableroelectrico input[name="rutaActual"]').val(valor.imagen)
+$('#formu-editar-fuentepoder input[name="id_fuentepoder"]').val(valor.id_fuentepoder)
+$('#formu-editar-fuentepoder input[name="Marca"]').val(valor.marca)
+$('#formu-editar-fuentepoder input[name="Amperaje"]').val(valor.amperaje)
+$('#formu-editar-fuentepoder input[name="Corriente"]').val(valor.corriente)
+$('#formu-editar-fuentepoder #imgFuentePoder').attr("src", valor.imagen)
+$('#formu-editar-fuentepoder input[name="rutaActual"]').val(valor.imagen)
 			}
 		})
 	})
-	$("body #mi_lista").on("click", ".btnEliminarTableroelectrico", function(){
-		var idTableroelectrico = $(this).attr("idTableroelectrico")
+	$("body #mi_lista").on("click", ".btnEliminarFuentePoder", function(){
+		var idFuentePoder = $(this).attr("idFuentePoder")
 		var rutaImagen = $(this).attr("rutaImagen")
 		var datos = new FormData()
-		datos.append("id_tableroelectrico", idTableroelectrico)
-		datos.append("tipoOperacion", "eliminarTableroelectrico")
+		datos.append("id_fuentepoder", idFuentePoder)
+		datos.append("tipoOperacion", "eliminarFuentePoder")
 		datos.append("rutaImagen", rutaImagen)
-	console.log(idTableroelectrico)
+	console.log(idFuentePoder)
 		Swal.fire({
 		  title: '¿Estás seguro de eliminar?',
 		  text: "Los cambios no son reversibles!",
@@ -97,7 +94,7 @@ $('#formu-editar-tableroelectrico input[name="rutaActual"]').val(valor.imagen)
 		}).then((result) => {
 		  if (result.value) {
 		  	$.ajax({
-				url: 'ajax/ajaxTableroelectricos.php',
+				url: 'ajax/ajaxFuentePoders.php',
 				type: 'POST',
 				data: datos,
 				processData: false,
@@ -110,25 +107,26 @@ $('#formu-editar-tableroelectrico input[name="rutaActual"]').val(valor.imagen)
 					      'success'
 					    ).then((result) => {
 						  if (result.value) {
-						    window.location = "tableroelectricos"
+						    window.location = "fuentepoder"
 						  }
 						})
 					}
 				}
+
 			})
 		  }
 		})
 	})
 	// PREVISUALIZAR IMAGENES
-	$("#imagen1").change(previsualizarImg)
-	$("#imagenEditar1").change(previsualizarImg)
+	$("#imagenFuentePoder").change(previsualizarImg)
+	$("#imagenFuentePoderEditar").change(previsualizarImg)
 	function previsualizarImg(e) {
 		var contenedor = e.target.parentNode
 		var identificador = contenedor.classList[1]
 		imgSlider = this.files[0];
 		if ( imgSlider["type"] != "image/jpeg" && imgSlider["type"] != "image/png" && imgSlider["type"] != "video/mp4") {
-				$("#imagen1").val("")
-				$("#imagenEditar1").val("")
+				$("#imagenFuentePoder").val("")
+				$("#imagenFuentePoderEditar").val("")
 			Swal.fire(
 					  'No es un archivo valido',
 					      'Debe subir archivos formato JPEG , PNG',
@@ -136,8 +134,8 @@ $('#formu-editar-tableroelectrico input[name="rutaActual"]').val(valor.imagen)
 				)	
 			}
 		if ( imgSlider["type"] > 100000) {
-				$("#imagenSlider").val("")
-			
+				$("#imagenFuentePoder").val("")
+		
 Swal.fire(
 					  'Error al subir la imagen',
 					      'La imagen debe pesar MAX 2MB',
@@ -145,16 +143,15 @@ Swal.fire(
 				)
 			}
 			else {
-				$("#imagenSlider").css("display", "block")
+				$("#imgFuentePoder").css("display", "block")
 				var datosImagen = new FileReader;
 		  		datosImagen.readAsDataURL(imgSlider);
 		  		$(datosImagen).on("load", function(event){
 		  			var rutaImagen = event.target.result;
-		  			$("." + identificador +" #imagenSlider").attr("src", rutaImagen);
+		  			$("." + identificador +" #imgFuentePoder").attr("src", rutaImagen);
 		  		})
 			}
 		}
-
 
 
 })

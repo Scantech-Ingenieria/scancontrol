@@ -16,10 +16,6 @@
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 <link href="./main.css" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-
-
-
-
 </head>
 <body>
     <style type="text/css">
@@ -46,6 +42,8 @@
      include 'views/modulos/modales/modales-sensor.php';
      include 'views/modulos/modales/modales-pesaje.php';
      include 'views/modulos/modales/modales-tableroelectrico.php';
+     include 'views/modulos/modales/modales-fuentepoder.php';
+
 
       ?>
             <div class="app-main">
@@ -85,6 +83,8 @@
 <script type="text/javascript" src="views/dist/js/sensor.js"></script>
 <script type="text/javascript" src="views/dist/js/unidad_pesaje.js"></script>
 <script type="text/javascript" src="views/dist/js/tableroelectrico.js"></script>
+<script type="text/javascript" src="views/dist/js/fuentepoder.js"></script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="views/dist/js/rutaAmigable.js"></script>

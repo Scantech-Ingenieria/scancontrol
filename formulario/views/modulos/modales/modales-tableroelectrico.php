@@ -29,18 +29,27 @@
             </div>
             <label class="col-1 col-sm-1 col-form-label" id="largo">Tipo</label>
             <div class="col-3 col-sm-4">
+<?php
 
+
+   
+
+?>
  <select class="form-control" name="Tipo[]" >
 <?php 
-  $tabla = ControllerAutomatico::listarAutomaticoCtr();
+  $tabla1 = ControllerAutomatico::listarAutomaticoCtr();
+
 echo '<option selected disabled>Seleccione tipo automatico</option>';
-          foreach ($tabla as $key => $value) {
-echo'<option value="'.$value["id_automatico"].'">Amperaje: '.$value["amperaje"].' / Marca: ' .$value["marca"].' / Tipo: '.$value["tipo"].'</option>';
+          foreach ($tabla1 as $key => $value) { 
+
+echo '<option value="'.$value["id_automatico"].'">Amperaje: '.$value["amperaje"].' / Marca: ' .$value["marca"].' / Tipo: '.$value["tipo"].'</option>';
 
           }
+ echo '</select>';
  ?>
-</select>       
-            </div>
+</div>
+
+            <div id="prueba"></div>
             <div class="col-1 col-sm-1">
               <button style="margin-bottom: 2px" type="button" name="agregar" id="agregar" class="btn btn-info" >+</button>
             </div>
@@ -142,3 +151,22 @@ echo'<option value="'.$value["id_automatico"].'">Amperaje: '.$value["amperaje"].
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+var i=1; 
+var e=1; 
+ $('#agregar').click(function(){
+        e++;
+ $('#dinami').append('<div id="row'+e+'" class="form-group row" style="margin-bottom:0px;"> <label class="col-2 col-sm-2 col-form-label" id="largo">Automaticos Cantidad:</label><div class="col-4 col-sm-4"><input type="text" class="form-control" placeholder="Cantidad" name="Cantidadautomaticos[]"></div><label class="col-1 col-sm-1 col-form-label" id="largo">Tipo</label><div class="col-3 col-sm-4"> <select id="option'+e+'" class="form-control" name="Tipo[]" ><option selected disabled>Selecione tipo automatico</option></select></div><div class="col-1 col-sm-1"><button type="button" name="remove" id="'+e+'" class="btn btn-danger btn_remove" >X</button></div></div>');
+var arrayJS = <?= json_encode($tabla1) ?>;
+console.log(arrayJS)
+ for(var i=0;i<arrayJS.length;i++)
+    {
+      $('#option'+e+'').append('<option value='+arrayJS[i][0]+'>Amperaje: '+arrayJS[i][1]+' / Marca: '+arrayJS[i][2]+' / Tipo: '+arrayJS[i][3]+'</option>')  
+    }
+    });
+    $(document).on('click', '.btn_remove', function(){
+        var button_id = $(this).attr("id"); 
+        $('#row'+button_id+'').remove();
+    });
+</script>

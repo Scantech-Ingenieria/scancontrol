@@ -4,7 +4,6 @@ session_start();
         header("Location:../index.php");
     }
 error_reporting(0);
-
 require_once "controllers/enrutamiento.controller.php";
 require_once "controllers/template.controller.php";
 require_once "controllers/alimentacion.controller.php";
@@ -23,7 +22,7 @@ require_once "controllers/rodamientos.controller.php";
 require_once "controllers/sensor.controller.php";
 require_once "controllers/pesaje.controller.php";
 require_once "controllers/tableroelectrico.controller.php";
-
+require_once "controllers/fuentepoder.controller.php";
 
 require_once "models/alimentacion.modelo.php";
 require_once "models/cliente.modelo.php";
@@ -41,14 +40,7 @@ require_once "models/rodamientos.modelo.php";
 require_once "models/sensor.modelo.php";
 require_once "models/pesaje.modelo.php";
 require_once "models/tableroelectrico.modelo.php";
-
-
-
-
-
-
+require_once "models/fuentepoder.modelo.php";
 $template = new ControllerTemplate();
 $template -> template();
-
-
 ?>
