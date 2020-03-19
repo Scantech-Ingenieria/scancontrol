@@ -18,52 +18,25 @@
                                     </div>
                                 </div>    </div>
                         </div> 
-
-
-
-
-
-
-
-
-
 <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Potencia</th>
                 <th>Marca</th>
-        
                 <th>Acciones</th>
-
             </tr>
         </thead>
         <tbody>
-
-
-
-
             <?php
 
           $tabla = ControllerVdf::listarVdfCtr();
-
-
-
           foreach ($tabla as $key => $value) {
-            
-
-
             echo '
 <tr>
 <td>'.nl2br($value["id_vdf"]).'</td>
-
 <td>'.nl2br($value["potencia"]).'</td>
 <td>'.nl2br($value["marca"]).'</td>
-
-
-
-
-
 <td width="100"> <button class="btn btn-sm btn-info btnEditarVdf" idVdf="'.$value["id_vdf"].'" data-toggle="modal" data-target="#modal-editar-vdf">
                     <i class="far fa-edit"></i>
                   </button>

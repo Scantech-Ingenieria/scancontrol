@@ -3,19 +3,68 @@ require_once "conexion.php";
 Class ModeloTableroelectrico {
 static public function listarTableroelectricoMdl($tabla) {
 		$sql = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+
+		$sql -> execute();
+		return $sql -> fetchAll();
+	}
+	static public function listarTelectricoautomaticoMdl($tabla) {
+		$sql = Conexion::conectar()->prepare("SELECT * FROM $tabla t INNER JOIN automatico a ON a.id_automatico=t.tipo_automatico");
+		$sql -> execute();
+		return $sql -> fetchAll();
+	}
+		static public function listarTelectricofuenteMdl($tabla) {
+		$sql = Conexion::conectar()->prepare("SELECT * FROM $tabla t INNER JOIN fuentepoder f ON f.id_fuentepoder=t.tipo_fuente");
+		$sql -> execute();
+		return $sql -> fetchAll();
+	}
+static public function listarTelectricovdfMdl($tabla) {
+		$sql = Conexion::conectar()->prepare("SELECT * FROM $tabla t INNER JOIN variador_frecuencia v ON v.id_vdf=t.tipo_vdf");
 		$sql -> execute();
 		return $sql -> fetchAll();
 	}
 	static public function mdlCrearTableroelectrico($tabla, $datos,$rutaImagen) {
-		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :numeroserie,:superficie,:paso,:descripcion,:ancho,:material,:imagen)");
-		$sql->bindParam(":numeroserie", $datos["numeroserie"], PDO::PARAM_STR);
-		$sql->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
+		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :altura,:ancho,:fondo,:contactor,:imagen)");
+		$sql->bindParam(":altura", $datos["altura"], PDO::PARAM_STR);
 		$sql->bindParam(":ancho", $datos["ancho"], PDO::PARAM_STR);
-		$sql->bindParam(":superficie", $datos["superficie"], PDO::PARAM_STR);
-		$sql->bindParam(":paso", $datos["paso"], PDO::PARAM_STR);
-		$sql->bindParam(":material", $datos["material"], PDO::PARAM_STR);
+		$sql->bindParam(":fondo", $datos["fondo"], PDO::PARAM_STR);
+		$sql->bindParam(":contactor", $datos["contactor"], PDO::PARAM_STR);
 		$sql->bindParam(":imagen", $rutaImagen, PDO::PARAM_STR);
-		if( $sql -> execute() ) {
+$sql -> execute(); 
+	$sqle = Conexion::conectar()->prepare("SELECT * FROM tableroelectrico order by id_tableroelectrico desc limit 1");
+$sqle -> execute();
+	foreach ($sqle as $key => $value){
+    $id_tablero=$value["id_tableroelectrico"];
+}
+$automaticos=count($datos["cantidadautomaticos"]);
+$cantidadautomaticos = $datos["cantidadautomaticos"];
+$tipoautomaticos = $datos["tipoautomaticos"];
+if($automaticos >=1){
+for ($i=0; $i <$automaticos ; $i++) { 
+
+$sqlautomatico = Conexion::conectar()->prepare("INSERT INTO telectrico_automatico(id_tablero_electrico,cantidad,tipo_automatico) VALUES('". $id_tablero."','".$cantidadautomaticos[$i]."', '".$tipoautomaticos[$i]."')");
+$sqlautomatico -> execute();
+}
+}
+$fuentepoder=count($datos["tipofuentepoder"]);
+$tipofuentepoder=$datos["tipofuentepoder"];
+if($fuentepoder >=1){
+for ($i=0; $i <$fuentepoder ; $i++) { 
+$sqlfuentepoder = Conexion::conectar()->prepare("INSERT INTO telectrico_fuente(id_tablero_electrico,tipo_fuente) VALUES('". $id_tablero."','".$tipofuentepoder[$i]."')");
+$sqlfuentepoder -> execute();
+}
+}
+$vdf=count($datos["cantidadvdf"]);
+$cantidadvdf=$datos["cantidadvdf"];
+$tipovdf=$datos["tipovdf"];
+
+if($vdf >=1){
+for ($i=0; $i <$vdf ; $i++) { 
+$sqlvdf = Conexion::conectar()->prepare("INSERT INTO telectrico_vdf(id_tablero_electrico,cantidad,tipo_vdf) VALUES('". $id_tablero."','".$cantidadvdf[$i]."','".$tipovdf[$i]."')");
+$sqlvdf -> execute();
+}
+}
+$estado=true;
+		if( $estado==true ) {
 			return "ok";
 		} else {
 			return "error";

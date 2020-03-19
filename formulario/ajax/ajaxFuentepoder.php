@@ -26,15 +26,11 @@ Class ajaxFuentePoder {
 	}
 	public function actualizarFuentePoder(){
 		$datos = array( "id_fuentepoder"=>$this->id_fuentepoder,
-						"numeroserie"=>$this->numeroserie,
-						"descripcion"=>$this->descripcion,
-						"ancho"=>$this->ancho,
-						"material"=>$this->material,
+						"marca"=>$this->marca,
+						"amperaje"=>$this->amperaje,
+						"corriente"=>$this->corriente,
 						"imagen"=>$this->imagen_fuentepoder,		
-						"rutaActual"=>$this->rutaActual,		
-						"superficie"=>$this->superficie,
-						"paso"=>$this->paso
-
+						"rutaActual"=>$this->rutaActual		
 						);
 		$respuesta = ControllerFuentePoder::ctrActualizarFuentePoder($datos);
 		echo $respuesta;
@@ -64,14 +60,11 @@ if ($tipoOperacion == "editarFuentePoder") {
 if ($tipoOperacion == "actualizarFuentePoder") {
 	$actualizarFuentePoder = new ajaxFuentePoder();
 	$actualizarFuentePoder -> id_fuentepoder = $_POST["id_fuentepoder"];
-	$actualizarFuentePoder -> numeroserie = $_POST["NumeroSerie"];
-	$actualizarFuentePoder -> descripcion = $_POST["DescripcionFuentePoder"];
-	$actualizarFuentePoder -> ancho = $_POST["Ancho"];
-	$actualizarFuentePoder -> material = $_POST["Material"];
+	$actualizarFuentePoder -> marca = $_POST["Marca"];
+	$actualizarFuentePoder -> amperaje = $_POST["Amperaje"];
+	$actualizarFuentePoder -> corriente = $_POST["Corriente"];
 	$actualizarFuentePoder -> imagen_fuentepoder = $_FILES["imagenFuentePoder"];
 	$actualizarFuentePoder -> rutaActual = $_POST["rutaActual"];
-	$actualizarFuentePoder -> superficie = $_POST["Superficie"];
-	$actualizarFuentePoder -> paso = $_POST["Paso"];
 	$actualizarFuentePoder -> actualizarFuentePoder();
 }
 if ($tipoOperacion == "eliminarFuentePoder") {

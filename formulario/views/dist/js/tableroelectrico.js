@@ -4,7 +4,7 @@ $(document).ready(function(){
 		e.preventDefault()
 		var datos = new FormData($(this)[0])
 		$.ajax({
-			url: 'ajax/ajaxTableroelectricos.php',
+			url: 'ajax/ajaxTableroelectrico.php',
 			type: 'POST',
 			data: datos,
 			processData: false,
@@ -15,11 +15,11 @@ $(document).ready(function(){
 
 		Swal.fire(
   'Excelente!',
-  'Tableroelectrico registrada con exito!',
+  'Tablero electrico registrado con exito!',
   'success'
 ).then((result) => {
 					  if (result.value) {
-					    window.location = "tableroelectricos"
+					    window.location = "tableroelectrico"
 					  }
 					})
 				}
@@ -30,7 +30,7 @@ $(document).ready(function(){
 		e.preventDefault()
 		var datos = new FormData($(this)[0])
 		$.ajax({
-			url: 'ajax/ajaxTableroelectricos.php',
+			url: 'ajax/ajaxTableroelectrico.php',
 			type: 'POST',
 			data: datos,
 			processData: false,
@@ -44,7 +44,7 @@ $(document).ready(function(){
   'success'
 ).then((result) => {
 					  if (result.value) {
-					    window.location = "tableroelectricos"
+					    window.location = "tableroelectrico"
 					  }
 					})
 				}
@@ -57,7 +57,7 @@ $(document).ready(function(){
 		datos.append("id_tableroelectrico", idTableroelectrico)
 		datos.append("tipoOperacion", "editarTableroelectrico")
 		$.ajax({
-			url: 'ajax/ajaxTableroelectricos.php',
+			url: 'ajax/ajaxTableroelectrico.php',
 			type: 'POST',
 			data: datos,
 			processData: false,
@@ -97,7 +97,7 @@ $('#formu-editar-tableroelectrico input[name="rutaActual"]').val(valor.imagen)
 		}).then((result) => {
 		  if (result.value) {
 		  	$.ajax({
-				url: 'ajax/ajaxTableroelectricos.php',
+				url: 'ajax/ajaxTableroelectrico.php',
 				type: 'POST',
 				data: datos,
 				processData: false,
@@ -110,7 +110,7 @@ $('#formu-editar-tableroelectrico input[name="rutaActual"]').val(valor.imagen)
 					      'success'
 					    ).then((result) => {
 						  if (result.value) {
-						    window.location = "tableroelectricos"
+						    window.location = "tableroelectrico"
 						  }
 						})
 					}
@@ -120,14 +120,14 @@ $('#formu-editar-tableroelectrico input[name="rutaActual"]').val(valor.imagen)
 		})
 	})
 	// PREVISUALIZAR IMAGENES
-	$("#imagen1").change(previsualizarImg)
+	$("#imagenTableroelectrico").change(previsualizarImg)
 	$("#imagenEditar1").change(previsualizarImg)
 	function previsualizarImg(e) {
 		var contenedor = e.target.parentNode
 		var identificador = contenedor.classList[1]
 		imgSlider = this.files[0];
 		if ( imgSlider["type"] != "image/jpeg" && imgSlider["type"] != "image/png" && imgSlider["type"] != "video/mp4") {
-				$("#imagen1").val("")
+				$("#imagenTableroelectrico").val("")
 				$("#imagenEditar1").val("")
 			Swal.fire(
 					  'No es un archivo valido',
@@ -136,7 +136,7 @@ $('#formu-editar-tableroelectrico input[name="rutaActual"]').val(valor.imagen)
 				)	
 			}
 		if ( imgSlider["type"] > 100000) {
-				$("#imagenSlider").val("")
+				$("#imagenTableroelectrico").val("")
 			
 Swal.fire(
 					  'Error al subir la imagen',
@@ -145,12 +145,12 @@ Swal.fire(
 				)
 			}
 			else {
-				$("#imagenSlider").css("display", "block")
+				$("#imgTableroElectrico").css("display", "block")
 				var datosImagen = new FileReader;
 		  		datosImagen.readAsDataURL(imgSlider);
 		  		$(datosImagen).on("load", function(event){
 		  			var rutaImagen = event.target.result;
-		  			$("." + identificador +" #imagenSlider").attr("src", rutaImagen);
+		  			$("." + identificador +" #imgTableroElectrico").attr("src", rutaImagen);
 		  		})
 			}
 		}

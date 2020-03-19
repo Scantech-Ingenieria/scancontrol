@@ -1,17 +1,32 @@
 <?php
 Class ControllerTableroelectrico {
 	public function listarTableroelectricoCtr() {
-		$tabla = "tableroelectricos";
+		$tabla = "tableroelectrico";
 		$respuesta = ModeloTableroelectrico::listarTableroelectricoMdl($tabla);
 		return $respuesta;
 	}
+		public function listarTelectricoautomaticoCtr() {
+		$tabla = "telectrico_automatico";
+		$respuesta = ModeloTableroelectrico::listarTelectricoautomaticoMdl($tabla);
+		return $respuesta;
+	}
+			public function listarTelectricofuenteCtr() {
+		$tabla = "telectrico_fuente";
+		$respuesta = ModeloTableroelectrico::listarTelectricofuenteMdl($tabla);
+		return $respuesta;
+	}
+			public function listarTelectricovdfCtr() {
+		$tabla = "telectrico_vdf";
+		$respuesta = ModeloTableroelectrico::listarTelectricovdfMdl($tabla);
+		return $respuesta;
+	}
 	static public function ctrCrearTableroelectrico($datos) {
-		$tabla = "tableroelectricos";
+		$tabla = "tableroelectrico";
 
 list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 		$nuevoAncho = 1024;
 		$nuevoAlto = 768;
-		$directorio = "../views/dist/img/tableroelectricos";
+		$directorio = "../views/dist/img/tableroelectrico";
 		if($datos["imagen"]["type"] == "image/jpeg"){
 			$rutaImagen = $directorio."/".md5($datos["imagen"]["tmp_name"]).".jpeg";
 			$origen = imagecreatefromjpeg($datos["imagen"]["tmp_name"]);
@@ -32,19 +47,19 @@ list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 		return $respuesta;
 	}
 	static public function ctrEliminarTableroelectrico($id_tableroelectrico,$ruta) {
-		$tabla = "tableroelectricos";
+		$tabla = "tableroelectrico";
 	if ( unlink($ruta) ) {
 		$respuesta = ModeloTableroelectrico::mdlEliminarTableroelectrico($tabla, $id_tableroelectrico);
 		}
 		return $respuesta;
 	}
 	static public function ctrEditarTableroelectrico($id_tableroelectrico) {
-		$tabla = "tableroelectricos";
+		$tabla = "tableroelectrico";
 		$respuesta = ModeloTableroelectrico::mdlEditarTableroelectrico($tabla, $id_tableroelectrico);
 		return $respuesta;
 	}
 	static public function ctrActualizarTableroelectrico($datos) {
-		$tabla = "tableroelectricos";
+		$tabla = "tableroelectrico";
 
 	if ($datos["imagen"]["error"] == 4) {
 			$rutaImagen = null;
@@ -55,7 +70,7 @@ list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 			list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 			$nuevoAncho = 1024;
 			$nuevoAlto = 768;
-			$directorio = "../views/dist/img/tableroelectricos";
+			$directorio = "../views/dist/img/tableroelectrico";
 			if($datos["imagen"]["type"] == "image/jpeg"){
 				$rutaImagen = $directorio."/".md5($datos["imagen"]["tmp_name"]).".jpeg";
 				$origen = imagecreatefromjpeg($datos["imagen"]["tmp_name"]);

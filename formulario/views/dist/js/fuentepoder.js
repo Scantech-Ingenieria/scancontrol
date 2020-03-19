@@ -94,7 +94,7 @@ $('#formu-editar-fuentepoder input[name="rutaActual"]').val(valor.imagen)
 		}).then((result) => {
 		  if (result.value) {
 		  	$.ajax({
-				url: 'ajax/ajaxFuentePoders.php',
+				url: 'ajax/ajaxFuentePoder.php',
 				type: 'POST',
 				data: datos,
 				processData: false,

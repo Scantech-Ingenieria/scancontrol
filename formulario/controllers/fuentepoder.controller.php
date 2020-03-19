@@ -54,7 +54,7 @@ list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 			list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 			$nuevoAncho = 1024;
 			$nuevoAlto = 768;
-			$directorio = "../views/dist/img/fuentepoders";
+			$directorio = "../views/dist/img/fuentepoder";
 			if($datos["imagen"]["type"] == "image/jpeg"){
 				$rutaImagen = $directorio."/".md5($datos["imagen"]["tmp_name"]).".jpeg";
 				$origen = imagecreatefromjpeg($datos["imagen"]["tmp_name"]);

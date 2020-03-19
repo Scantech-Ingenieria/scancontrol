@@ -1,17 +1,22 @@
 <?php
-require_once "../controllers/tableroelectricos.controller.php";
-require_once "../models/tableroelectricos.modelo.php";
+require_once "../controllers/tableroelectrico.controller.php";
+require_once "../models/tableroelectrico.modelo.php";
 Class ajaxTableroelectrico {
 	public function crearTableroelectrico(){
 		$datos = array(
-						"numeroserie"=>$this->numeroserie,
-						"descripcion"=>$this->descripcion,
+			            "altura"=>$this->altura,
 						"ancho"=>$this->ancho,
-						"material"=>$this->material,
-						"imagen"=>$this->imagen_tableroelectrico,
-						"superficie"=>$this->superficie,
-						"paso"=>$this->paso
+						"fondo"=>$this->fondo,
+						"cantidadautomaticos"=>$this->cantidadautomaticos,
+						"tipoautomaticos"=>$this->tipoautomaticos,
+						"tipofuentepoder"=>$this->tipofuentepoder,
+						"cantidadvdf"=>$this->cantidadvdf,
+						"tipovdf"=>$this->tipovdf,
+						"contactor"=>$this->contactor,
+						"imagen"=>$this->imagen_tableroelectrico
+				
 					);
+
 
 		$respuesta = ControllerTableroelectrico::ctrCrearTableroelectrico($datos);
 		echo $respuesta;
@@ -55,13 +60,16 @@ Class ajaxTableroelectrico {
 $tipoOperacion = $_POST["tipoOperacion"];
 if($tipoOperacion == "insertartableroelectrico") {
 	$crearNuevoTableroelectrico = new ajaxTableroelectrico();
-	$crearNuevoTableroelectrico -> superficie = $_POST["Superficie"];
-	$crearNuevoTableroelectrico -> paso = $_POST["Paso"];
-	$crearNuevoTableroelectrico -> numeroserie = $_POST["NumeroSerie"];
-	$crearNuevoTableroelectrico -> descripcion = $_POST["DescripcionTableroelectrico"];
+	$crearNuevoTableroelectrico -> altura = $_POST["Altura"];
 	$crearNuevoTableroelectrico -> ancho = $_POST["Ancho"];
-	$crearNuevoTableroelectrico -> material = $_POST["Material"];
- $crearNuevoTableroelectrico -> imagen_tableroelectrico = $_FILES["imagenTableroelectrico"];
+	$crearNuevoTableroelectrico -> fondo = $_POST["Fondo"];
+	$crearNuevoTableroelectrico -> cantidadautomaticos = $_POST["Cantidadautomaticos"];
+	$crearNuevoTableroelectrico -> tipoautomaticos = $_POST["Tipoautomaticos"];
+	$crearNuevoTableroelectrico -> tipofuentepoder = $_POST["TipoFuentePoder"];
+	$crearNuevoTableroelectrico -> cantidadvdf = $_POST["CantidadVdf"];
+	$crearNuevoTableroelectrico -> tipovdf = $_POST["TipoVdf"];
+	$crearNuevoTableroelectrico -> contactor = $_POST["Contactor"];
+    $crearNuevoTableroelectrico -> imagen_tableroelectrico = $_FILES["imagenTableroelectrico"];
 	$crearNuevoTableroelectrico ->crearTableroelectrico();
 }
 
