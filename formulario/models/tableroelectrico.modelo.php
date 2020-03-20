@@ -18,7 +18,8 @@ static public function listarTableroelectricoMdl($tabla) {
 		return $sql -> fetchAll();
 	}
 static public function listarTelectricovdfMdl($tabla) {
-		$sql = Conexion::conectar()->prepare("SELECT * FROM $tabla t INNER JOIN variador_frecuencia v ON v.id_vdf=t.tipo_vdf");
+		$sql = Conexion::conectar()->prepare("SELECT * FROM $tabla t INNER JOIN variador_frecuencia v ON v.id_vdf=t.tipo_vdf
+			");
 		$sql -> execute();
 		return $sql -> fetchAll();
 	}
@@ -84,6 +85,12 @@ $estado=true;
 		$sql->bindParam(":id", $id_tableroelectrico, PDO::PARAM_INT);
 		$sql -> execute();
 		return $sql -> fetch();
+	}
+		static public function mdlEditarTableroautomaticos($tabla, $id_tableroelectrico) {
+		$sql = Conexion::conectar()->prepare("SELECT * FROM $tabla t INNER JOIN automatico a ON a.id_automatico=t.tipo_automatico WHERE t.id_tablero_electrico = :id");
+		$sql->bindParam(":id", $id_tableroelectrico, PDO::PARAM_INT);
+		$sql -> execute();
+		return $sql -> fetchAll();
 	}
 	static public function mdlActualizarTableroelectrico($tabla, $datos,$rutaImagen) {
 		if( is_null($rutaImagen)) {

@@ -89,21 +89,15 @@ foreach ($tablavdf as $key => $valorvdf) {
 $idtablavdf=$valorvdf["id_tablero_electrico"];
 if ($idtablavdf==$id_tableroelectrico) {
    echo '<div style="background:#eaeaea;margin-bottom:5px;"><label style="font-weight: bold;">- P:</label> '.$valorvdf["potencia"].' <label style="font-weight: bold;">M:</label> '.$valorvdf["marca"].'</div>  <br>';
-
-
-  
-
-
 }
 }
 
 echo '</td>';
-
 echo '<td>'.nl2br($value["ancho"]).'</td>
 <td>'.nl2br($value["fondo"]).'</td>
 <td>'.nl2br($value["contactor"]).'</td>
 <td><img width="100" src="'.substr($value["rutaImg"], 3).'"></td>
-<td width="100"> <button class="btn btn-sm btn-info btnEditarSprockets" idSprockets="'.$value["id_sprockets"].'" data-toggle="modal" data-target="#modal-editar-sprockets">
+<td width="100"> <button class="btn btn-sm btn-info btnEditarTableroelectrico" idTableroelectrico="'.$value["id_tableroelectrico"].'" data-toggle="modal" data-target="#modal-editar-tableroelectrico">
                     <i class="far fa-edit"></i>
                   </button>
     <button class="btn btn-sm btn-danger btnEliminarSprockets" idSprockets="'.$value["id_sprockets"].'"rutaImagen="'.$value["rutaImg"].'">

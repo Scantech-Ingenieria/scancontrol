@@ -127,42 +127,80 @@ echo '<option value="'.$value["id_vdf"].'">Potencia: '.$value["potencia"].' / Ma
       <div class="modal-body">
         <form id="formu-editar-tableroelectrico">
           <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Nro° Serie</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" placeholder="Numero de Serie" name="NumeroSerie">
+            <label class="col-2 col-sm-2 col-form-label">Medidas</label>
+            <div class="col-3 col-sm-2" style="padding-right: 1px;">
+              <input type="text" class="form-control" placeholder="Altura" name="Altura">
+            </div>
+            <h5 style="margin-top: 5px;">X</h5><div class="col-3 col-sm-2" style="padding-right: 1px;padding-left: 1px;">
+              <input type="text" class="form-control" placeholder="Ancho" name="Ancho">
+            </div><h5 style="margin-top: 5px;">X</h5>
+            <div class="col-3 col-sm-2"  style="padding-left: 1px;">
+              <input type="text" class="form-control" placeholder="Fondo" name="Fondo">
             </div>
           </div>
-            <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Superficie</label>
-            <div class="col-sm-4">
-              <input type="text" class="form-control" placeholder="Superficie" name="Superficie">
-            </div>
-            <label class="col-sm-1 col-form-label">Paso</label>
-            <div class="col-sm-5">
-              <input type="text" class="form-control" placeholder="Paso" name="Paso">
-            </div>
+            <div id="dinamiautomatico" class="form-group row" style="margin-bottom: 0px;">
+       
+
           </div>
+
            <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Ancho</label>
-            <div class="col-sm-4">
-              <input type="number" class="form-control" placeholder="Ancho Milimetros" name="Ancho">
+            <label class="col-3 col-sm-2 col-form-label" id="largo">Fuente Poder</label>
+            <div class="col-7 col-sm-9">
+ <select class="form-control" name="TipoFuentePoder[]" >
+
+                <?php
+          $tabla2 = ControllerFuentePoder::listarFuentePoderCtr();
+            echo '<option selected disabled>Seleccione Fuente Poder</option>';
+          foreach ($tabla2 as $key => $value) { 
+echo '<option value="'.$value["id_fuentepoder"].'">Marca: '.$value["marca"].' / Amperaje: ' .$value["amperaje"].' / Corriente: '.$value["corriente"].'</option>';
+          }
+ echo '</select>';
+          
+            ?>
+
             </div>
-            <label class="col-sm-1 col-form-label">Material</label>
-            <div class="col-sm-5">
-              <input type="text" class="form-control" placeholder="Material" name="Material">
+
+            <div class="col-1 col-sm-1">
+              <button style="margin-bottom: 2px" type="button" name="agregarfuente" id="agregarfuente" class="btn btn-info" >+</button>
             </div>
           </div>
-           <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Descripción</label>
+             <div id="dinami2" ></div>
+    <div class="form-group row" style="margin-bottom: 15px;">
+                
+            <label class="col-2 col-sm-2 col-form-label" id="largo">VDF Cantidad:</label>
+            <div class="col-4 col-sm-4">  
+           <input type="text" class="form-control" placeholder="Cantidad" name="CantidadVdf[]">
+            </div>
+            <label class="col-1 col-sm-1 col-form-label" id="largo">Tipo</label>
+            <div class="col-3 col-sm-4">
+ <select class="form-control" name="TipoVdf[]" >
+<?php 
+   $tabla3 = ControllerVdf::listarVdfCtr();
+echo '<option selected disabled>Seleccione tipo VDF</option>';
+          foreach ($tabla3 as $key => $value) { 
+echo '<option value="'.$value["id_vdf"].'">Potencia: '.$value["potencia"].' / Marca: ' .$value["marca"].'</option>';
+          }
+ echo '</select>';
+ ?>
+</div>
+
+            <div class="col-1 col-sm-1">
+              <button style="margin-bottom: 2px" type="button" name="agregarvdf" id="agregarvdf" class="btn btn-info" >+</button>
+            </div>
+          </div>
+             <div id="dinami3" ></div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Contactor</label>
             <div class="col-sm-10">
-              <textarea class="form-control" placeholder="Texto descriptivo"  rows="2" name="DescripcionTableroelectrico"></textarea>
+               <input type="text" class="form-control" placeholder="Contactor" name="Contactor">
             </div>
           </div>
-             <div class="form-group row">
+
+                    <div class="form-group row">
             <label class="col-sm-2 col-form-label">Imagen</label>
             <div class="col-sm-10 conteNuevaImagen">
-              <input type="file" class="form-control"  id="imagenEditar1" name="imagenTableroelectrico" >
-              <img src="" id="imagenSlider" alt="" class="thumbnail" width="200" >
+              <input type="file" class="form-control"  id="imagenTableroelectrico" name="imagenTableroelectrico" required>
+              <img src="" id="imgTableroElectricoEditar" alt="" class="thumbnail" width="200" >
             </div>
           </div>
           <input type="hidden" name="tipoOperacion" value="actualizarTableroelectrico">
@@ -177,7 +215,20 @@ echo '<option value="'.$value["id_vdf"].'">Potencia: '.$value["potencia"].' / Ma
     </div>
   </div>
 </div>
+<!-- <script type="text/javascript">
+var i=1; 
+var e=1; 
+ $('.btnEditarTableroelectrico').click(function(){
+    
 
+var arrayJS = <?= json_encode($tablaautomatico) ?>;
+ for(var i=0;i<arrayJS.length;i++)
+    {
+      $('#option').append('<option value='+arrayJS[i][0]+'>Amperaje: '+arrayJS[i][1]+' / Marca: '+arrayJS[i][2]+' / Tipo: '+arrayJS[i][3]+'</option>')  
+    }
+    });
+
+</script> -->
 <script type="text/javascript">
 var i=1; 
 var e=1; 

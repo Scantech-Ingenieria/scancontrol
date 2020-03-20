@@ -58,6 +58,11 @@ list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 		$respuesta = ModeloTableroelectrico::mdlEditarTableroelectrico($tabla, $id_tableroelectrico);
 		return $respuesta;
 	}
+		static public function ctrEditarTableroautomaticos($id_tableroelectrico) {
+		$tabla = "telectrico_automatico";
+		$respuesta = ModeloTableroelectrico::mdlEditarTableroautomaticos($tabla, $id_tableroelectrico);
+		return $respuesta;
+	}
 	static public function ctrActualizarTableroelectrico($datos) {
 		$tabla = "tableroelectrico";
 

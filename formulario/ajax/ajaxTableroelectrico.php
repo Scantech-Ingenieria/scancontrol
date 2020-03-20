@@ -25,15 +25,21 @@ Class ajaxTableroelectrico {
 		$id_tableroelectrico = $this->id_tableroelectrico;
 		$respuesta = ControllerTableroelectrico::ctrEditarTableroelectrico($id_tableroelectrico);
 		$datos = array("id_tableroelectrico"=>$respuesta["id_tableroelectrico"],
-						"numeroserie"=>$respuesta["numero_serie"], 
-						  "superficie"=>$respuesta["superficie"],
-				          "paso"=>$respuesta["paso"],
-						"descripcion"=>$respuesta["descripcion"],
-				        "ancho"=>$respuesta["ancho"],
-				        "material"=>$respuesta["material"],
+						"altura"=>$respuesta["altura"], 
+						  "ancho"=>$respuesta["ancho"],
+				          "fondo"=>$respuesta["fondo"],
+						"contactor"=>$respuesta["contactor"],
 				        "imagen"=>substr($respuesta["rutaImg"], 3)
 						);
+
+
 		echo json_encode($datos);
+	}
+	public function editarTableroautomaticos(){
+		$id_tableroelectrico = $this->id_tableroelectrico;
+		$respuesta = ControllerTableroelectrico::ctrEditarTableroautomaticos($id_tableroelectrico);
+
+	echo json_encode($respuesta);
 	}
 	public function actualizarTableroelectrico(){
 		$datos = array( "id_tableroelectrico"=>$this->id_tableroelectrico,
@@ -77,6 +83,11 @@ if ($tipoOperacion == "editarTableroelectrico") {
 	$editarTableroelectrico = new ajaxTableroelectrico();
 	$editarTableroelectrico -> id_tableroelectrico = $_POST["id_tableroelectrico"];
 	$editarTableroelectrico -> editarTableroelectrico();
+}
+if ($tipoOperacion == "editarTableroautomaticos") {
+	$editarTableroautomaticos = new ajaxTableroelectrico();
+	$editarTableroautomaticos -> id_tableroelectrico = $_POST["id_tableroelectrico"];
+	$editarTableroautomaticos -> editarTableroautomaticos();
 }
 if ($tipoOperacion == "actualizarTableroelectrico") {
 	$actualizarTableroelectrico = new ajaxTableroelectrico();

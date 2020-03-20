@@ -67,17 +67,64 @@ $(document).ready(function(){
 				console.log(valor.id_tableroelectrico)
 				console.log(valor.imagen)
 $('#formu-editar-tableroelectrico input[name="id_tableroelectrico"]').val(valor.id_tableroelectrico)
-$('#formu-editar-tableroelectrico input[name="NumeroSerie"]').val(valor.numeroserie)
-$('#formu-editar-tableroelectrico input[name="Superficie"]').val(valor.superficie)
-$('#formu-editar-tableroelectrico input[name="Paso"]').val(valor.paso)
-$('#formu-editar-tableroelectrico textarea[name="DescripcionTableroelectrico"]').val(valor.descripcion)
+$('#formu-editar-tableroelectrico input[name="Altura"]').val(valor.altura)
+$('#formu-editar-tableroelectrico input[name="Fondo"]').val(valor.fondo)
 $('#formu-editar-tableroelectrico input[name="Ancho"]').val(valor.ancho)
-$('#formu-editar-tableroelectrico input[name="Material"]').val(valor.material)
-$('#formu-editar-tableroelectrico #imagenSlider').attr("src", valor.imagen)
+$('#formu-editar-tableroelectrico input[name="Contactor"]').val(valor.contactor)
+$('#formu-editar-tableroelectrico #imgTableroElectricoEditar').attr("src", valor.imagen)
 $('#formu-editar-tableroelectrico input[name="rutaActual"]').val(valor.imagen)
 			}
 		})
 	})
+
+		$("body #mi_lista").on("click", ".btnEditarTableroelectrico", function(){
+		var idTableroelectrico = $(this).attr("idTableroelectrico")
+		var datos = new FormData()
+		datos.append("id_tableroelectrico", idTableroelectrico)
+		datos.append("tipoOperacion", "editarTableroautomaticos")
+		$.ajax({
+			url: 'ajax/ajaxTableroelectrico.php',
+			type: 'POST',
+			data: datos,
+			processData: false,
+			contentType: false,
+			success: function(respuesta) {
+
+				var valor = JSON.parse(respuesta)
+				var size = valor.length;
+				console.log(size)
+
+
+  if($('#dinamiautomatico').find("#row").length){
+
+ $("#dinamiautomatico").empty()
+
+ for(i=0; i<size; i++){
+
+console.log(valor[i])
+
+$('#dinamiautomatico').append('<div id="row" class="form-group row" style="margin-bottom:0px;"> <label class="col-2 col-sm-2 col-form-label" id="largo">Automaticos Cantidad:</label><div class="col-4 col-sm-4"><input type="text" class="form-control" placeholder="Cantidad" name="Cantidadautomaticos[]" value="'+valor[i][2]+'"></div><label class="col-1 col-sm-1 col-form-label" id="largo">Tipo</label><div class="col-3 col-sm-4"> <select id="option" class="form-control" name="Tipoautomaticos[]" value="'+valor[i][3]+'" ><option selected>Amperaje: '+valor[i][5]+' / Marca: '+valor[i][6]+' / Tipo: '+valor[i][7]+'</option></select></div><div class="col-1 col-sm-1"><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove" >X</button></div></div>');
+
+ }
+ alert("<?php json_encode($tabla1); ?>");
+
+
+        }else{
+        	for(i=0; i<size; i++){
+
+console.log(valor[i])
+$('#dinamiautomatico').append('<div id="row" class="form-group row" style="margin-bottom:0px;"> <label class="col-2 col-sm-2 col-form-label" id="largo">Automaticos Cantidad:</label><div class="col-4 col-sm-4"><input type="text" class="form-control" placeholder="Cantidad" name="Cantidadautomaticos[]" value="'+valor[i][2]+'"></div><label class="col-1 col-sm-1 col-form-label" id="largo">Tipo</label><div class="col-3 col-sm-4"> <select id="option" class="form-control" name="Tipoautomaticos[]"  ><option selected>Amperaje: '+valor[i][5]+' / Marca: '+valor[i][6]+' / Tipo: '+valor[i][7]+'</option></select></div><div class="col-1 col-sm-1"><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove" >X</button></div></div>');
+
+ }
+        }
+ 
+			}
+		})
+	})
+
+
+
+
 	$("body #mi_lista").on("click", ".btnEliminarTableroelectrico", function(){
 		var idTableroelectrico = $(this).attr("idTableroelectrico")
 		var rutaImagen = $(this).attr("rutaImagen")
@@ -158,3 +205,4 @@ Swal.fire(
 
 
 })
+
