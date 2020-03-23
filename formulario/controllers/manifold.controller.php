@@ -1,32 +1,17 @@
 <?php
-Class ControllerTableroelectrico {
-	public function listarTableroelectricoCtr() {
-		$tabla = "tableroelectrico";
-		$respuesta = ModeloTableroelectrico::listarTableroelectricoMdl($tabla);
+Class ControllerManifold {
+	public function listarManifoldCtr() {
+		$tabla = "manifold";
+		$respuesta = ModeloManifold::listarManifoldMdl($tabla);
 		return $respuesta;
 	}
-		public function listarTelectricoautomaticoCtr() {
-		$tabla = "telectrico_automatico";
-		$respuesta = ModeloTableroelectrico::listarTelectricoautomaticoMdl($tabla);
-		return $respuesta;
-	}
-			public function listarTelectricofuenteCtr() {
-		$tabla = "telectrico_fuente";
-		$respuesta = ModeloTableroelectrico::listarTelectricofuenteMdl($tabla);
-		return $respuesta;
-	}
-			public function listarTelectricovdfCtr() {
-		$tabla = "telectrico_vdf";
-		$respuesta = ModeloTableroelectrico::listarTelectricovdfMdl($tabla);
-		return $respuesta;
-	}
-	static public function ctrCrearTableroelectrico($datos) {
-		$tabla = "tableroelectrico";
+	static public function ctrCrearManifold($datos) {
+		$tabla = "manifold";
 
 list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 		$nuevoAncho = 1024;
 		$nuevoAlto = 768;
-		$directorio = "../views/dist/img/tableroelectrico";
+		$directorio = "../views/dist/img/manifold";
 		if($datos["imagen"]["type"] == "image/jpeg"){
 			$rutaImagen = $directorio."/".md5($datos["imagen"]["tmp_name"]).".jpeg";
 			$origen = imagecreatefromjpeg($datos["imagen"]["tmp_name"]);
@@ -43,33 +28,23 @@ list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 			imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 			imagepng($destino, $rutaImagen);
 		}
-		$respuesta = ModeloTableroelectrico::mdlCrearTableroelectrico($tabla, $datos,$rutaImagen);
+		$respuesta = ModeloManifold::mdlCrearManifold($tabla, $datos,$rutaImagen);
 		return $respuesta;
 	}
-	static public function ctrEliminarTableroelectrico($id_tableroelectrico,$ruta) {
-		$tabla = "tableroelectrico";
+	static public function ctrEliminarManifold($id_manifold,$ruta) {
+		$tabla = "manifold";
 	if ( unlink($ruta) ) {
-		$respuesta = ModeloTableroelectrico::mdlEliminarTableroelectrico($tabla, $id_tableroelectrico);
+		$respuesta = ModeloManifold::mdlEliminarManifold($tabla, $id_manifold);
 		}
 		return $respuesta;
 	}
-	static public function ctrEliminarTautomatico($id_tautomatico) {
-		$tabla = "telectrico_automatico";
-		$respuesta = ModeloTableroelectrico::mdlEliminarTautomatico($tabla, $id_tautomatico);
+	static public function ctrEditarManifold($id_manifold) {
+		$tabla = "manifold";
+		$respuesta = ModeloManifold::mdlEditarManifold($tabla, $id_manifold);
 		return $respuesta;
 	}
-	static public function ctrEditarTableroelectrico($id_tableroelectrico) {
-		$tabla = "tableroelectrico";
-		$respuesta = ModeloTableroelectrico::mdlEditarTableroelectrico($tabla, $id_tableroelectrico);
-		return $respuesta;
-	}
-		static public function ctrEditarTableroautomaticos($id_tableroelectrico) {
-		$tabla = "telectrico_automatico";
-		$respuesta = ModeloTableroelectrico::mdlEditarTableroautomaticos($tabla, $id_tableroelectrico);
-		return $respuesta;
-	}
-	static public function ctrActualizarTableroelectrico($datos) {
-		$tabla = "tableroelectrico";
+	static public function ctrActualizarManifold($datos) {
+		$tabla = "manifold";
 
 	if ($datos["imagen"]["error"] == 4) {
 			$rutaImagen = null;
@@ -80,7 +55,7 @@ list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 			list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 			$nuevoAncho = 1024;
 			$nuevoAlto = 768;
-			$directorio = "../views/dist/img/tableroelectrico";
+			$directorio = "../views/dist/img/manifold";
 			if($datos["imagen"]["type"] == "image/jpeg"){
 				$rutaImagen = $directorio."/".md5($datos["imagen"]["tmp_name"]).".jpeg";
 				$origen = imagecreatefromjpeg($datos["imagen"]["tmp_name"]);
@@ -98,7 +73,7 @@ list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 				imagepng($destino, $rutaImagen);
 			}
 		}
-		$respuesta = ModeloTableroelectrico::mdlActualizarTableroelectrico($tabla, $datos, $rutaImagen);
+		$respuesta = ModeloManifold::mdlActualizarManifold($tabla, $datos, $rutaImagen);
 		return $respuesta;
 
 	}

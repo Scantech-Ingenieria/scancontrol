@@ -19,7 +19,11 @@ class ControllerEnrutamiento {
          $ruta == "sensor"||
          $ruta == "unidadpesaje"||
          $ruta == "tableroelectrico"||
-         $ruta == "fuentepoder"
+         $ruta == "fuentepoder"||
+         $ruta == "plc"||
+         $ruta == "manifold"
+
+
 		) {
 			include "views/modulos/".$ruta.".php";
 		} else {

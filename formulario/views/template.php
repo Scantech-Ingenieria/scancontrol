@@ -43,6 +43,10 @@
      include 'views/modulos/modales/modales-pesaje.php';
      include 'views/modulos/modales/modales-tableroelectrico.php';
      include 'views/modulos/modales/modales-fuentepoder.php';
+     include 'views/modulos/modales/modales-plc.php';
+     include 'views/modulos/modales/modales-manifold.php';
+
+
 
 
       ?>
@@ -84,6 +88,10 @@
 <script type="text/javascript" src="views/dist/js/unidad_pesaje.js"></script>
 <script type="text/javascript" src="views/dist/js/tableroelectrico.js"></script>
 <script type="text/javascript" src="views/dist/js/fuentepoder.js"></script>
+<script type="text/javascript" src="views/dist/js/plc.js"></script>
+<script type="text/javascript" src="views/dist/js/manifold.js"></script>
+
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>

@@ -148,13 +148,13 @@ Unidades Balanza                                        <i class="metismenu-stat
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="vdf">
+                                            <a href="plc">
                                                 <i class="metismenu-icon"></i>
                                                 PLC
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="automatico">
+                                            <a href="manifold">
                                                 <i class="metismenu-icon">
                                                 </i>Manifold
                                             </a>

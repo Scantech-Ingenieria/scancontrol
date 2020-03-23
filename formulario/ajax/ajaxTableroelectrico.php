@@ -62,6 +62,11 @@ Class ajaxTableroelectrico {
 		$respuesta = ControllerTableroelectrico::ctrEliminarTableroelectrico($id_tableroelectrico,$ruta);
 		echo $respuesta;
 	}
+		public function eliminarTautomatico(){
+		$id_tautomatico = $this->id_tautomatico;
+		$respuesta = ControllerTableroelectrico::ctrEliminarTautomatico($id_tautomatico);
+		echo $respuesta;
+	}
 }
 $tipoOperacion = $_POST["tipoOperacion"];
 if($tipoOperacion == "insertartableroelectrico") {
@@ -107,6 +112,11 @@ if ($tipoOperacion == "eliminarTableroelectrico") {
 	$eliminarTableroelectrico -> id_tableroelectrico = $_POST["id_tableroelectrico"];
 	$eliminarTableroelectrico -> imagen_tableroelectrico = $_POST["rutaImagen"];
 	$eliminarTableroelectrico -> eliminarTableroelectrico();
+}
+if ($tipoOperacion == "eliminarTautomatico") {
+	$eliminarTautomatico = new ajaxTableroelectrico();
+	$eliminarTautomatico -> id_tautomatico = $_POST["id_automatico"];
+	$eliminarTautomatico -> eliminarTautomatico();
 }
 
 ?>

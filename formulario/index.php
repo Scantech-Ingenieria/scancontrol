@@ -23,6 +23,10 @@ require_once "controllers/sensor.controller.php";
 require_once "controllers/pesaje.controller.php";
 require_once "controllers/tableroelectrico.controller.php";
 require_once "controllers/fuentepoder.controller.php";
+require_once "controllers/plc.controller.php";
+require_once "controllers/manifold.controller.php";
+
+
 
 require_once "models/alimentacion.modelo.php";
 require_once "models/cliente.modelo.php";
@@ -41,6 +45,10 @@ require_once "models/sensor.modelo.php";
 require_once "models/pesaje.modelo.php";
 require_once "models/tableroelectrico.modelo.php";
 require_once "models/fuentepoder.modelo.php";
+require_once "models/plc.modelo.php";
+require_once "models/manifold.modelo.php";
+
+
 $template = new ControllerTemplate();
 $template -> template();
 ?>

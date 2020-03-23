@@ -71,7 +71,16 @@ $estado=true;
 			return "error";
 		}
 	}
-	static public function mdlEliminarTableroelectrico($tabla, $id_tableroelectrico) {
+	static public function mdlEliminarTautomatico($tabla, $id_tautomatico) {
+		$sql = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_telectrico_automatico = :id");
+		$sql->bindParam(":id", $id_tautomatico, PDO::PARAM_INT);
+		if( $sql->execute()) {
+			return "ok";
+		} else {
+			return "error";
+		}
+	}
+		static public function mdlEliminarTableroelectrico($tabla, $id_tableroelectrico) {
 		$sql = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_tableroelectrico = :id");
 		$sql->bindParam(":id", $id_tableroelectrico, PDO::PARAM_INT);
 		if( $sql->execute()) {
@@ -86,6 +95,7 @@ $estado=true;
 		$sql -> execute();
 		return $sql -> fetch();
 	}
+
 		static public function mdlEditarTableroautomaticos($tabla, $id_tableroelectrico) {
 		$sql = Conexion::conectar()->prepare("SELECT * FROM $tabla t INNER JOIN automatico a ON a.id_automatico=t.tipo_automatico WHERE t.id_tablero_electrico = :id");
 		$sql->bindParam(":id", $id_tableroelectrico, PDO::PARAM_INT);
