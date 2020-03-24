@@ -58,6 +58,16 @@ list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 		$respuesta = ModeloTableroelectrico::mdlEliminarTautomatico($tabla, $id_tautomatico);
 		return $respuesta;
 	}
+		static public function ctrEliminarTfuente($id_tfuente) {
+		$tabla = "telectrico_fuente";
+		$respuesta = ModeloTableroelectrico::mdlEliminarTfuente($tabla, $id_tfuente);
+		return $respuesta;
+	}
+		static public function ctrEliminarTvdf($id_tvdf) {
+		$tabla = "telectrico_vdf";
+		$respuesta = ModeloTableroelectrico::mdlEliminarTvdf($tabla, $id_tvdf);
+		return $respuesta;
+	}
 	static public function ctrEditarTableroelectrico($id_tableroelectrico) {
 		$tabla = "tableroelectrico";
 		$respuesta = ModeloTableroelectrico::mdlEditarTableroelectrico($tabla, $id_tableroelectrico);
@@ -66,6 +76,16 @@ list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 		static public function ctrEditarTableroautomaticos($id_tableroelectrico) {
 		$tabla = "telectrico_automatico";
 		$respuesta = ModeloTableroelectrico::mdlEditarTableroautomaticos($tabla, $id_tableroelectrico);
+		return $respuesta;
+	}
+		static public function ctrEditarTablerofuente($id_tableroelectrico) {
+		$tabla = "telectrico_fuente";
+		$respuesta = ModeloTableroelectrico::mdlEditarTablerofuente($tabla, $id_tableroelectrico);
+		return $respuesta;
+	}
+		static public function ctrEditarTablerovdf($id_tableroelectrico) {
+		$tabla = "telectrico_vdf";
+		$respuesta = ModeloTableroelectrico::mdlEditarTablerovdf($tabla, $id_tableroelectrico);
 		return $respuesta;
 	}
 	static public function ctrActualizarTableroelectrico($datos) {

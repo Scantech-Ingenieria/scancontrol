@@ -80,6 +80,23 @@ $estado=true;
 			return "error";
 		}
 	}
+	static public function mdlEliminarTfuente($tabla, $id_tfuente) {
+		$sql = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_telectrico_fuente = :id");
+		$sql->bindParam(":id", $id_tfuente, PDO::PARAM_INT);
+		if( $sql->execute()) {
+			return "ok";
+		} else {
+			return "error";
+		}
+	}	static public function mdlEliminarTvdf($tabla, $id_tvdf) {
+		$sql = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_telectrico_vdf = :id");
+		$sql->bindParam(":id", $id_tvdf, PDO::PARAM_INT);
+		if( $sql->execute()) {
+			return "ok";
+		} else {
+			return "error";
+		}
+	}
 		static public function mdlEliminarTableroelectrico($tabla, $id_tableroelectrico) {
 		$sql = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_tableroelectrico = :id");
 		$sql->bindParam(":id", $id_tableroelectrico, PDO::PARAM_INT);
@@ -102,22 +119,33 @@ $estado=true;
 		$sql -> execute();
 		return $sql -> fetchAll();
 	}
+			static public function mdlEditarTablerovdf($tabla, $id_tableroelectrico) {
+		$sql = Conexion::conectar()->prepare("SELECT * FROM $tabla t INNER JOIN variador_frecuencia a ON a.id_vdf=t.tipo_vdf WHERE t.id_tablero_electrico = :id");
+		$sql->bindParam(":id", $id_tableroelectrico, PDO::PARAM_INT);
+		$sql -> execute();
+		return $sql -> fetchAll();
+	}
+
+		static public function mdlEditarTablerofuente($tabla, $id_tableroelectrico) {
+		$sql = Conexion::conectar()->prepare("SELECT * FROM $tabla t INNER JOIN fuentepoder f ON f.id_fuentepoder=t.tipo_fuente WHERE t.id_tablero_electrico = :id");
+		$sql->bindParam(":id", $id_tableroelectrico, PDO::PARAM_INT);
+		$sql -> execute();
+		return $sql -> fetchAll();
+	}
 	static public function mdlActualizarTableroelectrico($tabla, $datos,$rutaImagen) {
 		if( is_null($rutaImagen)) {
-			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET numero_serie = :numeroserie,superficie =:superficie,paso =:paso, descripcion = :descripcion,ancho = :ancho,material=:material WHERE id_tableroelectrico = :id");
-			$sql->bindParam(":numeroserie", $datos["numeroserie"], PDO::PARAM_STR);
-			$sql->bindParam(":superficie", $datos["superficie"], PDO::PARAM_STR);
-			$sql->bindParam(":paso", $datos["paso"], PDO::PARAM_STR);
-			$sql->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
+			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET altura = :altura,ancho =:ancho,fondo =:fondo, contactor = :contactor WHERE id_tableroelectrico = :id");
+			$sql->bindParam(":altura", $datos["altura"], PDO::PARAM_STR);
 			$sql->bindParam(":ancho", $datos["ancho"], PDO::PARAM_STR);
-			$sql->bindParam(":material", $datos["material"], PDO::PARAM_STR);
+			$sql->bindParam(":fondo", $datos["fondo"], PDO::PARAM_STR);
+			$sql->bindParam(":contactor", $datos["contactor"], PDO::PARAM_STR);
 			$sql->bindParam(":id", $datos["id_tableroelectrico"], PDO::PARAM_INT);
 }else{
-		$sql = Conexion::conectar()->prepare("UPDATE $tabla SET numero_serie = :numeroserie,superficie = :superficie,paso = :paso,descripcion = :descripcion,ancho = :ancho,material=:material, rutaImg = :rutaNueva WHERE id_tableroelectrico = :id");
-			$sql->bindParam(":numeroserie", $datos["numeroserie"], PDO::PARAM_STR);
-			$sql->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
+		$sql = Conexion::conectar()->prepare("UPDATE $tabla SET altura = :altura,ancho =:ancho,fondo =:fondo, contactor = :contactor, rutaImg = :rutaNueva WHERE id_tableroelectrico = :id");
+		$sql->bindParam(":altura", $datos["altura"], PDO::PARAM_STR);
 			$sql->bindParam(":ancho", $datos["ancho"], PDO::PARAM_STR);
-			$sql->bindParam(":material", $datos["material"], PDO::PARAM_STR);
+			$sql->bindParam(":fondo", $datos["fondo"], PDO::PARAM_STR);
+			$sql->bindParam(":contactor", $datos["contactor"], PDO::PARAM_STR);
 			$sql->bindParam(":rutaNueva", $rutaImagen, PDO::PARAM_STR);
 			$sql->bindParam(":id", $datos["id_tableroelectrico"], PDO::PARAM_INT);
 }

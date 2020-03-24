@@ -100,7 +100,7 @@ echo '<td>'.nl2br($value["ancho"]).'</td>
 <td width="100"> <button class="btn btn-sm btn-info btnEditarTableroelectrico" idTableroelectrico="'.$value["id_tableroelectrico"].'" data-toggle="modal" data-target="#modal-editar-tableroelectrico">
                     <i class="far fa-edit"></i>
                   </button>
-    <button class="btn btn-sm btn-danger btnEliminarSprockets" idSprockets="'.$value["id_sprockets"].'"rutaImagen="'.$value["rutaImg"].'">
+    <button class="btn btn-sm btn-danger btnEliminarTableroelectrico" idTableroelectrico="'.$value["id_tableroelectrico"].'"rutaImagen="'.$value["rutaImg"].'">
                     <i class="far fa-trash-alt"></i>
     </button>
     </td>

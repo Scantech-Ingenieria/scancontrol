@@ -26,28 +26,27 @@
     <div  id="mi_lista" class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
 <?php
      include 'modulos/header.php';
-     include 'views/modulos/modales/modales-automatico.php';
-     include 'views/modulos/modales/modales-tabla.php';
-     include 'views/modulos/modales/modales-cliente.php';
-     include 'views/modulos/modales/modales-alimentacion.php';
-     include 'views/modulos/modales/modales-bandas.php';
-     include 'views/modulos/modales/modales-paletas.php';
-     include 'views/modulos/modales/modales-sprockets.php';
-     include 'views/modulos/modales/modales-vdf.php';
-     include 'views/modulos/modales/modales-aceleracion.php';
-     include 'views/modulos/modales/modales-descarga.php';
-     include 'views/modulos/modales/modales-calidad.php';
-     include 'views/modulos/modales/modales-registros.php';
-     include 'views/modulos/modales/modales-rodamientos.php';
-     include 'views/modulos/modales/modales-sensor.php';
-     include 'views/modulos/modales/modales-pesaje.php';
-     include 'views/modulos/modales/modales-tableroelectrico.php';
-     include 'views/modulos/modales/modales-fuentepoder.php';
-     include 'views/modulos/modales/modales-plc.php';
-     include 'views/modulos/modales/modales-manifold.php';
+     // include 'views/modulos/modales/modales-automatico.php';
+     // include 'views/modulos/modales/modales-tabla.php';
+     // include 'views/modulos/modales/modales-cliente.php';
+     // include 'views/modulos/modales/modales-alimentacion.php';
+     // include 'views/modulos/modales/modales-bandas.php';
+     // include 'views/modulos/modales/modales-paletas.php';
+     // include 'views/modulos/modales/modales-sprockets.php';
+     // include 'views/modulos/modales/modales-vdf.php';
+     // include 'views/modulos/modales/modales-aceleracion.php';
+     // include 'views/modulos/modales/modales-descarga.php';
+     // include 'views/modulos/modales/modales-calidad.php';
+     // include 'views/modulos/modales/modales-registros.php';
+     // include 'views/modulos/modales/modales-rodamientos.php';
+     // include 'views/modulos/modales/modales-sensor.php';
+     // include 'views/modulos/modales/modales-pesaje.php';
+     // include 'views/modulos/modales/modales-tableroelectrico.php';
+     // include 'views/modulos/modales/modales-fuentepoder.php';
+     // include 'views/modulos/modales/modales-plc.php';
+     // include 'views/modulos/modales/modales-manifold.php';
 
-
-
+  include "modulos/modales/modales-".$_GET["ruta"].".php";
 
       ?>
             <div class="app-main">
@@ -60,6 +59,7 @@
       if( isset($_GET["ruta"])) {
         $enrutar = new ControllerEnrutamiento();
         $enrutar -> enrutamiento();
+
 
       }
  ?>
@@ -90,10 +90,6 @@
 <script type="text/javascript" src="views/dist/js/fuentepoder.js"></script>
 <script type="text/javascript" src="views/dist/js/plc.js"></script>
 <script type="text/javascript" src="views/dist/js/manifold.js"></script>
-
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="views/dist/js/rutaAmigable.js"></script>
 </body>

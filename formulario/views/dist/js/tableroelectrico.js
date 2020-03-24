@@ -26,9 +26,13 @@ $(document).ready(function(){
 			}
 		})
 	})
+
 	$("#formu-editar-tableroelectrico").submit(function (e) {
 		e.preventDefault()
 		var datos = new FormData($(this)[0])
+
+
+
 		$.ajax({
 			url: 'ajax/ajaxTableroelectrico.php',
 			type: 'POST',
@@ -71,7 +75,7 @@ $('#formu-editar-tableroelectrico input[name="Altura"]').val(valor.altura)
 $('#formu-editar-tableroelectrico input[name="Fondo"]').val(valor.fondo)
 $('#formu-editar-tableroelectrico input[name="Ancho"]').val(valor.ancho)
 $('#formu-editar-tableroelectrico input[name="Contactor"]').val(valor.contactor)
-$('#formu-editar-tableroelectrico #imgTableroElectricoEditar').attr("src", valor.imagen)
+$('#formu-editar-tableroelectrico #imgTableroElectrico').attr("src", valor.imagen)
 $('#formu-editar-tableroelectrico input[name="rutaActual"]').val(valor.imagen)
 			}
 		})
@@ -171,18 +175,113 @@ console.log(valor)
 		  }
 		})
 	})
+$("body #dinamifuente").on("click", ".Eliminar_fuente", function(){
+		var idFuente = $(this).attr("idFuente")
+		var idtablero = $(this).attr("idtablero")
 
+		var datos = new FormData()
+		datos.append("id_fuente", idFuente)
+		datos.append("tipoOperacion", "eliminarTfuente")
+	console.log(idFuente)
+		Swal.fire({
+		    width: 400,
+		  padding:'2em',
+		  text: "Estas seguro de eliminar!",
+		  icon: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Si, Elimina!'
+		}).then((result) => {
+		  if (result.value) {
+		  	$.ajax({
+				url: 'ajax/ajaxTableroelectrico.php',
+				type: 'POST',
+				data: datos,
+				processData: false,
+				contentType: false,
+				success: function(respuesta) {
+					if ( respuesta == "ok") {
+						Swal.fire(
+					      'Eliminado!',
+					      'Elemento Eliminado.',
+					      'success'
+					
+					    ).then((result) => {
+						  if (result.value) {
+						  $("#example").load(" #example");
+				
+				var valor = $('.btnEditarTableroelectrico').attr("idtableroelectrico",10).click();  
+		 
+console.log(valor)
+
+						  }
+						})
+					}
+				}
+			})
+		  }
+		})
+	})
+$("body #dinamivdf").on("click", ".Eliminar_vdf", function(){
+		var idVdf = $(this).attr("idVdf")
+
+
+		var datos = new FormData()
+		datos.append("id_vdf", idVdf)
+		datos.append("tipoOperacion", "eliminarTvdf")
+	console.log(idVdf)
+		Swal.fire({
+		    width: 400,
+		  padding:'2em',
+		  text: "Estas seguro de eliminar!",
+		  icon: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Si, Elimina!'
+		}).then((result) => {
+		  if (result.value) {
+		  	$.ajax({
+				url: 'ajax/ajaxTableroelectrico.php',
+				type: 'POST',
+				data: datos,
+				processData: false,
+				contentType: false,
+				success: function(respuesta) {
+					if ( respuesta == "ok") {
+						Swal.fire(
+					      'Eliminado!',
+					      'Elemento Eliminado.',
+					      'success'
+					
+					    ).then((result) => {
+						  if (result.value) {
+						  $("#example").load(" #example");
+				
+				var valor = $('.btnEditarTableroelectrico').attr("idtableroelectrico",10).click();  
+		 
+console.log(valor)
+
+						  }
+						})
+					}
+				}
+			})
+		  }
+		})
+	})
 
 	// PREVISUALIZAR IMAGENES
 	$("#imagenTableroelectrico").change(previsualizarImg)
-	$("#imagenEditar1").change(previsualizarImg)
+	$("#imagenTableroelectricoEditar").change(previsualizarImg)
 	function previsualizarImg(e) {
 		var contenedor = e.target.parentNode
 		var identificador = contenedor.classList[1]
 		imgSlider = this.files[0];
 		if ( imgSlider["type"] != "image/jpeg" && imgSlider["type"] != "image/png" && imgSlider["type"] != "video/mp4") {
 				$("#imagenTableroelectrico").val("")
-				$("#imagenEditar1").val("")
+				$("#imagenTableroelectricoEditar").val("")
 			Swal.fire(
 					  'No es un archivo valido',
 					      'Debe subir archivos formato JPEG , PNG',
