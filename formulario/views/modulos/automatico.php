@@ -24,6 +24,7 @@
                 <th>Amperaje</th>
                 <th>Marca</th>
                 <th>Tipo</th>
+                <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -37,10 +38,12 @@
 <td>'.nl2br($value["amperaje"]).'</td>
 <td>'.nl2br($value["marca"]).'</td>
 <td>'.nl2br($value["tipo"]).'</td>
+<td><img width="200" src="'.substr($value["rutaImg"], 3).'"></td>
+
 <td width="100"> <button class="btn btn-sm btn-info btnEditarAutomatico" idAutomatico="'.$value["id_automatico"].'" data-toggle="modal" data-target="#modal-editar-automatico">
                     <i class="far fa-edit"></i>
                   </button>
-    <button class="btn btn-sm btn-danger btnEliminarAutomatico" idAutomatico="'.$value["id_automatico"].'">
+    <button class="btn btn-sm btn-danger btnEliminarAutomatico" rutaImagen="'.$value["rutaImg"].'" idAutomatico="'.$value["id_automatico"].'">
                     <i class="far fa-trash-alt"></i>
     </button>
     </td>

@@ -22,10 +22,13 @@
               <input type="text" class="form-control" placeholder="Marca" name="Marca">
             </div>
           </div>
-       
-      
-
-
+             <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Imagen</label>
+            <div class="col-sm-10 conteNuevaImagen">
+              <input type="file" class="form-control"  id="imagenVdf" name="imagenVdf" required>
+              <img src="" id="imgVdf" alt="" class="thumbnail" width="200" style="display: none">
+            </div>
+          </div>
           <input type="hidden" name="tipoOperacion" value="insertarvdf">
       </div>
       <div class="modal-footer">
@@ -36,8 +39,6 @@
     </div>
   </div>
 </div>
-
-
 
 
 <!-- EDITAR SLIDER -->
@@ -65,9 +66,15 @@
               <input type="text" class="form-control" placeholder="Marca" name="Marca">
             </div>
           </div>
-
+             <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Imagen</label>
+            <div class="col-sm-10 conteNuevaImagen">
+              <input type="file" class="form-control"  id="imagenVdfEditar" name="imagenVdf" >
+              <img src="" id="imgVdf" alt="" class="thumbnail" width="200" >
+            </div>
+          </div>
           <input type="hidden" name="tipoOperacion" value="actualizarVdf">
-  
+          <input type="hidden" name="rutaActual">
           <input type="hidden" name="id_vdf">
       </div>
       <div class="modal-footer">

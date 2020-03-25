@@ -6,7 +6,9 @@ Class ajaxAutomatico {
 		$datos = array(
 						"amperaje"=>$this->amperaje,
 						"marca"=>$this->marca,
-						"tipo"=>$this->tipo
+						"tipo"=>$this->tipo,
+						"imagen"=>$this->imagen_automatico
+
 					);
 		$respuesta = ControllerAutomatico::ctrCrearAutomatico($datos);
 		echo $respuesta;
@@ -17,7 +19,9 @@ Class ajaxAutomatico {
 		$datos = array("id_automatico"=>$respuesta["id_automatico"],
 						"amperaje"=>$respuesta["amperaje"],
 						"marca"=>$respuesta["marca"],
-						"tipo"=>$respuesta["tipo"]
+						"tipo"=>$respuesta["tipo"],
+				        "imagen"=>substr($respuesta["rutaImg"], 3)
+
 						);
 
 		echo json_encode($datos);
@@ -26,14 +30,18 @@ Class ajaxAutomatico {
 		$datos = array( "id_automatico"=>$this->id_automatico,
 						"amperaje"=>$this->amperaje,
 						"marca"=>$this->marca,
-						"tipo"=>$this->tipo
+						"tipo"=>$this->tipo,
+						"imagen"=>$this->imagen_automatico,		
+						"rutaActual"=>$this->rutaActual
 						);
 		$respuesta = ControllerAutomatico::ctrActualizarAutomatico($datos);
 		echo $respuesta;
 	}
 	public function eliminarAutomatico(){
 		$id_automatico = $this->id_automatico;
-		$respuesta = ControllerAutomatico::ctrEliminarAutomatico($id_automatico);
+		$ruta = $this->imagen_automatico;
+
+		$respuesta = ControllerAutomatico::ctrEliminarAutomatico($id_automatico,$ruta);
 		echo $respuesta;
 	}
 }
@@ -43,6 +51,7 @@ if($tipoOperacion == "insertarautomatico") {
 	$crearNuevoAutomatico -> amperaje = $_POST["Amperaje"];
 	$crearNuevoAutomatico -> marca = $_POST["Marca"];
 	$crearNuevoAutomatico -> tipo = $_POST["Tipo"];
+    $crearNuevoAutomatico -> imagen_automatico = $_FILES["imagenAutomatico"];
 	$crearNuevoAutomatico ->crearAutomatico();
 }
 if ($tipoOperacion == "editarAutomatico") {
@@ -56,11 +65,14 @@ if ($tipoOperacion == "actualizarAutomatico") {
 	$actualizarAutomatico -> amperaje = $_POST["Amperaje"];
 	$actualizarAutomatico -> marca = $_POST["Marca"];
 	$actualizarAutomatico -> tipo = $_POST["Tipo"];
+	$actualizarAutomatico -> imagen_automatico = $_FILES["imagenAutomatico"];
+	$actualizarAutomatico -> rutaActual = $_POST["rutaActual"];
 	$actualizarAutomatico -> actualizarAutomatico();
 }
 if ($tipoOperacion == "eliminarAutomatico") {
 	$eliminarAutomatico = new ajaxAutomatico();
 	$eliminarAutomatico -> id_automatico = $_POST["id_automatico"];
+	$eliminarAutomatico -> imagen_automatico = $_POST["rutaImagen"];
 	$eliminarAutomatico -> eliminarAutomatico();
 }
 

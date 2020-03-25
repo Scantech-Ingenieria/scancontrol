@@ -24,6 +24,8 @@
                 <th>ID</th>
                 <th>Potencia</th>
                 <th>Marca</th>
+                <th>Img</th>
+
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -37,10 +39,12 @@
 <td>'.nl2br($value["id_vdf"]).'</td>
 <td>'.nl2br($value["potencia"]).'</td>
 <td>'.nl2br($value["marca"]).'</td>
+<td><img width="200" src="'.substr($value["rutaImg"], 3).'"></td>
+
 <td width="100"> <button class="btn btn-sm btn-info btnEditarVdf" idVdf="'.$value["id_vdf"].'" data-toggle="modal" data-target="#modal-editar-vdf">
                     <i class="far fa-edit"></i>
                   </button>
-    <button class="btn btn-sm btn-danger btnEliminarVdf" idVdf="'.$value["id_vdf"].'">
+    <button class="btn btn-sm btn-danger btnEliminarVdf"  rutaImagen="'.$value["rutaImg"].'" idVdf="'.$value["id_vdf"].'">
                     <i class="far fa-trash-alt"></i>
     </button>
     </td>

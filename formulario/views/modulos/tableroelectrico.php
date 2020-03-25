@@ -38,13 +38,13 @@ a:hover #img {
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Alt</th>
+                <th>Alt-Anch-Fond</th>
+            
+                <th>Contactor</th>
                 <th>Cantidad / Tipo Automaticos</th>
                 <th>Fuente Poder</th>
                 <th>Cantidad / Tipo VDF</th>
-                <th>Ancho</th>
-                <th>Fondo</th>
-                <th>Contactor</th>
+                
                 <th>Img</th>
                 <th>Acciones</th>
             </tr>
@@ -59,7 +59,8 @@ $id_tableroelectrico=$value["id_tableroelectrico"];
             echo '
 <tr>
 <td>'.nl2br($value["id_tableroelectrico"]).'</td>
-<td>'.nl2br($value["altura"]).'</td>';
+<td>'.nl2br($value["altura"]).'x'.nl2br($value["ancho"]).'x'.nl2br($value["fondo"]).' </td>';
+echo '<td>'.nl2br($value["contactor"]).'</td>';
 echo '<td>';
   $tablaautomatico = ControllerTableroelectrico::listarTelectricoautomaticoCtr();
 foreach ($tablaautomatico as $key => $valor) {
@@ -93,9 +94,8 @@ if ($idtablavdf==$id_tableroelectrico) {
 }
 
 echo '</td>';
-echo '<td>'.nl2br($value["ancho"]).'</td>
-<td>'.nl2br($value["fondo"]).'</td>
-<td>'.nl2br($value["contactor"]).'</td>
+
+echo '
 <td><img width="100" src="'.substr($value["rutaImg"], 3).'"></td>
 <td width="100"> <button class="btn btn-sm btn-info btnEditarTableroelectrico" idTableroelectrico="'.$value["id_tableroelectrico"].'" data-toggle="modal" data-target="#modal-editar-tableroelectrico">
                     <i class="far fa-edit"></i>

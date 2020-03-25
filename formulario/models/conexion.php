@@ -5,13 +5,13 @@ class Conexion {
 	public function Conectar () {
 
 
-		$link = new PDO("mysql:host=localhost;dbname=scancontrol",
-			"root",
-			"",
+		// $link = new PDO("mysql:host=localhost;dbname=scancontrol",
+		// 	"root",
+		// 	"",
 
-		// $link = new PDO("mysql:host=localhost;dbname=scantech_api",
-		// 	"scantech",
-		// 	"Scan2018",
+		$link = new PDO("mysql:host=localhost;dbname=scantech_api",
+			"scantech",
+			"Scan2018",
 		// $link = new PDO("mysql:host=localhost;dbname=fundac78_principal",
 		// 	"fundac78_fundac78",
 		// 	"gW]{&&iPjK3c",

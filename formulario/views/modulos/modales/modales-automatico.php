@@ -29,9 +29,13 @@
               <input type="text" class="form-control" placeholder="Tipo" name="Tipo">
             </div>
           </div>
-      
-
-
+            <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Imagen</label>
+            <div class="col-sm-10 conteNuevaImagen">
+              <input type="file" class="form-control"  id="imagenAutomatico" name="imagenAutomatico" required>
+              <img src="" id="imgAutomatico" alt="" class="thumbnail" width="200" style="display: none">
+            </div>
+          </div>
           <input type="hidden" name="tipoOperacion" value="insertarautomatico">
       </div>
       <div class="modal-footer">
@@ -42,10 +46,6 @@
     </div>
   </div>
 </div>
-
-
-
-
 <!-- EDITAR SLIDER -->
 <div class="modal fade" id="modal-editar-automatico"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -78,10 +78,15 @@
               <input type="text" class="form-control" placeholder="Tipo" name="Tipo">
             </div>
           </div>
-      
-
+                <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Imagen</label>
+            <div class="col-sm-10 conteNuevaImagen">
+              <input type="file" class="form-control"  id="imagenAutomaticoEditar" name="imagenAutomatico" >
+              <img src="" id="imgAutomatico" alt="" class="thumbnail" width="200" >
+            </div>
+          </div>
           <input type="hidden" name="tipoOperacion" value="actualizarAutomatico">
-  
+          <input type="hidden" name="rutaActual">
           <input type="hidden" name="id_automatico">
       </div>
       <div class="modal-footer">

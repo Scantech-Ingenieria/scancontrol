@@ -142,7 +142,7 @@ Unidades Balanza                                        <i class="metismenu-stat
                                     </a>
                                     <ul>
                                        <li>
-                                            <a href="vdf">
+                                            <a href="tableroneumatico">
                                                 <i class="metismenu-icon"></i>
                                                 Registro Tablero N.
                                             </a>
