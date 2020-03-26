@@ -4,7 +4,12 @@ require_once "../models/cilindros.modelo.php";
 Class ajaxCilindros {
 	public function crearCilindros(){
 		$datos = array(
-						"modelo"=>$this->modelo,
+						"nombre"=>$this->nombre,
+						"diametro"=>$this->diametro,
+						"largo"=>$this->largo,
+						"materialcuerpo"=>$this->materialcuerpo,
+						"materialvastago"=>$this->materialvastago,
+						"medidahilo"=>$this->medidahilo,
 						"imagen"=>$this->imagen_cilindros
 				
 					);
@@ -40,7 +45,12 @@ Class ajaxCilindros {
 $tipoOperacion = $_POST["tipoOperacion"];
 if($tipoOperacion == "insertarcilindros") {
 	$crearNuevoCilindros = new ajaxCilindros();
-	$crearNuevoCilindros -> modelo = $_POST["Modelo"];
+	$crearNuevoCilindros -> nombre = $_POST["Nombre"];
+	$crearNuevoCilindros -> diametro = $_POST["Diametro"];
+	$crearNuevoCilindros -> largo = $_POST["Largo"];
+	$crearNuevoCilindros -> materialcuerpo = $_POST["MaterialCuerpo"];
+	$crearNuevoCilindros -> materialvastago = $_POST["MaterialVastago"];
+	$crearNuevoCilindros -> medidahilo = $_POST["MedidaHilo"];
     $crearNuevoCilindros -> imagen_cilindros = $_FILES["imagenCilindros"];
 	$crearNuevoCilindros ->crearCilindros();
 }
