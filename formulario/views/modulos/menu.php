@@ -1,3 +1,12 @@
+ 
+               <div class="ui-theme-settings">
+       
+            <div class="theme-settings__inner">
+                <div class="scrollbar-container">
+                
+                </div>
+            </div>
+        </div> 
      <div class="app-sidebar sidebar-shadow">
                     <div class="app-header__logo">
                         <div class="logo-src"></div>
@@ -191,6 +200,12 @@ Unidades Balanza                                        <i class="metismenu-stat
                                        Sensores
                                     </a>
                                 </li> 
+                                    <li id="tab-cilindros">
+                                    <a href="cilindros" >
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                       Cilindros
+                                    </a>
+                                </li> 
                                  <li class="app-sidebar__heading">Datos</li>
                                     <li id="tab-clientes">
                                     <a href="clientes" >
@@ -208,3 +223,5 @@ Unidades Balanza                                        <i class="metismenu-stat
                         </div>
                     </div>
                 </div>  
+
+         

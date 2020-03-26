@@ -25,7 +25,7 @@ require_once "controllers/tableroelectrico.controller.php";
 require_once "controllers/fuentepoder.controller.php";
 require_once "controllers/plc.controller.php";
 require_once "controllers/manifold.controller.php";
-
+require_once "controllers/cilindros.controller.php";
 
 
 require_once "models/alimentacion.modelo.php";
@@ -47,6 +47,8 @@ require_once "models/tableroelectrico.modelo.php";
 require_once "models/fuentepoder.modelo.php";
 require_once "models/plc.modelo.php";
 require_once "models/manifold.modelo.php";
+require_once "models/cilindros.modelo.php";
+
 
 
 $template = new ControllerTemplate();

@@ -22,7 +22,9 @@ class ControllerEnrutamiento {
          $ruta == "fuentepoder"||
          $ruta == "plc"||
          $ruta == "manifold"||
-         $ruta == "tableroneumatico"
+         $ruta == "tableroneumatico"||
+         $ruta == "cilindros"
+
 
 
 
