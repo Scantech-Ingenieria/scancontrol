@@ -21,14 +21,24 @@ Class ajaxCilindros {
 		$id_cilindros = $this->id_cilindros;
 		$respuesta = ControllerCilindros::ctrEditarCilindros($id_cilindros);
 		$datos = array("id_cilindros"=>$respuesta["id_cilindros"],		
-				        "modelo"=>$respuesta["modelo"],
+				        "nombre"=>$respuesta["nombre"],
+				        "diametro"=>$respuesta["diametro"],
+				        "largo"=>$respuesta["largo"],
+				        "materialcuerpo"=>$respuesta["materialcuerpo"],
+				        "materialvastago"=>$respuesta["materialvastago"],
+				        "medidahilo"=>$respuesta["medidahilo"],
 				        "imagen"=>substr($respuesta["rutaImg"], 3)
 						);
 		echo json_encode($datos);
 	}
 	public function actualizarCilindros(){
 		$datos = array( "id_cilindros"=>$this->id_cilindros,
-						"modelo"=>$this->modelo,
+						"nombre"=>$this->nombre,
+						"diametro"=>$this->diametro,
+						"largo"=>$this->largo,
+						"materialcuerpo"=>$this->materialcuerpo,
+						"materialvastago"=>$this->materialvastago,
+						"medidahilo"=>$this->medidahilo,
 						"imagen"=>$this->imagen_cilindros,		
 						"rutaActual"=>$this->rutaActual		
 						);
@@ -63,7 +73,12 @@ if ($tipoOperacion == "editarCilindros") {
 if ($tipoOperacion == "actualizarCilindros") {
 	$actualizarCilindros = new ajaxCilindros();
 	$actualizarCilindros -> id_cilindros = $_POST["id_cilindros"];
-	$actualizarCilindros -> modelo = $_POST["Modelo"];
+	$actualizarCilindros -> nombre = $_POST["Nombre"];
+	$actualizarCilindros -> diametro = $_POST["Diametro"];
+	$actualizarCilindros -> largo = $_POST["Largo"];
+	$actualizarCilindros -> materialcuerpo = $_POST["MaterialCuerpo"];
+	$actualizarCilindros -> materialvastago = $_POST["MaterialVastago"];
+	$actualizarCilindros -> medidahilo = $_POST["MedidaHilo"];
     $actualizarCilindros -> imagen_cilindros = $_FILES["imagenCilindros"];
 	$actualizarCilindros -> rutaActual = $_POST["rutaActual"];
 	$actualizarCilindros -> actualizarCilindros();

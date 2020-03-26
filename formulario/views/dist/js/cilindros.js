@@ -67,7 +67,14 @@ $(document).ready(function(){
 				console.log(valor.id_cilindros)
 				console.log(valor.imagen)
 				$('#formu-editar-cilindros input[name="id_cilindros"]').val(valor.id_cilindros)
-				$('#formu-editar-cilindros input[name="Modelo"]').val(valor.modelo)
+				$('#formu-editar-cilindros input[name="Nombre"]').val(valor.nombre)
+				$('#formu-editar-cilindros input[name="Diametro"]').val(valor.diametro)
+				$('#formu-editar-cilindros input[name="Largo"]').val(valor.largo)
+				$('#formu-editar-cilindros input[name="MaterialCuerpo"]').val(valor.materialcuerpo)
+				$('#formu-editar-cilindros input[name="MaterialVastago"]').val(valor.materialvastago)
+				$('#formu-editar-cilindros input[name="MedidaHilo"]').val(valor.medidahilo)
+
+
 				$('#formu-editar-cilindros #imgCilindros').attr("src", valor.imagen)
 				$('#formu-editar-cilindros input[name="rutaActual"]').val(valor.imagen)
 			}

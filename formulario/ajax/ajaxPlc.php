@@ -5,6 +5,7 @@ Class ajaxPlc {
 	public function crearPlc(){
 		$datos = array(
 						"modelo"=>$this->modelo,
+						"descripcion"=>$this->descripcion,
 						"imagen"=>$this->imagen_plc
 				
 					);
@@ -17,6 +18,7 @@ Class ajaxPlc {
 		$respuesta = ControllerPlc::ctrEditarPlc($id_plc);
 		$datos = array("id_plc"=>$respuesta["id_plc"],		
 				        "modelo"=>$respuesta["modelo"],
+				        "descripcion"=>$respuesta["descripcion"],
 				        "imagen"=>substr($respuesta["rutaImg"], 3)
 						);
 		echo json_encode($datos);
@@ -24,6 +26,7 @@ Class ajaxPlc {
 	public function actualizarPlc(){
 		$datos = array( "id_plc"=>$this->id_plc,
 						"modelo"=>$this->modelo,
+						"descripcion"=>$this->descripcion,
 						"imagen"=>$this->imagen_plc,		
 						"rutaActual"=>$this->rutaActual		
 						);
@@ -41,6 +44,7 @@ $tipoOperacion = $_POST["tipoOperacion"];
 if($tipoOperacion == "insertarplc") {
 	$crearNuevoPlc = new ajaxPlc();
 	$crearNuevoPlc -> modelo = $_POST["Modelo"];
+	$crearNuevoPlc -> descripcion = $_POST["Descripcion"];
     $crearNuevoPlc -> imagen_plc = $_FILES["imagenPlc"];
 	$crearNuevoPlc ->crearPlc();
 }
@@ -54,6 +58,7 @@ if ($tipoOperacion == "actualizarPlc") {
 	$actualizarPlc = new ajaxPlc();
 	$actualizarPlc -> id_plc = $_POST["id_plc"];
 	$actualizarPlc -> modelo = $_POST["Modelo"];
+	$actualizarPlc -> descripcion = $_POST["Descripcion"];
     $actualizarPlc -> imagen_plc = $_FILES["imagenPlc"];
 	$actualizarPlc -> rutaActual = $_POST["rutaActual"];
 	$actualizarPlc -> actualizarPlc();

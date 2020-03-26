@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+
 Class ControllerCilindros {
 	public function listarCilindrosCtr() {
 		$tabla = "cilindros";
@@ -8,6 +10,9 @@ Class ControllerCilindros {
 	static public function ctrCrearCilindros($datos) {
 		$tabla = "cilindros";
 
+if ($datos["imagen"]["error"] == 4) {
+			$rutaImagen = null;
+		}else{
 list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 		$nuevoAncho = 1024;
 		$nuevoAlto = 768;
@@ -28,14 +33,20 @@ list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 			imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 			imagepng($destino, $rutaImagen);
 		}
+
+		}
+
 		$respuesta = ModeloCilindros::mdlCrearCilindros($tabla, $datos,$rutaImagen);
 		return $respuesta;
 	}
 	static public function ctrEliminarCilindros($id_cilindros,$ruta) {
 		$tabla = "cilindros";
-	if ( unlink($ruta) ) {
-		$respuesta = ModeloCilindros::mdlEliminarCilindros($tabla, $id_cilindros);
+		if ($ruta!='') {
+		unlink($ruta);
 		}
+	
+		$respuesta = ModeloCilindros::mdlEliminarCilindros($tabla, $id_cilindros);
+		
 		return $respuesta;
 	}
 	static public function ctrEditarCilindros($id_cilindros) {

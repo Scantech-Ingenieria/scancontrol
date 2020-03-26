@@ -41,9 +41,9 @@ a:hover #img {
                 <th>Alt-Anch-Fond</th>
             
                 <th>Contactor</th>
-                <th>Cantidad / Tipo Automaticos</th>
+                <th>Cantidad / Tipo Automaticos / Descr</th>
                 <th>Fuente Poder</th>
-                <th>Cantidad / Tipo VDF</th>
+                <th>Cantidad / Tipo VDF / Descr</th>
                 
                 <th>Img</th>
                 <th>Acciones</th>
@@ -66,7 +66,7 @@ echo '<td>';
 foreach ($tablaautomatico as $key => $valor) {
 $idtablaautomatico=$valor["id_tablero_electrico"];
 if ($idtablaautomatico==$id_tableroelectrico) {
-   echo '<div style="background:#f3f6fb;margin-bottom:2px;">'.$valor["cantidad"].' / <label style="font-weight: bold;">A: </label>'.$valor["amperaje"].' <label style="font-weight: bold;">Marca:</label> '.$valor["marca"].' <label style="font-weight: bold;"> Tipo:</label> '.$valor["tipo"].'</div><br>';
+   echo '<div style="background:#f3f6fb;margin-bottom:2px;">'.$valor["cantidad"].' / <label style="font-weight: bold;">A: </label>'.$valor["amperaje"].' <label style="font-weight: bold;">Marca:</label> '.$valor["marca"].' <label style="font-weight: bold;"> Tipo:</label> '.$valor["tipo"].' <label style="font-weight: bold;"> Descripción: </label> '.$valor["descripcion"].'<br>  <a href="#"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valor["rutaImg"], 3).'"></a><br></div><br>';
 }
 }
 echo '</td>';
@@ -77,10 +77,6 @@ $idtablafuente=$valorfuente["id_tablero_electrico"];
 if ($idtablafuente==$id_tableroelectrico) {
    echo '<div style="background:#ffefef;margin-bottom:5px;"><label style="font-weight: bold;">- M:</label> '.$valorfuente["marca"].'<br> <label style="font-weight: bold;">A:</label> '.$valorfuente["amperaje"].'<br>  <label style="font-weight: bold;">C: </label> '.$valorfuente["corriente"].' <br>  <a href="#"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valorfuente["rutaImg"], 3).'"></a><br></div>';
 
-
-  
-
-
 }
 }
 echo '</td>';
@@ -89,7 +85,7 @@ $tablavdf = ControllerTableroelectrico::listarTelectricovdfCtr();
 foreach ($tablavdf as $key => $valorvdf) {
 $idtablavdf=$valorvdf["id_tablero_electrico"];
 if ($idtablavdf==$id_tableroelectrico) {
-   echo '<div style="background:#eaeaea;margin-bottom:5px;"><label style="font-weight: bold;">- P:</label> '.$valorvdf["potencia"].' <label style="font-weight: bold;">M:</label> '.$valorvdf["marca"].'</div>  <br>';
+   echo '<div style="background:#eaeaea;margin-bottom:5px;">'.$valorvdf["cantidad"].' /<label style="font-weight: bold;">- P:</label> '.$valorvdf["potencia"].' <label style="font-weight: bold;">M:</label> '.$valorvdf["marca"].' <label style="font-weight: bold;"> Descripción:</label> '.$valorvdf["descripcion"].'<br>  <a href="#"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valorvdf["rutaImg"], 3).'"></a><br></div>  <br>';
 }
 }
 

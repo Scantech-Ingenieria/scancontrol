@@ -68,6 +68,7 @@ $(document).ready(function(){
 				console.log(valor.imagen)
 				$('#formu-editar-plc input[name="id_plc"]').val(valor.id_plc)
 				$('#formu-editar-plc input[name="Modelo"]').val(valor.modelo)
+				$('#formu-editar-plc textarea[name="Descripcion"]').val(valor.descripcion)
 				$('#formu-editar-plc #imgPlc').attr("src", valor.imagen)
 				$('#formu-editar-plc input[name="rutaActual"]').val(valor.imagen)
 			}

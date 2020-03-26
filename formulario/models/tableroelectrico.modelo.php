@@ -39,12 +39,14 @@ $sqle -> execute();
 $automaticos=count($datos["cantidadautomaticos"]);
 $cantidadautomaticos = $datos["cantidadautomaticos"];
 $tipoautomaticos = $datos["tipoautomaticos"];
+$descripcionautomaticos = $datos["descripcionautomaticos"];
+
 
 	if($automaticos >=1){
 for ($i=0; $i <$automaticos ; $i++) { 
 if ($tipoautomaticos[$i]!='') {
 
-$sqlautomatico = Conexion::conectar()->prepare("INSERT INTO telectrico_automatico(id_tablero_electrico,cantidad,tipo_automatico) VALUES('". $id_tablero."','".$cantidadautomaticos[$i]."', '".$tipoautomaticos[$i]."')");
+$sqlautomatico = Conexion::conectar()->prepare("INSERT INTO telectrico_automatico(id_tablero_electrico,cantidad,tipo_automatico,descripcion) VALUES('". $id_tablero."','".$cantidadautomaticos[$i]."', '".$tipoautomaticos[$i]."','".$descripcionautomaticos[$i]."')");
 $sqlautomatico -> execute();
 }
 }
@@ -62,6 +64,7 @@ $sqlfuentepoder -> execute();
 $vdf=count($datos["cantidadvdf"]);
 $cantidadvdf=$datos["cantidadvdf"];
 $tipovdf=$datos["tipovdf"];
+$descripcionvdf = $datos["descripcionvdf"];
 
 
 if($vdf >=1){
@@ -69,7 +72,7 @@ for ($i=0; $i <$vdf ; $i++) {
 
 if ($tipovdf[$i]!='') {
 
-$sqlvdf = Conexion::conectar()->prepare("INSERT INTO telectrico_vdf(id_tablero_electrico,cantidad,tipo_vdf) VALUES('". $id_tablero."','".$cantidadvdf[$i]."','".$tipovdf[$i]."')");
+$sqlvdf = Conexion::conectar()->prepare("INSERT INTO telectrico_vdf(id_tablero_electrico,cantidad,tipo_vdf,descripcion) VALUES('". $id_tablero."','".$cantidadvdf[$i]."','".$tipovdf[$i]."','".$descripcionvdf[$i]."')");
 $sqlvdf -> execute();
 }
 }
@@ -167,28 +170,24 @@ for ($i=0; $i <$automaticos ; $i++) {
 $id_automatico=$datos['idautomatico'][$i];
 $cantidad=$datos['cantidadautomaticos'][$i];
 $tipo_automatico=$datos['tipoautomaticos'][$i];
-$sqlautomatico = Conexion::conectar()->prepare("UPDATE telectrico_automatico SET cantidad = $cantidad,tipo_automatico = $tipo_automatico WHERE id_telectrico_automatico = '".$id_automatico."'");
+$descripcionautomaticos=$datos['descripcionautomaticos'][$i];
+
+$sqlautomatico = Conexion::conectar()->prepare("UPDATE telectrico_automatico SET cantidad = $cantidad,tipo_automatico = $tipo_automatico,descripcion ='$descripcionautomaticos' WHERE id_telectrico_automatico = '".$id_automatico."'");
 $sqlautomatico -> execute();
 }
 }
-
-
 $automaticoseditar=count($datos["cantidadautomaticoseditar"]);
-
 $cantidadautomaticoseditar=$datos["cantidadautomaticoseditar"];
 $tipoautomaticoseditar=$datos["tipoautomaticoseditar"];
 $id_tableroelectrico=$datos["id_tableroelectrico"];
-
-
+$descripcionautomaticoseditar=$datos['descripcionautomaticoseditar'];
 if($automaticoseditar >=1){
 for ($i=0; $i <$automaticoseditar ; $i++) { 
 
-$sqlautomaticoeditar = Conexion::conectar()->prepare("INSERT INTO telectrico_automatico(id_tablero_electrico,cantidad,tipo_automatico) VALUES('". $id_tableroelectrico."','".$cantidadautomaticoseditar[$i]."', '".$tipoautomaticoseditar[$i]."')");
+$sqlautomaticoeditar = Conexion::conectar()->prepare("INSERT INTO telectrico_automatico(id_tablero_electrico,cantidad,tipo_automatico,descripcion) VALUES('". $id_tableroelectrico."','".$cantidadautomaticoseditar[$i]."', '".$tipoautomaticoseditar[$i]."','".$descripcionautomaticoseditar[$i]."')");
 $sqlautomaticoeditar -> execute();
 }
 }
-
-	# code...
 
 $fuente=count($datos["idfuente"]);
 if($fuente >=1){
@@ -220,8 +219,10 @@ for ($i=0; $i <$vdf ; $i++) {
 $idvdf=$datos['idvdf'][$i];
 $cantidadvdf=$datos['cantidadvdf'][$i];
 $tipovdf=$datos['tipovdf'][$i];
+$descripcionvdf=$datos['descripcionvdf'][$i];
 
-$sqlvdf = Conexion::conectar()->prepare("UPDATE telectrico_vdf SET cantidad = $cantidadvdf,tipo_vdf = $tipovdf WHERE id_telectrico_vdf = '".$idvdf."'");
+
+$sqlvdf = Conexion::conectar()->prepare("UPDATE telectrico_vdf SET cantidad = $cantidadvdf,tipo_vdf = $tipovdf,descripcion = '$descripcionvdf' WHERE id_telectrico_vdf = '".$idvdf."'");
 $sqlvdf -> execute();
 }
 }
@@ -229,12 +230,13 @@ $sqlvdf -> execute();
 $vdfeditar=count($datos["tipovdfeditar"]);
 $tipovdfeditar=$datos["tipovdfeditar"];
 $cantidadvdfeditar=$datos["cantidadvdfeditar"];
+$descripcionvdfeditar=$datos['descripcionvdfeditar'];
 
 
 if($vdfeditar >=1){
 for ($i=0; $i <$vdfeditar ; $i++) { 
 
-$sqlvdfeditar = Conexion::conectar()->prepare("INSERT INTO telectrico_vdf(id_tablero_electrico,cantidad,tipo_vdf) VALUES('". $id_tableroelectrico."','". $cantidadvdfeditar[$i]."', '".$tipovdfeditar[$i]."')");
+$sqlvdfeditar = Conexion::conectar()->prepare("INSERT INTO telectrico_vdf(id_tablero_electrico,cantidad,tipo_vdf,descripcion) VALUES('". $id_tableroelectrico."','". $cantidadvdfeditar[$i]."', '".$tipovdfeditar[$i]."','".$descripcionvdfeditar[$i]."')");
 $sqlvdfeditar -> execute();
 }
 }

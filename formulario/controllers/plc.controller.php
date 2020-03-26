@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+
 Class ControllerPlc {
 	public function listarPlcCtr() {
 		$tabla = "plc";
@@ -7,7 +9,9 @@ Class ControllerPlc {
 	}
 	static public function ctrCrearPlc($datos) {
 		$tabla = "plc";
-
+if ($datos["imagen"]["error"] == 4) {
+			$rutaImagen = null;
+		}else{
 list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 		$nuevoAncho = 1024;
 		$nuevoAlto = 768;
@@ -28,14 +32,17 @@ list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 			imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 			imagepng($destino, $rutaImagen);
 		}
+	}
 		$respuesta = ModeloPlc::mdlCrearPlc($tabla, $datos,$rutaImagen);
 		return $respuesta;
 	}
 	static public function ctrEliminarPlc($id_plc,$ruta) {
 		$tabla = "plc";
-	if ( unlink($ruta) ) {
-		$respuesta = ModeloPlc::mdlEliminarPlc($tabla, $id_plc);
+		if ($ruta!='') {
+		unlink($ruta);
 		}
+		$respuesta = ModeloPlc::mdlEliminarPlc($tabla, $id_plc);
+		
 		return $respuesta;
 	}
 	static public function ctrEditarPlc($id_plc) {

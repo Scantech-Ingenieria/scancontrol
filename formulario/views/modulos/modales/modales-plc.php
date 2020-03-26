@@ -15,11 +15,19 @@
               <input type="text" class="form-control" placeholder="Modelo" name="Modelo">
             </div>
           </div>
+               <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Descripción</label>
+            <div class="col-sm-10">
+             
+              <textarea class="form-control" placeholder="Texto descriptivo"  rows="2" name="Descripcion" ></textarea>
+             
+            </div>
+          </div>
          
               <div class="form-group row">
             <label class="col-sm-2 col-form-label">Imagen</label>
             <div class="col-sm-10 conteNuevaImagen">
-              <input type="file" class="form-control"  id="imagenPlc" name="imagenPlc" required>
+              <input type="file" class="form-control"  id="imagenPlc" name="imagenPlc">
               <img src="" id="imgPlc" alt="" class="thumbnail" width="200" style="display: none">
             </div>
           </div>
@@ -49,6 +57,12 @@
             <label class="col-sm-2 col-form-label">Modelo</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" placeholder="Modelo" name="Modelo">
+            </div>
+          </div>
+                   <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Descripción</label>
+          <div class="col-sm-10">
+              <textarea class="form-control" placeholder="Texto descriptivo"  rows="2" name="Descripcion" ></textarea>  
             </div>
           </div>
              <div class="form-group row">

@@ -42,6 +42,17 @@ echo '<option value="'.$value["id_automatico"].'">Amperaje: '.$value["amperaje"]
             <div class="col-1 col-sm-1">
               <button style="margin-bottom: 2px" type="button" name="agregar" id="agregar" class="btn btn-info" >+</button>
             </div>
+
+            <div class="col-12 col-sm-12">
+            <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Descripción</label>
+            <div class="col-sm-10">
+             
+              <textarea class="form-control" placeholder="Texto descriptivo"  rows="2" name="DescripcionAutomatico[]" ></textarea>
+             
+            </div>
+          </div>
+            </div>
           </div>
           <div id="dinami" style="display: none;"></div>
            <div class="form-group row">
@@ -88,6 +99,16 @@ echo '<option value="'.$value["id_vdf"].'">Potencia: '.$value["potencia"].' / Ma
             <div class="col-1 col-sm-1">
               <button style="margin-bottom: 2px" type="button" name="agregarvdf" id="agregarvdf" class="btn btn-info" >+</button>
             </div>
+            <div class="col-12 col-sm-12" style="margin-top: 15px;">
+            <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Descripción</label>
+            <div class="col-sm-10">
+             
+              <textarea class="form-control" placeholder="Texto descriptivo"  rows="2" name="DescripcionVdf[]" ></textarea>
+             
+            </div>
+          </div>
+            </div>
           </div>
              <div id="dinami3" ></div>
           <div class="form-group row">
@@ -100,7 +121,7 @@ echo '<option value="'.$value["id_vdf"].'">Potencia: '.$value["potencia"].' / Ma
                     <div class="form-group row">
             <label class="col-sm-2 col-form-label">Imagen</label>
             <div class="col-sm-10 conteNuevaImagen">
-              <input type="file" class="form-control"  id="imagenTableroelectrico" name="imagenTableroelectrico" required>
+              <input type="file" class="form-control"  id="imagenTableroelectrico" name="imagenTableroelectrico">
               <img src="" id="imgTableroElectrico" alt="" class="thumbnail" width="200" style="display: none">
             </div>
           </div>
@@ -237,7 +258,7 @@ var e=1;
  $('#agregar').click(function(){
         e++;
 
- $('#dinami').append('<div id="row'+e+'" class="form-group row" style="margin-bottom:0px;"> <label class="col-2 col-sm-2 col-form-label" id="largo">Automaticos Cantidad:</label><div class="col-4 col-sm-4"><input type="text" class="form-control" placeholder="Cantidad" name="Cantidadautomaticos[]"></div><label class="col-1 col-sm-1 col-form-label" id="largo">Tipo</label><div class="col-3 col-sm-4"> <select id="option'+e+'" class="form-control" name="Tipoautomaticos[]" ><option selected disabled>Selecione tipo automatico</option></select></div><div class="col-1 col-sm-1"><button type="button" name="remove" id="'+e+'" class="btn btn-danger btn_remove" >X</button></div></div>').show('slow');
+ $('#dinami').append('<div id="row'+e+'" class="form-group row" style="margin-bottom:0px;"> <label class="col-2 col-sm-2 col-form-label" id="largo">Automaticos Cantidad:</label><div class="col-4 col-sm-4"><input type="text" class="form-control" placeholder="Cantidad" name="Cantidadautomaticos[]"></div><label class="col-1 col-sm-1 col-form-label" id="largo">Tipo</label><div class="col-3 col-sm-4"> <select id="option'+e+'" class="form-control" name="Tipoautomaticos[]" ><option selected disabled>Selecione tipo automatico</option></select></div><div class="col-1 col-sm-1"><button type="button" name="remove" id="'+e+'" class="btn btn-danger btn_remove" >X</button></div><div class="col-12 col-sm-12"><div class="form-group row"><label class="col-sm-2 col-form-label">Descripción</label><div class="col-sm-10"><textarea class="form-control" placeholder="Texto descriptivo"  rows="2" name="DescripcionAutomatico[]" ></textarea></div></div></div></div>').show('slow');
 
 var arrayJS = <?= json_encode($tabla1) ?>;
  for(var i=0;i<arrayJS.length;i++)
@@ -273,7 +294,7 @@ var m=1;
 var n=1; 
  $('#agregarvdf').click(function(){
         n++;
- $('#dinami3').append('<div id="row3'+n+'" class="form-group row" style="margin-bottom:15px;"> <label class="col-2 col-sm-2 col-form-label" id="largo">VDF Cantidad:</label><div class="col-4 col-sm-4"><input type="text" class="form-control" placeholder="Cantidad" name="CantidadVdf[]"></div><label class="col-1 col-sm-1 col-form-label" id="largo">Tipo</label><div class="col-3 col-sm-4"> <select id="option3'+n+'" class="form-control" name="TipoVdf[]" ><option selected disabled>Selecione tipo VDF</option></select></div><div class="col-1 col-sm-1"><button type="button" name="remove" id="'+n+'" class="btn btn-danger btn_remove3" >X</button></div></div>');
+ $('#dinami3').append('<div id="row3'+n+'" class="form-group row" style="margin-bottom:15px;"> <label class="col-2 col-sm-2 col-form-label" id="largo">VDF Cantidad:</label><div class="col-4 col-sm-4"><input type="text" class="form-control" placeholder="Cantidad" name="CantidadVdf[]"></div><label class="col-1 col-sm-1 col-form-label" id="largo">Tipo</label><div class="col-3 col-sm-4"> <select id="option3'+n+'" class="form-control" name="TipoVdf[]" ><option selected disabled>Selecione tipo VDF</option></select></div><div class="col-1 col-sm-1"><button type="button" name="remove" id="'+n+'" class="btn btn-danger btn_remove3" >X</button></div> <div class="col-12 col-sm-12" style="margin-top: 15px;"><div class="form-group row"><label class="col-sm-2 col-form-label">Descripción</label><div class="col-sm-10"><textarea class="form-control" placeholder="Texto descriptivo"  rows="2" name="DescripcionVdf[]" ></textarea> </div></div></div></div>');
 var arrayvdf = <?= json_encode($tabla3) ?>;
  for(var m=0;m<arrayvdf.length;m++)
     {
@@ -302,13 +323,17 @@ var arrayvdf = <?= json_encode($tabla3) ?>;
       contentType: false,
       success: function(respuesta) {
         var valor = JSON.parse(respuesta)
+        console.log(valor)
+        console.log(valor)
+        console.log(valor)
+
         var size = valor.length;
     
   if($('#dinamiautomatico').find("#row").length){
  $("#dinamiautomatico").empty()
 }
 for(x=0; x<size; x++){
-$('#dinamiautomatico').append('<div id="row" class="form-group row" style="margin-bottom:0px;"> <label class="col-2 col-sm-2 col-form-label" id="largo">Automaticos Cantidad:</label><div class="col-4 col-sm-4"><input type="hidden" name="idAutomatico[]" value="'+valor[x][0]+'"><input type="text" class="form-control" placeholder="Cantidad" name="Cantidadautomaticos[]" value="'+valor[x][2]+'"></div><label class="col-1 col-sm-1 col-form-label" id="largo">Tipo</label><div class="col-3 col-sm-4"> <select  id="option1'+x+'"  class="form-control" name="Tipoautomaticos[]"   ><option value="'+valor[x][4]+'" selected >Amperaje: '+valor[x][5]+' / Marca: '+valor[x][6]+' / Tipo: '+valor[x][7]+'</option></select></div><div class="col-1 col-sm-1"><button type="button" name="remove" idtablero="'+valor[x][1]+'" idAutomatico="'+valor[x][0]+'" class="btn btn-danger Eliminar_automatico" >X</button></div></div>');
+$('#dinamiautomatico').append('<div id="row" class="form-group row" style="margin-bottom:0px;"> <label class="col-2 col-sm-2 col-form-label" id="largo">Automaticos Cantidad:</label><div class="col-4 col-sm-4"><input type="hidden" name="idAutomatico[]" value="'+valor[x][0]+'"><input type="text" class="form-control" placeholder="Cantidad" name="Cantidadautomaticos[]" value="'+valor[x][2]+'"></div><label class="col-1 col-sm-1 col-form-label" id="largo">Tipo</label><div class="col-3 col-sm-4"> <select  id="option1'+x+'"  class="form-control" name="Tipoautomaticos[]"   ><option value="'+valor[x][5]+'" selected >Amperaje: '+valor[x][6]+' / Marca: '+valor[x][7]+' / Tipo: '+valor[x][8]+'</option></select></div><div class="col-1 col-sm-1"><button type="button" name="remove" idtablero="'+valor[x][1]+'" idAutomatico="'+valor[x][0]+'" class="btn btn-danger Eliminar_automatico" >X</button></div><div class="col-12 col-sm-12" ><div class="form-group row"><label class="col-sm-2 col-form-label">Descripción</label><div class="col-sm-10"><textarea class="form-control" placeholder="Texto descriptivo"  rows="2" name="DescripcionAutomatico[]" value="'+valor[x][4]+'" >'+valor[x][4]+'</textarea></div></div></div></div>');
   var arrayJSC = <?= json_encode($tabla1) ?>;
 
  for(var l=0;l<arrayJSC.length;l++)
@@ -323,7 +348,7 @@ $('#dinamiautomatico').append('<div id="row" class="form-group row" style="margi
 var t=1; 
  $('#agregarautomaticos').click(function(){
         t++;
- $('#automaticoeditar').append('<div id="row'+t+'" class="form-group row" style="margin-bottom:0px;"> <label class="col-2 col-sm-2 col-form-label" id="largo">Automaticos Cantidad:</label><div class="col-4 col-sm-4"><input type="text" class="form-control" placeholder="Cantidad" name="CantidadautomaticosEditar[]"></div><label class="col-1 col-sm-1 col-form-label" id="largo">Tipo</label><div class="col-3 col-sm-4"> <select id="option2'+t+'" class="form-control" name="TipoautomaticosEditar[]" ><option selected disabled>Selecione tipo automatico</option></select></div><div class="col-1 col-sm-1"><button type="button" name="remove" id="'+t+'" class="btn btn-danger btn_remove" >X</button></div></div>').show('slow');
+ $('#automaticoeditar').append('<div id="row'+t+'" class="form-group row" style="margin-bottom:0px;"> <label class="col-2 col-sm-2 col-form-label" id="largo">Automaticos Cantidad:</label><div class="col-4 col-sm-4"><input type="text" class="form-control" placeholder="Cantidad" name="CantidadautomaticosEditar[]"></div><label class="col-1 col-sm-1 col-form-label" id="largo">Tipo</label><div class="col-3 col-sm-4"> <select id="option2'+t+'" class="form-control" name="TipoautomaticosEditar[]" ><option selected disabled>Selecione tipo automatico</option></select></div><div class="col-1 col-sm-1"><button type="button" name="remove" id="'+t+'" class="btn btn-danger btn_remove" >X</button></div><div class="col-12 col-sm-12"><div class="form-group row"><label class="col-sm-2 col-form-label">Descripción</label><div class="col-sm-10"><textarea class="form-control" placeholder="Texto descriptivo"  rows="2" name="DescripcionAutomaticoEditar[]" ></textarea></div></div></div></div>').show('slow');
 
 var arrayJS = <?= json_encode($tabla1) ?>;
  for(var i=0;i<arrayJS.length;i++)
@@ -413,7 +438,7 @@ var size = valor.length;
 }
  for(x=0; x<size; x++){
 
- $('#dinamivdf').append('<div id="row" class="form-group row" style="margin-bottom:15px;"> <label class="col-2 col-sm-2 col-form-label" id="largo">VDF Cantidad:</label><div class="col-4 col-sm-4"><input type="hidden" name="idVdf[]" value="'+valor[x][0]+'"><input type="text" class="form-control" placeholder="Cantidad" name="CantidadVdf[]" value="'+valor[x][2]+'"></div><label class="col-1 col-sm-1 col-form-label" id="largo">Tipo</label><div class="col-3 col-sm-4"> <select id="option3'+x+'" class="form-control" name="TipoVdf[]" ><option selected value="'+valor[x][3]+'">Potencia: '+valor[x][5]+' / Marca: '+valor[x][6]+'</option></select></div><div class="col-1 col-sm-1"><button type="button" name="remove" id="'+x+'" class="btn btn-danger btn_remove3 Eliminar_vdf"   idVdf="'+valor[x][0]+'">X</button></div></div>');
+ $('#dinamivdf').append('<div id="row" class="form-group row" style="margin-bottom:15px;"> <label class="col-2 col-sm-2 col-form-label" id="largo">VDF Cantidad:</label><div class="col-4 col-sm-4"><input type="hidden" name="idVdf[]" value="'+valor[x][0]+'"><input type="text" class="form-control" placeholder="Cantidad" name="CantidadVdf[]" value="'+valor[x][2]+'"></div><label class="col-1 col-sm-1 col-form-label" id="largo">Tipo</label><div class="col-3 col-sm-4"> <select id="option3'+x+'" class="form-control" name="TipoVdf[]" ><option selected value="'+valor[x][3]+'">Potencia: '+valor[x][6]+' / Marca: '+valor[x][7]+'</option></select></div><div class="col-1 col-sm-1"><button type="button" name="remove" id="'+x+'" class="btn btn-danger btn_remove3 Eliminar_vdf"   idVdf="'+valor[x][0]+'">X</button></div><div class="col-12 col-sm-12" style="margin-top:15px;"><div class="form-group row"><label class="col-sm-2 col-form-label">Descripción</label><div class="col-sm-10"><textarea class="form-control" placeholder="Texto descriptivo"  rows="2" name="DescripcionVdf[]" >'+valor[x][4]+'</textarea></div></div></div></div>');
 var arrayvdf = <?= json_encode($tabla3) ?>;
  for(var m=0;m<arrayvdf.length;m++)
     {
@@ -430,7 +455,7 @@ var arrayvdf = <?= json_encode($tabla3) ?>;
 var k=1; 
  $('#editarvdf').click(function(){
         k++;
- $('#vdfeditar').append('<div id="row3'+k+'" class="form-group row" style="margin-bottom:15px;"> <label class="col-2 col-sm-2 col-form-label" id="largo">VDF Cantidad:</label><div class="col-4 col-sm-4"><input type="text" class="form-control" placeholder="Cantidad" name="CantidadVdfEditar[]"></div><label class="col-1 col-sm-1 col-form-label" id="largo">Tipo</label><div class="col-3 col-sm-4"> <select id="option33'+k+'" class="form-control" name="TipoVdfEditar[]" ><option selected disabled>Selecione tipo VDF</option></select></div><div class="col-1 col-sm-1"><button type="button" name="remove" id="'+k+'" class="btn btn-danger btn_remove3" >X</button></div></div>');
+ $('#vdfeditar').append('<div id="row3'+k+'" class="form-group row" style="margin-bottom:15px;"> <label class="col-2 col-sm-2 col-form-label" id="largo">VDF Cantidad:</label><div class="col-4 col-sm-4"><input type="text" class="form-control" placeholder="Cantidad" name="CantidadVdfEditar[]"></div><label class="col-1 col-sm-1 col-form-label" id="largo">Tipo</label><div class="col-3 col-sm-4"> <select id="option33'+k+'" class="form-control" name="TipoVdfEditar[]" ><option selected disabled>Selecione tipo VDF</option></select></div><div class="col-1 col-sm-1"><button type="button" name="remove" id="'+k+'" class="btn btn-danger btn_remove3" >X</button></div> <div class="col-12 col-sm-12" style="margin-top: 15px;"><div class="form-group row"><label class="col-sm-2 col-form-label">Descripción</label><div class="col-sm-10"><textarea class="form-control" placeholder="Texto descriptivo"  rows="2" name="DescripcionVdfEditar[]" ></textarea></div></div></div></div>');
 var arrayvdf = <?= json_encode($tabla3) ?>;
  for(var m=0;m<arrayvdf.length;m++)
     {

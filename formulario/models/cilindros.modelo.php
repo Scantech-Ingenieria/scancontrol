@@ -7,8 +7,13 @@ static public function listarCilindrosMdl($tabla) {
 		return $sql -> fetchAll();
 	}
 	static public function mdlCrearCilindros($tabla, $datos,$rutaImagen) {
-		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :modelo,:imagen)");
-		$sql->bindParam(":modelo", $datos["modelo"], PDO::PARAM_STR);
+		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :nombre,:diametro,:largo,:materialcuerpo,:materialvastago,:medidahilo,:imagen)");
+		$sql->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+		$sql->bindParam(":diametro", $datos["diametro"], PDO::PARAM_STR);
+		$sql->bindParam(":largo", $datos["largo"], PDO::PARAM_STR);
+		$sql->bindParam(":materialcuerpo", $datos["materialcuerpo"], PDO::PARAM_STR);
+		$sql->bindParam(":materialvastago", $datos["materialvastago"], PDO::PARAM_STR);
+		$sql->bindParam(":medidahilo", $datos["medidahilo"], PDO::PARAM_STR);
 		$sql->bindParam(":imagen", $rutaImagen, PDO::PARAM_STR);
 		if( $sql -> execute() ) {
 			return "ok";
@@ -33,14 +38,25 @@ static public function listarCilindrosMdl($tabla) {
 	}
 	static public function mdlActualizarCilindros($tabla, $datos,$rutaImagen) {
 		if( is_null($rutaImagen)) {
-			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET modelo = :modelo WHERE id_cilindros = :id");
-			$sql->bindParam(":modelo", $datos["modelo"], PDO::PARAM_STR);
+			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre,diametro = :diametro,largo = :largo,materialcuerpo = :materialcuerpo,materialvastago = :materialvastago,medidahilo = :medidahilo WHERE id_cilindros = :id");
+			$sql->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+		$sql->bindParam(":diametro", $datos["diametro"], PDO::PARAM_STR);
+		$sql->bindParam(":largo", $datos["largo"], PDO::PARAM_STR);
+		$sql->bindParam(":materialcuerpo", $datos["materialcuerpo"], PDO::PARAM_STR);
+		$sql->bindParam(":materialvastago", $datos["materialvastago"], PDO::PARAM_STR);
+		$sql->bindParam(":medidahilo", $datos["medidahilo"], PDO::PARAM_STR);
 			$sql->bindParam(":id", $datos["id_cilindros"], PDO::PARAM_INT);
 }else{
-		$sql = Conexion::conectar()->prepare("UPDATE $tabla SET modelo = :modelo,rutaImg = :rutaNueva WHERE id_cilindros = :id");
-			$sql->bindParam(":modelo", $datos["modelo"], PDO::PARAM_STR);
-			$sql->bindParam(":rutaNueva", $rutaImagen, PDO::PARAM_STR);
+
+			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre,diametro = :diametro,largo = :largo,materialcuerpo = :materialcuerpo,materialvastago = :materialvastago,medidahilo = :medidahilo,rutaImg = :rutaNueva WHERE id_cilindros = :id");
+			$sql->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+		$sql->bindParam(":diametro", $datos["diametro"], PDO::PARAM_STR);
+		$sql->bindParam(":largo", $datos["largo"], PDO::PARAM_STR);
+		$sql->bindParam(":materialcuerpo", $datos["materialcuerpo"], PDO::PARAM_STR);
+		$sql->bindParam(":materialvastago", $datos["materialvastago"], PDO::PARAM_STR);
+		$sql->bindParam(":medidahilo", $datos["medidahilo"], PDO::PARAM_STR);
 			$sql->bindParam(":id", $datos["id_cilindros"], PDO::PARAM_INT);
+			$sql->bindParam(":rutaNueva", $rutaImagen, PDO::PARAM_STR);
 }
 
 		if($sql->execute()) {

@@ -23,6 +23,7 @@
             <tr>
                 <th>ID</th>
                 <th>Modelo</th>
+                <th>Descripciòn</th>
                 <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
@@ -35,6 +36,8 @@
 <tr>
 <td>'.nl2br($value["id_plc"]).'</td>
 <td>'.nl2br($value["modelo"]).'</td>
+<td>'.nl2br($value["descripcion"]).'</td>
+
 <td><img width="200" src="'.substr($value["rutaImg"], 3).'"></td>
 <td width="100"> <button class="btn btn-sm btn-info btnEditarPlc" idPlc="'.$value["id_plc"].'" data-toggle="modal" data-target="#modal-editar-plc">
                     <i class="far fa-edit"></i>

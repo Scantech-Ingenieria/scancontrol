@@ -1,4 +1,5 @@
 <?php
+
 Class ControllerTableroelectrico {
 	public function listarTableroelectricoCtr() {
 		$tabla = "tableroelectrico";
@@ -22,7 +23,9 @@ Class ControllerTableroelectrico {
 	}
 	static public function ctrCrearTableroelectrico($datos) {
 		$tabla = "tableroelectrico";
-
+if ($datos["imagen"]["error"] == 4) {
+			$rutaImagen = null;
+		}else{
 list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 		$nuevoAncho = 1024;
 		$nuevoAlto = 768;
@@ -43,12 +46,15 @@ list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 			imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 			imagepng($destino, $rutaImagen);
 		}
+	}
 		$respuesta = ModeloTableroelectrico::mdlCrearTableroelectrico($tabla, $datos,$rutaImagen);
 		return $respuesta;
 	}
 	static public function ctrEliminarTableroelectrico($id_tableroelectrico,$ruta) {
 		$tabla = "tableroelectrico";
-unlink($ruta);
+	if ($ruta!='') {
+		unlink($ruta);
+		}
 		$respuesta = ModeloTableroelectrico::mdlEliminarTableroelectrico($tabla, $id_tableroelectrico);
 	
 		return $respuesta;

@@ -1,4 +1,5 @@
 <?php
+
 Class ControllerTableroelectrico {
 	public function listarTableroelectricoCtr() {
 		$tabla = "tableroelectrico";

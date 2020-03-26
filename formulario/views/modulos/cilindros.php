@@ -22,13 +22,41 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Modelo</th>
+                <th>Nombre</th>
+                <th>Diametro-Largo</th>
+                <th>Material Cuerpo</th>
+                <th>Material Vastago</th>
+                <th>Medida Hilo</th>
                 <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
+   <?php
+          $tabla = ControllerCilindros::listarCilindrosCtr();
+          foreach ($tabla as $key => $value) {
+            echo '
+<tr>
+<td>'.nl2br($value["id_cilindros"]).'</td>
+<td>'.nl2br($value["nombre"]).'</td>
+<td>'.nl2br($value["diametro"]).'x'.$value["largo"].'</td>
+<td>'.nl2br($value["materialcuerpo"]).'</td>
+<td>'.nl2br($value["materialvastago"]).'</td>
+<td>'.nl2br($value["medidahilo"]).'</td>
 
+
+<td><img width="200" src="'.substr($value["rutaImg"], 3).'"></td>
+<td width="100"> <button class="btn btn-sm btn-info btnEditarCilindros" idCilindros="'.$value["id_cilindros"].'" data-toggle="modal" data-target="#modal-editar-cilindros">
+                    <i class="far fa-edit"></i>
+                  </button>
+    <button class="btn btn-sm btn-danger btnEliminarCilindros" idCilindros="'.$value["id_cilindros"].'" rutaImagen="'.$value["rutaImg"].'">
+                    <i class="far fa-trash-alt"></i>
+    </button>
+    </td>
+</tr>
+            ';
+          }
+?>
         </tbody>
      
     </table>
