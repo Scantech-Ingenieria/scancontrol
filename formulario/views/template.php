@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,7 +62,33 @@
 
 
       }
+
+
  ?>
+ <script type="text/javascript">
+     
+/// Url actual
+let url = window.location.href;
+
+/// Elementos de li
+const tabs = ["estacioncalidad", "unidadalimentacion","tabla","unidadaceleracion","unidaddescarga","bandas","paletas","sprockets","vdf","automatico","registros","rodamientos","sensor","unidadpesaje","tableroelectrico","fuentepoder","plc","manifold","tableroneumatico","clientes"];
+
+tabs.forEach(e => {
+    /// Agregar .php y ver si lo contiene en la url
+    if (url.indexOf(e ) !== -1) {
+        /// Agregar tab- para hacer que coincida la Id
+        setActive("tab-" + e);
+    }
+
+});
+
+/// Funcion que asigna la clase active
+function setActive(id) {
+    document.getElementById(id).setAttribute("class", "mm-active");
+}
+
+ </script>
+
                     </div>
                       </div>
                       <script type="text/javascript">$(document).ready(function() {
