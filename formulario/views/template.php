@@ -89,6 +89,8 @@ function setActive(id) {
 <script type="text/javascript" src="views/dist/js/plc.js"></script>
 <script type="text/javascript" src="views/dist/js/manifold.js"></script>
 <script type="text/javascript" src="views/dist/js/cilindros.js"></script>
+<script type="text/javascript" src="views/dist/js/tableroneumatico.js"></script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="views/dist/js/rutaAmigable.js"></script>

@@ -1,10 +1,10 @@
 
 $(document).ready(function(){
-	$("#formu-nuevo-tableroelectrico").submit(function (e) {
+	$("#formu-nuevo-tableroneumatico").submit(function (e) {
 		e.preventDefault()
 		var datos = new FormData($(this)[0])
 		$.ajax({
-			url: 'ajax/ajaxTableroelectrico.php',
+			url: 'ajax/ajaxTableroneumatico.php',
 			type: 'POST',
 			data: datos,
 			processData: false,
@@ -19,7 +19,7 @@ $(document).ready(function(){
   'success'
 ).then((result) => {
 					  if (result.value) {
-					    window.location = "tableroelectrico"
+					    window.location = "tableroneumatico"
 					  }
 					})
 				}
@@ -27,14 +27,14 @@ $(document).ready(function(){
 		})
 	})
 
-	$("#formu-editar-tableroelectrico").submit(function (e) {
+	$("#formu-editar-tableroneumatico").submit(function (e) {
 		e.preventDefault()
 		var datos = new FormData($(this)[0])
 
 
 
 		$.ajax({
-			url: 'ajax/ajaxTableroelectrico.php',
+			url: 'ajax/ajaxTableroneumatico.php',
 			type: 'POST',
 			data: datos,
 			processData: false,
@@ -48,35 +48,34 @@ $(document).ready(function(){
   'success'
 ).then((result) => {
 					  if (result.value) {
-					    window.location = "tableroelectrico"
+					    window.location = "tableroneumatico"
 					  }
 					})
 				}
 			}
 		})
 	})
-	$("body #mi_lista").on("click", ".btnEditarTableroelectrico", function(){
-		var idTableroelectrico = $(this).attr("idTableroelectrico")
+	$("body #mi_lista").on("click", ".btnEditarTableroneumatico", function(){
+		var idTableroneumatico = $(this).attr("idTableroneumatico")
 		var datos = new FormData()
-		datos.append("id_tableroelectrico", idTableroelectrico)
-		datos.append("tipoOperacion", "editarTableroelectrico")
+		datos.append("id_tableroneumatico", idTableroneumatico)
+		datos.append("tipoOperacion", "editarTableroneumatico")
 		$.ajax({
-			url: 'ajax/ajaxTableroelectrico.php',
+			url: 'ajax/ajaxTableroneumatico.php',
 			type: 'POST',
 			data: datos,
 			processData: false,
 			contentType: false,
 			success: function(respuesta) {
 				var valor = JSON.parse(respuesta)
-				console.log(valor.id_tableroelectrico)
+				console.log(valor.id_tableroneumatico)
 				console.log(valor.imagen)
-$('#formu-editar-tableroelectrico input[name="id_tableroelectrico"]').val(valor.id_tableroelectrico)
-$('#formu-editar-tableroelectrico input[name="Altura"]').val(valor.altura)
-$('#formu-editar-tableroelectrico input[name="Fondo"]').val(valor.fondo)
-$('#formu-editar-tableroelectrico input[name="Ancho"]').val(valor.ancho)
-$('#formu-editar-tableroelectrico input[name="Contactor"]').val(valor.contactor)
-$('#formu-editar-tableroelectrico #imgTableroElectrico').attr("src", valor.imagen)
-$('#formu-editar-tableroelectrico input[name="rutaActual"]').val(valor.imagen)
+$('#formu-editar-tableroneumatico input[name="id_tableroneumatico"]').val(valor.id_tableroneumatico)
+$('#formu-editar-tableroneumatico input[name="Altura"]').val(valor.altura)
+$('#formu-editar-tableroneumatico input[name="Fondo"]').val(valor.fondo)
+$('#formu-editar-tableroneumatico input[name="Ancho"]').val(valor.ancho)
+$('#formu-editar-tableroneumatico #imgTableroNeumatico').attr("src", valor.imagen)
+$('#formu-editar-tableroneumatico input[name="rutaActual"]').val(valor.imagen)
 			}
 		})
 	})
@@ -85,14 +84,14 @@ $('#formu-editar-tableroelectrico input[name="rutaActual"]').val(valor.imagen)
 
 
 
-	$("body #mi_lista").on("click", ".btnEliminarTableroelectrico", function(){
-		var idTableroelectrico = $(this).attr("idTableroelectrico")
+	$("body #mi_lista").on("click", ".btnEliminarTableroneumatico", function(){
+		var idTableroneumatico = $(this).attr("idTableroneumatico")
 		var rutaImagen = $(this).attr("rutaImagen")
 		var datos = new FormData()
-		datos.append("id_tableroelectrico", idTableroelectrico)
-		datos.append("tipoOperacion", "eliminarTableroelectrico")
+		datos.append("id_tableroneumatico", idTableroneumatico)
+		datos.append("tipoOperacion", "eliminarTableroneumatico")
 		datos.append("rutaImagen", rutaImagen)
-	console.log(idTableroelectrico)
+	console.log(idTableroneumatico)
 		Swal.fire({
 		  title: '¿Estás seguro de eliminar?',
 		  text: "Los cambios no son reversibles!",
@@ -104,7 +103,7 @@ $('#formu-editar-tableroelectrico input[name="rutaActual"]').val(valor.imagen)
 		}).then((result) => {
 		  if (result.value) {
 		  	$.ajax({
-				url: 'ajax/ajaxTableroelectrico.php',
+				url: 'ajax/ajaxTableroneumatico.php',
 				type: 'POST',
 				data: datos,
 				processData: false,
@@ -117,7 +116,7 @@ $('#formu-editar-tableroelectrico input[name="rutaActual"]').val(valor.imagen)
 					      'success'
 					    ).then((result) => {
 						  if (result.value) {
-						    window.location = "tableroelectrico"
+						    window.location = "tableroneumatico"
 						  }
 						})
 					}
@@ -147,7 +146,7 @@ $('#formu-editar-tableroelectrico input[name="rutaActual"]').val(valor.imagen)
 		}).then((result) => {
 		  if (result.value) {
 		  	$.ajax({
-				url: 'ajax/ajaxTableroelectrico.php',
+				url: 'ajax/ajaxTableroneumatico.php',
 				type: 'POST',
 				data: datos,
 				processData: false,
@@ -163,7 +162,7 @@ $('#formu-editar-tableroelectrico input[name="rutaActual"]').val(valor.imagen)
 						  if (result.value) {
 						  $("#example").load(" #example");
 				
-				var valor = $('.btnEditarTableroelectrico').attr("idtableroelectrico",10).click();  
+				var valor = $('.btnEditarTableroneumatico').attr("idtableroneumatico",10).click();  
 		 
 console.log(valor)
 
@@ -195,7 +194,7 @@ $("body #dinamifuente").on("click", ".Eliminar_fuente", function(){
 		}).then((result) => {
 		  if (result.value) {
 		  	$.ajax({
-				url: 'ajax/ajaxTableroelectrico.php',
+				url: 'ajax/ajaxTableroneumatico.php',
 				type: 'POST',
 				data: datos,
 				processData: false,
@@ -211,7 +210,7 @@ $("body #dinamifuente").on("click", ".Eliminar_fuente", function(){
 						  if (result.value) {
 						  $("#example").load(" #example");
 				
-				var valor = $('.btnEditarTableroelectrico').attr("idtableroelectrico",10).click();  
+				var valor = $('.btnEditarTableroneumatico').attr("idtableroneumatico",10).click();  
 		 
 console.log(valor)
 
@@ -243,7 +242,7 @@ $("body #dinamivdf").on("click", ".Eliminar_vdf", function(){
 		}).then((result) => {
 		  if (result.value) {
 		  	$.ajax({
-				url: 'ajax/ajaxTableroelectrico.php',
+				url: 'ajax/ajaxTableroneumatico.php',
 				type: 'POST',
 				data: datos,
 				processData: false,
@@ -259,7 +258,7 @@ $("body #dinamivdf").on("click", ".Eliminar_vdf", function(){
 						  if (result.value) {
 						  $("#example").load(" #example");
 				
-				var valor = $('.btnEditarTableroelectrico').attr("idtableroelectrico",10).click();  
+				var valor = $('.btnEditarTableroneumatico').attr("idtableroneumatico",10).click();  
 		 
 console.log(valor)
 
@@ -273,15 +272,15 @@ console.log(valor)
 	})
 
 	// PREVISUALIZAR IMAGENES
-	$("#imagenTableroelectrico").change(previsualizarImg)
-	$("#imagenTableroelectricoEditar").change(previsualizarImg)
+	$("#imagenTableroneumatico").change(previsualizarImg)
+	$("#imagenTableroneumaticoEditar").change(previsualizarImg)
 	function previsualizarImg(e) {
 		var contenedor = e.target.parentNode
 		var identificador = contenedor.classList[1]
 		imgSlider = this.files[0];
 		if ( imgSlider["type"] != "image/jpeg" && imgSlider["type"] != "image/png" && imgSlider["type"] != "video/mp4") {
-				$("#imagenTableroelectrico").val("")
-				$("#imagenTableroelectricoEditar").val("")
+				$("#imagenTableroneumatico").val("")
+				$("#imagenTableroneumaticoEditar").val("")
 			Swal.fire(
 					  'No es un archivo valido',
 					      'Debe subir archivos formato JPEG , PNG',
@@ -289,7 +288,7 @@ console.log(valor)
 				)	
 			}
 		if ( imgSlider["type"] > 100000) {
-				$("#imagenTableroelectrico").val("")
+				$("#imagenTableroneumatico").val("")
 			
 Swal.fire(
 					  'Error al subir la imagen',
@@ -298,12 +297,12 @@ Swal.fire(
 				)
 			}
 			else {
-				$("#imgTableroElectrico").css("display", "block")
+				$("#imgTableroNeumatico").css("display", "block")
 				var datosImagen = new FileReader;
 		  		datosImagen.readAsDataURL(imgSlider);
 		  		$(datosImagen).on("load", function(event){
 		  			var rutaImagen = event.target.result;
-		  			$("." + identificador +" #imgTableroElectrico").attr("src", rutaImagen);
+		  			$("." + identificador +" #imgTableroNeumatico").attr("src", rutaImagen);
 		  		})
 			}
 		}

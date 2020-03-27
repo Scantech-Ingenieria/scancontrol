@@ -1,35 +1,35 @@
 <?php
-require_once "../controllers/tableroelectrico.controller.php";
-require_once "../models/tableroelectrico.modelo.php";
-error_reporting(0);
-Class ajaxTableroelectrico {
-	public function crearTableroelectrico(){
+require_once "../controllers/tableroneumatico.controller.php";
+require_once "../models/tableroneumatico.modelo.php";
+
+Class ajaxTableroneumatico {
+	public function crearTableroneumatico(){
 		$datos = array(
 			            "altura"=>$this->altura,
 						"ancho"=>$this->ancho,
 						"fondo"=>$this->fondo,
 						"cantidadautomaticos"=>$this->cantidadautomaticos,
 						"tipoautomaticos"=>$this->tipoautomaticos,
+						"descripcionautomaticos"=>$this->descripcionautomaticos,
+						"cantidadfuentepoder"=>$this->cantidadfuentepoder,
 						"tipofuentepoder"=>$this->tipofuentepoder,
-						"cantidadvdf"=>$this->cantidadvdf,
-						"tipovdf"=>$this->tipovdf,
-						"contactor"=>$this->contactor,
-						"imagen"=>$this->imagen_tableroelectrico
-				
+						"descripcionfuentepoder"=>$this->descripcionfuentepoder,
+						"tipomanifold"=>$this->tipomanifold,
+						"cantidadplc"=>$this->cantidadplc,
+						"tipoplc"=>$this->tipoplc,
+						"imagen"=>$this->imagen_tableroneumatico
 					);
 
-
-		$respuesta = ControllerTableroelectrico::ctrCrearTableroelectrico($datos);
+		$respuesta = ControllerTableroneumatico::ctrCrearTableroneumatico($datos);
 		echo $respuesta;
 	}
-	public function editarTableroelectrico(){
-		$id_tableroelectrico = $this->id_tableroelectrico;
-		$respuesta = ControllerTableroelectrico::ctrEditarTableroelectrico($id_tableroelectrico);
-		$datos = array("id_tableroelectrico"=>$respuesta["id_tableroelectrico"],
+	public function editarTableroneumatico(){
+		$id_tableroneumatico = $this->id_tableroneumatico;
+		$respuesta = ControllerTableroneumatico::ctrEditarTableroneumatico($id_tableroneumatico);
+		$datos = array("id_tableroneumatico"=>$respuesta["id_tableroneumatico"],
 						"altura"=>$respuesta["altura"], 
 						  "ancho"=>$respuesta["ancho"],
 				          "fondo"=>$respuesta["fondo"],
-						"contactor"=>$respuesta["contactor"],
 				        "imagen"=>substr($respuesta["rutaImg"], 3)
 						);
 
@@ -37,157 +37,181 @@ Class ajaxTableroelectrico {
 		echo json_encode($datos);
 	}
 	public function editarTableroautomaticos(){
-		$id_tableroelectrico = $this->id_tableroelectrico;
-		$respuesta = ControllerTableroelectrico::ctrEditarTableroautomaticos($id_tableroelectrico);
+		$id_tableroneumatico = $this->id_tableroneumatico;
+		$respuesta = ControllerTableroneumatico::ctrEditarTableroautomaticos($id_tableroneumatico);
 
 	echo json_encode($respuesta);
 	}
 		public function editarTablerofuente(){
-		$id_tableroelectrico = $this->id_tableroelectrico;
-		$respuesta = ControllerTableroelectrico::ctrEditarTablerofuente($id_tableroelectrico);
+		$id_tableroneumatico = $this->id_tableroneumatico;
+		$respuesta = ControllerTableroneumatico::ctrEditarTablerofuente($id_tableroneumatico);
 
 	echo json_encode($respuesta);
 	}
-		public function editarTablerovdf(){
-		$id_tableroelectrico = $this->id_tableroelectrico;
-		$respuesta = ControllerTableroelectrico::ctrEditarTablerovdf($id_tableroelectrico);
+		public function editarTableroplc(){
+		$id_tableroneumatico = $this->id_tableroneumatico;
+		$respuesta = ControllerTableroneumatico::ctrEditarTableroplc($id_tableroneumatico);
 
 	echo json_encode($respuesta);
 	}
-	public function actualizarTableroelectrico(){
-		$datos = array( "id_tableroelectrico"=>$this->id_tableroelectrico,
+		public function editarTableromanifold(){
+		$id_tableroneumatico = $this->id_tableroneumatico;
+		$respuesta = ControllerTableroneumatico::ctrEditarTableromanifold($id_tableroneumatico);
+
+	echo json_encode($respuesta);
+	}
+	public function actualizarTableroneumatico(){
+		$datos = array( "id_tableroneumatico"=>$this->id_tableroneumatico,
 				        "idautomatico"=>$this->idautomatico,
 				        "idfuente"=>$this->idfuente,
-				        "idvdf"=>$this->idvdf,
+				        "idmanifold"=>$this->idmanifold,
+				        "idplc"=>$this->idplc,
 				        "altura"=>$this->altura,
 						"ancho"=>$this->ancho,
 						"fondo"=>$this->fondo,
 						"cantidadautomaticos"=>$this->cantidadautomaticos,
+						"cantidadplc"=>$this->cantidadplc,
+						"cantidadfuentepoder"=>$this->cantidadfuentepoder,
 						"tipoautomaticos"=>$this->tipoautomaticos,
 						"tipofuentepoder"=>$this->tipofuentepoder,
-						"cantidadvdf"=>$this->cantidadvdf,
-						"tipovdf"=>$this->tipovdf,
+						"tipomanifold"=>$this->tipomanifold,
+						"tipoplc"=>$this->tipoplc,
+						"descripcionautomaticos"=>$this->descripcionautomaticos,
+						"descripcionfuentepoder"=>$this->descripcionfuentepoder,
+		                "cantidadautomaticoseditar"=>$this->cantidadautomaticoseditar,
+						"cantidadplceditar"=>$this->cantidadplceditar,
+						"cantidadfuentepodereditar"=>$this->cantidadfuentepodereditar,
+						"descripcionfuentepodereditar"=>$this->descripcionfuentepodereditar,
+						"descripcionautomaticoseditar"=>$this->descripcionautomaticoseditar,
 						"tipoautomaticoseditar"=>$this->tipoautomaticoseditar,
-						"cantidadautomaticoseditar"=>$this->cantidadautomaticoseditar,
-						"tipofuentepodereditar"=>$this->tipofuentepodereditar,
-						"cantidadvdfeditar"=>$this->cantidadvdfeditar,
-						"tipovdfeditar"=>$this->tipovdfeditar,
-
-
-						"contactor"=>$this->contactor,
-
-						"imagen"=>$this->imagen_tableroelectrico,
+		                 "tipofuentepodereditar"=>$this->tipofuentepodereditar,
+						"tipomanifoldeditar"=>$this->tipomanifoldeditar,
+						"tipoplceditar"=>$this->tipoplceditar,
+						"imagen"=>$this->imagen_tableroneumatico,
 						"rutaActual"=>$this->rutaActual
-
 						);
-		$respuesta = ControllerTableroelectrico::ctrActualizarTableroelectrico($datos);
+		$respuesta = ControllerTableroneumatico::ctrActualizarTableroneumatico($datos);
 		echo $respuesta;
 	}
-	public function eliminarTableroelectrico(){
-		$id_tableroelectrico = $this->id_tableroelectrico;
-		$ruta = $this->imagen_tableroelectrico;
-		$respuesta = ControllerTableroelectrico::ctrEliminarTableroelectrico($id_tableroelectrico,$ruta);
+	public function eliminarTableroneumatico(){
+		$id_tableroneumatico = $this->id_tableroneumatico;
+		$ruta = $this->imagen_tableroneumatico;
+		$respuesta = ControllerTableroneumatico::ctrEliminarTableroneumatico($id_tableroneumatico,$ruta);
 		echo $respuesta;
 	}
 		public function eliminarTautomatico(){
 		$id_tautomatico = $this->id_tautomatico;
-		$respuesta = ControllerTableroelectrico::ctrEliminarTautomatico($id_tautomatico);
+		$respuesta = ControllerTableroneumatico::ctrEliminarTautomatico($id_tautomatico);
 		echo $respuesta;
 	}
 		public function eliminarTfuente(){
 		$id_tfuente = $this->id_tfuente;
-		$respuesta = ControllerTableroelectrico::ctrEliminarTfuente($id_tfuente);
+		$respuesta = ControllerTableroneumatico::ctrEliminarTfuente($id_tfuente);
 		echo $respuesta;
 	}
 		public function eliminarTvdf(){
 		$id_tvdf = $this->id_tvdf;
-		$respuesta = ControllerTableroelectrico::ctrEliminarTvdf($id_tvdf);
+		$respuesta = ControllerTableroneumatico::ctrEliminarTvdf($id_tvdf);
 		echo $respuesta;
 	}
 
 }
 $tipoOperacion = $_POST["tipoOperacion"];
-if($tipoOperacion == "insertartableroelectrico") {
-	$crearNuevoTableroelectrico = new ajaxTableroelectrico();
-	$crearNuevoTableroelectrico -> altura = $_POST["Altura"];
-	$crearNuevoTableroelectrico -> ancho = $_POST["Ancho"];
-	$crearNuevoTableroelectrico -> fondo = $_POST["Fondo"];
-	$crearNuevoTableroelectrico -> cantidadautomaticos = $_POST["Cantidadautomaticos"];
-	$crearNuevoTableroelectrico -> tipoautomaticos = $_POST["Tipoautomaticos"];
-	$crearNuevoTableroelectrico -> tipofuentepoder = $_POST["TipoFuentePoder"];
-	$crearNuevoTableroelectrico -> cantidadvdf = $_POST["CantidadVdf"];
-	$crearNuevoTableroelectrico -> tipovdf = $_POST["TipoVdf"];
-	$crearNuevoTableroelectrico -> contactor = $_POST["Contactor"];
-    $crearNuevoTableroelectrico -> imagen_tableroelectrico = $_FILES["imagenTableroelectrico"];
-	$crearNuevoTableroelectrico ->crearTableroelectrico();
+if($tipoOperacion == "insertartableroneumatico") {
+	$crearNuevoTableroneumatico = new ajaxTableroneumatico();
+	$crearNuevoTableroneumatico -> altura = $_POST["Altura"];
+	$crearNuevoTableroneumatico -> ancho = $_POST["Ancho"];
+	$crearNuevoTableroneumatico -> fondo = $_POST["Fondo"];
+	$crearNuevoTableroneumatico -> cantidadautomaticos = $_POST["Cantidadautomaticos"];
+	$crearNuevoTableroneumatico -> tipoautomaticos = $_POST["Tipoautomaticos"];
+	$crearNuevoTableroneumatico -> descripcionautomaticos = $_POST["DescripcionAutomatico"];
+	$crearNuevoTableroneumatico -> cantidadfuentepoder = $_POST["CantidadFuentePoder"];
+	$crearNuevoTableroneumatico -> tipofuentepoder = $_POST["TipoFuentePoder"];
+	$crearNuevoTableroneumatico -> descripcionfuentepoder = $_POST["DescripcionFuentePoder"];
+	$crearNuevoTableroneumatico -> tipomanifold = $_POST["TipoManifold"];
+	$crearNuevoTableroneumatico -> cantidadplc = $_POST["CantidadPlc"];
+	$crearNuevoTableroneumatico -> tipoplc = $_POST["TipoPlc"];
+    $crearNuevoTableroneumatico -> imagen_tableroneumatico = $_FILES["imagenTableroneumatico"];
+	$crearNuevoTableroneumatico ->crearTableroneumatico();
 }
 
-if ($tipoOperacion == "editarTableroelectrico") {
-	$editarTableroelectrico = new ajaxTableroelectrico();
-	$editarTableroelectrico -> id_tableroelectrico = $_POST["id_tableroelectrico"];
-	$editarTableroelectrico -> editarTableroelectrico();
+if ($tipoOperacion == "editarTableroneumatico") {
+	$editarTableroneumatico = new ajaxTableroneumatico();
+	$editarTableroneumatico -> id_tableroneumatico = $_POST["id_tableroneumatico"];
+	$editarTableroneumatico -> editarTableroneumatico();
 }
 if ($tipoOperacion == "editarTableroautomaticos") {
-	$editarTableroautomaticos = new ajaxTableroelectrico();
-	$editarTableroautomaticos -> id_tableroelectrico = $_POST["id_tableroelectrico"];
+	$editarTableroautomaticos = new ajaxTableroneumatico();
+	$editarTableroautomaticos -> id_tableroneumatico = $_POST["id_tableroneumatico"];
 	$editarTableroautomaticos -> editarTableroautomaticos();
 }
 if ($tipoOperacion == "editarTablerofuente") {
-	$editarTablerofuente = new ajaxTableroelectrico();
-	$editarTablerofuente -> id_tableroelectrico = $_POST["id_tableroelectrico"];
+	$editarTablerofuente = new ajaxTableroneumatico();
+	$editarTablerofuente -> id_tableroneumatico = $_POST["id_tableroneumatico"];
 	$editarTablerofuente -> editarTablerofuente();
 }
-if ($tipoOperacion == "editarTablerovdf") {
-	$editarTablerovdf = new ajaxTableroelectrico();
-	$editarTablerovdf -> id_tableroelectrico = $_POST["id_tableroelectrico"];
-	$editarTablerovdf -> editarTablerovdf();
+if ($tipoOperacion == "editarTableroplc") {
+	$editarTableroplc = new ajaxTableroneumatico();
+	$editarTableroplc -> id_tableroneumatico = $_POST["id_tableroneumatico"];
+	$editarTableroplc -> editarTableroplc();
 }
-if ($tipoOperacion == "actualizarTableroelectrico") {
-	$actualizarTableroelectrico = new ajaxTableroelectrico();
-	$actualizarTableroelectrico -> id_tableroelectrico = $_POST["id_tableroelectrico"];
-	$actualizarTableroelectrico -> idautomatico = $_POST["idAutomatico"];
-	$actualizarTableroelectrico -> idfuente = $_POST["idFuente"];
-	$actualizarTableroelectrico -> idvdf = $_POST["idVdf"];
-	$actualizarTableroelectrico -> altura = $_POST["Altura"];
-    $actualizarTableroelectrico -> ancho = $_POST["Ancho"];
-	$actualizarTableroelectrico -> fondo = $_POST["Fondo"];
-	$actualizarTableroelectrico -> cantidadautomaticos = $_POST["Cantidadautomaticos"];
-	$actualizarTableroelectrico -> tipoautomaticos = $_POST["Tipoautomaticos"];
-	$actualizarTableroelectrico -> tipofuentepoder = $_POST["TipoFuentePoder"];
-	$actualizarTableroelectrico -> cantidadvdf = $_POST["CantidadVdf"];
-	$actualizarTableroelectrico -> tipovdf = $_POST["TipoVdf"];
-	$actualizarTableroelectrico -> contactor = $_POST["Contactor"];
-	$actualizarTableroelectrico -> cantidadautomaticoseditar = $_POST["CantidadautomaticosEditar"];
-	$actualizarTableroelectrico -> tipoautomaticoseditar = $_POST["TipoautomaticosEditar"];
-	$actualizarTableroelectrico -> tipofuentepodereditar = $_POST["TipoFuentePoderEditar"];
-	$actualizarTableroelectrico -> cantidadvdfeditar = $_POST["CantidadVdfEditar"];
-	$actualizarTableroelectrico -> tipovdfeditar = $_POST["TipoVdfEditar"];
-
-
-    $actualizarTableroelectrico -> imagen_tableroelectrico = $_FILES["imagenTableroelectrico"];
-	$actualizarTableroelectrico -> rutaActual = $_POST["rutaActual"];
-	$actualizarTableroelectrico -> actualizarTableroelectrico();
+if ($tipoOperacion == "editarTableromanifold") {
+	$editarTableromanifold = new ajaxTableroneumatico();
+	$editarTableromanifold -> id_tableroneumatico = $_POST["id_tableroneumatico"];
+	$editarTableromanifold -> editarTableromanifold();
 }
-if ($tipoOperacion == "eliminarTableroelectrico") {
-	$eliminarTableroelectrico = new ajaxTableroelectrico();
-	$eliminarTableroelectrico -> id_tableroelectrico = $_POST["id_tableroelectrico"];
-	$eliminarTableroelectrico -> imagen_tableroelectrico = $_POST["rutaImagen"];
-	$eliminarTableroelectrico -> eliminarTableroelectrico();
+if ($tipoOperacion == "actualizarTableroneumatico") {
+	$actualizarTableroneumatico = new ajaxTableroneumatico();
+	$actualizarTableroneumatico -> altura = $_POST["Altura"];
+    $actualizarTableroneumatico -> ancho = $_POST["Ancho"];
+	$actualizarTableroneumatico -> fondo = $_POST["Fondo"];
+	$actualizarTableroneumatico -> id_tableroneumatico = $_POST["id_tableroneumatico"];
+	$actualizarTableroneumatico -> idautomatico = $_POST["idAutomatico"];
+	$actualizarTableroneumatico -> idfuente = $_POST["idFuente"];
+	$actualizarTableroneumatico -> idmanifold = $_POST["idManifold"];
+	$actualizarTableroneumatico -> idplc = $_POST["idPlc"];
+	$actualizarTableroneumatico -> cantidadautomaticos = $_POST["Cantidadautomaticos"];
+	$actualizarTableroneumatico -> cantidadfuentepoder = $_POST["CantidadFuentePoder"];
+	$actualizarTableroneumatico -> tipoautomaticos = $_POST["Tipoautomaticos"];
+	$actualizarTableroneumatico -> tipofuentepoder = $_POST["TipoFuentePoder"];
+	$actualizarTableroneumatico -> tipomanifold = $_POST["TipoManifold"];
+	$actualizarTableroneumatico -> tipoplc = $_POST["TipoPlc"];
+	$actualizarTableroneumatico -> descripcionautomaticos = $_POST["DescripcionAutomatico"];
+	$actualizarTableroneumatico -> descripcionfuentepoder = $_POST["DescripcionFuentePoder"];
+	$actualizarTableroneumatico -> cantidadautomaticoseditar = $_POST["CantidadautomaticosEditar"];
+	$actualizarTableroneumatico -> cantidadfuentepodereditar = $_POST["CantidadFuentePoderEditar"];
+	$actualizarTableroneumatico -> cantidadplc = $_POST["CantidadPlc"];
+		$actualizarTableroneumatico -> descripcionautomaticoseditar = $_POST["DescripcionAutomaticoEditar"];
+	$actualizarTableroneumatico -> descripcionfuentepodereditar = $_POST["DescripcionFuentePoderEditar"];
+	$actualizarTableroneumatico -> tipoautomaticoseditar = $_POST["TipoautomaticosEditar"];
+	$actualizarTableroneumatico -> tipofuentepodereditar = $_POST["TipoFuentePoderEditar"];
+	$actualizarTableroneumatico -> tipomanifoldeditar = $_POST["TipoManifoldEditar"];
+	$actualizarTableroneumatico -> tipoplceditar = $_POST["TipoPlcEditar"];
+	$actualizarTableroneumatico -> cantidadplceditar = $_POST["CantidadPlcEditar"];
+    $actualizarTableroneumatico -> imagen_tableroneumatico = $_FILES["imagenTableroneumatico"];
+	$actualizarTableroneumatico -> rutaActual = $_POST["rutaActual"];
+	$actualizarTableroneumatico -> actualizarTableroneumatico();
+}
+if ($tipoOperacion == "eliminarTableroneumatico") {
+	$eliminarTableroneumatico = new ajaxTableroneumatico();
+	$eliminarTableroneumatico -> id_tableroneumatico = $_POST["id_tableroneumatico"];
+	$eliminarTableroneumatico -> imagen_tableroneumatico = $_POST["rutaImagen"];
+	$eliminarTableroneumatico -> eliminarTableroneumatico();
 }
 if ($tipoOperacion == "eliminarTautomatico") {
-	$eliminarTautomatico = new ajaxTableroelectrico();
+	$eliminarTautomatico = new ajaxTableroneumatico();
 	$eliminarTautomatico -> id_tautomatico = $_POST["id_automatico"];
 	$eliminarTautomatico -> eliminarTautomatico();
 }
 
 if ($tipoOperacion == "eliminarTfuente") {
-	$eliminarTfuente = new ajaxTableroelectrico();
+	$eliminarTfuente = new ajaxTableroneumatico();
 	$eliminarTfuente -> id_tfuente = $_POST["id_fuente"];
 	$eliminarTfuente -> eliminarTfuente();
 }
 
 if ($tipoOperacion == "eliminarTvdf") {
-	$eliminarTvdf = new ajaxTableroelectrico();
+	$eliminarTvdf = new ajaxTableroneumatico();
 	$eliminarTvdf -> id_tvdf = $_POST["id_vdf"];
 	$eliminarTvdf -> eliminarTvdf();
 }

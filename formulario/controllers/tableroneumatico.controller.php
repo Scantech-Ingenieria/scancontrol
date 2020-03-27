@@ -1,33 +1,40 @@
 <?php
 
-Class ControllerTableroelectrico {
-	public function listarTableroelectricoCtr() {
-		$tabla = "tableroelectrico";
-		$respuesta = ModeloTableroelectrico::listarTableroelectricoMdl($tabla);
+Class ControllerTableroneumatico {
+	public function listarTableroneumaticoCtr() {
+		$tabla = "tablero_neumatico";
+		$respuesta = ModeloTableroneumatico::listarTableroneumaticoMdl($tabla);
 		return $respuesta;
 	}
-		public function listarTelectricoautomaticoCtr() {
-		$tabla = "telectrico_automatico";
-		$respuesta = ModeloTableroelectrico::listarTelectricoautomaticoMdl($tabla);
+		public function listarTneumaticoautomaticoCtr() {
+		$tabla = "tneumatico_automatico";
+		$respuesta = ModeloTableroneumatico::listarTneumaticoautomaticoMdl($tabla);
 		return $respuesta;
 	}
-			public function listarTelectricofuenteCtr() {
-		$tabla = "telectrico_fuente";
-		$respuesta = ModeloTableroelectrico::listarTelectricofuenteMdl($tabla);
+			public function listarTneumaticofuenteCtr() {
+		$tabla = "tneumatico_fuente";
+		$respuesta = ModeloTableroneumatico::listarTneumaticofuenteMdl($tabla);
 		return $respuesta;
 	}
-			public function listarTelectricovdfCtr() {
-		$tabla = "telectrico_vdf";
-		$respuesta = ModeloTableroelectrico::listarTelectricovdfMdl($tabla);
+			public function listarTneumaticomanifoldCtr() {
+		$tabla = "tneumatico_manifold";
+		$respuesta = ModeloTableroneumatico::listarTneumaticomanifoldMdl($tabla);
 		return $respuesta;
 	}
-	static public function ctrCrearTableroelectrico($datos) {
-		$tabla = "tableroelectrico";
-
+				public function listarTneumaticoplcCtr() {
+		$tabla = "tneumatico_plc";
+		$respuesta = ModeloTableroneumatico::listarTneumaticoplcMdl($tabla);
+		return $respuesta;
+	}
+	static public function ctrCrearTableroneumatico($datos) {
+		$tabla = "tablero_neumatico";
+if ($datos["imagen"]["error"] == 4) {
+			$rutaImagen = null;
+		}else{
 list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 		$nuevoAncho = 1024;
 		$nuevoAlto = 768;
-		$directorio = "../views/dist/img/tableroelectrico";
+		$directorio = "../views/dist/img/tableroneumatico";
 		if($datos["imagen"]["type"] == "image/jpeg"){
 			$rutaImagen = $directorio."/".md5($datos["imagen"]["tmp_name"]).".jpeg";
 			$origen = imagecreatefromjpeg($datos["imagen"]["tmp_name"]);
@@ -44,53 +51,59 @@ list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 			imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 			imagepng($destino, $rutaImagen);
 		}
-		$respuesta = ModeloTableroelectrico::mdlCrearTableroelectrico($tabla, $datos,$rutaImagen);
+	}
+		$respuesta = ModeloTableroneumatico::mdlCrearTableroneumatico($tabla, $datos,$rutaImagen);
 		return $respuesta;
 	}
-	static public function ctrEliminarTableroelectrico($id_tableroelectrico,$ruta) {
-		$tabla = "tableroelectrico";
+	static public function ctrEliminarTableroneumatico($id_tableroneumatico,$ruta) {
+		$tabla = "tablero_neumatico";
 unlink($ruta);
-		$respuesta = ModeloTableroelectrico::mdlEliminarTableroelectrico($tabla, $id_tableroelectrico);
+		$respuesta = ModeloTableroneumatico::mdlEliminarTableroneumatico($tabla, $id_tableroneumatico);
 	
 		return $respuesta;
 	}
 	static public function ctrEliminarTautomatico($id_tautomatico) {
-		$tabla = "telectrico_automatico";
-		$respuesta = ModeloTableroelectrico::mdlEliminarTautomatico($tabla, $id_tautomatico);
+		$tabla = "tneumatico_automatico";
+		$respuesta = ModeloTableroneumatico::mdlEliminarTautomatico($tabla, $id_tautomatico);
 		return $respuesta;
 	}
 		static public function ctrEliminarTfuente($id_tfuente) {
-		$tabla = "telectrico_fuente";
-		$respuesta = ModeloTableroelectrico::mdlEliminarTfuente($tabla, $id_tfuente);
+		$tabla = "tneumatico_fuente";
+		$respuesta = ModeloTableroneumatico::mdlEliminarTfuente($tabla, $id_tfuente);
 		return $respuesta;
 	}
 		static public function ctrEliminarTvdf($id_tvdf) {
-		$tabla = "telectrico_vdf";
-		$respuesta = ModeloTableroelectrico::mdlEliminarTvdf($tabla, $id_tvdf);
+		$tabla = "tneumatico_vdf";
+		$respuesta = ModeloTableroneumatico::mdlEliminarTvdf($tabla, $id_tvdf);
 		return $respuesta;
 	}
-	static public function ctrEditarTableroelectrico($id_tableroelectrico) {
-		$tabla = "tableroelectrico";
-		$respuesta = ModeloTableroelectrico::mdlEditarTableroelectrico($tabla, $id_tableroelectrico);
+	static public function ctrEditarTableroneumatico($id_tableroneumatico) {
+		$tabla = "tablero_neumatico";
+		$respuesta = ModeloTableroneumatico::mdlEditarTableroneumatico($tabla, $id_tableroneumatico);
 		return $respuesta;
 	}
-		static public function ctrEditarTableroautomaticos($id_tableroelectrico) {
-		$tabla = "telectrico_automatico";
-		$respuesta = ModeloTableroelectrico::mdlEditarTableroautomaticos($tabla, $id_tableroelectrico);
+		static public function ctrEditarTableroautomaticos($id_tableroneumatico) {
+		$tabla = "tneumatico_automatico";
+		$respuesta = ModeloTableroneumatico::mdlEditarTableroautomaticos($tabla, $id_tableroneumatico);
 		return $respuesta;
 	}
-		static public function ctrEditarTablerofuente($id_tableroelectrico) {
-		$tabla = "telectrico_fuente";
-		$respuesta = ModeloTableroelectrico::mdlEditarTablerofuente($tabla, $id_tableroelectrico);
+		static public function ctrEditarTablerofuente($id_tableroneumatico) {
+		$tabla = "tneumatico_fuente";
+		$respuesta = ModeloTableroneumatico::mdlEditarTablerofuente($tabla, $id_tableroneumatico);
 		return $respuesta;
 	}
-		static public function ctrEditarTablerovdf($id_tableroelectrico) {
-		$tabla = "telectrico_vdf";
-		$respuesta = ModeloTableroelectrico::mdlEditarTablerovdf($tabla, $id_tableroelectrico);
+		static public function ctrEditarTableroplc($id_tableroneumatico) {
+		$tabla = "tneumatico_plc";
+		$respuesta = ModeloTableroneumatico::mdlEditarTableroplc($tabla, $id_tableroneumatico);
 		return $respuesta;
 	}
-	static public function ctrActualizarTableroelectrico($datos) {
-		$tabla = "tableroelectrico";
+		static public function ctrEditarTableromanifold($id_tableroneumatico) {
+		$tabla = "tneumatico_manifold";
+		$respuesta = ModeloTableroneumatico::mdlEditarTableromanifold($tabla, $id_tableroneumatico);
+		return $respuesta;
+	}
+	static public function ctrActualizarTableroneumatico($datos) {
+		$tabla = "tablero_neumatico";
 
 	if ($datos["imagen"]["error"] == 4) {
 			$rutaImagen = null;
@@ -101,7 +114,7 @@ unlink($ruta);
 			list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 			$nuevoAncho = 1024;
 			$nuevoAlto = 768;
-			$directorio = "../views/dist/img/tableroelectrico";
+			$directorio = "../views/dist/img/tableroneumatico";
 			if($datos["imagen"]["type"] == "image/jpeg"){
 				$rutaImagen = $directorio."/".md5($datos["imagen"]["tmp_name"]).".jpeg";
 				$origen = imagecreatefromjpeg($datos["imagen"]["tmp_name"]);
@@ -119,7 +132,7 @@ unlink($ruta);
 				imagepng($destino, $rutaImagen);
 			}
 		}
-		$respuesta = ModeloTableroelectrico::mdlActualizarTableroelectrico($tabla, $datos, $rutaImagen);
+		$respuesta = ModeloTableroneumatico::mdlActualizarTableroneumatico($tabla, $datos, $rutaImagen);
 		return $respuesta;
 
 	}

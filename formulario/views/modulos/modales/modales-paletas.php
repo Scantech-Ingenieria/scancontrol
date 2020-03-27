@@ -2,7 +2,6 @@
   <script src= 
 "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"> 
     </script> 
-
 <div class="modal fade" id="modal-insertar-paletas"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document" style="max-width: 800px;">
     <div class="modal-content">

@@ -47,14 +47,17 @@
                                        Registro General
                                     </a>
                                 </li>
-       <li>
+
+
+
+                                 <li>
                                     <a href="#">
-                                       <i class="metismenu-icon pe-7s-display2"></i>
-Unidades Balanza                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                        <i class="metismenu-icon pe-7s-display2"></i>
+Unidades Balanza       <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
-                                    <ul>
+                              <ul>
                         
-   <li id="tab-estacioncalidad">
+                                <li id="tab-estacioncalidad">
                                     <a href="estacioncalidad">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                       Estación de Calidad
@@ -85,8 +88,7 @@ Unidades Balanza                                        <i class="metismenu-stat
                                       Unidad Descarga
                                     </a>
                                 </li> 
-                             
-                                <li>                                                               
+                                                                                            
                                     </ul>
                                 </li>
                                 <li id="tab-tabla">
