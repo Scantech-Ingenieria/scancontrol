@@ -16,22 +16,22 @@
             </div>
           </div>
            <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Medidas Salidas</label>
+            <label class="col-sm-2 col-form-label">Hilo</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" placeholder="Medidas Salidas" name="MedidasSalidas">
+              <input type="text" class="form-control" placeholder="Hilo" name="MedidasSalidas">
             </div>
           </div>
            <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Sockets</label>
+            <label class="col-sm-2 col-form-label">Cantidad de Estaciones</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" placeholder="Sockets" name="Sockets">
+              <input type="text" class="form-control" placeholder="Cantidad de Estaciones" name="Sockets">
             </div>
           </div>
          
               <div class="form-group row">
             <label class="col-sm-2 col-form-label">Imagen</label>
             <div class="col-sm-10 conteNuevaImagen">
-              <input type="file" class="form-control"  id="imagenManifold" name="imagenManifold" required>
+              <input type="file" class="form-control"  id="imagenManifold" name="imagenManifold" >
               <img src="" id="imgManifold" alt="" class="thumbnail" width="200" style="display: none">
             </div>
           </div>
@@ -64,15 +64,15 @@
             </div>
           </div>
            <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Medidas Salidas</label>
+            <label class="col-sm-2 col-form-label">Hilo</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" placeholder="Medidas Salidas" name="MedidasSalidas">
+              <input type="text" class="form-control" placeholder="Hilo" name="MedidasSalidas">
             </div>
           </div>
            <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Sockets</label>
+            <label class="col-sm-2 col-form-label">Cantidad de Estaciones</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" placeholder="Sockets" name="Sockets">
+              <input type="text" class="form-control" placeholder="Cantidad de Estaciones" name="Sockets">
             </div>
           </div>
              <div class="form-group row">

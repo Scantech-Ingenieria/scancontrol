@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 		Swal.fire(
   'Excelente!',
-  'Tablero electrico registrado con exito!',
+  'Tablero neumatico registrado con exito!',
   'success'
 ).then((result) => {
 					  if (result.value) {
@@ -30,9 +30,6 @@ $(document).ready(function(){
 	$("#formu-editar-tableroneumatico").submit(function (e) {
 		e.preventDefault()
 		var datos = new FormData($(this)[0])
-
-
-
 		$.ajax({
 			url: 'ajax/ajaxTableroneumatico.php',
 			type: 'POST',
@@ -82,9 +79,7 @@ $('#formu-editar-tableroneumatico input[name="rutaActual"]').val(valor.imagen)
 
 	
 
-
-
-	$("body #mi_lista").on("click", ".btnEliminarTableroneumatico", function(){
+	$("body #example").on("click", ".btnEliminarTableroneumatico", function(){
 		var idTableroneumatico = $(this).attr("idTableroneumatico")
 		var rutaImagen = $(this).attr("rutaImagen")
 		var datos = new FormData()
@@ -126,9 +121,8 @@ $('#formu-editar-tableroneumatico input[name="rutaActual"]').val(valor.imagen)
 		})
 	})
 
-		$("body #dinamiautomatico").on("click", ".Eliminar_automatico", function(){
+		$("body #modal-editar-tableroneumatico").on("click", ".Eliminarneumatico_automatico", function(){
 		var idAutomatico = $(this).attr("idAutomatico")
-		var idtablero = $(this).attr("idtablero")
 
 		var datos = new FormData()
 		datos.append("id_automatico", idAutomatico)
@@ -174,7 +168,7 @@ console.log(valor)
 		  }
 		})
 	})
-$("body #dinamifuente").on("click", ".Eliminar_fuente", function(){
+$("body #modal-editar-tableroneumatico").on("click", ".Eliminarneumatico_fuente", function(){
 		var idFuente = $(this).attr("idFuente")
 		var idtablero = $(this).attr("idtablero")
 
@@ -222,14 +216,62 @@ console.log(valor)
 		  }
 		})
 	})
-$("body #dinamivdf").on("click", ".Eliminar_vdf", function(){
-		var idVdf = $(this).attr("idVdf")
+$("body #modal-editar-tableroneumatico").on("click", ".Eliminarneumatico_vdf", function(){
+		var idManifold = $(this).attr("idManifold")
 
 
 		var datos = new FormData()
-		datos.append("id_vdf", idVdf)
+		datos.append("id_manifold", idManifold)
 		datos.append("tipoOperacion", "eliminarTvdf")
-	console.log(idVdf)
+	console.log(idManifold)
+		Swal.fire({
+		    width: 400,
+		  padding:'2em',
+		  text: "Estas seguro de eliminar!",
+		  icon: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Si, Elimina!'
+		}).then((result) => {
+		  if (result.value) {
+		  	$.ajax({
+				url: 'ajax/ajaxTableroneumatico.php',
+				type: 'POST',
+				data: datos,
+				processData: false,
+				contentType: false,
+				success: function(respuesta) {
+					if ( respuesta == "ok") {
+						Swal.fire(
+					      'Eliminado!',
+					      'Elemento Eliminado.',
+					      'success'
+					
+					    ).then((result) => {
+						  if (result.value) {
+						  $("#example").load(" #example");
+				
+				var valor = $('.btnEditarTableroneumatico').attr("idtableroneumatico",10).click();  
+		 
+console.log(valor)
+
+						  }
+						})
+					}
+				}
+			})
+		  }
+		})
+	})
+$("body #modal-editar-tableroneumatico").on("click", ".Eliminarneumatico_plc", function(){
+		var idPlc = $(this).attr("idPlc")
+
+
+		var datos = new FormData()
+		datos.append("id_plc", idPlc)
+		datos.append("tipoOperacion", "eliminarTplc")
+	console.log(idPlc)
 		Swal.fire({
 		    width: 400,
 		  padding:'2em',

@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+
 Class ControllerSensor {
 	public function listarSensorCtr() {
 		$tabla = "sensor";
@@ -7,6 +9,9 @@ Class ControllerSensor {
 	}
 	static public function ctrCrearSensor($datos) {
 		$tabla = "sensor";
+				if ($datos["imagen"]["error"] == 4) {
+			$rutaImagen = null;
+		}else{
 		list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 		$nuevoAncho = 1024;
 		$nuevoAlto = 768;
@@ -27,14 +32,18 @@ Class ControllerSensor {
 			imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 			imagepng($destino, $rutaImagen);
 		}
+		}
+
 		$respuesta = ModeloSensor::mdlCrearSensor($tabla, $datos,$rutaImagen);
 		return $respuesta;
 	}
 	static public function ctrEliminarSensor($id_sensor,$ruta) {
 		$tabla = "sensor";
-			if ( unlink($ruta) ) {
+	if ($ruta!='') {
+		unlink($ruta);
+		}
 $respuesta = ModeloSensor::mdlEliminarSensor($tabla, $id_sensor);
-}
+
 		return $respuesta;
 	}
 	static public function ctrEditarSensor($id_sensor) {

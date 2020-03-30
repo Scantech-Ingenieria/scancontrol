@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+
 Class ControllerFuentePoder {
 	public function listarFuentePoderCtr() {
 		$tabla = "fuentepoder";
@@ -7,6 +9,9 @@ Class ControllerFuentePoder {
 	}
 	static public function ctrCrearFuentePoder($datos) {
 		$tabla = "fuentepoder";
+		if ($datos["imagen"]["error"] == 4) {
+			$rutaImagen = null;
+		}else{
 list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 		$nuevoAncho = 1024;
 		$nuevoAlto = 768;
@@ -27,14 +32,18 @@ list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 			imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 			imagepng($destino, $rutaImagen);
 		}
+		}
+
 		$respuesta = ModeloFuentePoder::mdlCrearFuentePoder($tabla, $datos,$rutaImagen);
 		return $respuesta;
 	}
 	static public function ctrEliminarFuentePoder($id_fuentepoder,$ruta) {
 		$tabla = "fuentepoder";
-	if ( unlink($ruta) ) {
-		$respuesta = ModeloFuentePoder::mdlEliminarFuentePoder($tabla, $id_fuentepoder);
+	if ($ruta!='') {
+		unlink($ruta);
 		}
+		$respuesta = ModeloFuentePoder::mdlEliminarFuentePoder($tabla, $id_fuentepoder);
+		
 		return $respuesta;
 	}
 	static public function ctrEditarFuentePoder($id_fuentepoder) {

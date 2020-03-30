@@ -6,7 +6,7 @@
                                         <i class="pe-7s-car icon-gradient bg-mean-fruit">
                                         </i>
                                     </div>
-                                    <div>Manifold
+                                    <div>Motor
                                         <div class="page-title-subheading">Descripción de la pagina.
                                         </div>
                                     </div>
@@ -14,7 +14,7 @@
                                 <div class="page-title-actions">
                                     <div class="d-inline-block dropdown">
 
-                                         <button class="btn btn-primary" data-toggle="modal" data-target="#modal-insertar-manifold">Agregar Manifold <i class="fas fa-plus"></i></button>
+                                         <button class="btn btn-primary" data-toggle="modal" data-target="#modal-insertar-motor">Agregar Motor <i class="fas fa-plus"></i></button>
                                     </div>
                                 </div>    </div>
                         </div> 
@@ -22,30 +22,32 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Marca</th>
-                <th>Hilo</th>
-                <th>Cantidad de Estaciones</th>
-
+                <th>RPM</th>
+                <th>Usillo</th>
+                <th>Ancho</th>
+                <th>Capacidad</th>
                 <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
    <?php
-          $tabla = ControllerManifold::listarManifoldCtr();
+          $tabla = ControllerMotor::listarMotorCtr();
           foreach ($tabla as $key => $value) {
             echo '
 <tr>
-<td>'.nl2br($value["id_manifold"]).'</td>
-<td>'.nl2br($value["marca"]).'</td>
-<td>'.nl2br($value["medidas"]).'</td>
-<td>'.nl2br($value["sockets"]).'</td>
+<td>'.nl2br($value["id_motor"]).'</td>
+<td>'.nl2br($value["rpm"]).'</td>
+<td>'.nl2br($value["usillo"]).'</td>
+<td>'.nl2br($value["ancho"]).'</td>
+<td>'.nl2br($value["capacidad"]).'</td>
+
 
 <td><img width="200" src="'.substr($value["rutaImg"], 3).'"></td>
-<td width="100"> <button class="btn btn-sm btn-info btnEditarManifold" idManifold="'.$value["id_manifold"].'" data-toggle="modal" data-target="#modal-editar-manifold">
+<td width="100"> <button class="btn btn-sm btn-info btnEditarMotor" idMotor="'.$value["id_motor"].'" data-toggle="modal" data-target="#modal-editar-motor">
                     <i class="far fa-edit"></i>
                   </button>
-    <button class="btn btn-sm btn-danger btnEliminarManifold" idManifold="'.$value["id_manifold"].'" rutaImagen="'.$value["rutaImg"].'">
+    <button class="btn btn-sm btn-danger btnEliminarMotor" idMotor="'.$value["id_motor"].'" rutaImagen="'.$value["rutaImg"].'">
                     <i class="far fa-trash-alt"></i>
     </button>
     </td>

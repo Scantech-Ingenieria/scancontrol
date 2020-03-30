@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+
 Class ControllerVdf {
 	public function listarVdfCtr() {
 		$tabla = "variador_frecuencia";
@@ -7,6 +9,9 @@ Class ControllerVdf {
 	}
 	static public function ctrCrearVdf($datos) {
 		$tabla = "variador_frecuencia";
+		if ($datos["imagen"]["error"] == 4) {
+			$rutaImagen = null;
+		}else{
 list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 		$nuevoAncho = 1024;
 		$nuevoAlto = 768;
@@ -27,12 +32,16 @@ list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 			imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 			imagepng($destino, $rutaImagen);
 		}
+		}
+
 		$respuesta = ModeloVdf::mdlCrearVdf($tabla, $datos,$rutaImagen);
 		return $respuesta;
 	}
 	static public function ctrEliminarVdf($id_vdf,$ruta) {
 		$tabla = "variador_frecuencia";
-	 unlink($ruta) ;
+	if ($ruta!='') {
+		unlink($ruta);
+		}
 $respuesta = ModeloVdf::mdlEliminarVdf($tabla, $id_vdf);
 
 		return $respuesta;

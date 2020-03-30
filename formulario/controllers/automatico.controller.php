@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+
 Class ControllerAutomatico {
 	public function listarAutomaticoCtr() {
 		$tabla = "automatico";
@@ -7,6 +9,9 @@ Class ControllerAutomatico {
 	}
 	static public function ctrCrearAutomatico($datos) {
 		$tabla = "automatico";
+		if ($datos["imagen"]["error"] == 4) {
+			$rutaImagen = null;
+		}else{
 list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 		$nuevoAncho = 1024;
 		$nuevoAlto = 768;
@@ -27,12 +32,16 @@ list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 			imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 			imagepng($destino, $rutaImagen);
 		}
+		}
+		
 		$respuesta = ModeloAutomatico::mdlCrearAutomatico($tabla, $datos, $rutaImagen);
 		return $respuesta;
 	}
 	static public function ctrEliminarAutomatico($id_automatico,$ruta) {
 		$tabla = "automatico";
- unlink($ruta); 
+if ($ruta!='') {
+		unlink($ruta);
+		}
 $respuesta = ModeloAutomatico::mdlEliminarAutomatico($tabla, $id_automatico);
 	
 		return $respuesta;

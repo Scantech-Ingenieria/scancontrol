@@ -75,7 +75,7 @@ $tablafuente = ControllerTableroelectrico::listarTelectricofuenteCtr();
 foreach ($tablafuente as $key => $valorfuente) {
 $idtablafuente=$valorfuente["id_tablero_electrico"];
 if ($idtablafuente==$id_tableroelectrico) {
-   echo '<div style="background:#ffefef;margin-bottom:5px;"><label style="font-weight: bold;">- M:</label> '.$valorfuente["marca"].'<br> <label style="font-weight: bold;">A:</label> '.$valorfuente["amperaje"].'<br>  <label style="font-weight: bold;">C: </label> '.$valorfuente["corriente"].' <br>  <a href="'.substr($valorfuente["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valorfuente["rutaImg"], 3).'"></a><br></div>';
+   echo '<div style="background:#ffefef;margin-bottom:5px;"><label style="font-weight: bold;">- M:</label> '.$valorfuente["marca"].'<br> <label style="font-weight: bold;">A:</label> '.$valorfuente["amperaje"].'<br>  <label style="font-weight: bold;">C: </label> '.$valorfuente["corriente"].' <label style="font-weight: bold;">Descripción: </label> '.$valorfuente["descripcion"].'  <br>  <a href="'.substr($valorfuente["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valorfuente["rutaImg"], 3).'"></a><br></div>';
 
 }
 }

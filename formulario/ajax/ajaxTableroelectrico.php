@@ -2,6 +2,7 @@
 require_once "../controllers/tableroelectrico.controller.php";
 require_once "../models/tableroelectrico.modelo.php";
 error_reporting(0);
+
 Class ajaxTableroelectrico {
 	public function crearTableroelectrico(){
 		$datos = array(
@@ -13,6 +14,7 @@ Class ajaxTableroelectrico {
 						"tipofuentepoder"=>$this->tipofuentepoder,
 						"descripcionautomaticos"=>$this->descripcionautomaticos,
 						"descripcionvdf"=>$this->descripcionvdf,
+						"descripcionfuente"=>$this->descripcionfuente,
 						"cantidadvdf"=>$this->cantidadvdf,
 						"tipovdf"=>$this->tipovdf,
 						"contactor"=>$this->contactor,
@@ -78,8 +80,9 @@ Class ajaxTableroelectrico {
 						"descripcionvdf"=>$this->descripcionvdf,
                          "descripcionautomaticoseditar"=>$this->descripcionautomaticoseditar,
 						"descripcionvdfeditar"=>$this->descripcionvdfeditar,
+						"descripcionfuenteeditar"=>$this->descripcionfuenteeditar,
+						"descripcionfuente"=>$this->descripcionfuente,
 						"contactor"=>$this->contactor,
-
 						"imagen"=>$this->imagen_tableroelectrico,
 						"rutaActual"=>$this->rutaActual
 
@@ -120,6 +123,7 @@ if($tipoOperacion == "insertartableroelectrico") {
 	$crearNuevoTableroelectrico -> tipoautomaticos = $_POST["Tipoautomaticos"];
 	$crearNuevoTableroelectrico -> descripcionautomaticos = $_POST["DescripcionAutomatico"];
 	$crearNuevoTableroelectrico -> descripcionvdf = $_POST["DescripcionVdf"];
+	$crearNuevoTableroelectrico -> descripcionfuente = $_POST["DescripcionFuente"];
 	$crearNuevoTableroelectrico -> tipofuentepoder = $_POST["TipoFuentePoder"];
 	$crearNuevoTableroelectrico -> cantidadvdf = $_POST["CantidadVdf"];
 	$crearNuevoTableroelectrico -> tipovdf = $_POST["TipoVdf"];
@@ -165,6 +169,8 @@ if ($tipoOperacion == "actualizarTableroelectrico") {
 	$actualizarTableroelectrico -> contactor = $_POST["Contactor"];
 	$actualizarTableroelectrico -> descripcionvdf = $_POST["DescripcionVdf"];
 	$actualizarTableroelectrico -> descripcionautomaticos = $_POST["DescripcionAutomatico"];
+	$actualizarTableroelectrico -> descripcionfuente = $_POST["DescripcionFuente"];
+	$actualizarTableroelectrico -> descripcionfuenteeditar = $_POST["DescripcionFuenteEditar"];
 	$actualizarTableroelectrico -> cantidadautomaticoseditar = $_POST["CantidadautomaticosEditar"];
 	$actualizarTableroelectrico -> tipoautomaticoseditar = $_POST["TipoautomaticosEditar"];
 	$actualizarTableroelectrico -> tipofuentepodereditar = $_POST["TipoFuentePoderEditar"];

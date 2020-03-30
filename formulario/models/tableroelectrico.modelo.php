@@ -53,10 +53,12 @@ $sqlautomatico -> execute();
 }
 $fuentepoder=count($datos["tipofuentepoder"]);
 $tipofuentepoder=$datos["tipofuentepoder"];
+$descripcionfuente=$datos["descripcionfuente"];
+
 if($fuentepoder >=1){
 for ($i=0; $i <$fuentepoder ; $i++) { 
 if ($tipofuentepoder[$i]!='') {
-$sqlfuentepoder = Conexion::conectar()->prepare("INSERT INTO telectrico_fuente(id_tablero_electrico,tipo_fuente) VALUES('". $id_tablero."','".$tipofuentepoder[$i]."')");
+$sqlfuentepoder = Conexion::conectar()->prepare("INSERT INTO telectrico_fuente(id_tablero_electrico,tipo_fuente,descripcion) VALUES('". $id_tablero."','".$tipofuentepoder[$i]."','".$descripcionfuente[$i]."')");
 $sqlfuentepoder -> execute();
 }
 }
@@ -194,7 +196,9 @@ if($fuente >=1){
 for ($i=0; $i <$fuente ; $i++) { 
 $id_fuente=$datos['idfuente'][$i];
 $tipofuentepoder=$datos['tipofuentepoder'][$i];
-$sqlfuente = Conexion::conectar()->prepare("UPDATE telectrico_fuente SET tipo_fuente = $tipofuentepoder WHERE id_telectrico_fuente = '".$id_fuente."'");
+$descripcionfuente=$datos['descripcionfuente'][$i];
+
+$sqlfuente = Conexion::conectar()->prepare("UPDATE telectrico_fuente SET tipo_fuente = $tipofuentepoder,descripcion = '$descripcionfuente' WHERE id_telectrico_fuente = '".$id_fuente."'");
 $sqlfuente -> execute();
 }
 }
@@ -202,12 +206,13 @@ $sqlfuente -> execute();
 $fuenteeditar=count($datos["tipofuentepodereditar"]);
 $Tipofuentepodereditar=$datos["tipofuentepodereditar"];
 $id_tableroelectrico=$datos["id_tableroelectrico"];
+$descripcionfuenteeditar=$datos['descripcionfuenteeditar'];
 
 
 if($fuenteeditar >=1){
 for ($i=0; $i <$fuenteeditar ; $i++) { 
 
-$sqlfuenteeditar = Conexion::conectar()->prepare("INSERT INTO telectrico_fuente(id_tablero_electrico,tipo_fuente) VALUES('". $id_tableroelectrico."', '".$Tipofuentepodereditar[$i]."')");
+$sqlfuenteeditar = Conexion::conectar()->prepare("INSERT INTO telectrico_fuente(id_tablero_electrico,tipo_fuente,descripcion) VALUES('". $id_tableroelectrico."', '".$Tipofuentepodereditar[$i]."', '".$descripcionfuenteeditar[$i]."')");
 $sqlfuenteeditar -> execute();
 }
 }

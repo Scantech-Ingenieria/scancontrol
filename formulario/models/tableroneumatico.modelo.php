@@ -108,7 +108,7 @@ $estado=true;
 		}
 	}
 	static public function mdlEliminarTautomatico($tabla, $id_tautomatico) {
-		$sql = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_telectrico_automatico = :id");
+		$sql = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_tneumatico_automatico = :id");
 		$sql->bindParam(":id", $id_tautomatico, PDO::PARAM_INT);
 		if( $sql->execute()) {
 			return "ok";
@@ -117,16 +117,26 @@ $estado=true;
 		}
 	}
 	static public function mdlEliminarTfuente($tabla, $id_tfuente) {
-		$sql = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_telectrico_fuente = :id");
+		$sql = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_tneumatico_fuente = :id");
 		$sql->bindParam(":id", $id_tfuente, PDO::PARAM_INT);
 		if( $sql->execute()) {
 			return "ok";
 		} else {
 			return "error";
 		}
-	}	static public function mdlEliminarTvdf($tabla, $id_tvdf) {
-		$sql = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_telectrico_vdf = :id");
+	}
+		static public function mdlEliminarTvdf($tabla, $id_tvdf) {
+		$sql = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_tneumatico_manifold = :id");
 		$sql->bindParam(":id", $id_tvdf, PDO::PARAM_INT);
+		if( $sql->execute()) {
+			return "ok";
+		} else {
+			return "error";
+		}
+	}
+			static public function mdlEliminarTplc($tabla, $id_tplc) {
+		$sql = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_tneumatico_plc = :id");
+		$sql->bindParam(":id", $id_tplc, PDO::PARAM_INT);
 		if( $sql->execute()) {
 			return "ok";
 		} else {
@@ -176,18 +186,16 @@ $estado=true;
 	}
 	static public function mdlActualizarTableroneumatico($tabla, $datos,$rutaImagen) {
 		if( is_null($rutaImagen)) {
-			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET altura = :altura,ancho =:ancho,fondo =:fondo, contactor = :contactor WHERE id_tableroneumatico = :id");
+			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET altura = :altura,ancho =:ancho,fondo =:fondo WHERE id_tableroneumatico = :id");
 			$sql->bindParam(":altura", $datos["altura"], PDO::PARAM_STR);
 			$sql->bindParam(":ancho", $datos["ancho"], PDO::PARAM_STR);
 			$sql->bindParam(":fondo", $datos["fondo"], PDO::PARAM_STR);
-			$sql->bindParam(":contactor", $datos["contactor"], PDO::PARAM_STR);
 			$sql->bindParam(":id", $datos["id_tableroneumatico"], PDO::PARAM_INT);
 }else{
-		$sql = Conexion::conectar()->prepare("UPDATE $tabla SET altura = :altura,ancho =:ancho,fondo =:fondo, contactor = :contactor, rutaImg = :rutaNueva WHERE id_tableroneumatico = :id");
+		$sql = Conexion::conectar()->prepare("UPDATE $tabla SET altura = :altura,ancho =:ancho,fondo =:fondo, rutaImg = :rutaNueva WHERE id_tableroneumatico = :id");
 		$sql->bindParam(":altura", $datos["altura"], PDO::PARAM_STR);
 			$sql->bindParam(":ancho", $datos["ancho"], PDO::PARAM_STR);
 			$sql->bindParam(":fondo", $datos["fondo"], PDO::PARAM_STR);
-			$sql->bindParam(":contactor", $datos["contactor"], PDO::PARAM_STR);
 			$sql->bindParam(":rutaNueva", $rutaImagen, PDO::PARAM_STR);
 			$sql->bindParam(":id", $datos["id_tableroneumatico"], PDO::PARAM_INT);
 }
@@ -199,77 +207,109 @@ for ($i=0; $i <$automaticos ; $i++) {
 $id_automatico=$datos['idautomatico'][$i];
 $cantidad=$datos['cantidadautomaticos'][$i];
 $tipo_automatico=$datos['tipoautomaticos'][$i];
-$sqlautomatico = Conexion::conectar()->prepare("UPDATE telectrico_automatico SET cantidad = $cantidad,tipo_automatico = $tipo_automatico WHERE id_telectrico_automatico = '".$id_automatico."'");
+$descripcion_automatico=$datos['descripcionautomaticos'][$i];
+
+$sqlautomatico = Conexion::conectar()->prepare("UPDATE tneumatico_automatico SET cantidad = $cantidad,tipo_automatico = $tipo_automatico,descripcion = '$descripcion_automatico' WHERE id_tneumatico_automatico = '".$id_automatico."'");
 $sqlautomatico -> execute();
 }
 }
-
-
 $automaticoseditar=count($datos["cantidadautomaticoseditar"]);
-
 $cantidadautomaticoseditar=$datos["cantidadautomaticoseditar"];
 $tipoautomaticoseditar=$datos["tipoautomaticoseditar"];
+$descripcionautomaticoseditar=$datos["descripcionautomaticoseditar"];
 $id_tableroneumatico=$datos["id_tableroneumatico"];
-
 
 if($automaticoseditar >=1){
 for ($i=0; $i <$automaticoseditar ; $i++) { 
 
-$sqlautomaticoeditar = Conexion::conectar()->prepare("INSERT INTO telectrico_automatico(id_tablero_electrico,cantidad,tipo_automatico) VALUES('". $id_tableroneumatico."','".$cantidadautomaticoseditar[$i]."', '".$tipoautomaticoseditar[$i]."')");
+$sqlautomaticoeditar = Conexion::conectar()->prepare("INSERT INTO tneumatico_automatico(id_tablero_neumatico,cantidad,tipo_automatico,descripcion) VALUES('". $id_tableroneumatico."','".$cantidadautomaticoseditar[$i]."', '".$tipoautomaticoseditar[$i]."', '".$descripcionautomaticoseditar[$i]."')");
 $sqlautomaticoeditar -> execute();
 }
 }
-
-	# code...
 
 $fuente=count($datos["idfuente"]);
 if($fuente >=1){
 for ($i=0; $i <$fuente ; $i++) { 
 $id_fuente=$datos['idfuente'][$i];
 $tipofuentepoder=$datos['tipofuentepoder'][$i];
-$sqlfuente = Conexion::conectar()->prepare("UPDATE telectrico_fuente SET tipo_fuente = $tipofuentepoder WHERE id_telectrico_fuente = '".$id_fuente."'");
-$sqlfuente -> execute();
+$cantidadfuentepoder=$datos['cantidadfuentepoder'][$i];
+$descripcionfuentepoder=$datos['descripcionfuentepoder'][$i];
+
+
+$sqlfuenteneumatico = Conexion::conectar()->prepare("UPDATE tneumatico_fuente SET cantidad = $cantidadfuentepoder,tipo_fuente = $tipofuentepoder,descripcion = '$descripcionfuentepoder' WHERE id_tneumatico_fuente = '".$id_fuente."'");
+$sqlfuenteneumatico -> execute();
 }
 }
 
 $fuenteeditar=count($datos["tipofuentepodereditar"]);
 $Tipofuentepodereditar=$datos["tipofuentepodereditar"];
+$cantidadfuentepodereditar=$datos["cantidadfuentepodereditar"];
+$descripcionfuentepodereditar=$datos["descripcionfuentepodereditar"];
+
 $id_tableroneumatico=$datos["id_tableroneumatico"];
 
 
 if($fuenteeditar >=1){
 for ($i=0; $i <$fuenteeditar ; $i++) { 
 
-$sqlfuenteeditar = Conexion::conectar()->prepare("INSERT INTO telectrico_fuente(id_tablero_electrico,tipo_fuente) VALUES('". $id_tableroneumatico."', '".$Tipofuentepodereditar[$i]."')");
+$sqlfuenteeditar = Conexion::conectar()->prepare("INSERT INTO tneumatico_fuente(id_tablero_neumatico,tipo_fuente,cantidad,descripcion) VALUES('". $id_tableroneumatico."', '".$Tipofuentepodereditar[$i]."', '".$cantidadfuentepodereditar[$i]."', '".$descripcionfuentepodereditar[$i]."')");
 $sqlfuenteeditar -> execute();
 }
 }
 
 
-$vdf=count($datos["idvdf"]);
-if($vdf >=1){
-for ($i=0; $i <$vdf ; $i++) { 
-$idvdf=$datos['idvdf'][$i];
-$cantidadvdf=$datos['cantidadvdf'][$i];
-$tipovdf=$datos['tipovdf'][$i];
+$manifold=count($datos["idmanifold"]);
+if($manifold >=1){
+for ($i=0; $i <$manifold ; $i++) { 
+$idmanifold=$datos['idmanifold'][$i];
+$tipomanifold=$datos['tipomanifold'][$i];
 
-$sqlvdf = Conexion::conectar()->prepare("UPDATE telectrico_vdf SET cantidad = $cantidadvdf,tipo_vdf = $tipovdf WHERE id_telectrico_vdf = '".$idvdf."'");
-$sqlvdf -> execute();
+$sqlmanifold = Conexion::conectar()->prepare("UPDATE tneumatico_manifold SET tipo_manifold = $tipomanifold WHERE id_tneumatico_manifold = '".$idmanifold."'");
+$sqlmanifold -> execute();
 }
 }
 
-$vdfeditar=count($datos["tipovdfeditar"]);
-$tipovdfeditar=$datos["tipovdfeditar"];
-$cantidadvdfeditar=$datos["cantidadvdfeditar"];
+$manifoldeditar=count($datos["tipomanifoldeditar"]);
+$tipomanifoldeditar=$datos["tipomanifoldeditar"];
 
 
-if($vdfeditar >=1){
-for ($i=0; $i <$vdfeditar ; $i++) { 
 
-$sqlvdfeditar = Conexion::conectar()->prepare("INSERT INTO telectrico_vdf(id_tablero_electrico,cantidad,tipo_vdf) VALUES('". $id_tableroneumatico."','". $cantidadvdfeditar[$i]."', '".$tipovdfeditar[$i]."')");
-$sqlvdfeditar -> execute();
+if($manifoldeditar >=1){
+for ($i=0; $i <$manifoldeditar ; $i++) { 
+
+$sqlmanifoldeditar = Conexion::conectar()->prepare("INSERT INTO tneumatico_manifold(id_tablero_neumatico,tipo_manifold) VALUES('". $id_tableroneumatico."','".$tipomanifoldeditar[$i]."')");
+$sqlmanifoldeditar -> execute();
 }
 }
+
+$plc=count($datos["idplc"]);
+if($plc >=1){
+for ($i=0; $i <$plc ; $i++) { 
+$idplc=$datos['idplc'][$i];
+$tipoplc=$datos['tipoplc'][$i];
+$cantidadplc=$datos['cantidadplc'][$i];
+
+$sqlplc = Conexion::conectar()->prepare("UPDATE tneumatico_plc SET cantidad = $cantidadplc,tipo_plc = $tipoplc WHERE id_tneumatico_plc = '".$idplc."'");
+$sqlplc -> execute();
+}
+}
+
+$plceditar=count($datos["tipoplceditar"]);
+$tipoplceditar=$datos["tipoplceditar"];
+$cantidadplceditar=$datos["cantidadplceditar"];
+
+
+if($plceditar >=1){
+for ($i=0; $i <$plceditar ; $i++) { 
+
+$sqlplceditar = Conexion::conectar()->prepare("INSERT INTO tneumatico_plc(id_tablero_neumatico,cantidad,tipo_plc) VALUES('". $id_tableroneumatico."','".$cantidadplceditar[$i]."','".$tipoplceditar[$i]."')");
+$sqlplceditar -> execute();
+}
+}
+
+
+
+
 $estado=true;
 
 

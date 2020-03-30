@@ -23,7 +23,9 @@ class ControllerEnrutamiento {
          $ruta == "plc"||
          $ruta == "manifold"||
          $ruta == "tableroneumatico"||
-         $ruta == "cilindros"
+         $ruta == "cilindros"||
+         $ruta == "motor"
+
 
 
 

@@ -1,6 +1,7 @@
 <?php
 require_once "../controllers/tableroneumatico.controller.php";
 require_once "../models/tableroneumatico.modelo.php";
+error_reporting(0);
 
 Class ajaxTableroneumatico {
 	public function crearTableroneumatico(){
@@ -110,8 +111,13 @@ Class ajaxTableroneumatico {
 		echo $respuesta;
 	}
 		public function eliminarTvdf(){
-		$id_tvdf = $this->id_tvdf;
-		$respuesta = ControllerTableroneumatico::ctrEliminarTvdf($id_tvdf);
+		$id_tmanifold = $this->id_tmanifold;
+		$respuesta = ControllerTableroneumatico::ctrEliminarTvdf($id_tmanifold);
+		echo $respuesta;
+	}
+		public function eliminarTplc(){
+		$id_tplc = $this->id_tplc;
+		$respuesta = ControllerTableroneumatico::ctrEliminarTplc($id_tplc);
 		echo $respuesta;
 	}
 
@@ -160,6 +166,7 @@ if ($tipoOperacion == "editarTableromanifold") {
 	$editarTableromanifold -> id_tableroneumatico = $_POST["id_tableroneumatico"];
 	$editarTableromanifold -> editarTableromanifold();
 }
+
 if ($tipoOperacion == "actualizarTableroneumatico") {
 	$actualizarTableroneumatico = new ajaxTableroneumatico();
 	$actualizarTableroneumatico -> altura = $_POST["Altura"];
@@ -181,7 +188,7 @@ if ($tipoOperacion == "actualizarTableroneumatico") {
 	$actualizarTableroneumatico -> cantidadautomaticoseditar = $_POST["CantidadautomaticosEditar"];
 	$actualizarTableroneumatico -> cantidadfuentepodereditar = $_POST["CantidadFuentePoderEditar"];
 	$actualizarTableroneumatico -> cantidadplc = $_POST["CantidadPlc"];
-		$actualizarTableroneumatico -> descripcionautomaticoseditar = $_POST["DescripcionAutomaticoEditar"];
+	$actualizarTableroneumatico -> descripcionautomaticoseditar = $_POST["DescripcionAutomaticoEditar"];
 	$actualizarTableroneumatico -> descripcionfuentepodereditar = $_POST["DescripcionFuentePoderEditar"];
 	$actualizarTableroneumatico -> tipoautomaticoseditar = $_POST["TipoautomaticosEditar"];
 	$actualizarTableroneumatico -> tipofuentepodereditar = $_POST["TipoFuentePoderEditar"];
@@ -212,7 +219,12 @@ if ($tipoOperacion == "eliminarTfuente") {
 
 if ($tipoOperacion == "eliminarTvdf") {
 	$eliminarTvdf = new ajaxTableroneumatico();
-	$eliminarTvdf -> id_tvdf = $_POST["id_vdf"];
+	$eliminarTvdf -> id_tmanifold = $_POST["id_manifold"];
 	$eliminarTvdf -> eliminarTvdf();
+}
+if ($tipoOperacion == "eliminarTplc") {
+	$eliminarTplc = new ajaxTableroneumatico();
+	$eliminarTplc -> id_tplc = $_POST["id_plc"];
+	$eliminarTplc -> eliminarTplc();
 }
 ?>

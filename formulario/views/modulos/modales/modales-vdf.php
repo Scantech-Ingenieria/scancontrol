@@ -25,7 +25,7 @@
              <div class="form-group row">
             <label class="col-sm-2 col-form-label">Imagen</label>
             <div class="col-sm-10 conteNuevaImagen">
-              <input type="file" class="form-control"  id="imagenVdf" name="imagenVdf" required>
+              <input type="file" class="form-control"  id="imagenVdf" name="imagenVdf" >
               <img src="" id="imgVdf" alt="" class="thumbnail" width="200" style="display: none">
             </div>
           </div>

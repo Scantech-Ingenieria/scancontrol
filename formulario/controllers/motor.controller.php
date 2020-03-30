@@ -1,21 +1,21 @@
 <?php
 error_reporting(0);
 
-Class ControllerManifold {
-	public function listarManifoldCtr() {
-		$tabla = "manifold";
-		$respuesta = ModeloManifold::listarManifoldMdl($tabla);
+Class ControllerMotor {
+	public function listarMotorCtr() {
+		$tabla = "motor";
+		$respuesta = ModeloMotor::listarMotorMdl($tabla);
 		return $respuesta;
 	}
-	static public function ctrCrearManifold($datos) {
-		$tabla = "manifold";
+	static public function ctrCrearMotor($datos) {
+		$tabla = "motor";
 if ($datos["imagen"]["error"] == 4) {
 			$rutaImagen = null;
 		}else{
 list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 		$nuevoAncho = 1024;
 		$nuevoAlto = 768;
-		$directorio = "../views/dist/img/manifold";
+		$directorio = "../views/dist/img/motor";
 		if($datos["imagen"]["type"] == "image/jpeg"){
 			$rutaImagen = $directorio."/".md5($datos["imagen"]["tmp_name"]).".jpeg";
 			$origen = imagecreatefromjpeg($datos["imagen"]["tmp_name"]);
@@ -32,27 +32,26 @@ list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 			imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 			imagepng($destino, $rutaImagen);
 		}
-		}
-
-		$respuesta = ModeloManifold::mdlCrearManifold($tabla, $datos,$rutaImagen);
+	}
+		$respuesta = ModeloMotor::mdlCrearMotor($tabla, $datos,$rutaImagen);
 		return $respuesta;
 	}
-	static public function ctrEliminarManifold($id_manifold,$ruta) {
-		$tabla = "manifold";
-	if ($ruta!='') {
+	static public function ctrEliminarMotor($id_motor,$ruta) {
+		$tabla = "motor";
+		if ($ruta!='') {
 		unlink($ruta);
 		}
-		$respuesta = ModeloManifold::mdlEliminarManifold($tabla, $id_manifold);
+		$respuesta = ModeloMotor::mdlEliminarMotor($tabla, $id_motor);
 		
 		return $respuesta;
 	}
-	static public function ctrEditarManifold($id_manifold) {
-		$tabla = "manifold";
-		$respuesta = ModeloManifold::mdlEditarManifold($tabla, $id_manifold);
+	static public function ctrEditarMotor($id_motor) {
+		$tabla = "motor";
+		$respuesta = ModeloMotor::mdlEditarMotor($tabla, $id_motor);
 		return $respuesta;
 	}
-	static public function ctrActualizarManifold($datos) {
-		$tabla = "manifold";
+	static public function ctrActualizarMotor($datos) {
+		$tabla = "motor";
 
 	if ($datos["imagen"]["error"] == 4) {
 			$rutaImagen = null;
@@ -63,7 +62,7 @@ list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 			list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 			$nuevoAncho = 1024;
 			$nuevoAlto = 768;
-			$directorio = "../views/dist/img/manifold";
+			$directorio = "../views/dist/img/motor";
 			if($datos["imagen"]["type"] == "image/jpeg"){
 				$rutaImagen = $directorio."/".md5($datos["imagen"]["tmp_name"]).".jpeg";
 				$origen = imagecreatefromjpeg($datos["imagen"]["tmp_name"]);
@@ -81,7 +80,7 @@ list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 				imagepng($destino, $rutaImagen);
 			}
 		}
-		$respuesta = ModeloManifold::mdlActualizarManifold($tabla, $datos, $rutaImagen);
+		$respuesta = ModeloMotor::mdlActualizarMotor($tabla, $datos, $rutaImagen);
 		return $respuesta;
 
 	}

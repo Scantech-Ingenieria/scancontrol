@@ -1,9 +1,10 @@
+
 $(document).ready(function(){
-	$("#formu-nuevo-rodamientos").submit(function (e) {
+	$("#formu-nuevo-motor").submit(function (e) {
 		e.preventDefault()
 		var datos = new FormData($(this)[0])
 		$.ajax({
-			url: 'ajax/ajaxRodamientos.php',
+			url: 'ajax/ajaxMotor.php',
 			type: 'POST',
 			data: datos,
 			processData: false,
@@ -11,24 +12,25 @@ $(document).ready(function(){
 			success: function(respuesta) {
 				console.log(respuesta)
 				if (respuesta == "ok") {
+
 		Swal.fire(
   'Excelente!',
-  'Descanso registrado con exito!',
+  'Motor registrada con exito!',
   'success'
 ).then((result) => {
 					  if (result.value) {
-					    window.location = "rodamientos"
+					    window.location = "motor"
 					  }
 					})
 				}
 			}
 		})
 	})
-	$("#formu-editar-rodamientos").submit(function (e) {
+	$("#formu-editar-motor").submit(function (e) {
 		e.preventDefault()
 		var datos = new FormData($(this)[0])
 		$.ajax({
-			url: 'ajax/ajaxRodamientos.php',
+			url: 'ajax/ajaxMotor.php',
 			type: 'POST',
 			data: datos,
 			processData: false,
@@ -42,47 +44,46 @@ $(document).ready(function(){
   'success'
 ).then((result) => {
 					  if (result.value) {
-					    window.location = "rodamientos"
+					    window.location = "motor"
 					  }
 					})
 				}
 			}
 		})
 	})
-
-	$("body #mi_lista").on("click", ".btnEditarRodamientos", function(){
-		var idRodamientos = $(this).attr("idRodamientos")
+	$("body #mi_lista").on("click", ".btnEditarMotor", function(){
+		var idMotor = $(this).attr("idMotor")
 		var datos = new FormData()
-		datos.append("id_rodamientos", idRodamientos)
-		datos.append("tipoOperacion", "editarRodamientos")
-
+		datos.append("id_motor", idMotor)
+		datos.append("tipoOperacion", "editarMotor")
 		$.ajax({
-			url: 'ajax/ajaxRodamientos.php',
+			url: 'ajax/ajaxMotor.php',
 			type: 'POST',
 			data: datos,
 			processData: false,
 			contentType: false,
 			success: function(respuesta) {
 				var valor = JSON.parse(respuesta)
-				console.log(valor.id_rodamientos)
-				$('#formu-editar-rodamientos input[name="id_rodamientos"]').val(valor.id_rodamientos)
-				$('#formu-editar-rodamientos input[name="Modelo"]').val(valor.modelo)
-				$('#formu-editar-rodamientos input[name="Rodamiento"]').val(valor.rodamiento)
-				$('#formu-editar-rodamientos input[name="Material"]').val(valor.material)
-				$('#formu-editar-rodamientos input[name="Fijaciones"]').val(valor.fijaciones)
-				$('#formu-editar-rodamientos #imgDescanso').attr("src", valor.imagen)
-				$('#formu-editar-rodamientos input[name="rutaActual"]').val(valor.imagen)
+				console.log(valor.id_motor)
+				console.log(valor.imagen)
+				$('#formu-editar-motor input[name="id_motor"]').val(valor.id_motor)
+				$('#formu-editar-motor input[name="Rpm"]').val(valor.rpm)
+				$('#formu-editar-motor input[name="Usillo"]').val(valor.usillo)
+				$('#formu-editar-motor input[name="Ancho"]').val(valor.ancho)
+				$('#formu-editar-motor input[name="Capacidad"]').val(valor.capacidad)
+				$('#formu-editar-motor #imgMotor').attr("src", valor.imagen)
+				$('#formu-editar-motor input[name="rutaActual"]').val(valor.imagen)
 			}
 		})
 	})
-	$("body #mi_lista").on("click", ".btnEliminarRodamientos", function(){
-		var idRodamientos = $(this).attr("idRodamientos")
+	$("body #mi_lista").on("click", ".btnEliminarMotor", function(){
+		var idMotor = $(this).attr("idMotor")
 		var rutaImagen = $(this).attr("rutaImagen")
 		var datos = new FormData()
-		datos.append("id_rodamientos", idRodamientos)
-		datos.append("tipoOperacion", "eliminarRodamientos")
+		datos.append("id_motor", idMotor)
+		datos.append("tipoOperacion", "eliminarMotor")
 		datos.append("rutaImagen", rutaImagen)
-		console.log(idRodamientos)
+	console.log(idMotor)
 		Swal.fire({
 		  title: '¿Estás seguro de eliminar?',
 		  text: "Los cambios no son reversibles!",
@@ -94,7 +95,7 @@ $(document).ready(function(){
 		}).then((result) => {
 		  if (result.value) {
 		  	$.ajax({
-				url: 'ajax/ajaxRodamientos.php',
+				url: 'ajax/ajaxMotor.php',
 				type: 'POST',
 				data: datos,
 				processData: false,
@@ -107,51 +108,52 @@ $(document).ready(function(){
 					      'success'
 					    ).then((result) => {
 						  if (result.value) {
-						    window.location = "rodamientos"
+						    window.location = "motor"
 						  }
 						})
 					}
 				}
+
 			})
 		  }
 		})
 	})
 	// PREVISUALIZAR IMAGENES
-	$("#imagenDescanso").change(previsualizarImg)
-	$("#imagenDescansoEditar").change(previsualizarImg)
+	$("#imagenMotor").change(previsualizarImg)
+	$("#imagenMotorEditar").change(previsualizarImg)
 	function previsualizarImg(e) {
 		var contenedor = e.target.parentNode
 		var identificador = contenedor.classList[1]
 		imgSlider = this.files[0];
 		if ( imgSlider["type"] != "image/jpeg" && imgSlider["type"] != "image/png" && imgSlider["type"] != "video/mp4") {
-				$("#imagenDescanso").val("")
-				$("#imagenDescansoEditar").val("")
-
-
+				$("#imagenMotor").val("")
+				$("#imagenMotorEditar").val("")
 			Swal.fire(
 					  'No es un archivo valido',
 					      'Debe subir archivos formato JPEG , PNG',
 					      'error'
 				)	
 			}
-		if ( imgSlider["type"] > 10000000) {
-			$("#imagenDescanso").val("")
-				$("#imagenDescansoEditar").val("")
+		if ( imgSlider["type"] > 100000) {
+				$("#imagenMotor").val("")
+			
 
-			Swal.fire(
+Swal.fire(
 					  'Error al subir la imagen',
 					      'La imagen debe pesar MAX 2MB',
 					      'error'
 				)
 			}
 			else {
-				$("#imgDescanso").css("display", "block")
+				$("#imgMotor").css("display", "block")
 				var datosImagen = new FileReader;
 		  		datosImagen.readAsDataURL(imgSlider);
 		  		$(datosImagen).on("load", function(event){
 		  			var rutaImagen = event.target.result;
-		  			$("." + identificador +" #imgDescanso").attr("src", rutaImagen);
+		  			$("." + identificador +" #imgMotor").attr("src", rutaImagen);
 		  		})
 			}
 		}
+
+
 })

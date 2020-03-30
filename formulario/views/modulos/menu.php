@@ -98,18 +98,77 @@ Unidades Balanza       <i class="metismenu-state-icon pe-7s-angle-down caret-lef
                                     </a>
                                 </li>          
                                   <li class="app-sidebar__heading">Componentes</li>
+                                         <li id="tab-automatico">
+                                            <a href="automatico">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                             
+                                                </i>Automático
+                                            </a>
+                                        </li>  
                                      <li id="tab-bandas">
                                     <a href="bandas" >
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                        Bandas
                                     </a>
                                 </li> 
+                                   <li id="tab-cilindros">
+                                    <a href="cilindros" >
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                       Cilindros
+                                    </a>
+                                </li>
+                                   <li id="tab-rodamientos">
+                                    <a href="rodamientos" >
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                       Descanso
+                                    </a>
+                                </li > 
+                                   <li id="tab-fuentepoder">
+                                    <a href="fuentepoder" >
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                       Fuente de Poder
+                                    </a>
+                                </li>
+                                   <li id="tab-manifold">
+                                            <a href="manifold">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                                
+                                                </i>Manifold
+                                            </a>
+                                        </li> 
+                                           <li id="tab-motor">
+                                    <a href="motor" >
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                       Motor
+                                    </a>
+                                </li>
+
                                   <li id="tab-paletas">
                                     <a href="paletas" >
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                        Paletas
                                     </a>
                                 </li>  
+                                 <li id="tab-plc">
+                                            <a href="plc">
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                               
+                                                PLC
+                                            </a>
+                                        </li>
+                                   <li id="tab-sprockets">
+                                    <a href="sprockets" >
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                       Sprockets
+                                    </a>
+                                </li> 
+                               
+                                      <li id="tab-sensor">
+                                    <a href="sensor" >
+                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                       Sensores
+                                    </a>
+                                </li> 
                                 <li>
                                         <a href="#">
                                        <i class="metismenu-icon pe-7s-display2"></i>
@@ -117,97 +176,31 @@ Unidades Balanza       <i class="metismenu-state-icon pe-7s-angle-down caret-lef
                                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
 <ul>
- <li>
-                                    <a href="#">
-                                       <i class="metismenu-icon pe-7s-display2"></i>
-                                       Tablero Eléctrico
-                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                    </a>
-                                    <ul>
-                                           <li id="tab-tableroelectrico">
+    <li id="tab-tableroelectrico">
                                             <a href="tableroelectrico">
                                                 <i class="metismenu-icon"></i>
                                                 Registro Tablero E.
                                             </a>
                                         </li>
-                                        <li id="tab-vdf">
-                                            <a href="vdf">
-                                                <i class="metismenu-icon"></i>
-                                                Variador de Frecuencia
-                                            </a>
-                                        </li>
-                                        <li id="tab-automatico">
-                                            <a href="automatico">
-                                                <i class="metismenu-icon">
-                                                </i>Automático
-                                            </a>
-                                        </li>    
-                                    </ul>
-                                </li>
 
-                                      <li>
-                                    <a href="#">
-                                       <i class="metismenu-icon pe-7s-display2"></i>
-                                       Tablero Neumático
-                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                    </a>
-                                    <ul>
-                                       <li id="tab-tableroneumatico">
+                                 <li id="tab-tableroneumatico">
                                             <a href="tableroneumatico">
                                                 <i class="metismenu-icon"></i>
                                                 Registro Tablero N.
                                             </a>
                                         </li>
-                                        <li id="tab-plc">
-                                            <a href="plc">
-                                                <i class="metismenu-icon"></i>
-                                                PLC
-                                            </a>
-                                        </li>
-                                        <li id="tab-manifold">
-                                            <a href="manifold">
-                                                <i class="metismenu-icon">
-                                                </i>Manifold
-                                            </a>
-                                        </li>    
-                                    </ul>
-                                </li>
-                                <li id="tab-fuentepoder">
-                                    <a href="fuentepoder">
-                                       <i class="metismenu-icon pe-7s-display2"></i>
-                                       Fuente de Poder
-                                  
-                                    </a>
-                                </li>
+                            
                                 </ul>
 
                                 </li>
                      
-        
-                                 <li id="tab-sprockets">
-                                    <a href="sprockets" >
+                     <li id="tab-vdf">
+                                            <a href="vdf">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
-                                       Sprockets
-                                    </a>
-                                </li> 
-                                  <li id="tab-rodamientos">
-                                    <a href="rodamientos" >
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                       Descanso
-                                    </a>
-                                </li > 
-                                      <li id="tab-sensor">
-                                    <a href="sensor" >
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                       Sensores
-                                    </a>
-                                </li> 
-                                    <li id="tab-cilindros">
-                                    <a href="cilindros" >
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
-                                       Cilindros
-                                    </a>
-                                </li> 
+                                               
+                                                Variador de Frecuencia
+                                            </a>
+                                        </li>                                   
                                  <li class="app-sidebar__heading">Datos</li>
                                     <li id="tab-clientes">
                                     <a href="clientes" >

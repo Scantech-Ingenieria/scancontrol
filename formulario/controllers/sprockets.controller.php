@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+
 Class ControllerSprockets {
 	public function listarSprocketsCtr() {
 		$tabla = "sprockets";
@@ -7,6 +9,9 @@ Class ControllerSprockets {
 	}
 	static public function ctrCrearSprockets($datos) {
 		$tabla = "sprockets";
+			if ($datos["imagen"]["error"] == 4) {
+			$rutaImagen = null;
+		}else{
 		list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 		$nuevoAncho = 1024;
 		$nuevoAlto = 768;
@@ -27,14 +32,18 @@ Class ControllerSprockets {
 			imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 			imagepng($destino, $rutaImagen);
 		}
+		}
+
 		$respuesta = ModeloSprockets::mdlCrearSprockets($tabla, $datos,$rutaImagen);
 		return $respuesta;
 	}
 	static public function ctrEliminarSprockets($id_sprockets,$ruta) {
 		$tabla = "sprockets";
-		if ( unlink($ruta) ) {
+if ($ruta!='') {
+		unlink($ruta);
+		}
 $respuesta = ModeloSprockets::mdlEliminarSprockets($tabla, $id_sprockets);
-}
+
 		return $respuesta;
 	}
 	static public function ctrEditarSprockets($id_sprockets) {

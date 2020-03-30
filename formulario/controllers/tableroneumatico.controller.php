@@ -57,7 +57,9 @@ list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 	}
 	static public function ctrEliminarTableroneumatico($id_tableroneumatico,$ruta) {
 		$tabla = "tablero_neumatico";
-unlink($ruta);
+	if ($ruta!='') {
+		unlink($ruta);
+		}
 		$respuesta = ModeloTableroneumatico::mdlEliminarTableroneumatico($tabla, $id_tableroneumatico);
 	
 		return $respuesta;
@@ -73,8 +75,13 @@ unlink($ruta);
 		return $respuesta;
 	}
 		static public function ctrEliminarTvdf($id_tvdf) {
-		$tabla = "tneumatico_vdf";
+		$tabla = "tneumatico_manifold";
 		$respuesta = ModeloTableroneumatico::mdlEliminarTvdf($tabla, $id_tvdf);
+		return $respuesta;
+	}
+			static public function ctrEliminarTplc($id_tplc) {
+		$tabla = "tneumatico_plc";
+		$respuesta = ModeloTableroneumatico::mdlEliminarTplc($tabla, $id_tplc);
 		return $respuesta;
 	}
 	static public function ctrEditarTableroneumatico($id_tableroneumatico) {

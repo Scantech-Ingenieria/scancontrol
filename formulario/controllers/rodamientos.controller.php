@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+
 Class ControllerRodamientos {
 	public function listarRodamientosCtr() {
 		$tabla = "rodamientos";
@@ -7,6 +9,9 @@ Class ControllerRodamientos {
 	}
 	static public function ctrCrearRodamientos($datos) {
 		$tabla = "rodamientos";
+			if ($datos["imagen"]["error"] == 4) {
+			$rutaImagen = null;
+		}else{
 		list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 		$nuevoAncho = 1024;
 		$nuevoAlto = 768;
@@ -27,14 +32,18 @@ Class ControllerRodamientos {
 			imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 			imagepng($destino, $rutaImagen);
 		}
+		}
+
 		$respuesta = ModeloRodamientos::mdlCrearRodamientos($tabla, $datos,$rutaImagen);
 		return $respuesta;
 	}
 	static public function ctrEliminarRodamientos($id_rodamientos,$ruta) {
 		$tabla = "rodamientos";
-		if ( unlink($ruta) ) {
+if ($ruta!='') {
+		unlink($ruta);
+		}
 $respuesta = ModeloRodamientos::mdlEliminarRodamientos($tabla, $id_rodamientos);
-}
+
 		return $respuesta;
 	}
 	static public function ctrEditarRodamientos($id_rodamientos) {

@@ -2,7 +2,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Insertar Nuevo Decanso</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Insertar Nuevo Descanso</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -36,7 +36,7 @@
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Imagen</label>
             <div class="col-sm-10 conteNuevaImagen">
-              <input type="file" class="form-control"  id="imagenDescanso" name="imagenDescanso" required>
+              <input type="file" class="form-control"  id="imagenDescanso" name="imagenDescanso" >
               <img src="" id="imgDescanso" alt="" class="thumbnail" width="200" style="display: none">
             </div>
           </div>
@@ -58,7 +58,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar Rodamientos</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Editar Descanso</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

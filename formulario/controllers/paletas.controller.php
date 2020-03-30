@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+
 Class ControllerPaletas {
 	public function listarPaletasCtr() {
 		$tabla = "paletas";
@@ -7,7 +9,9 @@ Class ControllerPaletas {
 	}
 	static public function ctrCrearPaletas($datos) {
 		$tabla = "paletas";
-
+if ($datos["imagen"]["error"] == 4) {
+			$rutaImagen = null;
+		}else{
 		list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 		$nuevoAncho = 1024;
 		$nuevoAlto = 768;
@@ -28,14 +32,18 @@ Class ControllerPaletas {
 			imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 			imagepng($destino, $rutaImagen);
 		}
+		}
+
 		$respuesta = ModeloPaletas::mdlCrearPaletas($tabla, $datos,$rutaImagen);
 		return $respuesta;
 	}
 	static public function ctrEliminarPaletas($id_paletas,$ruta) {
 		$tabla = "paletas";
-		if ( unlink($ruta) ) {
+		if ($ruta!='') {
+		unlink($ruta);
+		}
 $respuesta = ModeloPaletas::mdlEliminarPaletas($tabla, $id_paletas);
-}
+
 		return $respuesta;
 	}
 	static public function ctrEditarPaletas($id_paletas) {

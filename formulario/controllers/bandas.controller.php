@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+
 Class ControllerBanda {
 	public function listarBandaCtr() {
 		$tabla = "bandas";
@@ -7,7 +9,9 @@ Class ControllerBanda {
 	}
 	static public function ctrCrearBanda($datos) {
 		$tabla = "bandas";
-
+if ($datos["imagen"]["error"] == 4) {
+			$rutaImagen = null;
+		}else{
 list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 		$nuevoAncho = 1024;
 		$nuevoAlto = 768;
@@ -28,14 +32,18 @@ list($ancho, $alto) = getimagesize($datos["imagen"]["tmp_name"]);
 			imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 			imagepng($destino, $rutaImagen);
 		}
+		}
+
 		$respuesta = ModeloBanda::mdlCrearBanda($tabla, $datos,$rutaImagen);
 		return $respuesta;
 	}
 	static public function ctrEliminarBanda($id_banda,$ruta) {
 		$tabla = "bandas";
-	if ( unlink($ruta) ) {
-		$respuesta = ModeloBanda::mdlEliminarBanda($tabla, $id_banda);
+	if ($ruta!='') {
+		unlink($ruta);
 		}
+		$respuesta = ModeloBanda::mdlEliminarBanda($tabla, $id_banda);
+		
 		return $respuesta;
 	}
 	static public function ctrEditarBanda($id_banda) {
