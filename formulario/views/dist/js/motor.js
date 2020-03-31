@@ -68,6 +68,8 @@ $(document).ready(function(){
 				console.log(valor.imagen)
 				$('#formu-editar-motor input[name="id_motor"]').val(valor.id_motor)
 				$('#formu-editar-motor input[name="Rpm"]').val(valor.rpm)
+				$('#formu-editar-motor input[name="Marca"]').val(valor.marca)
+
 				$('#formu-editar-motor input[name="Usillo"]').val(valor.usillo)
 				$('#formu-editar-motor input[name="Ancho"]').val(valor.ancho)
 				$('#formu-editar-motor input[name="Capacidad"]').val(valor.capacidad)

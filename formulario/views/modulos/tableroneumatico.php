@@ -84,7 +84,7 @@ $tablamanifold = ControllerTableroneumatico::listarTneumaticomanifoldCtr();
 foreach ($tablamanifold as $key => $valormanifold) {
 $idtablamanifold=$valormanifold["id_tablero_neumatico"];
 if ($idtablamanifold==$id_tableroneumatico) {
-   echo '<div style="background:#eaeaea;margin-bottom:5px;"><label style="font-weight: bold;">- Marca:</label> '.$valormanifold["marca"].' <label style="font-weight: bold;">- Medidas:</label> '.$valormanifold["medidas"].' <label style="font-weight: bold;">Sockets:</label> '.$valormanifold["sockets"].' <a href="'.substr($valormanifold["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valormanifold["rutaImg"], 3).'"></a><br></div>  <br>';
+   echo '<div style="background:#eaeaea;margin-bottom:5px;"><label style="font-weight: bold;">- Marca:</label> '.$valormanifold["marca"].' <label style="font-weight: bold;">- Hilo:</label> '.$valormanifold["medidas"].' <label style="font-weight: bold;">Cantidad Estaciones:</label> '.$valormanifold["sockets"].' <a href="'.substr($valormanifold["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valormanifold["rutaImg"], 3).'"></a><br></div>  <br>';
 }
 }
 

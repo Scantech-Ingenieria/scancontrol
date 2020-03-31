@@ -99,7 +99,7 @@ echo '<option value="'.$value["id_fuentepoder"].'">Marca: '.$value["marca"].' / 
    $tabla3 = ControllerManifold::listarManifoldCtr();
 echo '<option selected value="">Seleccione tipo Manifold</option>';
           foreach ($tabla3 as $key => $value) { 
-echo '<option value="'.$value["id_manifold"].'">Marca: '.$value["marca"].' / Medidas: ' .$value["medidas"].'/ Sockets: ' .$value["sockets"].'</option>';
+echo '<option value="'.$value["id_manifold"].'">Marca: '.$value["marca"].' / Hilo: ' .$value["medidas"].'/ Cantidad Estaciones: ' .$value["sockets"].'</option>';
           }
  echo '</select>';
  ?>
@@ -325,7 +325,7 @@ var n=1;
 var arrayvdf = <?= json_encode($tabla3) ?>;
  for(var m=0;m<arrayvdf.length;m++)
     {
-      $('#option3'+n+'').append('<option value='+arrayvdf[m][0]+'>Marca: '+arrayvdf[m][1]+' / Medidas: '+arrayvdf[m][2]+' / Sockets: '+arrayvdf[m][3]+'</option>')  
+      $('#option3'+n+'').append('<option value='+arrayvdf[m][0]+'>Marca: '+arrayvdf[m][1]+' / Hilo: '+arrayvdf[m][2]+' / Cantidad Estaciones: '+arrayvdf[m][3]+'</option>')  
     }
     });
     $(document).on('click', '.btn_remove3', function(){
@@ -480,11 +480,11 @@ var size = valor.length;
 }
  for(x=0; x<size; x++){
 
- $('#neumaticomanifold').append('<div id="row" class="form-group row" style="margin-bottom:15px;"> <input type="hidden" name="idManifold[]" value="'+valor[x][0]+'"><label class="col-2 col-sm-2 col-form-label" id="largo">Manifold</label><div class="col-9 col-sm-9"> <select id="option3'+x+'" class="form-control" name="TipoManifold[]" ><option selected value="'+valor[x][3]+'"> Marca: '+valor[x]['marca']+' / Medidas: '+valor[x]['medidas']+' / Sockets: '+valor[x]['sockets']+'</option></select></div><div class="col-1 col-sm-1"><button type="button" name="remove" id="'+x+'" class="btn btn-danger btn_remove3 Eliminarneumatico_vdf"   idManifold="'+valor[x][0]+'">X</button></div></div>');
+ $('#neumaticomanifold').append('<div id="row" class="form-group row" style="margin-bottom:15px;"> <input type="hidden" name="idManifold[]" value="'+valor[x][0]+'"><label class="col-2 col-sm-2 col-form-label" id="largo">Manifold</label><div class="col-9 col-sm-9"> <select id="option3'+x+'" class="form-control" name="TipoManifold[]" ><option selected value="'+valor[x][3]+'"> Marca: '+valor[x]['marca']+' / Hilo: '+valor[x]['medidas']+' / Cantidad Estaciones: '+valor[x]['sockets']+'</option></select></div><div class="col-1 col-sm-1"><button type="button" name="remove" id="'+x+'" class="btn btn-danger btn_remove3 Eliminarneumatico_vdf"   idManifold="'+valor[x][0]+'">X</button></div></div>');
 var arrayvdf = <?= json_encode($tabla3) ?>;
  for(var m=0;m<arrayvdf.length;m++)
     {
-      $('#option3'+x+'').append('<option value='+arrayvdf[m][0]+'>Marca: '+arrayvdf[m][1]+' / Medidas: '+arrayvdf[m][2]+'/ Sockets: '+arrayvdf[m][3]+'</option>')  
+      $('#option3'+x+'').append('<option value='+arrayvdf[m][0]+'>Marca: '+arrayvdf[m][1]+' / Hilo: '+arrayvdf[m][2]+'/ Cantidad Estaciones: '+arrayvdf[m][3]+'</option>')  
     }
  }
       }
@@ -503,7 +503,7 @@ var k=1;
 var arrayvdf = <?= json_encode($tabla3) ?>;
  for(var m=0;m<arrayvdf.length;m++)
     {
-      $('#option33'+k+'').append('<option value='+arrayvdf[m][0]+'>Marca: '+arrayvdf[m][1]+' / Medidas: '+arrayvdf[m][2]+'/ Sockets: '+arrayvdf[m][3]+'</option>')  
+      $('#option33'+k+'').append('<option value='+arrayvdf[m][0]+'>Marca: '+arrayvdf[m][1]+' / Hilo: '+arrayvdf[m][2]+'/ Cantidad Estaciones: '+arrayvdf[m][3]+'</option>')  
     }
     });
     $(document).on('click', '.btn_remove3', function(){

@@ -18,10 +18,8 @@ Class ajaxCalidad {
 						"tiposensores"=>$this->tiposensores,
 						"cantidadsensores"=>$this->cantidadsensores,
 						"racors"=>$this->racors,
-						"motorusillos"=>$this->motorusillos,
-						"motorcapacidad"=>$this->motorcapacidad,
-						"rpm"=>$this->rpm,		
-						"tiporodamientos"=>$this->tiporodamientos
+						"tipomotor"=>$this->tipomotor,
+						"tipodescanso"=>$this->tipodescanso
 					);
 
 		$respuesta = ControllerCalidad::ctrCrearCalidad($datos);
@@ -43,7 +41,7 @@ Class ajaxCalidad {
 						"tipo_sensores"=>$respuesta["tipo_sensores"],
 						"cantidad_sensores"=>$respuesta["cantidad_sensores"],
 						"racors"=>$respuesta["racors"],
-						"motor_usillos"=>$respuesta["motor_usillos"],
+						"tipomotor"=>$respuesta["motor_usillos"],
 						"motor_capacidad"=>$respuesta["motor_capacidad"],
 						"rpm"=>$respuesta["rpm"],
 						"tipo_rodamientos"=>$respuesta["tipo_rodamientos"]
@@ -90,16 +88,14 @@ if($tipoOperacion == "insertarcalidad") {
 	$crearNuevoCalidad -> tipobandas = $_POST["TipoBandas"];
 	$crearNuevoCalidad -> medidabanda = $_POST["MedidaBanda"];
 	$crearNuevoCalidad -> eje = $_POST["Eje"];
-	$crearNuevoCalidad -> cilindros = $_POST["Cilindros"];
+	$crearNuevoCalidad -> cilindros = $_POST["TipoCilindros"];
 	$crearNuevoCalidad -> tipobotoneras = $_POST["TipoBotoneras"];
 	$crearNuevoCalidad -> cantidadbotoneras = $_POST["CantidadBotoneras"];
 	$crearNuevoCalidad -> tiposensores = $_POST["TipoSensores"];
 	$crearNuevoCalidad -> cantidadsensores = $_POST["CantidadSensores"];
 	$crearNuevoCalidad -> racors = $_POST["Racors"];
-	$crearNuevoCalidad -> motorusillos = $_POST["MotorUsillos"];
-	$crearNuevoCalidad -> motorcapacidad = $_POST["MotorCapacidad"];
-	$crearNuevoCalidad -> rpm = $_POST["RPM"];
-	$crearNuevoCalidad -> tiporodamientos = $_POST["TipoRodamientos"];
+	$crearNuevoCalidad -> tipomotor = $_POST["TipoMotor"];
+	$crearNuevoCalidad -> tipodescanso = $_POST["TipoDescanso"];
 	$crearNuevoCalidad ->crearCalidad();
 }
 

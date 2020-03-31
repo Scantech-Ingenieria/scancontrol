@@ -5,6 +5,36 @@ Class ControllerCalidad {
 		$respuesta = ModeloCalidad::listarCalidadMdl($tabla);
 		return $respuesta;
 	}
+	public function listarCalidadSprocketsCtr() {
+		$tabla = "estacion_calidad";
+		$respuesta = ModeloCalidad::listarCalidadSprocketsMdl($tabla);
+		return $respuesta;
+	}
+
+	public function listarCalidadBandasCtr() {
+		$tabla = "estacion_calidad";
+		$respuesta = ModeloCalidad::listarCalidadBandasMdl($tabla);
+		return $respuesta;
+	}
+	public function listarCalidadRodamientosCtr() {
+		$tabla = "estacion_calidad";
+		$respuesta = ModeloCalidad::listarCalidadRodamientosMdl($tabla);
+		return $respuesta;
+	}
+	public function listarCalidadSensorCtr() {
+		$tabla = "estacion_calidad";
+		$respuesta = ModeloCalidad::listarCalidadSensorMdl($tabla);
+		return $respuesta;
+	}
+	public function listarCalidadCilindrosCtr() {
+		$tabla = "estacion_calidad";
+		$respuesta = ModeloCalidad::listarCalidadCilindrosMdl($tabla);
+		return $respuesta;
+	}public function listarCalidadMotorCtr() {
+		$tabla = "estacion_calidad";
+		$respuesta = ModeloCalidad::listarCalidadMotorMdl($tabla);
+		return $respuesta;
+	}
 		public function listarCalidadRegistroCtr() {
 		$tabla = "estacion_calidad";
 		$respuesta = ModeloCalidad::listarCalidadRegistroMdl($tabla);

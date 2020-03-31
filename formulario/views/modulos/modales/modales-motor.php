@@ -10,27 +10,33 @@
       <div class="modal-body">
         <form id="formu-nuevo-motor">
           <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Marca</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Marca" name="Marca">
+            </div>
+          </div>
+          <div class="form-group row">
             <label class="col-sm-2 col-form-label">RPM</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" placeholder="RPM" name="Rpm">
             </div>
           </div>
              <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Usillo</label>
+            <label class="col-sm-2 col-form-label">Diametro Usillo</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" placeholder="Usillo" name="Usillo">
+              <input type="text" class="form-control" placeholder="Diametro Usillo" name="Usillo">
             </div>
           </div>
             <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Ancho</label>
+            <label class="col-sm-2 col-form-label">Corriente</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" placeholder="Ancho" name="Ancho">
+              <input type="text" class="form-control" placeholder="Corriente" name="Ancho">
             </div>
           </div>
             <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Capacidad</label>
+            <label class="col-sm-2 col-form-label">Potencia</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" placeholder="Capacidad" name="Capacidad">
+              <input type="text" class="form-control" placeholder="Potencia" name="Capacidad">
             </div>
           </div>
          
@@ -63,6 +69,12 @@
       </div>
       <div class="modal-body">
         <form id="formu-editar-motor">
+         <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Marca</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Marca" name="Marca">
+            </div>
+          </div>
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">RPM</label>
             <div class="col-sm-10">
@@ -70,23 +82,24 @@
             </div>
           </div>
              <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Usillo</label>
+            <label class="col-sm-2 col-form-label">Diametro Usillo</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" placeholder="Usillo" name="Usillo">
+              <input type="text" class="form-control" placeholder="Diametro Usillo" name="Usillo">
             </div>
           </div>
             <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Ancho</label>
+            <label class="col-sm-2 col-form-label">Corriente</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" placeholder="Ancho" name="Ancho">
+              <input type="text" class="form-control" placeholder="Corriente" name="Ancho">
             </div>
           </div>
             <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Capacidad</label>
+            <label class="col-sm-2 col-form-label">Potencia</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" placeholder="Capacidad" name="Capacidad">
+              <input type="text" class="form-control" placeholder="Potencia" name="Capacidad">
             </div>
           </div>
+         
              <div class="form-group row">
             <label class="col-sm-2 col-form-label">Imagen</label>
             <div class="col-sm-10 conteNuevaImagen">

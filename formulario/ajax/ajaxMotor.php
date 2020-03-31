@@ -5,6 +5,8 @@ Class ajaxMotor {
 	public function crearMotor(){
 		$datos = array(
 						"rpm"=>$this->rpm,
+						"marca"=>$this->marca,
+
 						"usillo"=>$this->usillo,
 						"ancho"=>$this->ancho,
 						"capacidad"=>$this->capacidad,
@@ -18,7 +20,9 @@ Class ajaxMotor {
 	public function editarMotor(){
 		$id_motor = $this->id_motor;
 		$respuesta = ControllerMotor::ctrEditarMotor($id_motor);
-		$datos = array("id_motor"=>$respuesta["id_motor"],		
+		$datos = array("id_motor"=>$respuesta["id_motor"],	
+				        "marca"=>$respuesta["marca"],
+
 				        "rpm"=>$respuesta["rpm"],
 				        "usillo"=>$respuesta["usillo"],
 				        "ancho"=>$respuesta["ancho"],
@@ -30,6 +34,8 @@ Class ajaxMotor {
 	public function actualizarMotor(){
 		$datos = array( "id_motor"=>$this->id_motor,
 				        "rpm"=>$this->rpm,
+				        "marca"=>$this->marca,
+
 						"usillo"=>$this->usillo,
 						"ancho"=>$this->ancho,
 						"capacidad"=>$this->capacidad,
@@ -49,6 +55,8 @@ Class ajaxMotor {
 $tipoOperacion = $_POST["tipoOperacion"];
 if($tipoOperacion == "insertarmotor") {
 	$crearNuevoMotor = new ajaxMotor();
+	$crearNuevoMotor -> marca = $_POST["Marca"];
+
 	$crearNuevoMotor -> rpm = $_POST["Rpm"];
 	$crearNuevoMotor -> usillo = $_POST["Usillo"];
 	$crearNuevoMotor -> ancho = $_POST["Ancho"];
@@ -66,6 +74,8 @@ if ($tipoOperacion == "actualizarMotor") {
 	$actualizarMotor = new ajaxMotor();
 	$actualizarMotor -> id_motor = $_POST["id_motor"];
     $actualizarMotor -> rpm = $_POST["Rpm"];
+	$actualizarMotor -> marca = $_POST["Marca"];
+    
 	$actualizarMotor -> usillo = $_POST["Usillo"];
 	$actualizarMotor -> ancho = $_POST["Ancho"];
 	$actualizarMotor -> capacidad = $_POST["Capacidad"];

@@ -22,10 +22,12 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Marca</th>
                 <th>RPM</th>
-                <th>Usillo</th>
-                <th>Ancho</th>
-                <th>Capacidad</th>
+
+                <th>Diametro Usillo</th>
+                <th>Corriente</th>
+                <th>Potencia</th>
                 <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
@@ -37,6 +39,7 @@
             echo '
 <tr>
 <td>'.nl2br($value["id_motor"]).'</td>
+<td>'.nl2br($value["marca"]).'</td>
 <td>'.nl2br($value["rpm"]).'</td>
 <td>'.nl2br($value["usillo"]).'</td>
 <td>'.nl2br($value["ancho"]).'</td>

@@ -7,8 +7,10 @@ static public function listarMotorMdl($tabla) {
 		return $sql -> fetchAll();
 	}
 	static public function mdlCrearMotor($tabla, $datos,$rutaImagen) {
-		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :rpm,:usillo,:ancho,:capacidad,:imagen)");
+		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :rpm,:marca,:usillo,:ancho,:capacidad,:imagen)");
 		$sql->bindParam(":rpm", $datos["rpm"], PDO::PARAM_STR);
+		$sql->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
+
 		$sql->bindParam(":usillo", $datos["usillo"], PDO::PARAM_STR);
 		$sql->bindParam(":ancho", $datos["ancho"], PDO::PARAM_STR);
 		$sql->bindParam(":capacidad", $datos["capacidad"], PDO::PARAM_STR);
@@ -36,15 +38,18 @@ static public function listarMotorMdl($tabla) {
 	}
 	static public function mdlActualizarMotor($tabla, $datos,$rutaImagen) {
 		if( is_null($rutaImagen)) {
-			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET rpm = :rpm,usillo = :usillo,ancho = :ancho,capacidad = :capacidad WHERE id_motor = :id");
+			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET rpm = :rpm,marca = :marca,usillo = :usillo,ancho = :ancho,capacidad = :capacidad WHERE id_motor = :id");
 			$sql->bindParam(":rpm", $datos["rpm"], PDO::PARAM_STR);
+		$sql->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
+
 		$sql->bindParam(":usillo", $datos["usillo"], PDO::PARAM_STR);
 		$sql->bindParam(":ancho", $datos["ancho"], PDO::PARAM_STR);
 		$sql->bindParam(":capacidad", $datos["capacidad"], PDO::PARAM_STR);
 		$sql->bindParam(":id", $datos["id_motor"], PDO::PARAM_INT);
 }else{
-		$sql = Conexion::conectar()->prepare("UPDATE $tabla SET mrpm = :rpm,usillo = :usillo,ancho = :ancho,capacidad = :capacidad,rutaImg = :rutaNueva WHERE id_motor = :id");
+		$sql = Conexion::conectar()->prepare("UPDATE $tabla SET rpm = :rpm,marca = :marca,usillo = :usillo,ancho = :ancho,capacidad = :capacidad,rutaImg = :rutaNueva WHERE id_motor = :id");
 		$sql->bindParam(":rpm", $datos["rpm"], PDO::PARAM_STR);
+		$sql->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
 		$sql->bindParam(":usillo", $datos["usillo"], PDO::PARAM_STR);
 		$sql->bindParam(":ancho", $datos["ancho"], PDO::PARAM_STR);
 		$sql->bindParam(":capacidad", $datos["capacidad"], PDO::PARAM_STR);
