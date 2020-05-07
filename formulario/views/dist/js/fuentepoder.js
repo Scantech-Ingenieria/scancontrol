@@ -70,6 +70,7 @@ $('#formu-editar-fuentepoder input[name="id_fuentepoder"]').val(valor.id_fuentep
 $('#formu-editar-fuentepoder input[name="Marca"]').val(valor.marca)
 $('#formu-editar-fuentepoder input[name="Amperaje"]').val(valor.amperaje)
 $('#formu-editar-fuentepoder input[name="Corriente"]').val(valor.corriente)
+$('#formu-editar-fuentepoder input[name="Precio"]').val(valor.precio)
 $('#formu-editar-fuentepoder #imgFuentePoder').attr("src", valor.imagen)
 $('#formu-editar-fuentepoder input[name="rutaActual"]').val(valor.imagen)
 			}

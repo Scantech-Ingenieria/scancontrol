@@ -71,6 +71,7 @@ $(document).ready(function(){
 				$('#formu-editar-automatico input[name="Amperaje"]').val(valor.amperaje)
 				$('#formu-editar-automatico input[name="Marca"]').val(valor.marca)
 				$('#formu-editar-automatico input[name="Tipo"]').val(valor.tipo)
+				$('#formu-editar-automatico input[name="Precio"]').val(valor.precio)
 				$('#formu-editar-automatico #imgAutomatico').attr("src", valor.imagen)
 				$('#formu-editar-automatico input[name="rutaActual"]').val(valor.imagen)
 			}

@@ -2,9 +2,7 @@
 require_once "conexion.php";
 Class Modeloregistros {
 static public function listarregistrosMdl($registros) {
-		$sql = Conexion::conectar()->prepare("SELECT * FROM $registros ba
-INNER JOIN balanzas bala on ba.id_balanza=bala.id
-INNER JOIN clientes cli on bala.cliente=cli.id_cliente 
+		$sql = Conexion::conectar()->prepare("SELECT ba.id_unidad_balanza,ba.id_balanza,ba.id_unidad_al,ba.id_unidad_acel,ba.id_unidad_desc,ba.id_calidad,ca.rutaImg imgcalidad,ca.numero_puestos puestosca,ca.tipo_sprockets sprocketca,ca.cantidad_sprockets sprocketscantidadca,ca.tipo_banda tipobandaca,ca.medida_banda medidabandaca,ca.eje ejeca,ca.cilindros cilindrosca,ca.tipo_botoneras tipobotonerasca,ca.cantidad_botoneras cantidadbotonerasca,ca.tipo_sensores tiposensoresca,ca.racors racorsca,ca.tipo_motor tipomotorca,ca.tipo_descanso tipodescansoca,acel.rutaImg imgacel,alim.rutaImg imgalim,alim.tipo_sprockets sprocketalim,alim.cantidad_sprockets cantidadsprocketsalim,alim.banda_tipo bandaalim,alim.banda_medidas bandamedidasalim,alim.eje ejealim,alim.tipo_motor motoralim,alim.tipo_descanso descansoalim,des.rutaImg imgdes FROM $registros ba LEFT JOIN estacion_calidad ca on ca.id_calidad= ba.id_calidad LEFT JOIN unidad_acel acel on  acel.id_unidad_acel= ba.id_unidad_acel  LEFT JOIN unidad_alim alim on  alim.id_unidad_alim= ba.id_unidad_al  LEFT JOIN unidad_descarga des on  des.id_unidad_descarga= ba.id_unidad_desc
 -- INNER JOIN unidad_alim a on ba.id_unidad_al=a.id_unidad_alim
 ");
 		$sql -> execute();

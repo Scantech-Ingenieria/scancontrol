@@ -9,6 +9,7 @@ Class ajaxRodamientos {
 						"rodamiento"=>$this->rodamiento,
 						"material"=>$this->material,
 						"fijaciones"=>$this->fijaciones,
+						"precio"=>$this->precio,
 						"imagen"=>$this->imagen_descanso
 					);
 		$respuesta = ControllerRodamientos::ctrCrearRodamientos($datos);
@@ -22,6 +23,7 @@ Class ajaxRodamientos {
 						"rodamiento"=>$respuesta["rodamiento"],
 						"material"=>$respuesta["material"],
 						"fijaciones"=>$respuesta["fijaciones"],
+						"precio"=>miles($respuesta["precio"]),					
 						"imagen"=>substr($respuesta["rutaImg"], 3)
 
 						);
@@ -33,6 +35,7 @@ Class ajaxRodamientos {
 						"rodamiento"=>$this->rodamiento	,
 						"material"=>$this->material	,
 						"fijaciones"=>$this->fijaciones	,
+						"precio"=>$this->precio,
 						"rutaActual"=>$this->rutaActual,
 						"imagen"=>$this->imagen_descanso
 						);
@@ -55,6 +58,7 @@ if($tipoOperacion == "insertarrodamientos") {
 	$crearNuevoRodamientos -> rodamiento = $_POST["Rodamiento"];
 	$crearNuevoRodamientos -> material = $_POST["Material"];
 	$crearNuevoRodamientos -> fijaciones = $_POST["Fijaciones"];
+	$crearNuevoRodamientos -> precio = puntos($_POST["Precio"]);
     $crearNuevoRodamientos -> imagen_descanso = $_FILES["imagenDescanso"];
 	$crearNuevoRodamientos ->crearRodamientos();
 }
@@ -71,19 +75,25 @@ if ($tipoOperacion == "actualizarRodamientos") {
     $actualizarRodamientos -> rodamiento = $_POST["Rodamiento"];
 	$actualizarRodamientos -> material = $_POST["Material"];
 	$actualizarRodamientos -> fijaciones = $_POST["Fijaciones"];
+	$actualizarRodamientos -> precio = puntos($_POST["Precio"]);
     $actualizarRodamientos -> imagen_descanso = $_FILES["imagenDescanso"];
 	$actualizarRodamientos -> rutaActual = $_POST["rutaActual"];
-
-
-
 	$actualizarRodamientos -> actualizarRodamientos();
 }
 if ($tipoOperacion == "eliminarRodamientos") {
 	$eliminarRodamientos = new ajaxRodamientos();
 	$eliminarRodamientos -> id_rodamientos = $_POST["id_rodamientos"];
 	$eliminarRodamientos -> imagen_descanso = $_POST["rutaImagen"];
-
 	$eliminarRodamientos -> eliminarRodamientos();
 }
+function puntos($s)
+{
+$s= str_replace('.','', $s); 
+return $s;
+}
+function miles($m){
+$m=number_format($m, 0, ',', '.');
+return $m;
 
+}
 ?>

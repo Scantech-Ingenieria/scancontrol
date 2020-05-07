@@ -210,7 +210,7 @@ Unidades Balanza       <i class="metismenu-state-icon pe-7s-angle-down caret-lef
                                 </li>                      
                                 <li>
                                     <a href="#">
-                                        <i class="metismenu-icon pe-7s-eyedropper">
+                                        <i class="metismenu-icon pe-7s-settings">
                                         </i>Configuración
                                     </a>
                                 </li>             

@@ -23,7 +23,7 @@
                  $tabla = ControllerSprockets::listarSprocketsCtr();
 echo '<option selected value="">Seleccione tipo sprocket</option>';
           foreach ($tabla as $key => $value) {
-echo'<option value="'.$value["id_sprockets"].'">Nro° Serie: '.$value["serie"].' / Modelo: ' .$value["modelo"].' / Desc: '.$value["descripcion"].'</option>';
+echo'<option value="'.$value["id_sprockets"].'">Serie: '.$value["serie"].' / Modelo: ' .$value["modelo"].' / Dientes: '.$value["dientes"].' / Perforación: '.$value["perforacion"].' / Desc: '.$value["descripcion"].'</option>';
    }
  ?>
               </select>     
@@ -41,7 +41,7 @@ echo'<option value="'.$value["id_sprockets"].'">Nro° Serie: '.$value["serie"].'
 $tabla = ControllerBanda::listarBandaCtr();
 echo '<option selected value="">Seleccione tipo banda</option>';
           foreach ($tabla as $key => $value) {
-echo'<option value="'.$value["id_banda"].'">Nro° Serie: '.$value["numero_serie"].' / Material: ' .$value["material"].' / Desc: '.$value["descripcion"].'</option>';
+echo'<option value="'.$value["id_banda"].'">Serie: '.$value["numero_serie"].' / Material: ' .$value["material"].' / Paso: '.$value["paso"].' / Superficie: '.$value["superficie"].' / Ancho: '.$value["ancho"].' / Desc: '.$value["descripcion"].'</option>';
           }
  ?>
 </select>
@@ -93,7 +93,7 @@ echo'<option value="'.$value["id_cilindros"].'">ID: '.$value["id_cilindros"].' /
 echo '<option selected value="">Seleccione tipo sensores</option>';
    foreach ($Cli as $key => $value) {
 
-echo'<option value="'.$value["id_sensor"].'">Tipo Sensor: '.$value["tipo_sensor"].' / Modelo: ' .$value["modelo"].'</option>';
+echo'<option value="'.$value["id_sensor"].'">Tipo Sensor: '.$value["tipo_sensor"].' / Modelo: ' .$value["modelo"].' / Voltaje: ' .$value["voltaje"].' / Distancia: ' .$value["distancia"].' / Contacto: ' .$value["contacto"].'</option>';
    }
  ?>
 </select>
@@ -120,7 +120,7 @@ echo'<option value="'.$value["id_sensor"].'">Tipo Sensor: '.$value["tipo_sensor"
  $tablamotor = ControllerMotor::listarMotorCtr();
 echo '<option selected value="">Seleccione tipo Motor</option>';
           foreach ($tablamotor as $key => $value) {
-echo'<option value="'.$value["id_motor"].'">ID: '.$value["id_motor"].' / RPM: '.$value["rpm"].'/ Usillo: '.$value["usillo"].' / Ancho: '.$value["ancho"].'/ Capacidad: '.$value["capacidad"].'</option>';
+echo'<option value="'.$value["id_motor"].'">ID: '.$value["id_motor"].' / RPM: '.$value["rpm"].'/ Diametro Usillo: '.$value["usillo"].' / Corriente: '.$value["ancho"].'/ Potencia: '.$value["capacidad"].'</option>';
           }
  ?>
 </select>
@@ -139,6 +139,13 @@ echo'<option value="'.$value["id_rodamientos"].'">ID: '.$value["id_rodamientos"]
  ?>
 </select>
             </div>   
+          </div>
+              <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Imagen</label>
+            <div class="col-sm-10 conteNuevaImagen">
+              <input type="file" class="form-control"  id="imagenCalidad" name="imagenCalidad">
+              <img src="" id="imgCalidad" alt="" class="thumbnail" width="200" style="display: none">
+            </div>
           </div>
           <input type="hidden" name="tipoOperacion" value="insertarcalidad">
       </div>
@@ -174,9 +181,9 @@ echo'<option value="'.$value["id_rodamientos"].'">ID: '.$value["id_rodamientos"]
               <select class="form-control" name="TipoSprockets" >
                 <?php 
                  $tabla = ControllerSprockets::listarSprocketsCtr();
-echo '<option selected disabled>Seleccione tipo sprocket</option>';
+echo '<option selected value="">Seleccione tipo sprocket</option>';
           foreach ($tabla as $key => $value) {
-echo'<option value="'.$value["id_sprockets"].'">Nro° Serie: '.$value["serie"].' / Modelo: ' .$value["modelo"].' / Desc: '.$value["descripcion"].'</option>';
+echo'<option value="'.$value["id_sprockets"].'">Serie: '.$value["serie"].' / Modelo: ' .$value["modelo"].' / Dientes: '.$value["dientes"].' / Perforación: '.$value["perforacion"].' / Desc: '.$value["descripcion"].'</option>';
    }
  ?>
               </select>     
@@ -192,9 +199,9 @@ echo'<option value="'.$value["id_sprockets"].'">Nro° Serie: '.$value["serie"].'
 <select class="form-control" name="TipoBandas" >
 <?php 
 $tabla = ControllerBanda::listarBandaCtr();
-echo '<option selected disabled>Seleccione tipo banda</option>';
+echo '<option selected value="">Seleccione tipo banda</option>';
           foreach ($tabla as $key => $value) {
-echo'<option value="'.$value["id_banda"].'">Nro° Serie: '.$value["numero_serie"].' / Material: ' .$value["material"].' / Desc: '.$value["descripcion"].'</option>';
+echo'<option value="'.$value["id_banda"].'">Serie: '.$value["numero_serie"].' / Material: ' .$value["material"].' / Paso: '.$value["paso"].' / Superficie: '.$value["superficie"].' / Ancho: '.$value["ancho"].' / Desc: '.$value["descripcion"].'</option>';
           }
  ?>
 </select>
@@ -218,7 +225,7 @@ echo'<option value="'.$value["id_banda"].'">Nro° Serie: '.$value["numero_serie"
               <select class="form-control" name="TipoCilindros" >
 <?php 
 $tablacilindros = ControllerCilindros::listarCilindrosCtr();
-echo '<option selected disabled>Seleccione tipo cilindro</option>';
+echo '<option selected value="">Seleccione tipo cilindro</option>';
           foreach ($tablacilindros as $key => $value) {
 echo'<option value="'.$value["id_cilindros"].'">ID: '.$value["id_cilindros"].' / Nombre: '.$value["nombre"].' / Diametro: ' .$value["diametro"].' / Largo: '.$value["largo"].' / Material Cuerpo: '.$value["materialcuerpo"].' / Material Vastago: '.$value["materialvastago"].' / Medida Hilo: '.$value["medidahilo"].'</option>';
           }
@@ -243,10 +250,10 @@ echo'<option value="'.$value["id_cilindros"].'">ID: '.$value["id_cilindros"].' /
            <select class="form-control" name="TipoSensores" >
 <?php 
  $Cli = ControllerSensor::listarSensorCtr();
-echo '<option selected disabled>Seleccione tipo sensores</option>';
+echo '<option selected value="">Seleccione tipo sensores</option>';
    foreach ($Cli as $key => $value) {
 
-echo'<option value="'.$value["id_sensor"].'">Tipo Sensor: '.$value["tipo_sensor"].' / Modelo: ' .$value["modelo"].'</option>';
+echo'<option value="'.$value["id_sensor"].'">Tipo Sensor: '.$value["tipo_sensor"].' / Modelo: ' .$value["modelo"].' / Voltaje: ' .$value["voltaje"].' / Distancia: ' .$value["distancia"].' / Contacto: ' .$value["contacto"].'</option>';
    }
  ?>
 </select>
@@ -271,9 +278,9 @@ echo'<option value="'.$value["id_sensor"].'">Tipo Sensor: '.$value["tipo_sensor"
              <select class="form-control" name="TipoMotor" >
 <?php 
  $tablamotor = ControllerMotor::listarMotorCtr();
-echo '<option selected disabled>Seleccione tipo Motor</option>';
+echo '<option selected value="">Seleccione tipo Motor</option>';
           foreach ($tablamotor as $key => $value) {
-echo'<option value="'.$value["id_motor"].'">ID: '.$value["id_motor"].' / RPM: '.$value["rpm"].'/ Usillo: '.$value["usillo"].' / Ancho: '.$value["ancho"].'/ Capacidad: '.$value["capacidad"].'</option>';
+echo'<option value="'.$value["id_motor"].'">ID: '.$value["id_motor"].' / RPM: '.$value["rpm"].'/ Diametro Usillo: '.$value["usillo"].' / Corriente: '.$value["ancho"].'/ Potencia: '.$value["capacidad"].'</option>';
           }
  ?>
 </select>
@@ -282,10 +289,10 @@ echo'<option value="'.$value["id_motor"].'">ID: '.$value["id_motor"].' / RPM: '.
             <div class="form-group row"> 
               <label class="col-sm-2 col-form-label" style="padding-left:10px;padding-right:0px;">Descanso : </label>
             <div class="col-sm-10">
-             <select class="form-control" name="TipoRodamientos" >
+             <select class="form-control" name="TipoDescanso" >
 <?php 
 $tabla = ControllerRodamientos::listarRodamientosCtr();
-echo '<option selected disabled>Seleccione tipo rodamiento</option>';
+echo '<option selected value="">Seleccione tipo descanso</option>';
           foreach ($tabla as $key => $value) {
 echo'<option value="'.$value["id_rodamientos"].'">ID: '.$value["id_rodamientos"].' / Modelo: ' .$value["modelo"].' / Rodamiento: ' .$value["rodamiento"].' / Material: ' .$value["material"].' / Fijaciones: ' .$value["fijaciones"].'</option>';
           }
@@ -293,8 +300,17 @@ echo'<option value="'.$value["id_rodamientos"].'">ID: '.$value["id_rodamientos"]
 </select>
             </div>   
           </div>
+                <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Imagen</label>
+            <div class="col-sm-10 conteNuevaImagen">
+              <input type="file" class="form-control"  id="imagenCalidadEditar" name="imagenCalidad" >
+              <img src="" id="imgCalidad" alt="" class="thumbnail" width="200" >
+            </div>
+          </div>
           <input type="hidden" name="tipoOperacion" value="actualizarCalidad">
           <input type="hidden" name="id_calidad">
+            <input type="hidden" name="rutaActual">
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

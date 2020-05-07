@@ -75,10 +75,22 @@ $(document).ready(function(){
                   $('#formu-editar-pesaje select[name="TipoBandas"]').val(valor.banda_modular_tipo)
 				$('#formu-editar-pesaje input[name="BandasMedidas"]').val(valor.banda_medidas)
 				$('#formu-editar-pesaje input[name="Eje"]').val(valor.eje)
-				$('#formu-editar-pesaje input[name="MotorUsillo"]').val(valor.motor_usillo)
-				$('#formu-editar-pesaje input[name="MotorCapacidad"]').val(valor.motor_capacidad)
-				$('#formu-editar-pesaje input[name="RPM"]').val(valor.rpm)
+				$('#formu-editar-pesaje select[name="TipoMotor"]').val(valor.tipo_motor)
 				$('#formu-editar-pesaje select[name="TipoRodamientos"]').val(valor.tipo_rodamientos)
+				$('#formu-editar-pesaje input[name="AltoEntrada"]').val(valor.entradaalto)
+				$('#formu-editar-pesaje input[name="AnchoEntrada"]').val(valor.entradaancho)
+				$('#formu-editar-pesaje input[name="EspesorEntrada"]').val(valor.entradaespesor)
+				$('#formu-editar-pesaje input[name="AltoPesaje"]').val(valor.pesajealto)
+				$('#formu-editar-pesaje input[name="AnchoPesaje"]').val(valor.pesajeancho)
+				$('#formu-editar-pesaje input[name="EspesorPesaje"]').val(valor.pesajeespesor)
+				$('#formu-editar-pesaje input[name="AltoSalida"]').val(valor.salidaalto)
+				$('#formu-editar-pesaje input[name="AnchoSalida"]').val(valor.salidaancho)
+				$('#formu-editar-pesaje input[name="EspesorSalida"]').val(valor.salidaespesor)
+				$('#formu-editar-pesaje select[name="TableroElectrico"]').val(valor.tableroelectrico)
+				$('#formu-editar-pesaje select[name="TableroNeumatico"]').val(valor.tableroneumatico)
+
+	$('#formu-editar-pesaje input[name="rutaActual"]').val(valor.imagen)
+				$('#formu-editar-pesaje #imgPesaje').attr("src", valor.imagen)
 
 			}
 		})
@@ -86,8 +98,11 @@ $(document).ready(function(){
 
 	$("body #mi_lista").on("click", ".btnEliminarPesaje", function(){
 		var idPesaje = $(this).attr("idPesaje")
+		var rutaImagen = $(this).attr("rutaImagen")
+
 		var datos = new FormData()
 		datos.append("id_pesaje", idPesaje)
+		datos.append("rutaImagen", rutaImagen)
 		datos.append("tipoOperacion", "eliminarPesaje")
 		console.log(idPesaje)
 		Swal.fire({
@@ -123,46 +138,42 @@ $(document).ready(function(){
 		  }
 		})
 	})
-
-	// PREVISUALIZAR IMAGENES
-	$("#imagen").change(previsualizarImg)
-	$("#imagenEditar").change(previsualizarImg)
+// PREVISUALIZAR IMAGENES
+	$("#imagenPesaje").change(previsualizarImg)
+	$("#imagenPesajeEditar").change(previsualizarImg)
 	function previsualizarImg(e) {
 		var contenedor = e.target.parentNode
 		var identificador = contenedor.classList[1]
 		imgSlider = this.files[0];
 		if ( imgSlider["type"] != "image/jpeg" && imgSlider["type"] != "image/png" && imgSlider["type"] != "video/mp4") {
-				$("#imagen").val("")
-				swal({
-					type:'error',
-					title: 'No es un archivo valido',
-					text: 'Debe subir archivos formato JPEG , PNG , MP4',
-				})
+				$("#imagenPesaje").val("")
+				$("#imagenPesajeEditar").val("")
+			Swal.fire(
+					  'No es un archivo valido',
+					      'Debe subir archivos formato JPEG , PNG',
+					      'error'
+				)	
 			}
-		if ( imgSlider["type"] > 100000000000) {
-				$("#imagenSlider").val("")
+		if ( imgSlider["type"] > 100000) {
+				$("#imagenPesaje").val("")
+			
 
-				swal({
-					type: "Error al subir la imagen",
-					text: "La imagen debe pesar MAX 2MB",
-					icon: 'error',
-					confirmButtonText: "¡Cerrar!",
-				})
+Swal.fire(
+					  'Error al subir la imagen',
+					      'La imagen debe pesar MAX 2MB',
+					      'error'
+				)
 			}
 			else {
-				$("#imagenSlider").css("display", "block")
-
+				$("#imgPesaje").css("display", "block")
 				var datosImagen = new FileReader;
 		  		datosImagen.readAsDataURL(imgSlider);
-
 		  		$(datosImagen).on("load", function(event){
-
 		  			var rutaImagen = event.target.result;
-
-		  			$("." + identificador +" #imagenSlider").attr("src", rutaImagen);
+		  			$("." + identificador +" #imgPesaje").attr("src", rutaImagen);
 		  		})
 			}
-
 		}
+
 
 })

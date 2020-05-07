@@ -19,7 +19,9 @@ Class ajaxCalidad {
 						"cantidadsensores"=>$this->cantidadsensores,
 						"racors"=>$this->racors,
 						"tipomotor"=>$this->tipomotor,
-						"tipodescanso"=>$this->tipodescanso
+						"tipodescanso"=>$this->tipodescanso,
+						"imagen"=>$this->imagen_calidad
+
 					);
 
 		$respuesta = ControllerCalidad::ctrCrearCalidad($datos);
@@ -41,10 +43,9 @@ Class ajaxCalidad {
 						"tipo_sensores"=>$respuesta["tipo_sensores"],
 						"cantidad_sensores"=>$respuesta["cantidad_sensores"],
 						"racors"=>$respuesta["racors"],
-						"tipomotor"=>$respuesta["motor_usillos"],
-						"motor_capacidad"=>$respuesta["motor_capacidad"],
-						"rpm"=>$respuesta["rpm"],
-						"tipo_rodamientos"=>$respuesta["tipo_rodamientos"]
+						"tipomotor"=>$respuesta["tipo_motor"],
+						"tipo_descanso"=>$respuesta["tipo_descanso"],
+						"imagen"=>substr($respuesta["rutaImg"], 3)
 
 						);
 
@@ -64,10 +65,10 @@ Class ajaxCalidad {
 						"tiposensores"=>$this->tiposensores,
 						"cantidadsensores"=>$this->cantidadsensores,
 						"racors"=>$this->racors,
-						"motorusillos"=>$this->motorusillos,
-						"motorcapacidad"=>$this->motorcapacidad,
-						"rpm"=>$this->rpm,		
-						"tiporodamientos"=>$this->tiporodamientos
+						"tipomotor"=>$this->tipomotor,		
+						"tipodescanso"=>$this->tipodescanso,
+						"imagen"=>$this->imagen_calidad,		
+						"rutaActual"=>$this->rutaActual	
 						);
 
 		$respuesta = ControllerCalidad::ctrActualizarCalidad($datos);
@@ -75,7 +76,9 @@ Class ajaxCalidad {
 	}
 	public function eliminarCalidad(){
 		$id_calidad = $this->id_calidad;
-		$respuesta = ControllerCalidad::ctrEliminarCalidad($id_calidad);
+		$ruta = $this->imagen_calidad;
+
+		$respuesta = ControllerCalidad::ctrEliminarCalidad($id_calidad,$ruta);
 		echo $respuesta;
 	}
 }
@@ -96,6 +99,7 @@ if($tipoOperacion == "insertarcalidad") {
 	$crearNuevoCalidad -> racors = $_POST["Racors"];
 	$crearNuevoCalidad -> tipomotor = $_POST["TipoMotor"];
 	$crearNuevoCalidad -> tipodescanso = $_POST["TipoDescanso"];
+    $crearNuevoCalidad -> imagen_calidad = $_FILES["imagenCalidad"];
 	$crearNuevoCalidad ->crearCalidad();
 }
 
@@ -113,21 +117,24 @@ if ($tipoOperacion == "actualizarCalidad") {
 	$actualizarCalidad -> tipobandas = $_POST["TipoBandas"];
 	$actualizarCalidad -> medidabanda = $_POST["MedidaBanda"];
 	$actualizarCalidad -> eje = $_POST["Eje"];
-	$actualizarCalidad -> cilindros = $_POST["Cilindros"];
+	$actualizarCalidad -> cilindros = $_POST["TipoCilindros"];
 	$actualizarCalidad -> tipobotoneras = $_POST["TipoBotoneras"];
 	$actualizarCalidad -> cantidadbotoneras = $_POST["CantidadBotoneras"];
 	$actualizarCalidad -> tiposensores = $_POST["TipoSensores"];
 	$actualizarCalidad -> cantidadsensores = $_POST["CantidadSensores"];
 	$actualizarCalidad -> racors = $_POST["Racors"];
-	$actualizarCalidad -> motorusillos = $_POST["MotorUsillos"];
-	$actualizarCalidad -> motorcapacidad = $_POST["MotorCapacidad"];
-	$actualizarCalidad -> rpm = $_POST["RPM"];
-	$actualizarCalidad -> tiporodamientos = $_POST["TipoRodamientos"];
+	$actualizarCalidad -> tipomotor = $_POST["TipoMotor"];
+	$actualizarCalidad -> tipodescanso= $_POST["TipoDescanso"];
+    $actualizarCalidad -> imagen_calidad = $_FILES["imagenCalidad"];
+	$actualizarCalidad -> rutaActual = $_POST["rutaActual"];
+
 	$actualizarCalidad -> actualizarCalidad();
 }
 if ($tipoOperacion == "eliminarCalidad") {
 	$eliminarCalidad = new ajaxCalidad();
 	$eliminarCalidad -> id_calidad = $_POST["id_calidad"];
+	$eliminarCalidad -> imagen_calidad = $_POST["rutaImagen"];
+
 	$eliminarCalidad -> eliminarCalidad();
 }
 

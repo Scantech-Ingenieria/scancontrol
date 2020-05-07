@@ -1,0 +1,179 @@
+.table{
+            background-color: white;
+            .container{
+   
+    padding-bottom: 140px;
+}
+.popover-example { 
+  margin: 0 0 10px;
+  list-style: none;
+}
+.popover-example li{
+  display: inline-block;
+  margin: 4px;
+  padding: 0px;
+}
+.btn:focus{
+  outline: none;
+}
+.modExample .btn{
+    margin: 4px 8px 4px 0;
+}
+        }
+
+button.back-to-top{
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #fff;
+  height: 0px;
+  width: 0px;
+  overflow: hidden;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  color: transparent;
+  clear: both;
+  visibility: hidden;
+  position: fixed;
+  cursor: pointer;
+  display: block;
+  border: none;
+  right: 50px;
+  bottom: 75px;
+  font-size: 0px;
+  outline: 0 !important;
+  z-index: 99;
+  transition: all .3s ease-in-out;
+}
+button.back-to-top:hover,
+button.back-to-top:active,
+button.back-to-top:focus,{
+  outline: 0 !important;
+}
+button.back-to-top::before {
+
+  font-family: "FontAwesome";
+  display: block;
+  vertical-align: middle;
+  margin: -5px 0 auto;
+}
+button.back-to-top.show {
+  display: block;
+  background: #fff;
+  color: #007bff;
+  font-size: 25px;
+  right: 25px;
+  bottom: 50px;
+  height: 50px;
+  width: 50px;
+  visibility: visible;
+  box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.25);
+}
+button.back-to-top.show:active {
+  box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.25);
+}
+
+
+#cuadro1, #cuadro2, #cuadro3,#cuadro4,#cuadro5, #papelera,#casa1,#casa2,#casa3,#casa4,#casa5 {
+  float: left;
+  padding: 5px;
+  margin: 5px;
+  padding-bottom: 70px;
+}
+#cuadro1,#cuadro2,#cuadro3,#cuadro4,#cuadro5{
+  background: white;
+}
+#papelera {
+  background: #5ff;
+}
+#casa1,#casa2,#casa3,#casa4,#casa5{
+
+background: rgba(242,246,248,1);
+background: -moz-linear-gradient(top, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 23%, rgba(181,198,208,1) 36%, rgba(224,239,249,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(242,246,248,1)), color-stop(23%, rgba(216,225,231,1)), color-stop(36%, rgba(181,198,208,1)), color-stop(100%, rgba(224,239,249,1)));
+background: -webkit-linear-gradient(top, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 23%, rgba(181,198,208,1) 36%, rgba(224,239,249,1) 100%);
+background: -o-linear-gradient(top, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 23%, rgba(181,198,208,1) 36%, rgba(224,239,249,1) 100%);
+background: -ms-linear-gradient(top, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 23%, rgba(181,198,208,1) 36%, rgba(224,239,249,1) 100%);
+background: linear-gradient(to bottom, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 23%, rgba(181,198,208,1) 36%, rgba(224,239,249,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', endColorstr='#e0eff9', GradientType=0 );;
+  height: 260px;
+
+}
+#arrastrable1 {
+  background: #228;
+  border: 2px solid #822;
+}
+#arrastrable2 {
+  background: #282;
+  border: 2px solid #228;
+}
+#arrastrable3 {
+  background: #822;
+  border: 2px solid #282;
+}
+.objects:hover{
+  background: #128aff29;
+}
+#drop_zone {
+    background-color: #160f0f1f; 
+    height: 300px;
+    padding: 8px;
+    font-size: 18px;
+
+}
+.imgen{
+  display: block;
+}
+.img{
+  display:none;
+}
+
+.objects {
+    display:inline-block;
+
+    width:100%;
+  
+    font-size: 0px;
+    text-align: left;
+    box-shadow: 5px 5px 5px #999;
+   margin-bottom: 10px;
+   cursor: move;
+
+}
+#img1{
+  width: 0%;
+}
+.anchocol{
+  width:19%;
+  display: inline-block;
+  border-radius: 5px;
+
+}
+.anchocol1{
+  width:20%;
+  display: inline-block;
+
+}
+.textoinfo{
+width: 50%;
+font-size: 15px;
+color: white;
+margin-bottom: 5px !important;
+
+}
+.botoninfo{
+width: 50%;
+
+}
+
+.textoinfo,.botoninfo{
+  display: inline-block;
+}
+#titulo{
+  margin: 17px;
+    text-shadow: 5px 5px 5px #aaa;
+}

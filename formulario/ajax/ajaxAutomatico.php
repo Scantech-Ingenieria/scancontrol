@@ -7,6 +7,7 @@ Class ajaxAutomatico {
 						"amperaje"=>$this->amperaje,
 						"marca"=>$this->marca,
 						"tipo"=>$this->tipo,
+						"precio"=>$this->precio,
 						"imagen"=>$this->imagen_automatico
 
 					);
@@ -20,6 +21,7 @@ Class ajaxAutomatico {
 						"amperaje"=>$respuesta["amperaje"],
 						"marca"=>$respuesta["marca"],
 						"tipo"=>$respuesta["tipo"],
+						"precio"=>miles($respuesta["precio"]),
 				        "imagen"=>substr($respuesta["rutaImg"], 3)
 
 						);
@@ -31,6 +33,7 @@ Class ajaxAutomatico {
 						"amperaje"=>$this->amperaje,
 						"marca"=>$this->marca,
 						"tipo"=>$this->tipo,
+						"precio"=>$this->precio,
 						"imagen"=>$this->imagen_automatico,		
 						"rutaActual"=>$this->rutaActual
 						);
@@ -51,6 +54,7 @@ if($tipoOperacion == "insertarautomatico") {
 	$crearNuevoAutomatico -> amperaje = $_POST["Amperaje"];
 	$crearNuevoAutomatico -> marca = $_POST["Marca"];
 	$crearNuevoAutomatico -> tipo = $_POST["Tipo"];
+	$crearNuevoAutomatico -> precio = puntos($_POST["Precio"]);
     $crearNuevoAutomatico -> imagen_automatico = $_FILES["imagenAutomatico"];
 	$crearNuevoAutomatico ->crearAutomatico();
 }
@@ -65,6 +69,7 @@ if ($tipoOperacion == "actualizarAutomatico") {
 	$actualizarAutomatico -> amperaje = $_POST["Amperaje"];
 	$actualizarAutomatico -> marca = $_POST["Marca"];
 	$actualizarAutomatico -> tipo = $_POST["Tipo"];
+	$actualizarAutomatico -> precio = puntos($_POST["Precio"]);
 	$actualizarAutomatico -> imagen_automatico = $_FILES["imagenAutomatico"];
 	$actualizarAutomatico -> rutaActual = $_POST["rutaActual"];
 	$actualizarAutomatico -> actualizarAutomatico();
@@ -76,4 +81,14 @@ if ($tipoOperacion == "eliminarAutomatico") {
 	$eliminarAutomatico -> eliminarAutomatico();
 }
 
+function puntos($s)
+{
+$s= str_replace('.','', $s); 
+return $s;
+}
+function miles($m){
+$m=number_format($m, 0, ',', '.');
+return $m;
+
+}
 ?>

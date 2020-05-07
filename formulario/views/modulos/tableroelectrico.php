@@ -21,6 +21,11 @@
                         <style type="text/css">
 a {
   position: relative;
+
+
+
+
+  
 }
  
 #img {
@@ -33,7 +38,37 @@ a {
 a:hover #img {
   display: block;
 }
+label{
+    margin-bottom: .2rem;
+}
+#cuadro{
+border: 5px solid #ccc;
+float: left;
+margin: 15px;
+-webkit-transition: margin 0.5s ease-out;
+-moz-transition: margin 0.5s ease-out;
+-ms-transition: margin 0.5s ease-out;
+transition: margin 0.5s ease-out;
+}
+.ex1 img:hover {
+margin-top: 2px;
+}
+#cuadro {
+border: 5px solid #ccc;
+float: left;
+margin: 15px;
+-webkit-transition: margin 0.5s ease-out;
+-moz-transition: margin 0.5s ease-out;
+-ms-transition: margin 0.5s ease-out;
+transition: margin 0.5s ease-out;
+}
+#cuadro:hover {
+margin-top: 2px;
+}
+
                         </style>
+
+   
 <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
@@ -49,7 +84,7 @@ a:hover #img {
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody style="font-size: 12px;">
                     <?php
           $tabla = ControllerTableroelectrico::listarTableroelectricoCtr();
           foreach ($tabla as $key => $value) {
@@ -66,7 +101,7 @@ echo '<td>';
 foreach ($tablaautomatico as $key => $valor) {
 $idtablaautomatico=$valor["id_tablero_electrico"];
 if ($idtablaautomatico==$id_tableroelectrico) {
-   echo '<div style="background:#f3f6fb;margin-bottom:2px;">'.$valor["cantidad"].' / <label style="font-weight: bold;">A: </label>'.$valor["amperaje"].' <label style="font-weight: bold;">Marca:</label> '.$valor["marca"].' <label style="font-weight: bold;"> Tipo:</label> '.$valor["tipo"].' <label style="font-weight: bold;"> Descripción: </label> '.$valor["descripcion"].'<br>  <a href="'.substr($valor["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valor["rutaImg"], 3).'"></a><br></div><br>';
+   echo '<div class="shadow-lg p-3 mb-5 rounded" style="background:#f3f6fb;margin-bottom:2px;"><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.$valor["id_automatico"].' </div><div class="col-sm-12"><label style="font-weight: bold;">Cantidad:</label> '.$valor["cantidad"].' </div><div class="col-sm-12"> <label style="font-weight: bold;">Amperaje:</label> '.$valor["amperaje"].'</div><div class="col-sm-12"> <label style="font-weight: bold;">Marca:</label> '.$valor["marca"].'</div><div class="col-sm-12"> <label style="font-weight: bold;"> Tipo:</label> '.$valor["tipo"].'</div><div class="col-sm-12"> <label style="font-weight: bold;"> Descripción: </label> '.$valor["descripcion"].'</div><div class="col-sm-12">  <a href="'.substr($valor["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valor["rutaImg"], 3).'"></a></div></div></div>';
 }
 }
 echo '</td>';
@@ -75,7 +110,7 @@ $tablafuente = ControllerTableroelectrico::listarTelectricofuenteCtr();
 foreach ($tablafuente as $key => $valorfuente) {
 $idtablafuente=$valorfuente["id_tablero_electrico"];
 if ($idtablafuente==$id_tableroelectrico) {
-   echo '<div style="background:#ffefef;margin-bottom:5px;"><label style="font-weight: bold;">- M:</label> '.$valorfuente["marca"].'<br> <label style="font-weight: bold;">A:</label> '.$valorfuente["amperaje"].'<br>  <label style="font-weight: bold;">C: </label> '.$valorfuente["corriente"].' <label style="font-weight: bold;">Descripción: </label> '.$valorfuente["descripcion"].'  <br>  <a href="'.substr($valorfuente["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valorfuente["rutaImg"], 3).'"></a><br></div>';
+   echo '<div class="shadow-lg p-3 mb-5 rounded"  style="background:#ffefef;margin-bottom:5px;"><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.$valorfuente["id_fuentepoder"].' </div><div class="col-sm-12"><label style="font-weight: bold;"> Marca:</label> '.$valorfuente["marca"].'</div><div class="col-sm-12"> <label style="font-weight: bold;">Amperaje:</label> '.$valorfuente["amperaje"].'</div><div class="col-sm-12">  <label style="font-weight: bold;">Corriente: </label> '.$valorfuente["corriente"].'</div><div class="col-sm-12"> <label style="font-weight: bold;">Descripción: </label> '.$valorfuente["descripcion"].'  </div><div class="col-sm-12">  <a href="'.substr($valorfuente["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valorfuente["rutaImg"], 3).'"></a></div></div></div>';
 
 }
 }
@@ -85,7 +120,7 @@ $tablavdf = ControllerTableroelectrico::listarTelectricovdfCtr();
 foreach ($tablavdf as $key => $valorvdf) {
 $idtablavdf=$valorvdf["id_tablero_electrico"];
 if ($idtablavdf==$id_tableroelectrico) {
-   echo '<div style="background:#eaeaea;margin-bottom:5px;">'.$valorvdf["cantidad"].' /<label style="font-weight: bold;">- P:</label> '.$valorvdf["potencia"].' <label style="font-weight: bold;">M:</label> '.$valorvdf["marca"].' <label style="font-weight: bold;"> Descripción:</label> '.$valorvdf["descripcion"].'<br>  <a href="'.substr($valorvdf["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valorvdf["rutaImg"], 3).'"></a><br></div>  <br>';
+   echo '<div class="shadow-lg p-3 mb-5 rounded style="background:#eaeaea;margin-bottom:5px;"><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.$valorvdf["id_vdf"].' </div><div class="col-sm-12"><label style="font-weight: bold;">Cantidad:</label> '.$valorvdf["cantidad"].'</div><div class="col-sm-12"><label style="font-weight: bold;"> P:</label> '.$valorvdf["potencia"].'</div><div class="col-sm-12"> <label style="font-weight: bold;">M:</label> '.$valorvdf["marca"].'</div><div class="col-sm-12"> <label style="font-weight: bold;"> Descripción:</label> '.$valorvdf["descripcion"].'</div><div class="col-sm-12">  <a href="'.substr($valorvdf["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valorvdf["rutaImg"], 3).'"></a></div></div> </div>';
 }
 }
 

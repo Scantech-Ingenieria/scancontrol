@@ -24,6 +24,7 @@
                 <th>Amperaje</th>
                 <th>Marca</th>
                 <th>Tipo</th>
+                <th>Precio</th>
                 <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
@@ -38,6 +39,8 @@
 <td>'.nl2br($value["amperaje"]).'</td>
 <td>'.nl2br($value["marca"]).'</td>
 <td>'.nl2br($value["tipo"]).'</td>
+<td> $ '.number_format($value["precio"],'0', ',',',').'</td>
+
 <td><img width="200" src="'.substr($value["rutaImg"], 3).'"></td>
 
 <td width="100"> <button class="btn btn-sm btn-info btnEditarAutomatico" idAutomatico="'.$value["id_automatico"].'" data-toggle="modal" data-target="#modal-editar-automatico">
@@ -54,3 +57,11 @@
 ?>  
         </tbody>
     </table>
+<script type="text/javascript"> 
+  function miles($m){
+$m=number_format($m, 0, ',', '.');
+return $m;
+
+}</script>
+
+ 

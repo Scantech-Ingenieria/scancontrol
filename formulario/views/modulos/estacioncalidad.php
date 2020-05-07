@@ -31,30 +31,38 @@ a {
 a:hover #img {
   display: block;
 }
+label{
+    margin-bottom: .2rem;
+}
                         </style> 
-<table id="example" class="table table-striped table-bordered" style="width:100%">
+
+        
+<table id="example" class="table table-striped table-bordered" style="width:100%;font-size: 12px;">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>N° Puestos</th>
-                <th>Tipo Spro</th>
-                <th>Cant Spro</th>
+                <th>Tipo Sprockets</th>
+                <th>Cant S.</th>
                 <th>Tipo Banda</th>
-                <th>Banda Medidas</th>
+                <th>Banda M.</th>
                 <th>Eje</th>
                 <th>Cilindros</th>
-                <th>Tipo Botoneras</th>
-                <th>Cantidad Botoneras</th>
+                <th>Tipo Btn.</th>
+                <th>Cant Btn.</th>
                 <th>Tipo Sensores</th>
-                <th>Cantidad Sensores</th>
+                <th>Cant S.</th>
                 <th>Racors</th>
                 <th>Tipo Motor</th>
               
+              
                 <th>Descanso</th>
+                  <th>Img</th>
+
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody >
             <?php
           $tabla = ControllerCalidad::listarCalidadCtr();
           foreach ($tabla as $key => $value) {   
@@ -69,116 +77,139 @@ echo '<td>';
 
 
 
-
   
 foreach ($tablasprockets as $key => $valor) {
 
     $idsprockets=$valor["id_calidad"];
 
 if ($idsprockets==$id_calidad) { 
-if ($valor["id_calidad"] =='') {
+if ($valor["tipo_sprockets"] =='') {
 
-    echo '<h2>sin informacion</h2>';  
+    echo '<p>sin información</p>'; 
 
 
 }
 else{
   
+  
 echo'
-ID: '.nl2br($valor["id_sprockets"]).' / <br> Serie: '.nl2br($valor["serie"]).' / Modelo: '.nl2br($valor["modelo"]).' / Dientes: '.nl2br($valor["dientes"]).' / Perforación: '.nl2br($valor["perforacion"]).' / <br> Descr: '.nl2br($valor["descripcion"]).' <br> <a href="'.substr($valor["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valor["rutaImg"], 3).'"></a>';
+                <div class="row"><div class="col-sm-12"><label style="font-weight: bold;">
+ID:</label> '.nl2br($valor["id_sprockets"]).' </div><div class="col-sm-12"><label style="font-weight: bold;">  Serie:</label> '.nl2br($valor["serie"]).'</div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;" data-toggle="modal" data-target="#sprocket'.$idsprockets.''.$valor["id_sprockets"].'">
+  Más información
+</button></div>';
 }
-
-
 }
-
 }
-
 echo '</td>';
 echo '<td>'.nl2br($value["cantidad_sprockets"]).'</td><td>';
 
   $tablabandas = ControllerCalidad::listarCalidadBandasCtr();
 foreach ($tablabandas as $key => $valor) {
     $idbandas=$valor["id_calidad"];
-    if ($valor["tipo_banda"] !='') {
-if ($idbandas==$id_calidad) {
-echo'
-ID: '.nl2br($valor["id_banda"]).' / Superficie: '.nl2br($valor["superficie"]).' / Paso: '.nl2br($valor["paso"]).' / Serie: '.nl2br($valor["numero_serie"]).' / <br> Ancho: '.nl2br($valor["ancho"]).'<br> <a href="'.substr($valor["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valor["rutaImg"], 3).'"></a>';
-}
+    if ($idbandas==$id_calidad) {
+if ($valor["tipo_banda"] ==''){
+
+    echo '<p>sin información</p>';  
+  
+
 }else{
- echo 'sin informacion';   
+
+ echo'<div class="row"><div class="col-sm-12"><label style="font-weight: bold;">
+ID:</label> '.nl2br($valor["id_banda"]).' </div><div class="col-sm-12"><label style="font-weight: bold;">  Serie:</label> '.nl2br($valor["numero_serie"]).'</div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;" data-toggle="modal" data-target="#bandas'.$idbandas.''.$valor["id_banda"].'">
+  Más información
+</button></div>';   
+ 
+}
 }
 }
 echo'</td>
 <td>'.nl2br($value["medida_banda"]).'</td>
-<td>'.nl2br($value["eje"]).'</td>';
+<td>'.nl2br($value["eje"]).'</td><td>';
 
   $tablacilindros = ControllerCalidad::listarCalidadCilindrosCtr();
 foreach ($tablacilindros as $key => $valor) {
     $id_cilindros=$valor["id_calidad"];
-    if ($valor["cilindros"] !='0') {
-if ($id_cilindros==$id_calidad) {
-echo
-'<td>ID: '.nl2br($valor["id_cilindros"]).' / Nombre: '.nl2br($valor["nombre"]).' / Diametro: '.nl2br($valor["diametro"]).' / Largo: '.nl2br($valor["largo"]).' / Material Cuerpo: '.nl2br($valor["materialcuerpo"]).'<br> <a href="'.substr($valor["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valor["rutaImg"], 3).'"></a></td>';
-}
+    if ($id_cilindros==$id_calidad)  {
+
+if ($valor["cilindros"] ==''){
+    echo '<p>sin información</p>';  
+
+
 }else{
- echo 'sin informacion';   
+
+    echo
+'<div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.nl2br($valor["id_cilindros"]).'</div><div class="col-sm-12"><label style="font-weight: bold;"> Nombre:</label> '.nl2br($valor["nombre"]).' </div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;"data-toggle="modal" data-target="#cilindros'.$id_cilindros.''.$valor["id_cilindros"].'">
+  Más información
+</button></div>';
+
+}
 }
 }
 
-
-echo'
+echo'</td>
 <td>'.nl2br($value["tipo_botoneras"]).'</td>
-<td>'.nl2br($value["cantidad_botoneras"]).'</td>';
+<td>'.nl2br($value["cantidad_botoneras"]).'</td><td>';
 
 $tablasensor = ControllerCalidad::listarCalidadSensorCtr();
 foreach ($tablasensor as $key => $valor) {
 
     $id_sensor=$valor["id_calidad"];
-       if ($valor["tipo_sensores"] !='') {
-if ($id_sensor==$id_calidad) {
-echo'
-<td>ID: '.nl2br($valor["id_sensor"]).' / Tipo: '.nl2br($valor["tipo_sensor"]).' / Marca: '.nl2br($valor["marca"]).' / Modelo: '.nl2br($valor["modelo"]).' / Voltaje: '.nl2br($valor["voltaje"]).' / Distancia: '.nl2br($valor["distancia"]).' / Contacto: '.nl2br($valor["contacto"]).'<br> <a href="'.substr($valor["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valor["rutaImg"], 3).'"></a></td>';
-}
+       if ($id_sensor==$id_calidad){
+if  ($valor["tipo_sensores"] =='') {
+    echo '<p>sin información</p>';  
+
 }else{
- echo 'sin informacion';   
+ echo'<div class="row"><div class="col-sm-12"><label style="font-weight: bold;">
+ID:</label> '.nl2br($valor["id_sensor"]).' </div><div class="col-sm-12"><label style="font-weight: bold;">Tipo:</label> '.nl2br($valor["tipo_sensor"]).' </div><button style="font-size:11px;margin:10px;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#sensor'.$id_sensor.''.$valor["id_sensor"].'">
+  Más información
+</button></div>';
 }
 }
-echo'
+}
+echo'</td>
 <td>'.nl2br($value["cantidad_sensores"]).'</td>
-<td>'.nl2br($value["racors"]).'</td>';
+<td>'.nl2br($value["racors"]).'</td><td>';
 
 $tablamotor = ControllerCalidad::listarCalidadMotorCtr();
 foreach ($tablamotor as $key => $valor) {
 
     $id_motor=$valor["id_calidad"];
-       if ($valor["tipo_motor"] !='') {
-if ($id_motor==$id_calidad) {
-echo'
-<td>ID: '.nl2br($valor["id_motor"]).' / RPM: '.nl2br($valor["rpm"]).' / D. Usillo: '.nl2br($valor["usillo"]).' / Corriente: '.nl2br($valor["ancho"]).' / Potencia: '.nl2br($valor["capacidad"]).'<br> <a href="'.substr($valor["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valor["rutaImg"], 3).'"></a></td>';
-}
+       if ($id_motor==$id_calidad) {
+if($valor["tipo_motor"] =='')  {
+    echo '<p>sin información</p>';  
 }else{
- echo 'sin informacion';   
+  echo'<div class="row"><div class="col-sm-12"><label style="font-weight: bold;">
+ID:</label> '.nl2br($valor["id_motor"]).' </div><div class="col-sm-12"><label style="font-weight: bold;"> RPM:</label> '.nl2br($valor["rpm"]).' </div><button type="button"style="font-size:11px;margin:10px;" class="btn btn-success btn-xs" data-toggle="modal" data-target="#motor'.$id_motor.''.$valor["id_motor"].'">
+  Más información
+</button></div>'; 
 }
 }
-
+}
+echo'</td><td>';
 $tablarodamientos = ControllerCalidad::listarCalidadRodamientosCtr();
 foreach ($tablarodamientos as $key => $valor) {
 
     $id_rodamientos=$valor["id_calidad"];
-       if ($valor["tipo_descanso"] !='') {
-if ($id_rodamientos==$id_calidad) {
-echo'
-<td>ID: '.nl2br($valor["id_rodamientos"]).' / Modelo: '.nl2br($valor["modelo"]).' / Rodamiento: '.nl2br($valor["rodamiento"]).' / Material: '.nl2br($valor["material"]).' / Fijaciones: '.nl2br($valor["fijaciones"]).'<br> <a href="'.substr($valor["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valor["rutaImg"], 3).'"></a></td>';
-}
+       if($id_rodamientos==$id_calidad)   {
+if ($valor["tipo_descanso"] ==''){
+
+    echo '<p>sin información</p>';  
+
 }else{
- echo 'sin informacion';   
+ echo'<div class="row"><div class="col-sm-12"><label style="font-weight: bold;">
+ID:</label> '.nl2br($valor["id_rodamientos"]).' </div><div class="col-sm-12"><label style="font-weight: bold;"> Modelo:</label> '.nl2br($valor["modelo"]).'</div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;" data-toggle="modal" data-target="#descanso'.$id_rodamientos.''.$valor["id_rodamientos"].'">
+  Más información
+</button></div>'; 
 }
 }
-echo'
+}
+echo'</td>
+<td><img width="100" src="'.substr($value["rutaImg"], 3).'"></td>
+
 <td width="100"> <button class="btn btn-sm btn-info btnEditarCalidad" idCalidad="'.$value["id_calidad"].'" data-toggle="modal" data-target="#modal-editar-calidad">
                     <i class="far fa-edit"></i>
                   </button>
-    <button class="btn btn-sm btn-danger btnEliminarCalidad" idCalidad="'.$value["id_calidad"].'">
+    <button class="btn btn-sm btn-danger btnEliminarCalidad" idCalidad="'.$value["id_calidad"].'" rutaImagen="'.$value["rutaImg"].'">
                     <i class="far fa-trash-alt"></i>
     </button>
     </td>
@@ -193,5 +224,11 @@ echo'
           
 
         </tbody>
-     
+  
     </table>
+
+
+
+
+
+

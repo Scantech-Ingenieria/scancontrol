@@ -24,6 +24,7 @@
                 <th>Rodamiento</th>
                 <th>Material</th>
                 <th>N° Fijaciones</th>
+                <th>Precio</th>
                 <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
@@ -39,8 +40,8 @@
 <td>'.nl2br($value["rodamiento"]).'</td>
 <td>'.nl2br($value["material"]).'</td>
 <td>'.nl2br($value["fijaciones"]).'</td>
+<td> $ '.number_format($value["precio"],'0', ',',',').'</td>
 <td><img width="200" src="'.substr($value["rutaImg"], 3).'"></td>
-
 <td width="100"> <button class="btn btn-sm btn-info btnEditarRodamientos" idRodamientos="'.$value["id_rodamientos"].'" data-toggle="modal" data-target="#modal-editar-rodamientos">
                     <i class="far fa-edit"></i>
                   </button>
@@ -57,3 +58,9 @@
         </tbody>
      
     </table>
+    <script type="text/javascript"> 
+  function miles($m){
+$m=number_format($m, 0, ',', '.');
+return $m;
+
+}</script>

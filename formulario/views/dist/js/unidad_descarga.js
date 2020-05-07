@@ -67,23 +67,29 @@ $(document).ready(function(){
 				$('#formu-editar-descarga input[name="id_descarga"]').val(valor.id_unidad_descarga)
 				$('#formu-editar-descarga select[name="TipoSprockets"]').val(valor.tipo_sprockets)
 				$('#formu-editar-descarga input[name="CantidadSprockets"]').val(valor.cantidad_sprockets)
-
-                  $('#formu-editar-descarga select[name="TipoBandas"]').val(valor.banda_modular_tipo)
+                $('#formu-editar-descarga select[name="TipoBandas"]').val(valor.banda_modular_tipo)
 				$('#formu-editar-descarga input[name="BandasMedidas"]').val(valor.banda_medidas)
-				$('#formu-editar-descarga input[name="Eje"]').val(valor.eje)
-				$('#formu-editar-descarga input[name="MotorUsillo"]').val(valor.motor_usillo)
-				$('#formu-editar-descarga input[name="MotorCapacidad"]').val(valor.motor_capacidad)
-	$('#formu-editar-descarga input[name="CantidadPaletas"]').val(valor.cantidad_paletas)
 				$('#formu-editar-descarga select[name="TipoPaletas"]').val(valor.tipo_paletas)
-			$('#formu-editar-descarga input[name="RPM"]').val(valor.rpm)
-				$('#formu-editar-descarga select[name="TipoRodamientos"]').val(valor.tipo_rodamientos)
+                $('#formu-editar-descarga input[name="CantidadPaletas"]').val(valor.cantidad_paletas)
+                $('#formu-editar-descarga input[name="Eje"]').val(valor.eje)
+				$('#formu-editar-descarga input[name="Altura"]').val(valor.altura)
+				$('#formu-editar-descarga input[name="Buffer"]').val(valor.buffer)
+				$('#formu-editar-descarga select[name="TipoMotor"]').val(valor.tipo_motor)
+				$('#formu-editar-descarga select[name="TipoDescanso"]').val(valor.tipo_descanso)
+			    $('#formu-editar-descarga select[name="TipoCilindro"]').val(valor.tipo_cilindro)
+			$('#formu-editar-descarga input[name="rutaActual"]').val(valor.imagen)
+				$('#formu-editar-descarga #imgDescarga').attr("src", valor.imagen)
 			}
 		})
 	})
 	$("body #mi_lista").on("click", ".btnEliminarDescarga", function(){
 		var idDescarga = $(this).attr("idDescarga")
+				var rutaImagen = $(this).attr("rutaImagen")
+
 		var datos = new FormData()
 		datos.append("id_descarga", idDescarga)
+		datos.append("rutaImagen", rutaImagen)
+
 		datos.append("tipoOperacion", "eliminarDescarga")
 		console.log(idDescarga)
 		Swal.fire({
@@ -119,42 +125,41 @@ $(document).ready(function(){
 		  }
 		})
 	})
-	// PREVISUALIZAR IMAGENES
-	$("#imagen").change(previsualizarImg)
-	$("#imagenEditar").change(previsualizarImg)
+// PREVISUALIZAR IMAGENES
+	$("#imagenDescarga").change(previsualizarImg)
+	$("#imagenDescargaEditar").change(previsualizarImg)
 	function previsualizarImg(e) {
 		var contenedor = e.target.parentNode
 		var identificador = contenedor.classList[1]
 		imgSlider = this.files[0];
 		if ( imgSlider["type"] != "image/jpeg" && imgSlider["type"] != "image/png" && imgSlider["type"] != "video/mp4") {
-				$("#imagen").val("")
-
-				swal({
-					type:'error',
-					title: 'No es un archivo valido',
-					text: 'Debe subir archivos formato JPEG , PNG , MP4',
-				})
+				$("#imagenDescarga").val("")
+				$("#imagenDescargaEditar").val("")
+			Swal.fire(
+					  'No es un archivo valido',
+					      'Debe subir archivos formato JPEG , PNG',
+					      'error'
+				)	
 			}
-		if ( imgSlider["type"] > 100000000000) {
-				$("#imagenSlider").val("")
+		if ( imgSlider["type"] > 100000) {
+				$("#imagenDescarga").val("")
+			
 
-				swal({
-					type: "Error al subir la imagen",
-					text: "La imagen debe pesar MAX 2MB",
-					icon: 'error',
-					confirmButtonText: "¡Cerrar!",
-				})
+Swal.fire(
+					  'Error al subir la imagen',
+					      'La imagen debe pesar MAX 2MB',
+					      'error'
+				)
 			}
 			else {
-				$("#imagenSlider").css("display", "block")
+				$("#imgDescarga").css("display", "block")
 				var datosImagen = new FileReader;
 		  		datosImagen.readAsDataURL(imgSlider);
 		  		$(datosImagen).on("load", function(event){
 		  			var rutaImagen = event.target.result;
-		  			$("." + identificador +" #imagenSlider").attr("src", rutaImagen);
+		  			$("." + identificador +" #imgDescarga").attr("src", rutaImagen);
 		  		})
 			}
-
 		}
 
 

@@ -73,8 +73,7 @@ $(document).ready(function(){
 				$('#formu-editar-cilindros input[name="MaterialCuerpo"]').val(valor.materialcuerpo)
 				$('#formu-editar-cilindros input[name="MaterialVastago"]').val(valor.materialvastago)
 				$('#formu-editar-cilindros input[name="MedidaHilo"]').val(valor.medidahilo)
-
-
+				$('#formu-editar-cilindros input[name="Precio"]').val(valor.precio)
 				$('#formu-editar-cilindros #imgCilindros').attr("src", valor.imagen)
 				$('#formu-editar-cilindros input[name="rutaActual"]').val(valor.imagen)
 			}

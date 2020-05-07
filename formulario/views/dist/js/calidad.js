@@ -64,7 +64,6 @@ $(document).ready(function(){
 			success: function(respuesta) {
 				var valor = JSON.parse(respuesta)
 				console.log(valor.id_calidad)
-
 				$('#formu-editar-calidad input[name="id_calidad"]').val(valor.id_calidad)
 				$('#formu-editar-calidad input[name="Puestos"]').val(valor.puestos)
 				$('#formu-editar-calidad select[name="TipoSprockets"]').val(valor.tipo_sprockets)
@@ -72,24 +71,29 @@ $(document).ready(function(){
 				$('#formu-editar-calidad select[name="TipoBandas"]').val(valor.tipo_banda)
 				$('#formu-editar-calidad input[name="MedidaBanda"]').val(valor.medida_banda)
 				$('#formu-editar-calidad input[name="Eje"]').val(valor.eje)
-				$('#formu-editar-calidad input[name="Cilindros"]').val(valor.cilindros)
+				$('#formu-editar-calidad select[name="TipoCilindros"]').val(valor.cilindros)
 				$('#formu-editar-calidad input[name="TipoBotoneras"]').val(valor.tipo_botoneras)
 				$('#formu-editar-calidad input[name="CantidadBotoneras"]').val(valor.cantidad_botoneras)
 				$('#formu-editar-calidad select[name="TipoSensores"]').val(valor.tipo_sensores)
 				$('#formu-editar-calidad input[name="CantidadSensores"]').val(valor.cantidad_sensores)
 				$('#formu-editar-calidad input[name="Racors"]').val(valor.racors)
-				$('#formu-editar-calidad input[name="MotorUsillos"]').val(valor.motor_usillos)
-				$('#formu-editar-calidad input[name="MotorCapacidad"]').val(valor.motor_capacidad)
-				$('#formu-editar-calidad input[name="RPM"]').val(valor.rpm)
-				$('#formu-editar-calidad select[name="TipoRodamientos"]').val(valor.tipo_rodamientos)
+				$('#formu-editar-calidad select[name="TipoMotor"]').val(valor.tipomotor)
+				$('#formu-editar-calidad select[name="TipoDescanso"]').val(valor.tipo_descanso)
+				$('#formu-editar-calidad input[name="rutaActual"]').val(valor.imagen)
+				$('#formu-editar-calidad #imgCalidad').attr("src", valor.imagen)
+			
 			}
 		})
 	})
 	$("body #mi_lista").on("click", ".btnEliminarCalidad", function(){
 		var idCalidad = $(this).attr("idCalidad")
+		var rutaImagen = $(this).attr("rutaImagen")
+
 		var datos = new FormData()
 		datos.append("id_calidad", idCalidad)
 		datos.append("tipoOperacion", "eliminarCalidad")
+		datos.append("rutaImagen", rutaImagen)
+		
 		console.log(idCalidad)
 		Swal.fire({
 		  title: '¿Estás seguro de eliminar?',
@@ -125,38 +129,40 @@ $(document).ready(function(){
 		})
 	})
 	// PREVISUALIZAR IMAGENES
-	$("#imagen").change(previsualizarImg)
-	$("#imagenEditar").change(previsualizarImg)
+	$("#imagenCalidad").change(previsualizarImg)
+	$("#imagenCalidadEditar").change(previsualizarImg)
 	function previsualizarImg(e) {
 		var contenedor = e.target.parentNode
 		var identificador = contenedor.classList[1]
 		imgSlider = this.files[0];
 		if ( imgSlider["type"] != "image/jpeg" && imgSlider["type"] != "image/png" && imgSlider["type"] != "video/mp4") {
-				$("#imagen").val("")
-				swal({
-					type:'error',
-					title: 'No es un archivo valido',
-					text: 'Debe subir archivos formato JPEG , PNG , MP4',
-				})
+				$("#imagenCalidad").val("")
+				$("#imagenCalidadEditar").val("")
+			Swal.fire(
+					  'No es un archivo valido',
+					      'Debe subir archivos formato JPEG , PNG',
+					      'error'
+				)	
 			}
-		if ( imgSlider["type"] > 100000000000) {
-				$("#imagenSlider").val("")
-				swal({
-					type: "Error al subir la imagen",
-					text: "La imagen debe pesar MAX 2MB",
-					icon: 'error',
-					confirmButtonText: "¡Cerrar!",
-				})
+		if ( imgSlider["type"] > 100000) {
+				$("#imagenCalidad").val("")
+			
+
+Swal.fire(
+					  'Error al subir la imagen',
+					      'La imagen debe pesar MAX 2MB',
+					      'error'
+				)
 			}
 			else {
-				$("#imagenSlider").css("display", "block")
+				$("#imgCalidad").css("display", "block")
 				var datosImagen = new FileReader;
 		  		datosImagen.readAsDataURL(imgSlider);
 		  		$(datosImagen).on("load", function(event){
 		  			var rutaImagen = event.target.result;
-		  			$("." + identificador +" #imagenSlider").attr("src", rutaImagen);
+		  			$("." + identificador +" #imgCalidad").attr("src", rutaImagen);
 		  		})
 			}
-
 		}
+
 })

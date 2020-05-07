@@ -47,7 +47,7 @@ a:hover #img {
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody style="font-size: 12px;">
             
                     <?php
           $tabla = ControllerTableroneumatico::listarTableroneumaticoCtr();
@@ -65,7 +65,7 @@ echo '<td>';
 foreach ($tablaautomatico as $key => $valor) {
 $idtablaautomatico=$valor["id_tablero_neumatico"];
 if ($idtablaautomatico==$id_tableroneumatico) {
-   echo '<div style="background:#f3f6fb;margin-bottom:2px;">'.$valor["cantidad"].' / <label style="font-weight: bold;">A: </label>'.$valor["amperaje"].' <label style="font-weight: bold;">Marca:</label> '.$valor["marca"].' <label style="font-weight: bold;"> Tipo:</label> '.$valor["tipo"].' <label style="font-weight: bold;"> Descripción: </label> '.$valor["descripcion"].'<br>  <a href="'.substr($valor["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valor["rutaImg"], 3).'"></a><br></div><br>';
+   echo '<div class="shadow-lg p-3 mb-5 rounded" style="background:#f3f6fb;margin-bottom:2px;"><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.$valor["id_automatico"].'</div><div class="col-sm-12"><label style="font-weight: bold;">Cantidad:</label> '.$valor["cantidad"].' </div><div class="col-sm-12"><label style="font-weight: bold;">Amperaje: </label> '.$valor["amperaje"].'</div><div class="col-sm-12"> <label style="font-weight: bold;">Marca:</label> '.$valor["marca"].'</div><div class="col-sm-12"> <label style="font-weight: bold;"> Tipo:</label> '.$valor["tipo"].'</div><div class="col-sm-12"> <label style="font-weight: bold;"> Descripción: </label> '.$valor["descripcion"].'</div><div class="col-sm-12">  <a href="'.substr($valor["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valor["rutaImg"], 3).'"></a></div></div></div>';
 }
 }
 echo '</td>';
@@ -74,7 +74,7 @@ $tablafuente = ControllerTableroneumatico::listarTneumaticofuenteCtr();
 foreach ($tablafuente as $key => $valorfuente) {
 $idtablafuente=$valorfuente["id_tablero_neumatico"];
 if ($idtablafuente==$id_tableroneumatico) {
-   echo '<div style="background:#ffefef;margin-bottom:5px;"><label style="font-weight: bold;"></label> '.$valorfuente["cantidad"].' / <label style="font-weight: bold;">A:</label> '.$valorfuente["amperaje"].' <label style="font-weight: bold;">C: </label> '.$valorfuente["corriente"].'  <label style="font-weight: bold;">Descripción: </label> '.$valorfuente["descripcion"].'<br>   <a href="'.substr($valorfuente["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valorfuente["rutaImg"], 3).'"></a><br></div>';
+   echo '<div class="shadow-lg p-3 mb-5 rounded" style="background:#ffe3e3;margin-bottom:2px;"><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.$valorfuente["id_fuentepoder"].'</div><div class="col-sm-12"><label style="font-weight: bold;">Cantidad:</label> '.$valorfuente["cantidad"].' </div><div class="col-sm-12"> <label style="font-weight: bold;">Amperaje:</label> '.$valorfuente["amperaje"].'</div><div class="col-sm-12"> <label style="font-weight: bold;">Corriente: </label> '.$valorfuente["corriente"].'</div><div class="col-sm-12">  <label style="font-weight: bold;">Descripción: </label> '.$valorfuente["descripcion"].'</div><div class="col-sm-12">   <a href="'.substr($valorfuente["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valorfuente["rutaImg"], 3).'"></a></div></div></div>';
 
 }
 }
@@ -84,7 +84,7 @@ $tablamanifold = ControllerTableroneumatico::listarTneumaticomanifoldCtr();
 foreach ($tablamanifold as $key => $valormanifold) {
 $idtablamanifold=$valormanifold["id_tablero_neumatico"];
 if ($idtablamanifold==$id_tableroneumatico) {
-   echo '<div style="background:#eaeaea;margin-bottom:5px;"><label style="font-weight: bold;">- Marca:</label> '.$valormanifold["marca"].' <label style="font-weight: bold;">- Hilo:</label> '.$valormanifold["medidas"].' <label style="font-weight: bold;">Cantidad Estaciones:</label> '.$valormanifold["sockets"].' <a href="'.substr($valormanifold["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valormanifold["rutaImg"], 3).'"></a><br></div>  <br>';
+   echo '<div class="shadow-lg p-3 mb-5 rounded" style="background:#f5f5f5;margin-bottom:2px;"><div class="row"><div class="col-sm-12"><label style="font-weight: bold;"> ID:</label> '.$valormanifold["id_manifold"].'</div><div class="col-sm-12"><label style="font-weight: bold;">Marca:</label> '.$valormanifold["marca"].' </div><div class="col-sm-12"> <label style="font-weight: bold;"> Hilo:</label> '.$valormanifold["medidas"].'</div><div class="col-sm-12"> <label style="font-weight: bold;">Cantidad Estaciones:</label> '.$valormanifold["sockets"].'</div><div class="col-sm-12"> <a href="'.substr($valormanifold["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valormanifold["rutaImg"], 3).'"></a></div></div></div>';
 }
 }
 
@@ -95,7 +95,7 @@ $tablavdf = ControllerTableroneumatico::listarTneumaticoplcCtr();
 foreach ($tablavdf as $key => $valorvdf) {
 $idtablavdf=$valorvdf["id_tablero_neumatico"];
 if ($idtablavdf==$id_tableroneumatico) {
-   echo '<div style="background:#eaeaea;margin-bottom:5px;">'.$valorvdf["cantidad"].' /<label style="font-weight: bold;">- Modelo:</label> '.$valorvdf["modelo"].'<label style="font-weight: bold;"> Descripción:</label> '.$valorvdf["descripcion"].'<br>  <a href="'.substr($valorvdf["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valorvdf["rutaImg"], 3).'"></a><br></div>  <br>';
+   echo '<div class="shadow-lg p-3 mb-5 rounded" style="background:#f5f5f5;margin-bottom:2px;"><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID: </label> '.$valorvdf["cantidad"].'</div><div class="col-sm-12"><label style="font-weight: bold;">Modelo:</label> '.$valorvdf["modelo"].'</div><div class="col-sm-12"><label style="font-weight: bold;"> Descripción:</label> '.$valorvdf["descripcion"].'</div><div class="col-sm-12"> <a href="'.substr($valorvdf["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valorvdf["rutaImg"], 3).'"></a></div></div></div>';
 }
 }
 

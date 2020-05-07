@@ -35,6 +35,15 @@
               <input type="text" class="form-control" placeholder="Material" name="Material">
             </div>
           </div>
+                 <div class="form-group row">
+  <label class="col-sm-2 col-form-label">Precio</label>
+      <div class="input-group mb-3 col-sm-10">
+  <div class="input-group-prepend">
+    <span class="input-group-text">$</span>
+  </div>
+  <input type="text" id="nuevobanda" name="Precio" class="form-control" aria-label="Amount (to the nearest dollar)">
+</div>
+          </div>
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Descripción</label>
             <div class="col-sm-10">
@@ -96,6 +105,16 @@
               <input type="text" class="form-control" placeholder="Material" name="Material">
             </div>
           </div>
+              <div class="form-group row">
+  <label class="col-sm-2 col-form-label">Precio</label>
+      <div class="input-group mb-3 col-sm-10">
+  <div class="input-group-prepend">
+    <span class="input-group-text">$</span>
+  </div>
+  <input type="text" name="Precio" id="editarbanda" class="form-control" aria-label="Amount (to the nearest dollar)">
+</div>
+          </div>
+
            <div class="form-group row">
             <label class="col-sm-2 col-form-label">Descripción</label>
             <div class="col-sm-10">
@@ -121,3 +140,32 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  
+
+$("#nuevobanda").on({
+  "focus": function(event) {
+    $(event.target).select();
+  },
+  "keyup": function(event) {
+    $(event.target).val(function(index, value) {
+      return value.replace(/\D/g, "")
+        .replace(/([0-9])([0-9]{0})$/, '$1$2')
+        .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ".");
+    });
+  }
+});
+$("#editarbanda").on({
+  "focus": function(event) {
+    $(event.target).select();
+  },
+  "keyup": function(event) {
+    $(event.target).val(function(index, value) {
+      return value.replace(/\D/g, "")
+        .replace(/([0-9])([0-9]{0})$/, '$1$2')
+        .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ".");
+    });
+  }
+});
+</script>

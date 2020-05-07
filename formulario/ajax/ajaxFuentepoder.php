@@ -7,6 +7,7 @@ Class ajaxFuentePoder {
 						"marca"=>$this->marca,
 						"amperaje"=>$this->amperaje,
 						"corriente"=>$this->corriente,
+						"precio"=>$this->precio,
 						"imagen"=>$this->imagen_fuentepoder
 					);
 
@@ -20,6 +21,7 @@ Class ajaxFuentePoder {
 						  "marca"=>$respuesta["marca"], 
 						  "amperaje"=>$respuesta["amperaje"],
 				          "corriente"=>$respuesta["corriente"],
+						  "precio"=>miles($respuesta["precio"]),
 				          "imagen"=>substr($respuesta["rutaImg"], 3)
 						);
 		echo json_encode($datos);
@@ -29,6 +31,7 @@ Class ajaxFuentePoder {
 						"marca"=>$this->marca,
 						"amperaje"=>$this->amperaje,
 						"corriente"=>$this->corriente,
+						"precio"=>$this->precio,
 						"imagen"=>$this->imagen_fuentepoder,		
 						"rutaActual"=>$this->rutaActual		
 						);
@@ -48,6 +51,7 @@ if($tipoOperacion == "insertarfuentepoder") {
 	$crearNuevoFuentePoder -> marca = $_POST["Marca"];
 	$crearNuevoFuentePoder -> amperaje = $_POST["Amperaje"];
 	$crearNuevoFuentePoder -> corriente = $_POST["Corriente"];
+	$crearNuevoFuentePoder -> precio = puntos($_POST["Precio"]);
     $crearNuevoFuentePoder -> imagen_fuentepoder = $_FILES["imagenFuentePoder"];
 	$crearNuevoFuentePoder ->crearFuentePoder();
 }
@@ -63,6 +67,7 @@ if ($tipoOperacion == "actualizarFuentePoder") {
 	$actualizarFuentePoder -> marca = $_POST["Marca"];
 	$actualizarFuentePoder -> amperaje = $_POST["Amperaje"];
 	$actualizarFuentePoder -> corriente = $_POST["Corriente"];
+	$actualizarFuentePoder -> precio = puntos($_POST["Precio"]);
 	$actualizarFuentePoder -> imagen_fuentepoder = $_FILES["imagenFuentePoder"];
 	$actualizarFuentePoder -> rutaActual = $_POST["rutaActual"];
 	$actualizarFuentePoder -> actualizarFuentePoder();
@@ -73,5 +78,14 @@ if ($tipoOperacion == "eliminarFuentePoder") {
 	$eliminarFuentePoder -> imagen_fuentepoder = $_POST["rutaImagen"];
 	$eliminarFuentePoder -> eliminarFuentePoder();
 }
+function puntos($s)
+{
+$s= str_replace('.','', $s); 
+return $s;
+}
+function miles($m){
+$m=number_format($m, 0, ',', '.');
+return $m;
 
+}
 ?>

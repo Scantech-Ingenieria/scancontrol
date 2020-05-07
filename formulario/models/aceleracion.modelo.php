@@ -2,7 +2,7 @@
 require_once "conexion.php";
 Class ModeloAceleracion {
 static public function listarAceleracionMdl($tabla) {
-		$sql = Conexion::conectar()->prepare("SELECT * FROM $tabla a INNER JOIN sprockets s on s.id_sprockets=a.tipo_sprockets  INNER JOIN bandas b on b.id_banda=a.tipo_banda");
+		$sql = Conexion::conectar()->prepare("SELECT a.id_unidad_acel,a.cantidad_sprockets,a.banda_medidas,a.eje,a.rutaImg imgaceleracion,s.id_sprockets,s.serie spro_serie,s.modelo spro_modelo,s.dientes,s.perforacion,s.descripcion descr_spro,s.rutaImg sproimg,b.id_banda,b.superficie,b.paso,b.numero_serie serie_banda,b.descripcion banda_descripcion,b.ancho ancho_banda,b.material,b.rutaImg bandaimg,r.id_rodamientos,r.modelo modelo_descanso,r.rodamiento,r.material material_descanso,r.fijaciones,r.rutaImg descansoimg,m.id_motor,m.rpm,m.marca,m.usillo,m.ancho corriente,m.capacidad potencia,m.rutaImg motorimg  FROM $tabla a LEFT JOIN sprockets s on s.id_sprockets=a.tipo_sprockets  LEFT JOIN bandas b on b.id_banda=a.banda_tipo LEFT JOIN rodamientos r on r.id_rodamientos=a.tipo_descanso LEFT JOIN motor m on m.id_motor=a.tipo_motor");
 		$sql -> execute();
 		return $sql -> fetchAll();
 }
@@ -11,18 +11,19 @@ static public function listarAceleracionRegistroMdl($tabla) {
 		$sql -> execute();
 		return $sql -> fetchAll();
 }
-	static public function mdlCrearAceleracion($tabla, $datos) {
+	static public function mdlCrearAceleracion($tabla, $datos,$rutaImagen) {
 
-		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL,:tipo,:cantidadsprockets,:tipobandas,:bandasmedidas,:eje,:motorusillo,:motorcapacidad,:rpm,:tiporodamientos,NULL)");
-		$sql->bindParam(":tipo", $datos["tipo"], PDO::PARAM_STR);
+		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL,:tipo,:cantidadsprockets,:tipobandas,:bandasmedidas,:eje,:tipommotor,:tipodescanso,:imagen,NULL)");
+
+			$sql->bindParam(":tipo", $datos["tipo"], PDO::PARAM_STR);
 		$sql->bindParam(":cantidadsprockets", $datos["cantidadsprockets"], PDO::PARAM_STR);
 		$sql->bindParam(":tipobandas", $datos["tipobandas"], PDO::PARAM_STR);
 		$sql->bindParam(":bandasmedidas", $datos["bandasmedidas"], PDO::PARAM_STR);
 		$sql->bindParam(":eje", $datos["eje"], PDO::PARAM_STR);
-		$sql->bindParam(":motorusillo", $datos["motorusillo"], PDO::PARAM_STR);
-		$sql->bindParam(":motorcapacidad", $datos["motorcapacidad"], PDO::PARAM_STR);
-		$sql->bindParam(":rpm", $datos["rpm"], PDO::PARAM_STR);
-		$sql->bindParam(":tiporodamientos", $datos["tiporodamientos"], PDO::PARAM_STR);
+		$sql->bindParam(":tipommotor", $datos["tipommotor"], PDO::PARAM_STR);
+		$sql->bindParam(":tipodescanso", $datos["tipodescanso"], PDO::PARAM_STR);
+		$sql->bindParam(":imagen", $rutaImagen, PDO::PARAM_STR);
+
 		if( $sql -> execute() ) {
 			return "ok";
 		} else {
@@ -45,19 +46,33 @@ static public function listarAceleracionRegistroMdl($tabla) {
 		$sql -> execute();
 		return $sql -> fetch();
 	}
-	static public function mdlActualizarAceleracion($tabla, $datos) {
+	static public function mdlActualizarAceleracion($tabla, $datos,$rutaImagen) {
 
-			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET tipo_sprockets = :tipo,cantidad_sprocket = :cantidadsprockets,tipo_banda = :tipobandas,medida_banda = :bandasmedidas,eje = :eje,motor_usillo = :motorusillo,motor_capacidad = :motorcapacidad,rpm = :rpm,tipo_rodamientos = :tiporodamientos WHERE id_unidad_acel = :id");
+		if(is_null($rutaImagen)){
+			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET tipo_sprockets = :tipo,cantidad_sprockets = :cantidadsprockets,banda_tipo = :tipobandas,banda_medidas = :bandasmedidas,eje = :eje,tipo_motor = :tipomotor,tipo_descanso = :tipodescanso WHERE id_unidad_acel = :id");
             $sql->bindParam(":tipo", $datos["tipo"], PDO::PARAM_STR);
 			$sql->bindParam(":cantidadsprockets", $datos["cantidadsprockets"], PDO::PARAM_STR);
 			$sql->bindParam(":tipobandas", $datos["tipobandas"], PDO::PARAM_STR);
 			$sql->bindParam(":bandasmedidas", $datos["bandasmedidas"], PDO::PARAM_STR);
 			$sql->bindParam(":eje", $datos["eje"], PDO::PARAM_STR);
-			$sql->bindParam(":motorusillo", $datos["motorusillo"], PDO::PARAM_STR);
-			$sql->bindParam(":motorcapacidad", $datos["motorcapacidad"], PDO::PARAM_STR);
+			$sql->bindParam(":tipomotor", $datos["tipomotor"], PDO::PARAM_STR);
+		$sql->bindParam(":tipodescanso", $datos["tipodescanso"], PDO::PARAM_STR);
 			$sql->bindParam(":id", $datos["id_aceleracion"], PDO::PARAM_INT);
-			$sql->bindParam(":rpm", $datos["rpm"], PDO::PARAM_STR);
-		$sql->bindParam(":tiporodamientos", $datos["tiporodamientos"], PDO::PARAM_STR);
+		}else{
+		$sql = Conexion::conectar()->prepare("UPDATE $tabla SET tipo_sprockets = :tipo,cantidad_sprockets = :cantidadsprockets,banda_tipo = :tipobandas,banda_medidas = :bandasmedidas,eje = :eje,tipo_motor = :tipomotor,tipo_descanso = :tipodescanso,rutaImg = :rutaNueva WHERE id_unidad_acel = :id");
+            $sql->bindParam(":tipo", $datos["tipo"], PDO::PARAM_STR);
+			$sql->bindParam(":cantidadsprockets", $datos["cantidadsprockets"], PDO::PARAM_STR);
+			$sql->bindParam(":tipobandas", $datos["tipobandas"], PDO::PARAM_STR);
+			$sql->bindParam(":bandasmedidas", $datos["bandasmedidas"], PDO::PARAM_STR);
+			$sql->bindParam(":eje", $datos["eje"], PDO::PARAM_STR);
+			$sql->bindParam(":tipomotor", $datos["tipomotor"], PDO::PARAM_STR);
+		$sql->bindParam(":tipodescanso", $datos["tipodescanso"], PDO::PARAM_STR);
+			$sql->bindParam(":id", $datos["id_aceleracion"], PDO::PARAM_INT);
+		$sql->bindParam(":rutaNueva", $rutaImagen, PDO::PARAM_STR);
+			
+
+
+		}
 		if($sql->execute()) {
 			return "ok";
 		} else {

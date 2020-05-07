@@ -106,7 +106,7 @@ $(document).ready(function() {
             }).done(function(res){
                 console.log(res)
                 if (res== "exito") {
-            window.location = "formulario/index.php";
+            window.location = "formulario/registros";
                 }else{
                 	$("#resultado").html("<div class='alert alert-danger'>Datos incorrectos. Inténtelo nuevamente.</div>");
                 }

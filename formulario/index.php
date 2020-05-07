@@ -32,6 +32,8 @@ require_once "controllers/motor.controller.php";
 
 
 
+
+
 require_once "models/alimentacion.modelo.php";
 require_once "models/cliente.modelo.php";
 require_once "models/paletas.modelo.php";

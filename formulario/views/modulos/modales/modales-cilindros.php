@@ -41,6 +41,15 @@
               <input type="text" class="form-control" placeholder="Medida hilo regulador flujo" name="MedidaHilo">
             </div>
           </div>
+            <div class="form-group row">
+  <label class="col-sm-2 col-form-label">Precio</label>
+      <div class="input-group mb-3 col-sm-10">
+  <div class="input-group-prepend">
+    <span class="input-group-text">$</span>
+  </div>
+  <input type="text" id="nuevocilindro" name="Precio" class="form-control" aria-label="Amount (to the nearest dollar)">
+</div>
+          </div>
               <div class="form-group row">
             <label class="col-sm-2 col-form-label">Imagen</label>
             <div class="col-sm-10 conteNuevaImagen">
@@ -102,6 +111,15 @@
               <input type="text" class="form-control" placeholder="Medida hilo regulador flujo" name="MedidaHilo">
             </div>
           </div>
+      <div class="form-group row">
+  <label class="col-sm-2 col-form-label">Precio</label>
+      <div class="input-group mb-3 col-sm-10">
+  <div class="input-group-prepend">
+    <span class="input-group-text">$</span>
+  </div>
+  <input type="text" id="editarcilindro" name="Precio" class="form-control" aria-label="Amount (to the nearest dollar)">
+</div>
+          </div>
              <div class="form-group row">
             <label class="col-sm-2 col-form-label">Imagen</label>
             <div class="col-sm-10 conteNuevaImagen">
@@ -121,3 +139,31 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  
+
+$("#nuevocilindro").on({
+  "focus": function(event) {
+    $(event.target).select();
+  },
+  "keyup": function(event) {
+    $(event.target).val(function(index, value) {
+      return value.replace(/\D/g, "")
+        .replace(/([0-9])([0-9]{0})$/, '$1$2')
+        .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ".");
+    });
+  }
+});
+$("#editarcilindro").on({
+  "focus": function(event) {
+    $(event.target).select();
+  },
+  "keyup": function(event) {
+    $(event.target).val(function(index, value) {
+      return value.replace(/\D/g, "")
+        .replace(/([0-9])([0-9]{0})$/, '$1$2')
+        .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ".");
+    });
+  }
+});
+</script>

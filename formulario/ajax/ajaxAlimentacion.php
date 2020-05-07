@@ -11,10 +11,10 @@ Class ajaxAlimentacion {
 						"tipobandas"=>$this->tipobandas,
 						"bandasmedidas"=>$this->bandasmedidas,
 						"eje"=>$this->eje,
-						"motorusillo"=>$this->motorusillo,
-						"motorcapacidad"=>$this->motorcapacidad,
-						"motorrpm"=>$this->motorrpm,
-						"rodamientos"=>$this->rodamientos
+						"largobanda"=>$this->largobanda,
+						"tipommotor"=>$this->tipommotor,
+						"tipodescanso"=>$this->tipodescanso,
+						"imagen"=>$this->imagen_alimentacion
 					);
 
 		$respuesta = ControllerAlimentacion::ctrCrearAlimentacion($datos);
@@ -28,13 +28,14 @@ Class ajaxAlimentacion {
 		$datos = array("id_unidad_alim"=>$respuesta["id_unidad_alim"],
 						"tipo_sprockets"=>$respuesta["tipo_sprockets"],
 						"cantidad_sprockets"=>$respuesta["cantidad_sprockets"],
-						"banda_modular_tipo"=>$respuesta["banda_modular_tipo"],
+						"banda_modular_tipo"=>$respuesta["banda_tipo"],
 						"banda_medidas"=>$respuesta["banda_medidas"],
 						"eje"=>$respuesta["eje"],
-						"motor_usillo"=>$respuesta["motor_usillo"],
-						"motor_capacidad"=>$respuesta["motor_capacidad"],
-						"motor_rpm"=>$respuesta["motor_rpm"],
-						"rodamientos"=>$respuesta["rodamientos"]
+						"largo_banda"=>$respuesta["largo_banda"],
+						"tipo_motor"=>$respuesta["tipo_motor"],
+		
+						"tipo_descanso"=>$respuesta["tipo_descanso"],
+						"imagen"=>substr($respuesta["rutaImg"], 3)
 						);
 		echo json_encode($datos);
 	}
@@ -44,11 +45,15 @@ Class ajaxAlimentacion {
 						"cantidadsprockets"=>$this->cantidadsprockets,
 						"tipobandas"=>$this->tipobandas,
 						"bandasmedidas"=>$this->bandasmedidas,
+						"largobanda"=>$this->largobanda,
+						
 						"eje"=>$this->eje,
-						"motorusillo"=>$this->motorusillo,
-						"motorcapacidad"=>$this->motorcapacidad,
-						"motorrpm"=>$this->motorrpm,
-						"rodamientos"=>$this->rodamientos
+						"tipommotor"=>$this->tipommotor,
+						"tipodescanso"=>$this->tipodescanso,
+							"imagen"=>$this->imagen_alimentacion,		
+						"rutaActual"=>$this->rutaActual	
+
+					
 						);
 
 		$respuesta = ControllerAlimentacion::ctrActualizarAlimentacion($datos);
@@ -56,7 +61,8 @@ Class ajaxAlimentacion {
 	}
 	public function eliminarAlimentacion(){
 		$id_alimentacion = $this->id_alimentacion;
-		$respuesta = ControllerAlimentacion::ctrEliminarAlimentacion($id_alimentacion);
+			$ruta = $this->imagen_calidad;
+		$respuesta = ControllerAlimentacion::ctrEliminarAlimentacion($id_alimentacion,$ruta);
 		echo $respuesta;
 	}
 }
@@ -70,10 +76,11 @@ if($tipoOperacion == "insertaralimentacion") {
 	$crearNuevoAlimentacion -> tipobandas = $_POST["TipoBandas"];
 	$crearNuevoAlimentacion -> bandasmedidas = $_POST["BandasMedidas"];
 	$crearNuevoAlimentacion -> eje = $_POST["Eje"];
-	$crearNuevoAlimentacion -> motorusillo = $_POST["MotorUsillo"];
-	$crearNuevoAlimentacion -> motorcapacidad = $_POST["MotorCapacidad"];
-	$crearNuevoAlimentacion -> motorrpm = $_POST["MotorRpm"];
-	$crearNuevoAlimentacion -> rodamientos = $_POST["TipoRodamientos"];
+	$crearNuevoAlimentacion -> largobanda = $_POST["LargoBanda"];
+	$crearNuevoAlimentacion -> tipommotor = $_POST["TipoMotor"];
+	$crearNuevoAlimentacion -> tipodescanso = $_POST["TipoDescanso"];
+    $crearNuevoAlimentacion -> imagen_alimentacion = $_FILES["imagenAlimentacion"];
+
 	$crearNuevoAlimentacion ->crearAlimentacion();
 }
 if ($tipoOperacion == "editarAlimentacion") {
@@ -88,16 +95,22 @@ if ($tipoOperacion == "actualizarAlimentacion") {
 	$actualizarAlimentacion -> cantidadsprockets = $_POST["CantidadSprockets"];
 	$actualizarAlimentacion -> tipobandas = $_POST["TipoBandas"];
 	$actualizarAlimentacion -> bandasmedidas = $_POST["BandasMedidas"];
+	$actualizarAlimentacion -> largobanda = $_POST["LargoBanda"];
+
 	$actualizarAlimentacion -> eje = $_POST["Eje"];
-	$actualizarAlimentacion -> motorusillo = $_POST["MotorUsillo"];
-	$actualizarAlimentacion -> motorcapacidad = $_POST["MotorCapacidad"];
-	$actualizarAlimentacion -> motorrpm = $_POST["MotorRpm"];
-	$actualizarAlimentacion -> rodamientos = $_POST["TipoRodamientos"];
+	$actualizarAlimentacion -> tipommotor = $_POST["TipoMotor"];
+	$actualizarAlimentacion -> tipodescanso = $_POST["TipoDescanso"];
+	$actualizarAlimentacion -> imagen_alimentacion = $_FILES["imagenAlimentacion"];
+	$actualizarAlimentacion -> rutaActual = $_POST["rutaActual"];
+
+
 	$actualizarAlimentacion -> actualizarAlimentacion();
 }
 if ($tipoOperacion == "eliminarAlimentacion") {
 	$eliminarAlimentacion = new ajaxAlimentacion();
 	$eliminarAlimentacion -> id_alimentacion = $_POST["id_alimentacion"];
+	$eliminarCalidad -> imagen_calidad = $_POST["rutaImagen"];
+
 	$eliminarAlimentacion -> eliminarAlimentacion();
 }
 

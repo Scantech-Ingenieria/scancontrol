@@ -7,10 +7,11 @@ static public function listarFuentePoderMdl($tabla) {
 		return $sql -> fetchAll();
 	}
 	static public function mdlCrearFuentePoder($tabla, $datos,$rutaImagen) {
-		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :marca,:amperaje,:corriente,:imagen)");
+		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :marca,:amperaje,:corriente,:precio,:imagen)");
 		$sql->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
 		$sql->bindParam(":amperaje", $datos["amperaje"], PDO::PARAM_STR);
 		$sql->bindParam(":corriente", $datos["corriente"], PDO::PARAM_STR);
+	    $sql->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
 		$sql->bindParam(":imagen", $rutaImagen, PDO::PARAM_STR);
 		if( $sql -> execute() ) {
 			return "ok";
@@ -35,16 +36,18 @@ static public function listarFuentePoderMdl($tabla) {
 	}
 	static public function mdlActualizarFuentePoder($tabla, $datos,$rutaImagen) {
 		if( is_null($rutaImagen)) {
-			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET marca = :marca,amperaje =:amperaje,corriente =:corriente WHERE id_fuentepoder = :id");
+			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET marca = :marca,amperaje =:amperaje,corriente =:corriente,precio = :precio WHERE id_fuentepoder = :id");
 			$sql->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
 			$sql->bindParam(":amperaje", $datos["amperaje"], PDO::PARAM_STR);
 			$sql->bindParam(":corriente", $datos["corriente"], PDO::PARAM_STR);
+		    $sql->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
 			$sql->bindParam(":id", $datos["id_fuentepoder"], PDO::PARAM_INT);
 }else{
-		$sql = Conexion::conectar()->prepare("UPDATE $tabla SET marca = :marca,amperaje =:amperaje,corriente =:corriente,rutaImg =:rutaNueva WHERE id_fuentepoder = :id");
+		$sql = Conexion::conectar()->prepare("UPDATE $tabla SET marca = :marca,amperaje =:amperaje,corriente =:corriente,precio = :precio,rutaImg =:rutaNueva WHERE id_fuentepoder = :id");
 			$sql->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
 			$sql->bindParam(":amperaje", $datos["amperaje"], PDO::PARAM_STR);
 			$sql->bindParam(":corriente", $datos["corriente"], PDO::PARAM_STR);
+		    $sql->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
 			$sql->bindParam(":rutaNueva", $rutaImagen, PDO::PARAM_STR);
 			$sql->bindParam(":id", $datos["id_fuentepoder"], PDO::PARAM_INT);
 }

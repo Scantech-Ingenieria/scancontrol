@@ -8,14 +8,18 @@ Class ajaxDescarga {
 						"cantidadsprockets"=>$this->cantidadsprockets,
 						"tipobandas"=>$this->tipobandas,
 						"bandasmedidas"=>$this->bandasmedidas,
-						"eje"=>$this->eje,
-						"motorusillo"=>$this->motorusillo,
-						"motorcapacidad"=>$this->motorcapacidad,
 						"tipopaletas"=>$this->tipopaletas,
 						"cantidadpaletas"=>$this->cantidadpaletas,
-						"rpm"=>$this->rpm,
-						"tiporodamientos"=>$this->tiporodamientos	
+						"eje"=>$this->eje,
+						"altura"=>$this->altura,
+						"buffer"=>$this->buffer,
+						"tipomotor"=>$this->tipomotor,
+						"tipodescanso"=>$this->tipodescanso,
+						"tipocilindro"=>$this->tipocilindro,
+						"imagen"=>$this->imagen_descarga
+				
 					);
+
 		$respuesta = ControllerDescarga::ctrCrearDescarga($datos);
 		echo $respuesta;
 	}
@@ -27,30 +31,36 @@ Class ajaxDescarga {
 						"cantidad_sprockets"=>$respuesta["cantidad_sprocket"],
 						"banda_modular_tipo"=>$respuesta["tipo_banda"],
 						"banda_medidas"=>$respuesta["medida_banda"],
-						"eje"=>$respuesta["eje"],
-						"motor_usillo"=>$respuesta["motor_usillo"],
-						"motor_capacidad"=>$respuesta["motor_capacidad"],
-						"tipo_paletas"=>$respuesta["id_tipo_paletas"],
+						"tipo_paletas"=>$respuesta["tipo_paletas"],
 						"cantidad_paletas"=>$respuesta["cantidad_paletas"],
-						"rpm"=>$respuesta["rpm"],
-						"tipo_rodamientos"=>$respuesta["tipo_rodamientos"]
+						"eje"=>$respuesta["eje"],
+						"altura"=>$respuesta["altura"],
+						"buffer"=>$respuesta["buffer"],
+						"tipo_motor"=>$respuesta["tipo_motor"],
+						"tipo_descanso"=>$respuesta["tipo_descanso"],
+						"tipo_cilindro"=>$respuesta["tipo_cilindro"],
+						"imagen"=>substr($respuesta["rutaImg"], 3)
+						
 						);
 
 		echo json_encode($datos);
 	}
 	public function actualizarDescarga(){
 		$datos = array( "id_descarga"=>$this->id_descarga,
-						"tipo"=>$this->tipo,
+				"tipo"=>$this->tipo,
 						"cantidadsprockets"=>$this->cantidadsprockets,
 						"tipobandas"=>$this->tipobandas,
 						"bandasmedidas"=>$this->bandasmedidas,
-						"eje"=>$this->eje,
-						"motorusillo"=>$this->motorusillo,
-						"motorcapacidad"=>$this->motorcapacidad,
 						"tipopaletas"=>$this->tipopaletas,
 						"cantidadpaletas"=>$this->cantidadpaletas,
-						"rpm"=>$this->rpm,
-						"tiporodamientos"=>$this->tiporodamientos	
+						"eje"=>$this->eje,
+						"altura"=>$this->altura,
+						"buffer"=>$this->buffer,
+						"tipomotor"=>$this->tipomotor,
+						"tipodescanso"=>$this->tipodescanso,
+						"tipocilindro"=>$this->tipocilindro,
+						"imagen"=>$this->imagen_descarga,		
+						"rutaActual"=>$this->rutaActual	
 					
 						);
 
@@ -59,7 +69,9 @@ Class ajaxDescarga {
 	}
 	public function eliminarDescarga(){
 		$id_descarga = $this->id_descarga;
-		$respuesta = ControllerDescarga::ctrEliminarDescarga($id_descarga);
+			$ruta = $this->imagen_descarga;
+
+		$respuesta = ControllerDescarga::ctrEliminarDescarga($id_descarga,$ruta);
 		echo $respuesta;
 	}
 }
@@ -70,13 +82,16 @@ if($tipoOperacion == "insertardescarga") {
 	$crearNuevoDescarga -> cantidadsprockets = $_POST["CantidadSprockets"];
 	$crearNuevoDescarga -> tipobandas = $_POST["TipoBandas"];
 	$crearNuevoDescarga -> bandasmedidas = $_POST["BandasMedidas"];
-	$crearNuevoDescarga -> eje = $_POST["Eje"];
-	$crearNuevoDescarga -> motorusillo = $_POST["MotorUsillo"];
-	$crearNuevoDescarga -> motorcapacidad = $_POST["MotorCapacidad"];
 	$crearNuevoDescarga -> tipopaletas = $_POST["TipoPaletas"];
 	$crearNuevoDescarga -> cantidadpaletas = $_POST["CantidadPaletas"];
-	$crearNuevoDescarga -> rpm = $_POST["RPM"];
-	$crearNuevoDescarga -> tiporodamientos = $_POST["TipoRodamientos"];
+	$crearNuevoDescarga -> eje = $_POST["Eje"];
+	$crearNuevoDescarga -> altura = $_POST["Altura"];
+	$crearNuevoDescarga -> buffer = $_POST["Buffer"];
+	$crearNuevoDescarga -> tipomotor = $_POST["TipoMotor"];
+	$crearNuevoDescarga -> tipodescanso = $_POST["TipoDescanso"];
+	$crearNuevoDescarga -> tipocilindro = $_POST["TipoCilindro"];
+    $crearNuevoDescarga -> imagen_descarga = $_FILES["imagenDescarga"];
+
 	$crearNuevoDescarga ->crearDescarga();
 }
 
@@ -92,18 +107,23 @@ if ($tipoOperacion == "actualizarDescarga") {
 	$actualizarDescarga -> cantidadsprockets = $_POST["CantidadSprockets"];
 	$actualizarDescarga -> tipobandas = $_POST["TipoBandas"];
 	$actualizarDescarga -> bandasmedidas = $_POST["BandasMedidas"];
-	$actualizarDescarga -> eje = $_POST["Eje"];
-	$actualizarDescarga -> motorusillo = $_POST["MotorUsillo"];
-	$actualizarDescarga -> motorcapacidad = $_POST["MotorCapacidad"];
 	$actualizarDescarga -> tipopaletas = $_POST["TipoPaletas"];
 	$actualizarDescarga -> cantidadpaletas = $_POST["CantidadPaletas"];
-    $actualizarDescarga -> rpm = $_POST["RPM"];
-	$actualizarDescarga -> tiporodamientos = $_POST["TipoRodamientos"];
+	$actualizarDescarga -> eje = $_POST["Eje"];
+	$actualizarDescarga -> altura = $_POST["Altura"];
+	$actualizarDescarga -> buffer = $_POST["Buffer"];
+	$actualizarDescarga -> tipomotor = $_POST["TipoMotor"];
+	$actualizarDescarga -> tipodescanso = $_POST["TipoDescanso"];
+	$actualizarDescarga -> tipocilindro = $_POST["TipoCilindro"];
+	$actualizarDescarga -> imagen_descarga = $_FILES["imagenDescarga"];
+	$actualizarDescarga -> rutaActual = $_POST["rutaActual"];
 	$actualizarDescarga -> actualizarDescarga();
 }
 if ($tipoOperacion == "eliminarDescarga") {
 	$eliminarDescarga = new ajaxDescarga();
 	$eliminarDescarga -> id_descarga = $_POST["id_descarga"];
+	$eliminarDescarga -> imagen_descarga = $_POST["rutaImagen"];
+
 	$eliminarDescarga -> eliminarDescarga();
 }
 

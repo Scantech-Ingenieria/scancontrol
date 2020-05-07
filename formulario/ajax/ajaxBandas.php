@@ -8,6 +8,7 @@ Class ajaxBanda {
 						"descripcion"=>$this->descripcion,
 						"ancho"=>$this->ancho,
 						"material"=>$this->material,
+						"precio"=>$this->precio,
 						"imagen"=>$this->imagen_banda,
 						"superficie"=>$this->superficie,
 						"paso"=>$this->paso
@@ -23,6 +24,7 @@ Class ajaxBanda {
 						"numeroserie"=>$respuesta["numero_serie"], 
 						  "superficie"=>$respuesta["superficie"],
 				          "paso"=>$respuesta["paso"],
+				          "precio"=>miles($respuesta["precio"]),
 						"descripcion"=>$respuesta["descripcion"],
 				        "ancho"=>$respuesta["ancho"],
 				        "material"=>$respuesta["material"],
@@ -33,6 +35,7 @@ Class ajaxBanda {
 	public function actualizarBanda(){
 		$datos = array( "id_banda"=>$this->id_banda,
 						"numeroserie"=>$this->numeroserie,
+						"precio"=>$this->precio,
 						"descripcion"=>$this->descripcion,
 						"ancho"=>$this->ancho,
 						"material"=>$this->material,
@@ -58,6 +61,8 @@ if($tipoOperacion == "insertarbanda") {
 	$crearNuevoBanda -> superficie = $_POST["Superficie"];
 	$crearNuevoBanda -> paso = $_POST["Paso"];
 	$crearNuevoBanda -> numeroserie = $_POST["NumeroSerie"];
+	$crearNuevoBanda -> precio = puntos($_POST["Precio"]);
+
 	$crearNuevoBanda -> descripcion = $_POST["DescripcionBanda"];
 	$crearNuevoBanda -> ancho = $_POST["Ancho"];
 	$crearNuevoBanda -> material = $_POST["Material"];
@@ -74,6 +79,7 @@ if ($tipoOperacion == "actualizarBanda") {
 	$actualizarBanda = new ajaxBanda();
 	$actualizarBanda -> id_banda = $_POST["id_banda"];
 	$actualizarBanda -> numeroserie = $_POST["NumeroSerie"];
+	$actualizarBanda -> precio = puntos($_POST["Precio"]);
 	$actualizarBanda -> descripcion = $_POST["DescripcionBanda"];
 	$actualizarBanda -> ancho = $_POST["Ancho"];
 	$actualizarBanda -> material = $_POST["Material"];
@@ -90,4 +96,14 @@ if ($tipoOperacion == "eliminarBanda") {
 	$eliminarBanda -> eliminarBanda();
 }
 
+function puntos($s)
+{
+$s= str_replace('.','', $s); 
+return $s;
+}
+function miles($m){
+$m=number_format($m, 0, ',', '.');
+return $m;
+
+}
 ?>

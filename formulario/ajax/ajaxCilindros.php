@@ -10,6 +10,7 @@ Class ajaxCilindros {
 						"materialcuerpo"=>$this->materialcuerpo,
 						"materialvastago"=>$this->materialvastago,
 						"medidahilo"=>$this->medidahilo,
+						"precio"=>$this->precio,						
 						"imagen"=>$this->imagen_cilindros
 				
 					);
@@ -27,6 +28,7 @@ Class ajaxCilindros {
 				        "materialcuerpo"=>$respuesta["materialcuerpo"],
 				        "materialvastago"=>$respuesta["materialvastago"],
 				        "medidahilo"=>$respuesta["medidahilo"],
+						"precio"=>miles($respuesta["precio"]),
 				        "imagen"=>substr($respuesta["rutaImg"], 3)
 						);
 		echo json_encode($datos);
@@ -39,6 +41,7 @@ Class ajaxCilindros {
 						"materialcuerpo"=>$this->materialcuerpo,
 						"materialvastago"=>$this->materialvastago,
 						"medidahilo"=>$this->medidahilo,
+						"precio"=>$this->precio,						
 						"imagen"=>$this->imagen_cilindros,		
 						"rutaActual"=>$this->rutaActual		
 						);
@@ -61,6 +64,7 @@ if($tipoOperacion == "insertarcilindros") {
 	$crearNuevoCilindros -> materialcuerpo = $_POST["MaterialCuerpo"];
 	$crearNuevoCilindros -> materialvastago = $_POST["MaterialVastago"];
 	$crearNuevoCilindros -> medidahilo = $_POST["MedidaHilo"];
+	$crearNuevoCilindros -> precio = puntos($_POST["Precio"]);
     $crearNuevoCilindros -> imagen_cilindros = $_FILES["imagenCilindros"];
 	$crearNuevoCilindros ->crearCilindros();
 }
@@ -79,6 +83,7 @@ if ($tipoOperacion == "actualizarCilindros") {
 	$actualizarCilindros -> materialcuerpo = $_POST["MaterialCuerpo"];
 	$actualizarCilindros -> materialvastago = $_POST["MaterialVastago"];
 	$actualizarCilindros -> medidahilo = $_POST["MedidaHilo"];
+	$actualizarCilindros -> precio = puntos($_POST["Precio"]);
     $actualizarCilindros -> imagen_cilindros = $_FILES["imagenCilindros"];
 	$actualizarCilindros -> rutaActual = $_POST["rutaActual"];
 	$actualizarCilindros -> actualizarCilindros();
@@ -89,5 +94,14 @@ if ($tipoOperacion == "eliminarCilindros") {
 	$eliminarCilindros -> imagen_cilindros = $_POST["rutaImagen"];
 	$eliminarCilindros -> eliminarCilindros();
 }
+function puntos($s)
+{
+$s= str_replace('.','', $s); 
+return $s;
+}
+function miles($m){
+$m=number_format($m, 0, ',', '.');
+return $m;
 
+}
 ?>

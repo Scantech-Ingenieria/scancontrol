@@ -66,21 +66,26 @@ $(document).ready(function(){
 				$('#formu-editar-aceleracion input[name="id_aceleracion"]').val(valor.id_unidad_acel)
 				$('#formu-editar-aceleracion select[name="TipoSprockets"]').val(valor.tipo_sprockets)
 				$('#formu-editar-aceleracion input[name="CantidadSprockets"]').val(valor.cantidad_sprockets)
-                  $('#formu-editar-aceleracion select[name="TipoBandas"]').val(valor.banda_modular_tipo)
+                $('#formu-editar-aceleracion select[name="TipoBandas"]').val(valor.banda_modular_tipo)
 				$('#formu-editar-aceleracion input[name="BandasMedidas"]').val(valor.banda_medidas)
 				$('#formu-editar-aceleracion input[name="Eje"]').val(valor.eje)
-				$('#formu-editar-aceleracion input[name="MotorUsillo"]').val(valor.motor_usillo)
-				$('#formu-editar-aceleracion input[name="MotorCapacidad"]').val(valor.motor_capacidad)
-			$('#formu-editar-aceleracion input[name="RPM"]').val(valor.rpm)
-				$('#formu-editar-aceleracion select[name="TipoRodamientos"]').val(valor.tipo_rodamientos)
+				$('#formu-editar-aceleracion select[name="TipoMotor"]').val(valor.tipo_motor)
+				$('#formu-editar-aceleracion select[name="TipoDescanso"]').val(valor.tipo_descanso)
+			    $('#formu-editar-aceleracion input[name="rutaActual"]').val(valor.imagen)
+				$('#formu-editar-aceleracion #imgAceleracion').attr("src", valor.imagen)
+
 			}
 		})
 	})
 
 	$("body #mi_lista").on("click", ".btnEliminarAceleracion", function(){
 		var idAceleracion = $(this).attr("idAceleracion")
+				var rutaImagen = $(this).attr("rutaImagen")
+
 		var datos = new FormData()
 		datos.append("id_aceleracion", idAceleracion)
+		datos.append("rutaImagen", rutaImagen)
+
 		datos.append("tipoOperacion", "eliminarAceleracion")
 		console.log(idAceleracion)
 		Swal.fire({
@@ -116,39 +121,39 @@ $(document).ready(function(){
 		  }
 		})
 	})
-	// PREVISUALIZAR IMAGENES
-	$("#imagen").change(previsualizarImg)
-	$("#imagenEditar").change(previsualizarImg)
+// PREVISUALIZAR IMAGENES
+	$("#imagenAceleracion").change(previsualizarImg)
+	$("#imagenAceleracionEditar").change(previsualizarImg)
 	function previsualizarImg(e) {
 		var contenedor = e.target.parentNode
 		var identificador = contenedor.classList[1]
 		imgSlider = this.files[0];
 		if ( imgSlider["type"] != "image/jpeg" && imgSlider["type"] != "image/png" && imgSlider["type"] != "video/mp4") {
-				$("#imagen").val("")
-
-				swal({
-					type:'error',
-					title: 'No es un archivo valido',
-					text: 'Debe subir archivos formato JPEG , PNG , MP4',
-				})
+				$("#imagenAceleracion").val("")
+				$("#imagenAceleracionEditar").val("")
+			Swal.fire(
+					  'No es un archivo valido',
+					      'Debe subir archivos formato JPEG , PNG',
+					      'error'
+				)	
 			}
-		if ( imgSlider["type"] > 100000000000) {
-				$("#imagenSlider").val("")
-				swal({
-					type: "Error al subir la imagen",
-					text: "La imagen debe pesar MAX 2MB",
-					icon: 'error',
-					confirmButtonText: "¡Cerrar!",
-				})
+		if ( imgSlider["type"] > 100000) {
+				$("#imagenAceleracion").val("")
+			
+
+Swal.fire(
+					  'Error al subir la imagen',
+					      'La imagen debe pesar MAX 2MB',
+					      'error'
+				)
 			}
 			else {
-				$("#imagenSlider").css("display", "block")
+				$("#imgAceleracion").css("display", "block")
 				var datosImagen = new FileReader;
 		  		datosImagen.readAsDataURL(imgSlider);
 		  		$(datosImagen).on("load", function(event){
 		  			var rutaImagen = event.target.result;
-
-		  			$("." + identificador +" #imagenSlider").attr("src", rutaImagen);
+		  			$("." + identificador +" #imgAceleracion").attr("src", rutaImagen);
 		  		})
 			}
 		}

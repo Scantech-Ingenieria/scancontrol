@@ -27,6 +27,8 @@
                 <th>Material Cuerpo</th>
                 <th>Material Vastago</th>
                 <th>Medida Hilo</th>
+                <th>Precio</th>
+
                 <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
@@ -43,6 +45,8 @@
 <td>'.nl2br($value["materialcuerpo"]).'</td>
 <td>'.nl2br($value["materialvastago"]).'</td>
 <td>'.nl2br($value["medidahilo"]).'</td>
+<td> $ '.number_format($value["precio"],'0', ',',',').'</td>
+
 
 
 <td><img width="200" src="'.substr($value["rutaImg"], 3).'"></td>
@@ -60,3 +64,9 @@
         </tbody>
      
     </table>
+    <script type="text/javascript"> 
+  function miles($m){
+$m=number_format($m, 0, ',', '.');
+return $m;
+
+}</script>

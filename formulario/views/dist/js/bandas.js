@@ -70,6 +70,7 @@ $(document).ready(function(){
 				$('#formu-editar-banda input[name="NumeroSerie"]').val(valor.numeroserie)
 				$('#formu-editar-banda input[name="Superficie"]').val(valor.superficie)
 				$('#formu-editar-banda input[name="Paso"]').val(valor.paso)
+				$('#formu-editar-banda input[name="Precio"]').val(valor.precio)
 				$('#formu-editar-banda textarea[name="DescripcionBanda"]').val(valor.descripcion)
 				$('#formu-editar-banda input[name="Ancho"]').val(valor.ancho)
 				$('#formu-editar-banda input[name="Material"]').val(valor.material)

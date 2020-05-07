@@ -70,6 +70,7 @@ $(document).ready(function(){
 				$('#formu-editar-rodamientos input[name="Rodamiento"]').val(valor.rodamiento)
 				$('#formu-editar-rodamientos input[name="Material"]').val(valor.material)
 				$('#formu-editar-rodamientos input[name="Fijaciones"]').val(valor.fijaciones)
+				$('#formu-editar-rodamientos input[name="Precio"]').val(valor.precio)	
 				$('#formu-editar-rodamientos #imgDescanso').attr("src", valor.imagen)
 				$('#formu-editar-rodamientos input[name="rutaActual"]').val(valor.imagen)
 			}

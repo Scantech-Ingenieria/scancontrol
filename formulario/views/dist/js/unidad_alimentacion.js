@@ -71,12 +71,14 @@ $("#formu-nuevo-alimentacion").submit(function (e) {
 				$('#formu-editar-alimentacion input[name="CantidadSprockets"]').val(valor.cantidad_sprockets)
                 $('#formu-editar-alimentacion select[name="TipoBandas"]').val(valor.banda_modular_tipo)
 				$('#formu-editar-alimentacion input[name="BandasMedidas"]').val(valor.banda_medidas)
+				$('#formu-editar-alimentacion input[name="LargoBanda"]').val(valor.largo_banda)
 				$('#formu-editar-alimentacion input[name="Eje"]').val(valor.eje)
-				$('#formu-editar-alimentacion input[name="MotorUsillo"]').val(valor.motor_usillo)
-				$('#formu-editar-alimentacion input[name="MotorCapacidad"]').val(valor.motor_capacidad)
-				$('#formu-editar-alimentacion input[name="MotorRpm"]').val(valor.motor_rpm)
+				$('#formu-editar-alimentacion select[name="TipoMotor"]').val(valor.tipo_motor)
+				$('#formu-editar-alimentacion select[name="TipoDescanso"]').val(valor.tipo_descanso)
+				$('#formu-editar-alimentacion input[name="rutaActual"]').val(valor.imagen)
+				$('#formu-editar-alimentacion #imgAlimentacion').attr("src", valor.imagen)
 		
-		$('#formu-editar-alimentacion select[name="TipoRodamientos"]').val(valor.rodamientos)
+	
 
 			}
 
@@ -86,8 +88,12 @@ $("#formu-nuevo-alimentacion").submit(function (e) {
 
 	$("body #mi_lista").on("click", ".btnEliminarAlimentacion", function(){
 		var idAlimentacion = $(this).attr("idAlimentacion")
+		var rutaImagen = $(this).attr("rutaImagen")
+
 		var datos = new FormData()
 		datos.append("id_alimentacion", idAlimentacion)
+		datos.append("rutaImagen", rutaImagen)
+
 		datos.append("tipoOperacion", "eliminarAlimentacion")
 		console.log(idAlimentacion)
 		Swal.fire({
@@ -124,48 +130,42 @@ $("#formu-nuevo-alimentacion").submit(function (e) {
 		})
 	})
 	// PREVISUALIZAR IMAGENES
-	$("#imagen").change(previsualizarImg)
-	$("#imagenEditar").change(previsualizarImg)
+	$("#imagenAlimentacion").change(previsualizarImg)
+	$("#imagenAlimentacionEditar").change(previsualizarImg)
 	function previsualizarImg(e) {
 		var contenedor = e.target.parentNode
 		var identificador = contenedor.classList[1]
 		imgSlider = this.files[0];
 		if ( imgSlider["type"] != "image/jpeg" && imgSlider["type"] != "image/png" && imgSlider["type"] != "video/mp4") {
-				$("#imagen").val("")
-
-				swal({
-					type:'error',
-					title: 'No es un archivo valido',
-					text: 'Debe subir archivos formato JPEG , PNG , MP4',
-		
-				})
+				$("#imagenAlimentacion").val("")
+				$("#imagenAlimentacionEditar").val("")
+			Swal.fire(
+					  'No es un archivo valido',
+					      'Debe subir archivos formato JPEG , PNG',
+					      'error'
+				)	
 			}
+		if ( imgSlider["type"] > 100000) {
+				$("#imagenAlimentacion").val("")
+			
 
-		if ( imgSlider["type"] > 100000000000) {
-				$("#imagenSlider").val("")
-
-				swal({
-					type: "Error al subir la imagen",
-					text: "La imagen debe pesar MAX 2MB",
-					icon: 'error',
-					confirmButtonText: "¡Cerrar!",
-				})
+Swal.fire(
+					  'Error al subir la imagen',
+					      'La imagen debe pesar MAX 2MB',
+					      'error'
+				)
 			}
 			else {
-				$("#imagenSlider").css("display", "block")
-
+				$("#imgAlimentacion").css("display", "block")
 				var datosImagen = new FileReader;
 		  		datosImagen.readAsDataURL(imgSlider);
-
 		  		$(datosImagen).on("load", function(event){
-
 		  			var rutaImagen = event.target.result;
-
-		  			$("." + identificador +" #imagenSlider").attr("src", rutaImagen);
+		  			$("." + identificador +" #imgAlimentacion").attr("src", rutaImagen);
 		  		})
 			}
-
 		}
+
 
 
 
