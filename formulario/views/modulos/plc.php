@@ -24,6 +24,8 @@
                 <th>ID</th>
                 <th>Modelo</th>
                 <th>Descripciòn</th>
+                <th>Precio</th>
+                
                 <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
@@ -37,6 +39,8 @@
 <td>'.nl2br($value["id_plc"]).'</td>
 <td>'.nl2br($value["modelo"]).'</td>
 <td>'.nl2br($value["descripcion"]).'</td>
+<td> $ '.number_format($value["precio"],'0', ',',',').'</td>
+
 
 <td><img width="200" src="'.substr($value["rutaImg"], 3).'"></td>
 <td width="100"> <button class="btn btn-sm btn-info btnEditarPlc" idPlc="'.$value["id_plc"].'" data-toggle="modal" data-target="#modal-editar-plc">
@@ -53,3 +57,9 @@
         </tbody>
      
     </table>
+    <script type="text/javascript"> 
+  function miles($m){
+$m=number_format($m, 0, ',', '.');
+return $m;
+
+}</script>

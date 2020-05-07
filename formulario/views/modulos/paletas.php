@@ -33,7 +33,8 @@
                 <th>Medida Brazo Leva</th>
                 <th>Cilindrado</th>
                 <th>Racors</th> 
-                <th>Orientación</th>           
+                <th>Orientación</th> 
+                <th>Precio</th>          
                 <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
@@ -54,6 +55,7 @@
 <td>'.nl2br($value["cilindrado"]).'</td>
 <td>'.nl2br($value["racors"]).'</td>
 <td>'.nl2br($value["orientacion"]).'</td>
+<td> $ '.number_format($value["precio"],'0', ',',',').'</td>
 <td><img width="100" src="'.substr($value["rutaImg"], 3).'"></td>
 <td width="100"> <button class="btn btn-sm btn-info btnEditarPaletas" idPaletas="'.$value["id_paletas"].'" data-toggle="modal" data-target="#modal-editar-paletas">
                     <i class="far fa-edit"></i>
@@ -72,3 +74,9 @@
         </tbody>
      
     </table>
+    <script type="text/javascript"> 
+  function miles($m){
+$m=number_format($m, 0, ',', '.');
+return $m;
+
+}</script>

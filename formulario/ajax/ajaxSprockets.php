@@ -9,6 +9,7 @@ Class ajaxSprockets {
 						"dientes"=>$this->dientes,
 						"perforacion"=>$this->perforacion,
 						"descripcion"=>$this->descripcion,
+						"precio"=>$this->precio,						
 						"imagen"=>$this->imagen_sprockets
 
 					);
@@ -24,6 +25,7 @@ Class ajaxSprockets {
 						"dientes"=>$respuesta["dientes"],
                         "perforacion"=>$respuesta["perforacion"],
 						"descripcion"=>$respuesta["descripcion"],
+						"precio"=>miles($respuesta["precio"]),					
 				        "imagen"=>substr($respuesta["rutaImg"], 3)
 						
 						);
@@ -37,6 +39,7 @@ Class ajaxSprockets {
 						"perforacion"=>$this->perforacion,
 						"imagen"=>$this->imagen_sprockets,		
 						"rutaActual"=>$this->rutaActual,
+						"precio"=>$this->precio,
 						"descripcion"=>$this->descripcion
 						);
 		$respuesta = ControllerSprockets::ctrActualizarSprockets($datos);
@@ -58,6 +61,8 @@ if($tipoOperacion == "insertarsprockets") {
 	$crearNuevoSprockets -> perforacion = $_POST["Perforacion"];
 	$crearNuevoSprockets -> modelo = $_POST["Modelo"];
 	$crearNuevoSprockets -> descripcion = $_POST["DescripcionSprockets"];
+	$crearNuevoSprockets -> precio = puntos($_POST["Precio"]);
+
     $crearNuevoSprockets -> imagen_sprockets = $_FILES["imagenSprockets"];
 	$crearNuevoSprockets ->crearSprockets();
 }
@@ -74,6 +79,8 @@ if ($tipoOperacion == "actualizarSprockets") {
 	$actualizarSprockets -> dientes = $_POST["Dientes"];
 	$actualizarSprockets -> perforacion = $_POST["Perforacion"];
 	$actualizarSprockets -> descripcion = $_POST["DescripcionSprockets"];
+	$actualizarSprockets -> precio = puntos($_POST["Precio"]);
+
     $actualizarSprockets -> imagen_sprockets = $_FILES["imagenSprockets"];
 	$actualizarSprockets -> rutaActual = $_POST["rutaActual"];
 	$actualizarSprockets -> actualizarSprockets();
@@ -86,4 +93,14 @@ if ($tipoOperacion == "eliminarSprockets") {
 	$eliminarSprockets -> eliminarSprockets();
 }
 
+function puntos($s)
+{
+$s= str_replace('.','', $s); 
+return $s;
+}
+function miles($m){
+$m=number_format($m, 0, ',', '.');
+return $m;
+
+}
 ?>

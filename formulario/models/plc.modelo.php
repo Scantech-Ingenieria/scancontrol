@@ -7,9 +7,10 @@ static public function listarPlcMdl($tabla) {
 		return $sql -> fetchAll();
 	}
 	static public function mdlCrearPlc($tabla, $datos,$rutaImagen) {
-		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :modelo,:descripcion,:imagen)");
+		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :modelo,:descripcion,:precio,:imagen)");
 		$sql->bindParam(":modelo", $datos["modelo"], PDO::PARAM_STR);
 		$sql->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
+		$sql->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
 		$sql->bindParam(":imagen", $rutaImagen, PDO::PARAM_STR);
 		if( $sql -> execute() ) {
 			return "ok";
@@ -34,15 +35,16 @@ static public function listarPlcMdl($tabla) {
 	}
 	static public function mdlActualizarPlc($tabla, $datos,$rutaImagen) {
 		if( is_null($rutaImagen)) {
-			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET modelo = :modelo,descripcion = :descripcion WHERE id_plc = :id");
+			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET modelo = :modelo,descripcion = :descripcion,precio = :precio WHERE id_plc = :id");
 			$sql->bindParam(":modelo", $datos["modelo"], PDO::PARAM_STR);
 		$sql->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
-
+		$sql->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
 			$sql->bindParam(":id", $datos["id_plc"], PDO::PARAM_INT);
 }else{
-		$sql = Conexion::conectar()->prepare("UPDATE $tabla SET modelo = :modelo,descripcion = :descripcion,rutaImg = :rutaNueva WHERE id_plc = :id");
+		$sql = Conexion::conectar()->prepare("UPDATE $tabla SET modelo = :modelo,descripcion = :descripcion,precio = :precio,rutaImg = :rutaNueva WHERE id_plc = :id");
 			$sql->bindParam(":modelo", $datos["modelo"], PDO::PARAM_STR);
 		$sql->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
+		$sql->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
 			$sql->bindParam(":rutaNueva", $rutaImagen, PDO::PARAM_STR);
 			$sql->bindParam(":id", $datos["id_plc"], PDO::PARAM_INT);
 }

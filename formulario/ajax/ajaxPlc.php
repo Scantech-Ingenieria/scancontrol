@@ -6,6 +6,7 @@ Class ajaxPlc {
 		$datos = array(
 						"modelo"=>$this->modelo,
 						"descripcion"=>$this->descripcion,
+						"precio"=>$this->precio,					
 						"imagen"=>$this->imagen_plc
 				
 					);
@@ -19,6 +20,7 @@ Class ajaxPlc {
 		$datos = array("id_plc"=>$respuesta["id_plc"],		
 				        "modelo"=>$respuesta["modelo"],
 				        "descripcion"=>$respuesta["descripcion"],
+						"precio"=>miles($respuesta["precio"]),			        
 				        "imagen"=>substr($respuesta["rutaImg"], 3)
 						);
 		echo json_encode($datos);
@@ -27,6 +29,7 @@ Class ajaxPlc {
 		$datos = array( "id_plc"=>$this->id_plc,
 						"modelo"=>$this->modelo,
 						"descripcion"=>$this->descripcion,
+						"precio"=>$this->precio,
 						"imagen"=>$this->imagen_plc,		
 						"rutaActual"=>$this->rutaActual		
 						);
@@ -45,6 +48,8 @@ if($tipoOperacion == "insertarplc") {
 	$crearNuevoPlc = new ajaxPlc();
 	$crearNuevoPlc -> modelo = $_POST["Modelo"];
 	$crearNuevoPlc -> descripcion = $_POST["Descripcion"];
+	$crearNuevoPlc -> precio = puntos($_POST["Precio"]);
+
     $crearNuevoPlc -> imagen_plc = $_FILES["imagenPlc"];
 	$crearNuevoPlc ->crearPlc();
 }
@@ -59,6 +64,8 @@ if ($tipoOperacion == "actualizarPlc") {
 	$actualizarPlc -> id_plc = $_POST["id_plc"];
 	$actualizarPlc -> modelo = $_POST["Modelo"];
 	$actualizarPlc -> descripcion = $_POST["Descripcion"];
+	$actualizarPlc -> precio = puntos($_POST["Precio"]);
+
     $actualizarPlc -> imagen_plc = $_FILES["imagenPlc"];
 	$actualizarPlc -> rutaActual = $_POST["rutaActual"];
 	$actualizarPlc -> actualizarPlc();
@@ -69,5 +76,14 @@ if ($tipoOperacion == "eliminarPlc") {
 	$eliminarPlc -> imagen_plc = $_POST["rutaImagen"];
 	$eliminarPlc -> eliminarPlc();
 }
+function puntos($s)
+{
+$s= str_replace('.','', $s); 
+return $s;
+}
+function miles($m){
+$m=number_format($m, 0, ',', '.');
+return $m;
 
+}
 ?>

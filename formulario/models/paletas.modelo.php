@@ -8,7 +8,7 @@ static public function listarPaletasMdl($tabla) {
 		return $sql -> fetchAll();
 	}
 	static public function mdlCrearPaletas($tabla, $datos,$rutaImagen) {
-		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :tipopaletas,:medidapaletas,:decs,:dics,:acs,:aci,:dici,:altura,:ancho,:fondo,:perfo,:anclaje,:alturaeje,:diametroeje,:medidabrazo,:cilindro,:racors,:orientacion,:imagen)");
+		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :tipopaletas,:medidapaletas,:decs,:dics,:acs,:aci,:dici,:altura,:ancho,:fondo,:perfo,:anclaje,:alturaeje,:diametroeje,:medidabrazo,:cilindro,:racors,:orientacion,:precio,:imagen)");
 		$sql->bindParam(":tipopaletas", $datos["tipopaletas"], PDO::PARAM_STR);
 		$sql->bindParam(":medidapaletas", $datos["medidapaletas"], PDO::PARAM_STR);
 		$sql->bindParam(":decs", $datos["decs"], PDO::PARAM_STR);
@@ -27,6 +27,7 @@ static public function listarPaletasMdl($tabla) {
 		$sql->bindParam(":cilindro", $datos["cilindro"], PDO::PARAM_STR);
 		$sql->bindParam(":racors", $datos["racors"], PDO::PARAM_STR);
 		$sql->bindParam(":orientacion", $datos["orientacion"], PDO::PARAM_STR);
+		$sql->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
 		$sql->bindParam(":imagen", $rutaImagen, PDO::PARAM_STR);
 		if( $sql -> execute() ) {
 			return "ok";
@@ -51,7 +52,7 @@ static public function listarPaletasMdl($tabla) {
 	}
 	static public function mdlActualizarPaletas($tabla, $datos,$rutaImagen) {
 		if( is_null($rutaImagen)) {
-			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET tipo_paleta = :tipopaletas,medida_paleta = :medidapaletas,decs = :decs,dics=:dics,acs=:acs,aci=:aci,dici=:dici,altura=:altura,ancho=:ancho,fondo=:fondo,perforacion=:perfo,anclaje=:anclaje,alturaeje=:alturaeje,diametroeje=:diametroeje,medidas_brazo_leva=:medidabrazo,cilindrado=:cilindro,racors=:racors,orientacion =:orientacion WHERE id_paletas = :id");
+			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET tipo_paleta = :tipopaletas,medida_paleta = :medidapaletas,decs = :decs,dics=:dics,acs=:acs,aci=:aci,dici=:dici,altura=:altura,ancho=:ancho,fondo=:fondo,perforacion=:perfo,anclaje=:anclaje,alturaeje=:alturaeje,diametroeje=:diametroeje,medidas_brazo_leva=:medidabrazo,cilindrado=:cilindro,racors=:racors,orientacion =:orientacion,precio = :precio WHERE id_paletas = :id");
 			$sql->bindParam(":tipopaletas", $datos["tipopaletas"], PDO::PARAM_STR);
 		$sql->bindParam(":medidapaletas", $datos["medidapaletas"], PDO::PARAM_STR);
 		$sql->bindParam(":decs", $datos["decs"], PDO::PARAM_STR);
@@ -70,10 +71,11 @@ static public function listarPaletasMdl($tabla) {
 		$sql->bindParam(":cilindro", $datos["cilindro"], PDO::PARAM_STR);
 		$sql->bindParam(":racors", $datos["racors"], PDO::PARAM_STR);
 		$sql->bindParam(":orientacion", $datos["orientacion"], PDO::PARAM_STR);
+		$sql->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
 		$sql->bindParam(":id", $datos["id_paletas"], PDO::PARAM_INT);
 
 		}else{
-		$sql = Conexion::conectar()->prepare("UPDATE $tabla SET tipo_paleta = :tipopaletas,medida_paleta = :medidapaletas,decs = :decs,dics=:dics,acs=:acs,aci=:aci,dici=:dici,altura=:altura,ancho=:ancho,fondo=:fondo,perforacion=:perfo,anclaje=:anclaje,alturaeje=:alturaeje,diametroeje=:diametroeje,medidas_brazo_leva=:medidabrazo,cilindrado=:cilindro,racors=:racors,orientacion =:orientacion,rutaImg = :rutaNueva WHERE id_paletas = :id");
+		$sql = Conexion::conectar()->prepare("UPDATE $tabla SET tipo_paleta = :tipopaletas,medida_paleta = :medidapaletas,decs = :decs,dics=:dics,acs=:acs,aci=:aci,dici=:dici,altura=:altura,ancho=:ancho,fondo=:fondo,perforacion=:perfo,anclaje=:anclaje,alturaeje=:alturaeje,diametroeje=:diametroeje,medidas_brazo_leva=:medidabrazo,cilindrado=:cilindro,racors=:racors,orientacion =:orientacion,precio = :precio,rutaImg = :rutaNueva WHERE id_paletas = :id");
 
 			$sql->bindParam(":tipopaletas", $datos["tipopaletas"], PDO::PARAM_STR);
 		$sql->bindParam(":medidapaletas", $datos["medidapaletas"], PDO::PARAM_STR);
@@ -93,6 +95,7 @@ static public function listarPaletasMdl($tabla) {
 		$sql->bindParam(":cilindro", $datos["cilindro"], PDO::PARAM_STR);
 		$sql->bindParam(":racors", $datos["racors"], PDO::PARAM_STR);
 		$sql->bindParam(":orientacion", $datos["orientacion"], PDO::PARAM_STR);
+		$sql->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
 		$sql->bindParam(":rutaNueva", $rutaImagen, PDO::PARAM_STR);
 		$sql->bindParam(":id", $datos["id_paletas"], PDO::PARAM_INT);
 

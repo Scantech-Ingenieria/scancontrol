@@ -1,0 +1,318 @@
+[33mcommit 23d74e4624c8c10420995107d7f5d794776004f1[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Thu May 7 11:19:40 2020 -0400
+
+    version actualizada
+
+[33mcommit 643d89eb1a6d14c3ab7c4e57bfc4d9370ff6588d[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Tue Mar 31 19:17:00 2020 -0300
+
+    avance modulo estacion de calidad
+
+[33mcommit 1f3fab4e7588220b9ca98fcfb91343dd561f219b[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Mon Mar 30 18:46:01 2020 -0300
+
+    modulo motor , temrino modulo tablero neumatico, se agrego campo descripcion a fuente de poder en tablero electrico,se modifico el menu,se modifico datos en modulo manifold
+
+[33mcommit bdf82022993177a29587cc2369c22d6b4c970a62[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 27 19:10:58 2020 -0300
+
+    avance modulo tablero neumatico
+
+[33mcommit e5d06d7bc28ba8c6660de8a3f32e53ef564c3de7[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Thu Mar 26 19:08:34 2020 -0300
+
+    Se termino modulo cilindros y se agrego campos faltantes a modulo tablero electrico,y al modulo plc
+
+[33mcommit 45d1b89a25706deecd02cead4c836ea283e4aa61[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Thu Mar 26 12:53:42 2020 -0300
+
+    avance
+
+[33mcommit 6664630b94f6a212fa6ad3e4c33777dbcd56e278[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Thu Mar 26 12:37:31 2020 -0300
+
+    bd
+
+[33mcommit 16e26607ac1e03098c34bd88317a2da0847a81db[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Thu Mar 26 11:26:55 2020 -0300
+
+    Menu : muestra el menu seleccionado y lo marca
+
+[33mcommit 93e922beba907753945b7558b4f0159ee578e7bf[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Wed Mar 25 18:59:03 2020 -0300
+
+    Termino modulo tablero electrico y se agrego campos de imagenes a modulo automatico y vdf
+
+[33mcommit 6f4fcb7e5afc548e6ed6ce6def7bbedd82f8d021[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Tue Mar 24 19:04:12 2020 -0300
+
+    Avance Modulo tablero electrico en campos faltantes ,se puede lelimnar fuente y vdf y agregar mas campos,se agregar y modifican imagenes y datos , se modifico la base de datos de tablero electrico y sus relaciones, se arreglaron algunos bugs anteriores al agregar un campo automatico.
+
+[33mcommit 875098248e4003246adedd3f11418e553708f0a2[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Mon Mar 23 19:01:28 2020 -0300
+
+    Avance Modulo tablero electrico en editar se puede eliminar el campo automaticos y agregar, Creación de modulos PLC crear,editar y eliminar,y creación de modulo Manifold crear ,editar y eliminar
+
+[33mcommit cb85f0508c2ea28324db6176a1cc61fa95029da2[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 20 18:54:56 2020 -0300
+
+    Modificar diseño tabla Tablero Electrico;se imprimen los datos al presionar boton editar en el formulario editar tablero electrico ,se agregan los numero de elementos segun acada arreglo de cada tabla(Automaticos,VDF,Fuente de Poder),Se agrego opcion de tener vista previa a la imagen de cada campo en la tabla
+
+[33mcommit e976df3ab7cc59c9a34cb49368d35a56e43ccde6[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Thu Mar 19 19:06:38 2020 -0300
+
+    Termino modulo Fuente de Poder;creacion nuevas tablas en BD y relacionadas,creacion tablero electrico y vistas
+
+[33mcommit 12803927ee66a23e81396326dec0973ca64ddc51[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Wed Mar 18 18:59:55 2020 -0300
+
+    Creación formulario Tablero Electtrico se agregaron boton de mas campos y boton eliminar campos, se Creo el registrar Modulo de Fuente de poder ,ingreso imagenes
+
+[33mcommit a016542d7613e1c309f897c7fd026b918ff5546e[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Tue Mar 17 18:53:55 2020 -0300
+
+    Modificando Moludo tablero electrico
+
+[33mcommit aac58fd1822e29a0428ea8dbb9099f07f457f95e[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Tue Mar 17 15:59:02 2020 -0300
+
+    Se realizaron cambios a los modulos Sprockets ,Descanso,Sensores,se agrego el campo imagen y campos faltantes ,modificación en diseño de formularios y bd
+
+[33mcommit f23aab85b7bc4beb61fc5a38ea4dc2f11cdeed16[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Mon Mar 16 19:03:13 2020 -0300
+
+    Modificaciones modulo Paletas registro modificar y eliminar imagenes y se agregaron y editaron diseños de campos faltantes,modificacion bd
+
+[33mcommit eb0b0da6db7324040f21e356cfc5e4128970445c[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 13 21:12:19 2020 -0300
+
+    ingreso imagen modulo banda
+
+[33mcommit 95527f996433533e32a0df7d75771b687522e14d[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 13 09:22:21 2020 -0300
+
+    Modificacion Tablas y consultas
+
+[33mcommit 55fe28a4c61992cbb328d3a3ee77a31c0a531fe8[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Wed Mar 11 18:35:48 2020 -0300
+
+    detalle
+
+[33mcommit 2413f798d36d774607bad98c9f393332831ebd00[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Wed Mar 11 18:25:16 2020 -0300
+
+    modificacion diseño de tabla y se agrego validacion de fecha y hora al desconectarse; menu de tiempo fecha hora
+
+[33mcommit b8d8e136bf8e3173954151bb16c4ff10ffaccdef[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Wed Mar 11 11:23:10 2020 -0300
+
+    detalle cinta
+
+[33mcommit e4b22180e1df06d24ba9d5f93599be531008d346[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Wed Mar 11 11:14:38 2020 -0300
+
+    Se agrego fecha y hora en cinta, y valor de dolar
+
+[33mcommit 263a2b188f8f18d90c3ce2fb9a8021a3a784675f[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Tue Mar 10 18:49:30 2020 -0300
+
+    Se agregaron campos en Modulos Unidad Alimencación,Unidad Descarga, Unidad Aceleración, y se modifico diseño de formularios(paletas,alimentacion,pesaje,registros,aceleracion,descarga)
+
+[33mcommit d18074be139fc5c03356cca8c6940fbbfff6c7c1[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Tue Mar 10 16:33:01 2020 -0300
+
+    Se agregaron campos a Unidad de Calidad
+
+[33mcommit 1a74778819916027115704af4680089332df1ad5[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Tue Mar 10 12:46:09 2020 -0300
+
+    Se agregaron campos faltantes a mantenedor de Sensores
+
+[33mcommit e5b0c9201819a525c8d1e67689677c330c4f691c[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Mon Mar 9 19:04:21 2020 -0300
+
+    detalles
+
+[33mcommit 980f060ff0bd069619244992d736d5e2ed0f8ae9[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Mon Mar 9 18:30:04 2020 -0300
+
+    Creación Mantenedor 'Unidad Pesaje'
+
+[33mcommit 68024440a749a49d055710bb56670b98609e9b95[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Mon Mar 9 16:40:37 2020 -0300
+
+    Agregar rodamientos a Mantenedor de Unidad de Alimentación
+
+[33mcommit 1228073880225a4c79af2116f132410b7f63bd66[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Mon Mar 9 16:07:00 2020 -0300
+
+    Creación de Mantenedores 'Sensores' y 'Rodamientos'
+
+[33mcommit f5b897ae928641be630052f90051a01150d9385d[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Mon Mar 9 12:53:36 2020 -0300
+
+    modificacion de menú, boton eliminar registros, vista de registros,consulta sql vista
+
+[33mcommit 9347d0c1ed1144e7931712eb682242b2a316b6ef[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 6 18:46:40 2020 -0300
+
+    detalle campo estación calidad
+
+[33mcommit c1dd95ae7496c8d4f04c872eb5c1fbe2ebfd9cd3[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 6 17:51:45 2020 -0300
+
+    Menú Registro esta ingresando información a BD
+
+[33mcommit f8211b2c796f3964fc3bb76362fd86364ea554d0[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 6 16:25:49 2020 -0300
+
+    se agrego select balanza y U.Alimentación
+
+[33mcommit e9e5798c68a42de3285b9bb8b5063e633eee8002[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 6 15:56:55 2020 -0300
+
+    Delete scancontrol(1).sql
+
+[33mcommit 1af68664f9b63d1c1e990fc09ec5bb995b725d8c[m
+Merge: 8a63fa7 ca01bd2
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 6 15:53:14 2020 -0300
+
+    Merge branch 'master' of https://github.com/Scantech-Ingenieria/scancontrol
+
+[33mcommit 8a63fa72454a41485b58005fa6b0ae02de4ab896[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 6 15:52:24 2020 -0300
+
+    fuentes faltantes
+
+[33mcommit ca01bd291c34640dbeccb12a2ebe1b186b1f074b[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 6 15:43:01 2020 -0300
+
+    BD versión antigua
+
+[33mcommit cb766be7ad1228c8ea65c4af7e9cafe40cf03ea7[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 6 15:42:18 2020 -0300
+
+    Base de Datos sc
+
+[33mcommit 552f9b54eeec2f6635062cc5d98b3c9be48981cc[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 6 15:39:23 2020 -0300
+
+    version 2
+
+[33mcommit 55e11d6cd7face4cfb2f20382d95c3615aae984a[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 6 15:35:07 2020 -0300
+
+    tets
+
+[33mcommit 91edc356259c06b0c29a563143a461fddc21db41[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 6 11:12:44 2020 -0300
+
+    Add files via upload
+
+[33mcommit 8215040f5b7ae40882c9253d2e832cded97336b2[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 6 09:52:57 2020 -0300
+
+    Add files via upload
+
+[33mcommit 87c1e167820073a3baae59a031e0f1a8221865d5[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 6 09:48:46 2020 -0300
+
+    Add files via upload
+
+[33mcommit ff63cedc48c7662438a205a363c24bdac23b7397[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 6 09:45:44 2020 -0300
+
+    Add files via upload
+
+[33mcommit f3d856e9954cf03cbb468ed9d889134463aa49f1[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 6 09:41:23 2020 -0300
+
+    Add files via upload
+
+[33mcommit 23ec17f0f74be8f47706f51bab413eb5ab9d4ea6[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 6 09:39:31 2020 -0300
+
+    Add files via upload
+
+[33mcommit 334c64f94ca44fe0dd1a06e1955c8d3d58279f5e[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 6 09:36:14 2020 -0300
+
+    Add files via upload
+
+[33mcommit 23ee4e60aacf3a436d75f06d427fb4e5013ffebc[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 6 09:33:18 2020 -0300
+
+    Delete formulario
+
+[33mcommit 567678e98585bc0dcad8cbc7d3d5034054b4dd4b[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 6 09:32:56 2020 -0300
+
+    Create formulario
+
+[33mcommit b2c3dc730d42a05a797e53e904c9a2f201bec83d[m
+Author: FelipeBenavidesSc <61832244+FelipeBenavidesSc@users.noreply.github.com>
+Date:   Fri Mar 6 09:31:21 2020 -0300
+
+    Add files via upload
+
+[33mcommit 7ccac8f25e92e0ba9c19712ffe7f392f7532bbdf[m
+Author: Francisco Velásquez Ferrada <61747153+fvelasquez-scantech@users.noreply.github.com>
+Date:   Thu Mar 5 20:38:11 2020 -0300
+
+    Agrega loco
+
+[33mcommit e5c0b6edc1368e1edfe20ced8c732b076cff323a[m[33m ([m[1;31mupstream/master[m[33m)[m
+Author: Francisco Velásquez Ferrada <61747153+fvelasquez-scantech@users.noreply.github.com>
+Date:   Thu Mar 5 16:05:39 2020 -0300
+
+    Initial commit

@@ -70,6 +70,7 @@ $(document).ready(function(){
 	$('#formu-editar-sprockets input[name="Dientes"]').val(valor.dientes)
 	$('#formu-editar-sprockets input[name="Perforacion"]').val(valor.perforacion)
 	$('#formu-editar-sprockets textarea[name="DescripcionSprockets"]').val(valor.descripcion)
+	$('#formu-editar-sprockets input[name="Precio"]').val(valor.precio)
 	$('#formu-editar-sprockets #imagenSprockets').attr("src", valor.imagen)
 	$('#formu-editar-sprockets input[name="rutaActual"]').val(valor.imagen)
 			}

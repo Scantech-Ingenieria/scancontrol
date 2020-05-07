@@ -10,6 +10,7 @@ Class ajaxSensor {
 						"voltaje"=>$this->voltaje,
 						"distancia"=>$this->distancia,
 						"contacto"=>$this->contacto,
+						"precio"=>$this->precio,				
 						"imagen"=>$this->imagen_sensor
 					);
 		$respuesta = ControllerSensor::ctrCrearSensor($datos);
@@ -25,6 +26,7 @@ Class ajaxSensor {
 						"voltaje"=>$respuesta["voltaje"],
 						"distancia"=>$respuesta["distancia"],
 						"contacto"=>$respuesta["contacto"],
+						"precio"=>miles($respuesta["precio"]),					
 				        "imagen"=>substr($respuesta["rutaImg"], 3)
 						);
 		echo json_encode($datos);
@@ -37,6 +39,7 @@ Class ajaxSensor {
 						"voltaje"=>$this->voltaje,
 						"distancia"=>$this->distancia,
 						"contacto"=>$this->contacto,
+						"precio"=>$this->precio,
 						"imagen"=>$this->imagen_sensor,
 						"rutaActual"=>$this->rutaActual		
 						);
@@ -60,6 +63,7 @@ if($tipoOperacion == "insertarsensor") {
 	$crearNuevoSensor -> voltaje = $_POST["Voltaje"];
 	$crearNuevoSensor -> tipo = $_POST["TipoSensor"];
 	$crearNuevoSensor -> contacto = $_POST["Contacto"];
+	$crearNuevoSensor -> precio = puntos($_POST["Precio"]);
     $crearNuevoSensor -> imagen_sensor = $_FILES["imagenSensor"];
 	$crearNuevoSensor ->crearSensor();
 }
@@ -77,6 +81,7 @@ if ($tipoOperacion == "actualizarSensor") {
 	$actualizarSensor -> distancia = $_POST["Distancia"];
 	$actualizarSensor -> voltaje = $_POST["Voltaje"];
 	$actualizarSensor -> contacto = $_POST["Contacto"];
+	$actualizarSensor -> precio = puntos($_POST["Precio"]);
  	$actualizarSensor -> imagen_sensor = $_FILES["imagenSensor"];
 	$actualizarSensor -> rutaActual = $_POST["rutaActual"];
 	$actualizarSensor -> actualizarSensor();
@@ -87,5 +92,14 @@ if ($tipoOperacion == "eliminarSensor") {
 	$eliminarSensor -> imagen_sensor = $_POST["rutaImagen"];
 	$eliminarSensor -> eliminarSensor();
 }
+function puntos($s)
+{
+$s= str_replace('.','', $s); 
+return $s;
+}
+function miles($m){
+$m=number_format($m, 0, ',', '.');
+return $m;
 
+}
 ?>

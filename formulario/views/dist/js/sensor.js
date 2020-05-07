@@ -72,6 +72,8 @@ $(document).ready(function(){
 				$('#formu-editar-sensor input[name="Voltaje"]').val(valor.voltaje)
 				$('#formu-editar-sensor input[name="Distancia"]').val(valor.distancia)
 				$('#formu-editar-sensor input[name="Contacto"]').val(valor.contacto)
+				$('#formu-editar-sensor input[name="Precio"]').val(valor.precio)
+				
 				$('#formu-editar-sensor #imgSensorEditar').attr("src", valor.imagen)
 				$('#formu-editar-sensor input[name="rutaActual"]').val(valor.imagen)
 

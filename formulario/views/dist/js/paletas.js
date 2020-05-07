@@ -85,6 +85,7 @@ $(document).ready(function(){
 	$('#formu-editar-paletas input[name="Clilindrado"]').val(valor.cilindrado)
 	$('#formu-editar-paletas input[name="Racors"]').val(valor.racors)
 	$('#formu-editar-paletas input[name="Orientacion"]').val(valor.orientacion)
+	$('#formu-editar-paletas input[name="Precio"]').val(valor.precio)
 	$('#formu-editar-paletas #imagenPaletas').attr("src", valor.imagen)
 	$('#formu-editar-paletas input[name="rutaActual"]').val(valor.imagen)
 

@@ -39,6 +39,15 @@
               <input type="text" class="form-control" placeholder="Potencia" name="Capacidad">
             </div>
           </div>
+                 <div class="form-group row">
+  <label class="col-sm-2 col-form-label">Precio</label>
+      <div class="input-group mb-3 col-sm-10">
+  <div class="input-group-prepend">
+    <span class="input-group-text">$</span>
+  </div>
+  <input type="text" id="nuevomotor" name="Precio" class="form-control" aria-label="Amount (to the nearest dollar)">
+</div>
+          </div>
          
               <div class="form-group row">
             <label class="col-sm-2 col-form-label">Imagen</label>
@@ -99,6 +108,15 @@
               <input type="text" class="form-control" placeholder="Potencia" name="Capacidad">
             </div>
           </div>
+                 <div class="form-group row">
+  <label class="col-sm-2 col-form-label">Precio</label>
+      <div class="input-group mb-3 col-sm-10">
+  <div class="input-group-prepend">
+    <span class="input-group-text">$</span>
+  </div>
+  <input type="text" id="editarmotor" name="Precio" class="form-control" aria-label="Amount (to the nearest dollar)">
+</div>
+          </div>
          
              <div class="form-group row">
             <label class="col-sm-2 col-form-label">Imagen</label>
@@ -119,3 +137,31 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  
+
+$("#nuevomotor").on({
+  "focus": function(event) {
+    $(event.target).select();
+  },
+  "keyup": function(event) {
+    $(event.target).val(function(index, value) {
+      return value.replace(/\D/g, "")
+        .replace(/([0-9])([0-9]{0})$/, '$1$2')
+        .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ".");
+    });
+  }
+});
+$("#editarmotor").on({
+  "focus": function(event) {
+    $(event.target).select();
+  },
+  "keyup": function(event) {
+    $(event.target).val(function(index, value) {
+      return value.replace(/\D/g, "")
+        .replace(/([0-9])([0-9]{0})$/, '$1$2')
+        .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ".");
+    });
+  }
+});
+</script>

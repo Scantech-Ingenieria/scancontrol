@@ -7,8 +7,8 @@ Class ajaxManifold {
 						"marca"=>$this->marca,
 						"medidas"=>$this->medidas,
 						"sockets"=>$this->sockets,
+						"precio"=>$this->precio,
 						"imagen"=>$this->imagen_manifold
-				
 					);
 
 		$respuesta = ControllerManifold::ctrCrearManifold($datos);
@@ -21,6 +21,7 @@ Class ajaxManifold {
 				        "marca"=>$respuesta["marca"],
 				        "medidas"=>$respuesta["medidas"],
 				        "sockets"=>$respuesta["sockets"],
+						"precio"=>miles($respuesta["precio"]),		
 				        "imagen"=>substr($respuesta["rutaImg"], 3)
 						);
 		echo json_encode($datos);
@@ -30,6 +31,7 @@ Class ajaxManifold {
 						"marca"=>$this->marca,
 						"medidas"=>$this->medidas,
 						"sockets"=>$this->sockets,
+						"precio"=>$this->precio,
 						"imagen"=>$this->imagen_manifold,		
 						"rutaActual"=>$this->rutaActual		
 						);
@@ -49,6 +51,8 @@ if($tipoOperacion == "insertarmanifold") {
 	$crearNuevoManifold -> marca = $_POST["Marca"];
 	$crearNuevoManifold -> medidas = $_POST["MedidasSalidas"];
 	$crearNuevoManifold -> sockets = $_POST["Sockets"];
+	$crearNuevoManifold -> precio = puntos($_POST["Precio"]);
+
     $crearNuevoManifold -> imagen_manifold = $_FILES["imagenManifold"];
 	$crearNuevoManifold ->crearManifold();
 }
@@ -64,6 +68,7 @@ if ($tipoOperacion == "actualizarManifold") {
 	$actualizarManifold -> marca = $_POST["Marca"];
 	$actualizarManifold -> medidas = $_POST["MedidasSalidas"];
 	$actualizarManifold -> sockets = $_POST["Sockets"];
+	$actualizarManifold -> precio = puntos($_POST["Precio"]);
     $actualizarManifold -> imagen_manifold = $_FILES["imagenManifold"];
 	$actualizarManifold -> rutaActual = $_POST["rutaActual"];
 	$actualizarManifold -> actualizarManifold();
@@ -73,6 +78,16 @@ if ($tipoOperacion == "eliminarManifold") {
 	$eliminarManifold -> id_manifold = $_POST["id_manifold"];
 	$eliminarManifold -> imagen_manifold = $_POST["rutaImagen"];
 	$eliminarManifold -> eliminarManifold();
+}
+function puntos($s)
+{
+$s= str_replace('.','', $s); 
+return $s;
+}
+function miles($m){
+$m=number_format($m, 0, ',', '.');
+return $m;
+
 }
 
 ?>

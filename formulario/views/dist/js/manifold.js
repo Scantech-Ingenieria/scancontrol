@@ -70,6 +70,7 @@ $(document).ready(function(){
 				$('#formu-editar-manifold input[name="Marca"]').val(valor.marca)
 				$('#formu-editar-manifold input[name="MedidasSalidas"]').val(valor.medidas)
 				$('#formu-editar-manifold input[name="Sockets"]').val(valor.sockets)
+				$('#formu-editar-manifold input[name="Precio"]').val(valor.precio)
 				$('#formu-editar-manifold #imgManifold').attr("src", valor.imagen)
 				$('#formu-editar-manifold input[name="rutaActual"]').val(valor.imagen)
 			}

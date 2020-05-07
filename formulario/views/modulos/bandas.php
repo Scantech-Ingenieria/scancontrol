@@ -45,7 +45,7 @@
 <td>'.nl2br($value["paso"]).'</td>
 <td>'.nl2br($value["material"]).'</td>
 <td>'.nl2br($value["ancho"]).'</td>
-<td>'.number_format($value["precio"],'0', ',',',').'</td>
+<td> $ '.number_format($value["precio"],'0', ',',',').'</td>
 <td>'.nl2br($value["descripcion"]).'</td>
 <td><img width="200" src="'.substr($value["rutaImg"], 3).'"></td>
 <td width="100"> <button class="btn btn-sm btn-info btnEditarBanda" idBanda="'.$value["id_banda"].'" data-toggle="modal" data-target="#modal-editar-banda">

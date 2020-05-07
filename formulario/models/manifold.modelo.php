@@ -7,10 +7,12 @@ static public function listarManifoldMdl($tabla) {
 		return $sql -> fetchAll();
 	}
 	static public function mdlCrearManifold($tabla, $datos,$rutaImagen) {
-		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :marca,:medidas,:sockets,:imagen)");
+		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :marca,:medidas,:sockets,:precio,:imagen)");
 		$sql->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
 		$sql->bindParam(":medidas", $datos["medidas"], PDO::PARAM_STR);
 		$sql->bindParam(":sockets", $datos["sockets"], PDO::PARAM_STR);
+		$sql->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
+
 		$sql->bindParam(":imagen", $rutaImagen, PDO::PARAM_STR);
 		if( $sql -> execute() ) {
 			return "ok";
@@ -35,16 +37,20 @@ static public function listarManifoldMdl($tabla) {
 	}
 	static public function mdlActualizarManifold($tabla, $datos,$rutaImagen) {
 		if( is_null($rutaImagen)) {
-			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET marca = :marca,medidas = :medidas,sockets = :sockets WHERE id_manifold = :id");
+			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET marca = :marca,medidas = :medidas,sockets = :sockets,precio = :precio WHERE id_manifold = :id");
 			$sql->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
 			$sql->bindParam(":medidas", $datos["medidas"], PDO::PARAM_STR);
 			$sql->bindParam(":sockets", $datos["sockets"], PDO::PARAM_STR);
+		$sql->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
+
 			$sql->bindParam(":id", $datos["id_manifold"], PDO::PARAM_INT);
 }else{
-		$sql = Conexion::conectar()->prepare("UPDATE $tabla SET marca = :marca,medidas = :medidas,sockets = :sockets,rutaImg = :rutaNueva WHERE id_manifold = :id");
+		$sql = Conexion::conectar()->prepare("UPDATE $tabla SET marca = :marca,medidas = :medidas,sockets = :sockets,precio = :precio,rutaImg = :rutaNueva WHERE id_manifold = :id");
 				$sql->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
 			$sql->bindParam(":medidas", $datos["medidas"], PDO::PARAM_STR);
 			$sql->bindParam(":sockets", $datos["sockets"], PDO::PARAM_STR);
+		$sql->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
+
 			$sql->bindParam(":rutaNueva", $rutaImagen, PDO::PARAM_STR);
 			$sql->bindParam(":id", $datos["id_manifold"], PDO::PARAM_INT);
 }

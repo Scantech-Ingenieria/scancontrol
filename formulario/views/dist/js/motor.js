@@ -69,10 +69,10 @@ $(document).ready(function(){
 				$('#formu-editar-motor input[name="id_motor"]').val(valor.id_motor)
 				$('#formu-editar-motor input[name="Rpm"]').val(valor.rpm)
 				$('#formu-editar-motor input[name="Marca"]').val(valor.marca)
-
 				$('#formu-editar-motor input[name="Usillo"]').val(valor.usillo)
 				$('#formu-editar-motor input[name="Ancho"]').val(valor.ancho)
 				$('#formu-editar-motor input[name="Capacidad"]').val(valor.capacidad)
+				$('#formu-editar-motor input[name="Precio"]').val(valor.precio)		
 				$('#formu-editar-motor #imgMotor').attr("src", valor.imagen)
 				$('#formu-editar-motor input[name="rutaActual"]').val(valor.imagen)
 			}

@@ -8,12 +8,13 @@ static public function listarSprocketsMdl($tabla) {
 	}
 	static public function mdlCrearSprockets($tabla, $datos,$rutaImagen) {
 
-		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :numeroserie,:modelo,:dientes,:perforacion,:descripcion,:imagen)");
+		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :numeroserie,:modelo,:dientes,:perforacion,:descripcion,:precio,:imagen)");
 		$sql->bindParam(":numeroserie", $datos["numeroserie"], PDO::PARAM_STR);
 		$sql->bindParam(":modelo", $datos["modelo"], PDO::PARAM_STR);
 		$sql->bindParam(":dientes", $datos["dientes"], PDO::PARAM_STR);
 		$sql->bindParam(":perforacion", $datos["perforacion"], PDO::PARAM_STR);
 		$sql->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
+		$sql->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
 		$sql->bindParam(":imagen", $rutaImagen, PDO::PARAM_STR);
 
 		if( $sql -> execute() ) {
@@ -40,21 +41,23 @@ static public function listarSprocketsMdl($tabla) {
 	static public function mdlActualizarSprockets($tabla, $datos,$rutaImagen) {
 
 		if( is_null($rutaImagen)) {
-			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET serie = :numeroserie,modelo = :modelo,dientes = :dientes,perforacion = :perforacion,descripcion = :descripcion WHERE id_sprockets = :id");
+			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET serie = :numeroserie,modelo = :modelo,dientes = :dientes,perforacion = :perforacion,descripcion = :descripcion,precio = :precio WHERE id_sprockets = :id");
 			$sql->bindParam(":numeroserie", $datos["numeroserie"], PDO::PARAM_STR);
 			$sql->bindParam(":modelo", $datos["modelo"], PDO::PARAM_STR);
 			$sql->bindParam(":dientes", $datos["dientes"], PDO::PARAM_STR);
 			$sql->bindParam(":perforacion", $datos["perforacion"], PDO::PARAM_STR);
 			$sql->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
+		    $sql->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
 			$sql->bindParam(":id", $datos["id_sprockets"], PDO::PARAM_INT);
 		}
 		else{
-		$sql = Conexion::conectar()->prepare("UPDATE $tabla SET serie = :numeroserie,modelo = :modelo,dientes = :dientes,perforacion = :perforacion,descripcion = :descripcion, rutaImg = :rutaNueva WHERE id_sprockets = :id");
+		$sql = Conexion::conectar()->prepare("UPDATE $tabla SET serie = :numeroserie,modelo = :modelo,dientes = :dientes,perforacion = :perforacion,descripcion = :descripcion,precio = :precio, rutaImg = :rutaNueva WHERE id_sprockets = :id");
 			$sql->bindParam(":numeroserie", $datos["numeroserie"], PDO::PARAM_STR);
 			$sql->bindParam(":modelo", $datos["modelo"], PDO::PARAM_STR);
 			$sql->bindParam(":dientes", $datos["dientes"], PDO::PARAM_STR);
 			$sql->bindParam(":perforacion", $datos["perforacion"], PDO::PARAM_STR);
 			$sql->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
+		    $sql->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
 			$sql->bindParam(":rutaNueva", $rutaImagen, PDO::PARAM_STR);
 			$sql->bindParam(":id", $datos["id_sprockets"], PDO::PARAM_INT);
 

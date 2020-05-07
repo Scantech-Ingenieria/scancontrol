@@ -22,7 +22,8 @@ Class ajaxPaletas {
 						"medidabrazo"=>$this->medidabrazo,
 						"cilindro"=>$this->cilindro,
 						"racors"=>$this->racors,
-						"orientacion"=>$this->orientacion,							
+						"orientacion"=>$this->orientacion,	
+						"precio"=>$this->precio,						
 						"imagen"=>$this->imagen_paletas
 					);
 
@@ -51,6 +52,7 @@ Class ajaxPaletas {
 				        "cilindrado"=>$respuesta["cilindrado"],
 				        "racors"=>$respuesta["racors"],
 				        "orientacion"=>$respuesta["orientacion"],
+						"precio"=>miles($respuesta["precio"]),			        
 				         "imagen"=>substr($respuesta["rutaImg"], 3)
 
 						);
@@ -76,7 +78,8 @@ Class ajaxPaletas {
 						"medidabrazo"=>$this->medidabrazo,
 						"cilindro"=>$this->cilindro,
 						"racors"=>$this->racors,
-						"orientacion"=>$this->orientacion,				
+						"orientacion"=>$this->orientacion,	
+						"precio"=>$this->precio,			
 						"imagen"=>$this->imagen_paletas,
 						"rutaActual"=>$this->rutaActual		
 
@@ -112,7 +115,8 @@ if($tipoOperacion == "insertarpaletas") {
 	$crearNuevoPaletas -> cilindro = $_POST["Clilindrado"];
 	$crearNuevoPaletas -> racors = $_POST["Racors"];
 	$crearNuevoPaletas -> orientacion = $_POST["Orientacion"];
-	 $crearNuevoPaletas -> imagen_paletas = $_FILES["imagenPaletas"];
+	$crearNuevoPaletas -> precio = puntos($_POST["Precio"]);
+	$crearNuevoPaletas -> imagen_paletas = $_FILES["imagenPaletas"];
 	$crearNuevoPaletas ->crearPaletas();
 }
 
@@ -142,6 +146,7 @@ if ($tipoOperacion == "actualizarPaletas") {
 	$actualizarPaletas -> cilindro = $_POST["Clilindrado"];
 	$actualizarPaletas -> racors = $_POST["Racors"];
 	$actualizarPaletas -> orientacion = $_POST["Orientacion"];
+	$actualizarPaletas -> precio = puntos($_POST["Precio"]);
 	$actualizarPaletas -> imagen_paletas = $_FILES["imagenPaletas"];
 	$actualizarPaletas -> rutaActual = $_POST["rutaActual"];
 	$actualizarPaletas -> actualizarPaletas();
@@ -153,5 +158,14 @@ if ($tipoOperacion == "eliminarPaletas") {
 
 	$eliminarPaletas -> eliminarPaletas();
 }
+function puntos($s)
+{
+$s= str_replace('.','', $s); 
+return $s;
+}
+function miles($m){
+$m=number_format($m, 0, ',', '.');
+return $m;
 
+}
 ?>

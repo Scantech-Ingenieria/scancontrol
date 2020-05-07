@@ -26,6 +26,7 @@
                 <th>Voltaje</th>
                 <th>Distancia Máxima</th>
                 <th>Contacto</th>
+                <th>Precio</th>
                 <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
@@ -43,6 +44,8 @@
 <td>'.nl2br($value["voltaje"]).'</td>
 <td>'.nl2br($value["distancia"]).'</td>
 <td>'.nl2br($value["contacto"]).'</td>
+<td> $ '.number_format($value["precio"],'0', ',',',').'</td>
+
 <td><img width="200" src="'.substr($value["rutaImg"], 3).'"></td>
 <td width="100"> <button class="btn btn-sm btn-info btnEditarSensor" idSensor="'.$value["id_sensor"].'" data-toggle="modal" data-target="#modal-editar-sensor">
                     <i class="far fa-edit"></i>
@@ -58,3 +61,9 @@
 ?>      
         </tbody>
     </table>
+    <script type="text/javascript"> 
+  function miles($m){
+$m=number_format($m, 0, ',', '.');
+return $m;
+
+}</script>

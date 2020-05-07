@@ -7,13 +7,13 @@ static public function listarMotorMdl($tabla) {
 		return $sql -> fetchAll();
 	}
 	static public function mdlCrearMotor($tabla, $datos,$rutaImagen) {
-		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :rpm,:marca,:usillo,:ancho,:capacidad,:imagen)");
+		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :rpm,:marca,:usillo,:ancho,:capacidad,:precio,:imagen)");
 		$sql->bindParam(":rpm", $datos["rpm"], PDO::PARAM_STR);
 		$sql->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
-
 		$sql->bindParam(":usillo", $datos["usillo"], PDO::PARAM_STR);
 		$sql->bindParam(":ancho", $datos["ancho"], PDO::PARAM_STR);
 		$sql->bindParam(":capacidad", $datos["capacidad"], PDO::PARAM_STR);
+		$sql->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
 		$sql->bindParam(":imagen", $rutaImagen, PDO::PARAM_STR);
 		if( $sql -> execute() ) {
 			return "ok";
@@ -38,23 +38,24 @@ static public function listarMotorMdl($tabla) {
 	}
 	static public function mdlActualizarMotor($tabla, $datos,$rutaImagen) {
 		if( is_null($rutaImagen)) {
-			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET rpm = :rpm,marca = :marca,usillo = :usillo,ancho = :ancho,capacidad = :capacidad WHERE id_motor = :id");
+			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET rpm = :rpm,marca = :marca,usillo = :usillo,ancho = :ancho,capacidad = :capacidad,precio = :precio WHERE id_motor = :id");
 			$sql->bindParam(":rpm", $datos["rpm"], PDO::PARAM_STR);
 		$sql->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
-
 		$sql->bindParam(":usillo", $datos["usillo"], PDO::PARAM_STR);
 		$sql->bindParam(":ancho", $datos["ancho"], PDO::PARAM_STR);
 		$sql->bindParam(":capacidad", $datos["capacidad"], PDO::PARAM_STR);
+		$sql->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
 		$sql->bindParam(":id", $datos["id_motor"], PDO::PARAM_INT);
 }else{
-		$sql = Conexion::conectar()->prepare("UPDATE $tabla SET rpm = :rpm,marca = :marca,usillo = :usillo,ancho = :ancho,capacidad = :capacidad,rutaImg = :rutaNueva WHERE id_motor = :id");
+		$sql = Conexion::conectar()->prepare("UPDATE $tabla SET rpm = :rpm,marca = :marca,usillo = :usillo,ancho = :ancho,capacidad = :capacidad,precio = :precio,rutaImg = :rutaNueva WHERE id_motor = :id");
 		$sql->bindParam(":rpm", $datos["rpm"], PDO::PARAM_STR);
 		$sql->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
 		$sql->bindParam(":usillo", $datos["usillo"], PDO::PARAM_STR);
 		$sql->bindParam(":ancho", $datos["ancho"], PDO::PARAM_STR);
 		$sql->bindParam(":capacidad", $datos["capacidad"], PDO::PARAM_STR);
-			$sql->bindParam(":rutaNueva", $rutaImagen, PDO::PARAM_STR);
-			$sql->bindParam(":id", $datos["id_motor"], PDO::PARAM_INT);
+		$sql->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
+		$sql->bindParam(":rutaNueva", $rutaImagen, PDO::PARAM_STR);
+		$sql->bindParam(":id", $datos["id_motor"], PDO::PARAM_INT);
 }
 
 		if($sql->execute()) {
