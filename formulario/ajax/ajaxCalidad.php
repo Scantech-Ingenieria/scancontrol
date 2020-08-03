@@ -6,6 +6,7 @@ Class ajaxCalidad {
 
 	public function crearCalidad(){
 		$datos = array(
+						"descripcion"=>$this->descripcion,			
 						"puestos"=>$this->puestos,
 						"tiposprockets"=>$this->tiposprockets,
 						"cantidadsprockets"=>$this->cantidadsprockets,
@@ -31,6 +32,7 @@ Class ajaxCalidad {
 		$id_calidad = $this->id_calidad;
 		$respuesta = ControllerCalidad::ctrEditarCalidad($id_calidad);
 		$datos = array("id_calidad"=>$respuesta["id_calidad"],	
+			"descripcion"=>$respuesta["descripcion"],
 						"puestos"=>$respuesta["numero_puestos"],
 						"tipo_sprockets"=>$respuesta["tipo_sprockets"],
 						"cantidad_sprockets"=>$respuesta["cantidad_sprockets"],
@@ -53,6 +55,7 @@ Class ajaxCalidad {
 	}
 	public function actualizarCalidad(){
 		$datos = array( "id_calidad"=>$this->id_calidad,
+			            "descripcion"=>$this->descripcion,
 						"puestos"=>$this->puestos,
 						"tiposprockets"=>$this->tiposprockets,
 						"cantidadsprockets"=>$this->cantidadsprockets,
@@ -85,6 +88,7 @@ Class ajaxCalidad {
 $tipoOperacion = $_POST["tipoOperacion"];
 if($tipoOperacion == "insertarcalidad") {
 	$crearNuevoCalidad = new ajaxCalidad();
+	$crearNuevoCalidad -> descripcion = $_POST["Descripcion"];
 	$crearNuevoCalidad -> puestos = $_POST["Puestos"];
 	$crearNuevoCalidad -> tiposprockets = $_POST["TipoSprockets"];
 	$crearNuevoCalidad -> cantidadsprockets = $_POST["CantidadSprocket"];
@@ -111,6 +115,7 @@ if ($tipoOperacion == "editarCalidad") {
 if ($tipoOperacion == "actualizarCalidad") {
 	$actualizarCalidad = new ajaxCalidad();
 	$actualizarCalidad -> id_calidad = $_POST["id_calidad"];
+	$actualizarCalidad -> descripcion = $_POST["Descripcion"];
 	$actualizarCalidad -> puestos = $_POST["Puestos"];
 	$actualizarCalidad -> tiposprockets = $_POST["TipoSprockets"];
 	$actualizarCalidad -> cantidadsprockets = $_POST["CantidadSprocket"];

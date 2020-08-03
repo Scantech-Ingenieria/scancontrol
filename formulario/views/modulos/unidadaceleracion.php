@@ -40,6 +40,7 @@ label{
         <thead>
             <tr>
                 <th>ID</th>
+                 <th>Descripción</th>
                  <th>Tipo Sprockets</th>
                 <th>Cantidad Sprockets</th>
                  <th>Tipo Banda</th>
@@ -59,12 +60,13 @@ label{
 
             echo '
 <tr>
-<td>'.nl2br($value["id_unidad_acel"]).'</td>';
+<td>'.nl2br($value["id_unidad_acel"]).'</td>
+<td>'.nl2br($value["aceldescrip"]).'</td>';
 if ($value["id_sprockets"]=='') {
    echo '<td><p>Sin información</h5></p>';
 }else{
 echo'
-<td><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.nl2br($value["id_sprockets"]).'</div><div class="col-sm-12"><label style="font-weight: bold;"> Serie:</label> '.nl2br($value["spro_serie"]).'</div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;" data-toggle="modal" data-target="#sprocket'.$value["id_unidad_acel"].''.$value["id_sprockets"].'">
+<td><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.nl2br($value["id_sprockets"]).'</div><div class="col-sm-12"><label style="font-weight: bold;"> Serie:</label> '.nl2br($value["spro_serie"]).'</div><div class="col-sm-12"><label style="font-weight: bold;">  Precio Unidad:</label>$'.number_format($value["preciospro"],'0', ',',',').'</div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;" data-toggle="modal" data-target="#sprocket'.$value["id_unidad_acel"].''.$value["id_sprockets"].'">
   Más información
 </button></td>';
 

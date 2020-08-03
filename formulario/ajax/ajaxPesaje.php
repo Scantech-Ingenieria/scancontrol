@@ -4,6 +4,7 @@ require_once "../models/pesaje.modelo.php";
 Class ajaxPesaje {
 public function crearPesaje(){
 		$datos = array(
+						"descripcion"=>$this->descripcion,			
 						"tiposensores"=>$this->tiposensores,
 						"cantidadsensores"=>$this->cantidadsensores,
 						"tiposprockets"=>$this->tiposprockets,
@@ -36,6 +37,7 @@ public function crearPesaje(){
 		$respuesta = ControllerPesaje::ctrEditarPesaje($id_pesaje);
 
 		$datos = array("id_unidad_pesaje"=>$respuesta["id_unidad_pesaje"],
+						"descripcion"=>$respuesta["descripcion"],
 						"tipo_sensores"=>$respuesta["tipo_sensores"],
 						"cantidad_sensores"=>$respuesta["cantidad_sensores"],
 						"tipo_sprockets"=>$respuesta["tipo_sprocket"],
@@ -65,6 +67,7 @@ public function crearPesaje(){
 	}
 	public function actualizarPesaje(){
 		$datos = array( "id_pesaje"=>$this->id_pesaje,
+						"descripcion"=>$this->descripcion,						
 			            "tiposensores"=>$this->tiposensores,
 						"cantidadsensores"=>$this->cantidadsensores,
 						"tipo"=>$this->tipo,
@@ -103,6 +106,7 @@ $tipoOperacion = $_POST["tipoOperacion"];
 
 if($tipoOperacion == "insertarpesaje") {
 	$crearNuevoPesaje = new ajaxPesaje();
+	$crearNuevoPesaje -> descripcion = $_POST["Descripcion"];
 	$crearNuevoPesaje -> tiposensores = $_POST["TipoSensores"];
 	$crearNuevoPesaje -> cantidadsensores = $_POST["CantidadSensores"];
 	$crearNuevoPesaje -> tiposprockets = $_POST["TipoSprockets"];
@@ -134,6 +138,7 @@ if ($tipoOperacion == "editarPesaje") {
 if ($tipoOperacion == "actualizarPesaje") {
 	$actualizarPesaje = new ajaxPesaje();
 	$actualizarPesaje -> id_pesaje = $_POST["id_pesaje"];
+	$actualizarPesaje -> descripcion = $_POST["Descripcion"];
 	$actualizarPesaje -> tiposensores = $_POST["TipoSensores"];
 	$actualizarPesaje -> cantidadsensores = $_POST["CantidadSensores"];
 	$actualizarPesaje -> tipo = $_POST["TipoSprockets"];

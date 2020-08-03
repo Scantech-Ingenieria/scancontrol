@@ -24,8 +24,8 @@
                 <th>ID</th>
                 <th>Potencia</th>
                 <th>Marca</th>
+                <th>Precio</th>          
                 <th>Img</th>
-
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -39,6 +39,7 @@
 <td>'.nl2br($value["id_vdf"]).'</td>
 <td>'.nl2br($value["potencia"]).'</td>
 <td>'.nl2br($value["marca"]).'</td>
+<td> $ '.number_format($value["precio"],'0', ',',',').'</td>
 <td><img width="200" src="'.substr($value["rutaImg"], 3).'"></td>
 
 <td width="100"> <button class="btn btn-sm btn-info btnEditarVdf" idVdf="'.$value["id_vdf"].'" data-toggle="modal" data-target="#modal-editar-vdf">
@@ -62,3 +63,9 @@
         </tbody>
      
     </table>
+    <script type="text/javascript"> 
+  function miles($m){
+$m=number_format($m, 0, ',', '.');
+return $m;
+
+}</script>

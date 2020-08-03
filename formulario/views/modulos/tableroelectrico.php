@@ -79,6 +79,7 @@ margin-top: 2px;
                 <th>Cantidad / Tipo Automaticos / Descr</th>
                 <th>Fuente Poder</th>
                 <th>Cantidad / Tipo VDF / Descr</th>
+                <th>Total Precio</th>
                 
                 <th>Img</th>
                 <th>Acciones</th>
@@ -98,35 +99,53 @@ $id_tableroelectrico=$value["id_tableroelectrico"];
 echo '<td>'.nl2br($value["contactor"]).'</td>';
 echo '<td>';
   $tablaautomatico = ControllerTableroelectrico::listarTelectricoautomaticoCtr();
+$sumaautomatico= 0;
 foreach ($tablaautomatico as $key => $valor) {
 $idtablaautomatico=$valor["id_tablero_electrico"];
 if ($idtablaautomatico==$id_tableroelectrico) {
-   echo '<div class="shadow-lg p-3 mb-5 rounded" style="background:#f3f6fb;margin-bottom:2px;"><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.$valor["id_automatico"].' </div><div class="col-sm-12"><label style="font-weight: bold;">Cantidad:</label> '.$valor["cantidad"].' </div><div class="col-sm-12"> <label style="font-weight: bold;">Amperaje:</label> '.$valor["amperaje"].'</div><div class="col-sm-12"> <label style="font-weight: bold;">Marca:</label> '.$valor["marca"].'</div><div class="col-sm-12"> <label style="font-weight: bold;"> Tipo:</label> '.$valor["tipo"].'</div><div class="col-sm-12"> <label style="font-weight: bold;"> Descripción: </label> '.$valor["descripcion"].'</div><div class="col-sm-12">  <a href="'.substr($valor["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valor["rutaImg"], 3).'"></a></div></div></div>';
+$totalprecioautomatico=$valor["cantidad"]*$valor["precio"];
+$sumaautomatico+= $totalprecioautomatico;
+
+   echo '<div class="shadow-lg p-3 mb-5 rounded" style="background:#f3f6fb;margin-bottom:2px;"><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.$valor["id_automatico"].' </div><div class="col-sm-12"><label style="font-weight: bold;">Cantidad:</label> '.$valor["cantidad"].' </div><div class="col-sm-12"> <label style="font-weight: bold;">Amperaje:</label> '.$valor["amperaje"].'</div><div class="col-sm-12"> <label style="font-weight: bold;">Marca:</label> '.$valor["marca"].'</div><div class="col-sm-12"> <label style="font-weight: bold;"> Tipo:</label> '.$valor["tipo"].'</div><div class="col-sm-12"> <label style="font-weight: bold;"> Descripción: </label> '.$valor["descripcion"].'</div><div class="col-sm-12"> <label style="font-weight: bold;"> Precio Unidad:</label> $'.number_format($valor["precio"],'0', ',',',').'</div><div class="col-sm-12"> <label style="font-weight: bold;"> Precio Total:</label> $'.number_format($totalprecioautomatico,'0', ',',',').'</div><div class="col-sm-12">  <a href="'.substr($valor["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valor["rutaImg"], 3).'"></a></div></div></div>';
 }
 }
 echo '</td>';
 echo '<td>';
 $tablafuente = ControllerTableroelectrico::listarTelectricofuenteCtr();
+$sumafuente= 0;
+
 foreach ($tablafuente as $key => $valorfuente) {
 $idtablafuente=$valorfuente["id_tablero_electrico"];
 if ($idtablafuente==$id_tableroelectrico) {
-   echo '<div class="shadow-lg p-3 mb-5 rounded"  style="background:#ffefef;margin-bottom:5px;"><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.$valorfuente["id_fuentepoder"].' </div><div class="col-sm-12"><label style="font-weight: bold;"> Marca:</label> '.$valorfuente["marca"].'</div><div class="col-sm-12"> <label style="font-weight: bold;">Amperaje:</label> '.$valorfuente["amperaje"].'</div><div class="col-sm-12">  <label style="font-weight: bold;">Corriente: </label> '.$valorfuente["corriente"].'</div><div class="col-sm-12"> <label style="font-weight: bold;">Descripción: </label> '.$valorfuente["descripcion"].'  </div><div class="col-sm-12">  <a href="'.substr($valorfuente["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valorfuente["rutaImg"], 3).'"></a></div></div></div>';
+
+$sumafuente+= $valorfuente["precio"];
+
+   echo '<div class="shadow-lg p-3 mb-5 rounded"  style="background:#ffefef;margin-bottom:5px;"><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.$valorfuente["id_fuentepoder"].' </div><div class="col-sm-12"><label style="font-weight: bold;"> Marca:</label> '.$valorfuente["marca"].'</div><div class="col-sm-12"> <label style="font-weight: bold;">Amperaje:</label> '.$valorfuente["amperaje"].'</div><div class="col-sm-12">  <label style="font-weight: bold;">Corriente: </label> '.$valorfuente["corriente"].'</div><div class="col-sm-12"> <label style="font-weight: bold;">Descripción: </label> '.$valorfuente["descripcion"].'  </div><div class="col-sm-12"> <label style="font-weight: bold;"> Precio Unidad:</label> $'.number_format($valorfuente["precio"],'0', ',',',').'</div><div class="col-sm-12">  <a href="'.substr($valorfuente["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valorfuente["rutaImg"], 3).'"></a></div></div></div>';
 
 }
 }
 echo '</td>';
 echo '<td>';
 $tablavdf = ControllerTableroelectrico::listarTelectricovdfCtr();
+
+$sumavdf = 0;
 foreach ($tablavdf as $key => $valorvdf) {
 $idtablavdf=$valorvdf["id_tablero_electrico"];
 if ($idtablavdf==$id_tableroelectrico) {
-   echo '<div class="shadow-lg p-3 mb-5 rounded style="background:#eaeaea;margin-bottom:5px;"><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.$valorvdf["id_vdf"].' </div><div class="col-sm-12"><label style="font-weight: bold;">Cantidad:</label> '.$valorvdf["cantidad"].'</div><div class="col-sm-12"><label style="font-weight: bold;"> P:</label> '.$valorvdf["potencia"].'</div><div class="col-sm-12"> <label style="font-weight: bold;">M:</label> '.$valorvdf["marca"].'</div><div class="col-sm-12"> <label style="font-weight: bold;"> Descripción:</label> '.$valorvdf["descripcion"].'</div><div class="col-sm-12">  <a href="'.substr($valorvdf["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valorvdf["rutaImg"], 3).'"></a></div></div> </div>';
+$totapreciovdf=$valorvdf["cantidad"]*$valorvdf["precio"];
+
+$sumavdf+= $totapreciovdf;
+   echo '<div class="shadow-lg p-3 mb-5 rounded style="background:#eaeaea;margin-bottom:5px;"><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.$valorvdf["id_vdf"].' </div><div class="col-sm-12"><label style="font-weight: bold;">Cantidad:</label> '.$valorvdf["cantidad"].'</div><div class="col-sm-12"><label style="font-weight: bold;"> P:</label> '.$valorvdf["potencia"].'</div><div class="col-sm-12"> <label style="font-weight: bold;">M:</label> '.$valorvdf["marca"].'</div><div class="col-sm-12"> <label style="font-weight: bold;"> Descripción:</label> '.$valorvdf["descripcion"].'</div><div class="col-sm-12"> <label style="font-weight: bold;"> Precio Unidad:</label> $'.number_format($valorvdf["precio"],'0', ',',',').'</div><div class="col-sm-12"> <label style="font-weight: bold;"> Precio Total:</label> $'.number_format($totapreciovdf,'0', ',',',').'</div><div class="col-sm-12">  <a href="'.substr($valorvdf["rutaImg"], 3).'"> <label style="font-weight: bold;">ver imagen</label> <img id="img" width="150" src="'.substr($valorvdf["rutaImg"], 3).'"></a></div></div> </div>';
+  
 }
 }
 
 echo '</td>';
 
+
+$totalprecio=$sumavdf+$sumafuente+$sumaautomatico;
 echo '
+<td><div class="col-sm-12"> $'.number_format($totalprecio,'0', ',',',').' </div></td>
 <td><img width="100" src="'.substr($value["rutaImg"], 3).'"></td>
 <td width="100"> <button class="btn btn-sm btn-info btnEditarTableroelectrico" idTableroelectrico="'.$value["id_tableroelectrico"].'" data-toggle="modal" data-target="#modal-editar-tableroelectrico">
                     <i class="far fa-edit"></i>
@@ -149,3 +168,10 @@ echo '
         </tbody>
      
     </table>
+
+  <script type="text/javascript"> 
+  function miles($m){
+$m=number_format($m, 0, ',', '.');
+return $m;
+
+}</script>

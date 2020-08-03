@@ -1,5 +1,4 @@
- <?php  
- error_reporting(0);
+ <?php
  session_start(); 
   if($_POST["action"] == "delete")  
  {  
@@ -41,15 +40,27 @@
       {   
            $output .= '  
                 <h3>Detalles Grader</h3>  
+                     <div class="form-group row">
+            <label class="col-sm-2 col-form-label"><h5>Nombre de Grader :</h5></label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Nombre Grader" name="nombregrader" required>
+            </div>
+          </div>
+                        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"><h5>Cliente :</h5></label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Nombre Cliente" name="nombrecliente" required>
+            </div>
+          </div>
                 <div class="table-responsive">
                 <form id="formu-nuevo-grader">  
                      <table class="table table-bordered ">  
                        <thead class="thead-light">
                           <tr>  
-                               <th width="40%">ID</th>  
-                               <th width="40%">Registro</th>  
-                               <th width="40%">Descripción</th>  
-                               <th width="10%">Cantidad</th>   
+                         
+                               <th width="20%">Unidad</th>  
+                               <th width="90%">Descripción</th>  
+                        
                           </tr>  
                             </thead>
                ';  
@@ -57,10 +68,10 @@
            {  
                 $output .= '  
                      <tr>  
-                          <td ><input type="hidden" name="id[]" value="'.$values["item_registro"].'-'.$values["id"].'">'.$values["id"].'</td> 
+                         <input type="hidden" name="id[]" value="'.$values["item_registro"].'-'.$values["id"].'">
                           <td ><input type="hidden" name="registro[]" value="'.$values["item_registro"].'">'.$values["item_registro"].'</td>  
                           <td name="nombre">'.$values["item_name"].'</td>  
-                          <td>'.$values["item_quantity"].'</td>          
+                          
                      </tr>  
                 ';    
            }  
@@ -81,10 +92,14 @@
     e.preventDefault()
       var id = $("input[name='id[]']").map(function(){return $(this).val();}).get();
     var pvp = $("input[name='registro[]']").map(function(){return $(this).val();}).get();
+    var grader = $("input[name='nombregrader']").val();
+    var cliente = $("input[name='nombrecliente']").val();
+
+
     $.ajax({
       url: 'views/modulos/AjaxGrader.php',
       type: 'POST',
-      data: {"id":id,"pvp":pvp},
+      data: {"id":id,"pvp":pvp,"grader":grader,"cliente":cliente},
       success: function(respuesta) {
         console.log(respuesta)
         if (respuesta == "ok") {

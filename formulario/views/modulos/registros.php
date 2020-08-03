@@ -45,10 +45,10 @@ Listado Grader
                      while($row = mysqli_fetch_array($result))  
                      {  
                 ?> 
-      <div class="cuadradito objects"   name="arrastrable1" id="calidad<?php echo $row["id_calidad"]; ?>" draggable="true" ondragstart="start(event)" ondragend="end(event)" data-descripcion="<?php echo $row["numero_puestos"]; ?>" data-id="<?php echo $row["id_calidad"]; ?>" data-name="calidad">
+      <div class="cuadradito objects"   name="arrastrable1" id="calidad<?php echo $row["id_calidad"]; ?>" draggable="true" ondragstart="start(event)" ondragend="end(event)" data-descripcion="<?php echo $row["descripcion"]; ?>" data-id="<?php echo $row["id_calidad"]; ?>" data-name="Calidad">
            
              <img id="img1" style="pointer-events: none;" src="<?php  echo substr($row['rutaImg'], 3)?>"/> 
-    <button type="button" class="btn btn-primary btn-lg btn-block"  data-toggle="modal" data-target="#calida<?php echo $row["id_calidad"]; ?>"><p class="textoinfo" id="<?php echo $row["id_calidad"]; ?>">N° Puestos: <?php echo $row["numero_puestos"]; ?></p>  
+    <button type="button" class="btn btn-primary btn-lg btn-block"  data-toggle="modal" data-target="#calida<?php echo $row["id_calidad"]; ?>"><p class="textoinfo" id="<?php echo $row["id_calidad"]; ?>"><?php echo $row["descripcion"]; ?></p>  
  
 <i class="fas fa-info-circle botoninfo align-middle"></i>  
 </button>
@@ -70,10 +70,10 @@ Listado Grader
                      while($row = mysqli_fetch_array($result))  
                      {  
                 ?> 
-      <div class="cuadradito objects" name="arrastrable2" id="alimentacion<?php echo $row["id_unidad_alim"]; ?>" draggable="true" ondragstart="start(event)" ondragend="end(event)" data-descripcion="<?php echo $row["tipo_sprockets"]; ?>" data-id="<?php echo $row["id_unidad_alim"]; ?>" data-name="alimentacion">
+      <div class="cuadradito objects" name="arrastrable2" id="alimentacion<?php echo $row["id_unidad_alim"]; ?>" draggable="true" ondragstart="start(event)" ondragend="end(event)" data-descripcion="<?php echo $row["descripcion"]; ?>" data-id="<?php echo $row["id_unidad_alim"]; ?>" data-name="Alimentacion">
             
                  <img id="img1" style="pointer-events: none;" src="<?php  echo substr($row['rutaImg'], 3)?>"/> 
-                              <button type="button"class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#alim<?php echo $row['id_unidad_alim']; ?>">       <p class=" textoinfo align-middle" id="<?php echo $row["id_unidad_alim"]; ?>"  >ID: <?php echo $row["id_unidad_alim"]; ?></p>
+                              <button type="button"class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#alim<?php echo $row['id_unidad_alim']; ?>">       <p class=" textoinfo align-middle" id="<?php echo $row["id_unidad_alim"]; ?>"  > <?php echo $row["descripcion"]; ?></p>
 <i class="fas fa-info-circle botoninfo align-middle"></i>
 </button> 
 
@@ -93,11 +93,11 @@ Listado Grader
                      while($row = mysqli_fetch_array($result))  
                      {  
                 ?> 
-      <div class="cuadradito objects" id="aceleracion<?php echo $row["id_unidad_acel"]; ?>" name="arrastrable3" draggable="true" ondragstart="start(event)" ondragend="end(event)" data-descripcion="<?php echo $row["tipo_sprockets"]; ?>" data-id="<?php echo $row["id_unidad_acel"]; ?>" data-name="aceleracion">
+      <div class="cuadradito objects" id="aceleracion<?php echo $row["id_unidad_acel"]; ?>" name="arrastrable3" draggable="true" ondragstart="start(event)" ondragend="end(event)" data-descripcion="<?php echo $row["descripcion"]; ?>" data-id="<?php echo $row["id_unidad_acel"]; ?>" data-name="Aceleracion">
                  
                  <img id="img1" style="pointer-events: none;" src="<?php  echo substr($row['rutaImg'], 3)?>"/> 
                               <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#acel<?php echo $row['id_unidad_acel']; ?>">
-<p class="textoinfo align-middle">ID: <?php echo $row["id_unidad_acel"]; ?></p> <i class="fas fa-info-circle botoninfo align-middle"></i>
+<p class="textoinfo align-middle"> <?php echo $row["descripcion"]; ?></p> <i class="fas fa-info-circle botoninfo align-middle"></i>
 </button>  
     
       </div>
@@ -117,11 +117,11 @@ Listado Grader
                      while($row = mysqli_fetch_array($result))  
                      {  
                 ?> 
-      <div class="cuadradito objects" id="pesaje<?php echo $row["id_unidad_pesaje"]; ?>" name="arrastrable4" draggable="true" ondragstart="start(event)" ondragend="end(event)" data-descripcion="<?php echo $row["tipo_sprocket"]; ?>" data-id="<?php echo $row["id_unidad_pesaje"]; ?>" data-name="pesaje">
+      <div class="cuadradito objects" id="pesaje<?php echo $row["id_unidad_pesaje"]; ?>" name="arrastrable4" draggable="true" ondragstart="start(event)" ondragend="end(event)" data-descripcion="<?php echo $row["descripcion"]; ?>" data-id="<?php echo $row["id_unidad_pesaje"]; ?>" data-name="Pesaje">
                 
                  <img id="img1" style="pointer-events: none;" src="<?php  echo substr($row['rutaImg'], 3)?>"/> 
                               <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#pesa<?php echo $row['id_unidad_pesaje']; ?>">
- <p class="textoinfo align-middle">ID: <?php echo $row["id_unidad_pesaje"]; ?></p> <i class="fas fa-info-circle botoninfo align-middle"></i>
+ <p class="textoinfo align-middle"> <?php echo $row["descripcion"]; ?></p> <i class="fas fa-info-circle botoninfo align-middle"></i>
 </button>  
 
       </div>
@@ -142,10 +142,10 @@ Listado Grader
                      while($row = mysqli_fetch_array($result))  
                      {  
                 ?> 
-      <div class="cuadradito objects" id="descarga<?php echo $row["id_unidad_descarga"]; ?>" name="arrastrable5" draggable="true" ondragstart="start(event)" ondragend="end(event)" data-descripcion="<?php echo $row["tipo_sprocket"]; ?>" data-id="<?php echo $row["id_unidad_descarga"]; ?>" data-name="descarga">
+      <div class="cuadradito objects" id="descarga<?php echo $row["id_unidad_descarga"]; ?>" name="arrastrable5" draggable="true" ondragstart="start(event)" ondragend="end(event)" data-descripcion="<?php echo $row["descripcion"]; ?>" data-id="<?php echo $row["id_unidad_descarga"]; ?>" data-name="Descarga">
                  <img id="img1" style="pointer-events: none;"  src="<?php  echo substr($row['rutaImg'], 3)?>"/> 
                               <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#desc<?php echo $row['id_unidad_descarga'];?>">
-                 <p class="textoinfo align-middle">ID: <?php echo $row["id_unidad_descarga"]; ?></p> 
+                 <p class="textoinfo align-middle"> <?php echo $row["descripcion"]; ?></p> 
 <i class="fas fa-info-circle botoninfo align-middle"></i>
 </button>  
 

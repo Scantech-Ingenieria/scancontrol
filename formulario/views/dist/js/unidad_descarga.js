@@ -65,6 +65,7 @@ $(document).ready(function(){
 				console.log(valor.id_unidad_descarga)
 				console.log(valor.tipo_paletas)
 				$('#formu-editar-descarga input[name="id_descarga"]').val(valor.id_unidad_descarga)
+				$('#formu-editar-descarga input[name="Descripcion"]').val(valor.descripcion)			
 				$('#formu-editar-descarga select[name="TipoSprockets"]').val(valor.tipo_sprockets)
 				$('#formu-editar-descarga input[name="CantidadSprockets"]').val(valor.cantidad_sprockets)
                 $('#formu-editar-descarga select[name="TipoBandas"]').val(valor.banda_modular_tipo)

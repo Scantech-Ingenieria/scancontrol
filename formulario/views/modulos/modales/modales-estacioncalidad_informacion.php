@@ -28,7 +28,7 @@ echo'
   </thead>
   <tbody>
    <tr>
-      <th scope="row">ID: </th>
+      <th scope="row">Descripción: </th>
       <td>'.nl2br($valor["id_sprockets"]).'</td>
     </tr> <tr>
       <th scope="row">Serie: </th>
@@ -49,6 +49,11 @@ echo'
       <tr>
       <th scope="row">Descripción:</th>
       <td>'.nl2br($valor["descripcion"]).'</td>
+    </tr>
+         <tr>
+      <th scope="row">Precio:</th>
+      <td>$'.number_format($valor["precio"],'0', ',',',').'</td>
+
     </tr>
       <tr>
       <th scope="row">Imagen:</th>
@@ -120,6 +125,11 @@ echo'
       <th scope="row">Descripción:</th>
       <td>'.nl2br($valor["descripcion"]).'</td>
     </tr>
+          <tr>
+      <th scope="row">Precio:</th>
+      <td>$'.number_format($valor["precio"],'0', ',',',').'</td>
+ 
+    </tr>
       <tr>
       <th scope="row">Imagen:</th>
       <td> <a href="'.substr($valor["rutaImg"], 3).'"><img  width="150" src="'.substr($valor["rutaImg"], 3).'"></a></td>
@@ -186,6 +196,11 @@ echo'
       <tr>
       <th scope="row">Material Cuerpo:</th>
       <td>'.nl2br($valor["materialcuerpo"]).'</td>
+    </tr>
+          <tr>
+      <th scope="row">Precio:</th>
+      <td>$'.number_format($valor["precio"],'0', ',',',').'</td>
+
     </tr>
       <tr>
       <th scope="row">Imagen:</th>
@@ -262,6 +277,11 @@ echo'
       <th scope="row">Contacto:</th>
       <td>'.nl2br($valor["contacto"]).'</td>
     </tr>
+          <tr>
+      <th scope="row">Precio:</th>
+      <td>$'.number_format($valor["precio"],'0', ',',',').'</td>
+   
+    </tr>
       <tr>
       <th scope="row">Imagen:</th>
       <td> <a href="'.substr($valor["rutaImg"], 3).'"><img  width="150" src="'.substr($valor["rutaImg"], 3).'"></a></td>
@@ -329,7 +349,11 @@ echo'
       <th scope="row">Potencia:</th>
       <td>'.nl2br($valor["capacidad"]).'</td>
     </tr>
-
+      <tr>
+      <th scope="row">Precio:</th>
+      <td>$'.number_format($valor["precio"],'0', ',',',').'</td>
+   
+    </tr>
     
       <tr>
       <th scope="row">Imagen:</th>
@@ -398,7 +422,10 @@ echo'
       <th scope="row">Fijaciones:</th>
       <td>'.nl2br($valor["fijaciones"]).'</td>
     </tr>
-
+      <tr>
+      <th scope="row">Precio:</th>
+      <td>$'.number_format($valor["precio"],'0', ',',',').'</td>
+    </tr>
     
       <tr>
       <th scope="row">Imagen:</th>

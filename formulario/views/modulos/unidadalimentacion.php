@@ -38,6 +38,7 @@ label{
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Descripción</th>
                  <th>Tipo Sprockets</th>
                 <th>Cantidad Sprockets</th>
                  <th>Tipo Banda</th>
@@ -46,6 +47,8 @@ label{
                 <th>Largo Banda</th>
                 <th>Tipo Motor</th>
                 <th>Tipo Descanso</th>
+                <th>Precio Total</th>
+
                 <th>Img</th>
 
                 <th>Acciones</th>
@@ -57,17 +60,19 @@ label{
           foreach ($tabla as $key => $value) {
             echo '
 <tr>
-<td>'.nl2br($value["id_unidad_alim"]).'</td>';
-
+<td>'.nl2br($value["id_unidad_alim"]).'</td>
+<td>'.nl2br($value["alides"]).'</td>';
 if ($value["id_sprockets"]=='') {
    echo '<td><p>Sin información</h5></p>';
 }else{
+  $preciototalsprocket=$value["cantidad_sprockets"]*$value["preciospro"];
 echo'
-<td><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.nl2br($value["id_sprockets"]).'</div><div class="col-sm-12"><label style="font-weight: bold;"> Serie:</label> '.nl2br($value["spro_serie"]).'</div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;" data-toggle="modal" data-target="#sprocket'.$value["id_unidad_alim"].''.$value["id_sprockets"].'">
+<td><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.nl2br($value["id_sprockets"]).'</div><div class="col-sm-12"><label style="font-weight: bold;"> Serie:</label> '.nl2br($value["spro_serie"]).'</div><div class="col-sm-12"><label style="font-weight: bold;">  Precio Unidad:</label>$'.number_format($value["preciospro"],'0', ',',',').'</div><div class="col-sm-12"><label style="font-weight: bold;">  Precio Total:</label>$'.number_format($preciototalsprocket,'0', ',',',').'</div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;" data-toggle="modal" data-target="#sprocket'.$value["id_unidad_alim"].''.$value["id_sprockets"].'">
   Más información
 </button></td>';
 
 }
+
  echo
 '<td>'.nl2br($value["cantidad_sprockets"]).'</td>';
 if ($value["id_banda"]=='') {
@@ -75,7 +80,7 @@ if ($value["id_banda"]=='') {
 }else{
 echo'
 
-<td><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.nl2br($value["id_banda"]).'</div><div class="col-sm-12"><label style="font-weight: bold;"> Serie:</label> '.nl2br($value["serie_banda"]).' </div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;" data-toggle="modal" data-target="#bandas'.$value["id_unidad_alim"].''.$value["id_banda"].'">
+<td><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.nl2br($value["id_banda"]).'</div><div class="col-sm-12"><label style="font-weight: bold;"> Serie:</label> '.nl2br($value["serie_banda"]).' </div><div class="col-sm-12"><label style="font-weight: bold;">  Precio Unidad:</label>$'.number_format($value["preciobanda"],'0', ',',',').'</div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;" data-toggle="modal" data-target="#bandas'.$value["id_unidad_alim"].''.$value["id_banda"].'">
   Más información
 </button></div></td>';
 }
@@ -91,7 +96,7 @@ if ($value["id_motor"]=='') {
 
 echo'
 
-<td><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.nl2br($value["id_motor"]).' </div><div class="col-sm-12"><label style="font-weight: bold;"> RPM:</label> '.nl2br($value["rpm"]).' </div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;" data-toggle="modal" data-target="#motor'.$value["id_unidad_alim"].''.$value["id_motor"].'">
+<td><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.nl2br($value["id_motor"]).' </div><div class="col-sm-12"><label style="font-weight: bold;"> RPM:</label> '.nl2br($value["rpm"]).' </div><div class="col-sm-12"><label style="font-weight: bold;">  Precio Unidad:</label>$'.number_format($value["preciomotor"],'0', ',',',').'</div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;" data-toggle="modal" data-target="#motor'.$value["id_unidad_alim"].''.$value["id_motor"].'">
   Más información
 </button></div></td>';
 }
@@ -100,11 +105,15 @@ if ($value["id_rodamientos"]=='') {
 }else{
 echo'
 
-<td><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.nl2br($value["id_rodamientos"]).' </div><div class="col-sm-12"><label style="font-weight: bold;"> Modelo:</label> '.nl2br($value["modelo_descanso"]).' </div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;" data-toggle="modal" data-target="#descanso'.$value["id_unidad_alim"].''.$value["id_rodamientos"].'">
+<td><div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.nl2br($value["id_rodamientos"]).' </div><div class="col-sm-12"><label style="font-weight: bold;"> Modelo:</label> '.nl2br($value["modelo_descanso"]).' </div><div class="col-sm-12"><label style="font-weight: bold;">  Precio Unidad:</label>$'.number_format($value["descansoprecio"],'0', ',',',').'</div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;" data-toggle="modal" data-target="#descanso'.$value["id_unidad_alim"].''.$value["id_rodamientos"].'">
   Más información
 </button></div></td>';
 }
+
+$totalprecio=$value["descansoprecio"]+$value["preciomotor"]+$value["preciobanda"]+$preciototalsprocket;
 echo'
+<td><div class="col-sm-12"> $'.number_format($totalprecio,'0', ',',',').' </div></td>
+
 <td><img width="100" src="'.substr($value["alimentacionimg"], 3).'"></td>
 
 <td width="100"> <button class="btn btn-sm btn-info btnEditarAlimentacion" idAlimentacion="'.$value["id_unidad_alim"].'" data-toggle="modal" data-target="#modal-editar-alimentacion">

@@ -4,6 +4,7 @@ require_once "../models/descarga.modelo.php";
 Class ajaxDescarga {
 	public function crearDescarga(){
 		$datos = array(
+						"descripcion"=>$this->descripcion,						
 						"tipo"=>$this->tipo,
 						"cantidadsprockets"=>$this->cantidadsprockets,
 						"tipobandas"=>$this->tipobandas,
@@ -27,6 +28,7 @@ Class ajaxDescarga {
 		$id_descarga = $this->id_descarga;
 		$respuesta = ControllerDescarga::ctrEditarDescarga($id_descarga);
 		$datos = array("id_unidad_descarga"=>$respuesta["id_unidad_descarga"],
+						"descripcion"=>$respuesta["descripcion"],
 						"tipo_sprockets"=>$respuesta["tipo_sprocket"],
 						"cantidad_sprockets"=>$respuesta["cantidad_sprocket"],
 						"banda_modular_tipo"=>$respuesta["tipo_banda"],
@@ -47,7 +49,8 @@ Class ajaxDescarga {
 	}
 	public function actualizarDescarga(){
 		$datos = array( "id_descarga"=>$this->id_descarga,
-				"tipo"=>$this->tipo,
+			            "descripcion"=>$this->descripcion,	
+				        "tipo"=>$this->tipo,
 						"cantidadsprockets"=>$this->cantidadsprockets,
 						"tipobandas"=>$this->tipobandas,
 						"bandasmedidas"=>$this->bandasmedidas,
@@ -78,6 +81,7 @@ Class ajaxDescarga {
 $tipoOperacion = $_POST["tipoOperacion"];
 if($tipoOperacion == "insertardescarga") {
 	$crearNuevoDescarga = new ajaxDescarga();
+	$crearNuevoDescarga -> descripcion = $_POST["Descripcion"];	
 	$crearNuevoDescarga -> tipo = $_POST["TipoSprockets"];
 	$crearNuevoDescarga -> cantidadsprockets = $_POST["CantidadSprockets"];
 	$crearNuevoDescarga -> tipobandas = $_POST["TipoBandas"];
@@ -103,6 +107,7 @@ if ($tipoOperacion == "editarDescarga") {
 if ($tipoOperacion == "actualizarDescarga") {
 	$actualizarDescarga = new ajaxDescarga();
 	$actualizarDescarga -> id_descarga = $_POST["id_descarga"];
+	$actualizarDescarga -> descripcion = $_POST["Descripcion"];		
 	$actualizarDescarga -> tipo = $_POST["TipoSprockets"];
 	$actualizarDescarga -> cantidadsprockets = $_POST["CantidadSprockets"];
 	$actualizarDescarga -> tipobandas = $_POST["TipoBandas"];

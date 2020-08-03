@@ -67,7 +67,8 @@ $(document).ready(function(){
 				$('#formu-editar-vdf input[name="id_vdf"]').val(valor.id_vdf)
 				$('#formu-editar-vdf input[name="Potencia"]').val(valor.potencia)
 				$('#formu-editar-vdf input[name="Marca"]').val(valor.marca)
-			$('#formu-editar-vdf #imgVdf').attr("src", valor.imagen)
+				$('#formu-editar-automatico input[name="Precio"]').val(valor.precio)			
+			    $('#formu-editar-vdf #imgVdf').attr("src", valor.imagen)
 				$('#formu-editar-vdf input[name="rutaActual"]').val(valor.imagen)
 			}
 		})

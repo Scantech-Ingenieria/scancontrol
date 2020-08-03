@@ -7,9 +7,10 @@ static public function listarVdfMdl($tabla) {
 		return $sql -> fetchAll();
 	}
 	static public function mdlCrearVdf($tabla, $datos,$rutaImagen) {
-		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :potencia,:marca,:imagen)");
+		$sql = Conexion::conectar()->prepare("INSERT INTO $tabla() VALUES (NULL, :potencia,:marca,:precio,:imagen)");
 		$sql->bindParam(":potencia", $datos["potencia"], PDO::PARAM_STR);
 		$sql->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
+		$sql->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);		
 		$sql->bindParam(":imagen", $rutaImagen, PDO::PARAM_STR);
 		if( $sql -> execute() ) {
 			return "ok";
@@ -35,14 +36,16 @@ static public function listarVdfMdl($tabla) {
 
 	static public function mdlActualizarVdf($tabla, $datos,$rutaImagen) {
 		if( is_null($rutaImagen)) {
-			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET potencia = :potencia,marca = :marca WHERE id_vdf = :id");
+			$sql = Conexion::conectar()->prepare("UPDATE $tabla SET potencia = :potencia,marca = :marca,precio = :precio WHERE id_vdf = :id");
 			$sql->bindParam(":potencia", $datos["potencia"], PDO::PARAM_STR);
 			$sql->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
+		    $sql->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
 			$sql->bindParam(":id", $datos["id_vdf"], PDO::PARAM_INT);
 }else{
-$sql = Conexion::conectar()->prepare("UPDATE $tabla SET potencia = :potencia,marca = :marca,rutaImg = :rutaNueva WHERE id_vdf = :id");
+$sql = Conexion::conectar()->prepare("UPDATE $tabla SET potencia = :potencia,marca = :marca,precio = :precio,rutaImg = :rutaNueva WHERE id_vdf = :id");
 			$sql->bindParam(":potencia", $datos["potencia"], PDO::PARAM_STR);
 			$sql->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
+		    $sql->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);		
 			$sql->bindParam(":id", $datos["id_vdf"], PDO::PARAM_INT);
 			$sql->bindParam(":rutaNueva", $rutaImagen, PDO::PARAM_STR);
 }

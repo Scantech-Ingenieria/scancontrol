@@ -64,6 +64,7 @@ $(document).ready(function(){
 				var valor = JSON.parse(respuesta)
 				console.log(valor.id_unidad_acel)
 				$('#formu-editar-aceleracion input[name="id_aceleracion"]').val(valor.id_unidad_acel)
+				$('#formu-editar-aceleracion input[name="Descripcion"]').val(valor.descripcion)
 				$('#formu-editar-aceleracion select[name="TipoSprockets"]').val(valor.tipo_sprockets)
 				$('#formu-editar-aceleracion input[name="CantidadSprockets"]').val(valor.cantidad_sprockets)
                 $('#formu-editar-aceleracion select[name="TipoBandas"]').val(valor.banda_modular_tipo)

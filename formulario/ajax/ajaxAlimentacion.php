@@ -6,6 +6,7 @@ require_once "../models/alimentacion.modelo.php";
 Class ajaxAlimentacion {
 	public function crearAlimentacion(){
 		$datos = array(
+						"descripcion"=>$this->descripcion,			
 						"tipo"=>$this->tipo,
 						"cantidadsprockets"=>$this->cantidadsprockets,
 						"tipobandas"=>$this->tipobandas,
@@ -26,6 +27,7 @@ Class ajaxAlimentacion {
 		$respuesta = ControllerAlimentacion::ctrEditarAlimentacion($id_alimentacion);
 
 		$datos = array("id_unidad_alim"=>$respuesta["id_unidad_alim"],
+						"descripcion"=>$respuesta["descripcion"],
 						"tipo_sprockets"=>$respuesta["tipo_sprockets"],
 						"cantidad_sprockets"=>$respuesta["cantidad_sprockets"],
 						"banda_modular_tipo"=>$respuesta["banda_tipo"],
@@ -41,6 +43,7 @@ Class ajaxAlimentacion {
 	}
 	public function actualizarAlimentacion(){
 		$datos = array( "id_alimentacion"=>$this->id_alimentacion,
+			            "descripcion"=>$this->descripcion,	
 						"tipo"=>$this->tipo,
 						"cantidadsprockets"=>$this->cantidadsprockets,
 						"tipobandas"=>$this->tipobandas,
@@ -71,6 +74,7 @@ $tipoOperacion = $_POST["tipoOperacion"];
 
 if($tipoOperacion == "insertaralimentacion") {
 	$crearNuevoAlimentacion = new ajaxAlimentacion();
+	$crearNuevoAlimentacion -> descripcion = $_POST["Descripcion"];
 	$crearNuevoAlimentacion -> tipo = $_POST["TipoSprockets"];
 	$crearNuevoAlimentacion -> cantidadsprockets = $_POST["CantidadSprockets"];
 	$crearNuevoAlimentacion -> tipobandas = $_POST["TipoBandas"];
@@ -91,6 +95,7 @@ if ($tipoOperacion == "editarAlimentacion") {
 if ($tipoOperacion == "actualizarAlimentacion") {
 	$actualizarAlimentacion = new ajaxAlimentacion();
 	$actualizarAlimentacion -> id_alimentacion = $_POST["id_alimentacion"];
+	$actualizarAlimentacion -> descripcion = $_POST["Descripcion"];	
 	$actualizarAlimentacion -> tipo = $_POST["TipoSprockets"];
 	$actualizarAlimentacion -> cantidadsprockets = $_POST["CantidadSprockets"];
 	$actualizarAlimentacion -> tipobandas = $_POST["TipoBandas"];

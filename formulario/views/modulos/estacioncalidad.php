@@ -41,6 +41,7 @@ label{
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Descripción</th>               
                 <th>N° Puestos</th>
                 <th>Tipo Sprockets</th>
                 <th>Cant S.</th>
@@ -54,11 +55,9 @@ label{
                 <th>Cant S.</th>
                 <th>Racors</th>
                 <th>Tipo Motor</th>
-              
-              
                 <th>Descanso</th>
-                  <th>Img</th>
-
+                <th>Precio Total</th>
+                <th>Img</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -71,17 +70,13 @@ label{
             
 <tr>
 <td>'.nl2br($value["id_calidad"]).'</td>
+<td>'.nl2br($value["descripcion"]).'</td>
 <td>'.nl2br($value["numero_puestos"]).'</td>';
 echo '<td>';
   $tablasprockets = ControllerCalidad::listarCalidadSprocketsCtr();
 
-
-
-  
 foreach ($tablasprockets as $key => $valor) {
-
     $idsprockets=$valor["id_calidad"];
-
 if ($idsprockets==$id_calidad) { 
 if ($valor["tipo_sprockets"] =='') {
 
@@ -91,10 +86,11 @@ if ($valor["tipo_sprockets"] =='') {
 }
 else{
   
+    $totalpreciosprockets=$value["cantidad_sprockets"]*$valor["precio"];
   
 echo'
                 <div class="row"><div class="col-sm-12"><label style="font-weight: bold;">
-ID:</label> '.nl2br($valor["id_sprockets"]).' </div><div class="col-sm-12"><label style="font-weight: bold;">  Serie:</label> '.nl2br($valor["serie"]).'</div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;" data-toggle="modal" data-target="#sprocket'.$idsprockets.''.$valor["id_sprockets"].'">
+ID:</label> '.nl2br($valor["id_sprockets"]).' </div><div class="col-sm-12"><label style="font-weight: bold;">  Serie:</label> '.nl2br($valor["serie"]).'</div><div class="col-sm-12"><label style="font-weight: bold;">  Precio Unidad:</label>$'.number_format($valor["precio"],'0', ',',',').'</div><div class="col-sm-12"><label style="font-weight: bold;">  Precio Total:</label>$'.number_format($totalpreciosprockets,'0', ',',',').'</div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;" data-toggle="modal" data-target="#sprocket'.$idsprockets.''.$valor["id_sprockets"].'">
   Más información
 </button></div>';
 }
@@ -114,8 +110,12 @@ if ($valor["tipo_banda"] ==''){
 
 }else{
 
+  $preciobanda=$valor["precio"];
+
+
+
  echo'<div class="row"><div class="col-sm-12"><label style="font-weight: bold;">
-ID:</label> '.nl2br($valor["id_banda"]).' </div><div class="col-sm-12"><label style="font-weight: bold;">  Serie:</label> '.nl2br($valor["numero_serie"]).'</div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;" data-toggle="modal" data-target="#bandas'.$idbandas.''.$valor["id_banda"].'">
+ID:</label> '.nl2br($valor["id_banda"]).' </div><div class="col-sm-12"><label style="font-weight: bold;">  Serie:</label> '.nl2br($valor["numero_serie"]).'</div><div class="col-sm-12"><label style="font-weight: bold;">  Precio Unidad:</label>$'.number_format($valor["precio"],'0', ',',',').'</div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;" data-toggle="modal" data-target="#bandas'.$idbandas.''.$valor["id_banda"].'">
   Más información
 </button></div>';   
  
@@ -136,9 +136,11 @@ if ($valor["cilindros"] ==''){
 
 
 }else{
+  $preciocilindro=$valor["precio"];
+
 
     echo
-'<div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.nl2br($valor["id_cilindros"]).'</div><div class="col-sm-12"><label style="font-weight: bold;"> Nombre:</label> '.nl2br($valor["nombre"]).' </div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;"data-toggle="modal" data-target="#cilindros'.$id_cilindros.''.$valor["id_cilindros"].'">
+'<div class="row"><div class="col-sm-12"><label style="font-weight: bold;">ID:</label> '.nl2br($valor["id_cilindros"]).'</div><div class="col-sm-12"><label style="font-weight: bold;"> Nombre:</label> '.nl2br($valor["nombre"]).' </div><div class="col-sm-12"><label style="font-weight: bold;">  Precio Unidad:</label>$'.number_format($valor["precio"],'0', ',',',').'</div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;"data-toggle="modal" data-target="#cilindros'.$id_cilindros.''.$valor["id_cilindros"].'">
   Más información
 </button></div>';
 
@@ -159,8 +161,10 @@ if  ($valor["tipo_sensores"] =='') {
     echo '<p>sin información</p>';  
 
 }else{
+    $totalpreciosensor=$value["cantidad_sensores"]*$valor["precio"];
+
  echo'<div class="row"><div class="col-sm-12"><label style="font-weight: bold;">
-ID:</label> '.nl2br($valor["id_sensor"]).' </div><div class="col-sm-12"><label style="font-weight: bold;">Tipo:</label> '.nl2br($valor["tipo_sensor"]).' </div><button style="font-size:11px;margin:10px;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#sensor'.$id_sensor.''.$valor["id_sensor"].'">
+ID:</label> '.nl2br($valor["id_sensor"]).' </div><div class="col-sm-12"><label style="font-weight: bold;">Tipo:</label> '.nl2br($valor["tipo_sensor"]).' </div><div class="col-sm-12"><label style="font-weight: bold;">  Precio Unidad:</label>$'.number_format($valor["precio"],'0', ',',',').'</div><div class="col-sm-12"><label style="font-weight: bold;">  Precio Total:</label>$'.number_format($totalpreciosensor,'0', ',',',').'</div><button style="font-size:11px;margin:10px;" type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#sensor'.$id_sensor.''.$valor["id_sensor"].'">
   Más información
 </button></div>';
 }
@@ -178,8 +182,10 @@ foreach ($tablamotor as $key => $valor) {
 if($valor["tipo_motor"] =='')  {
     echo '<p>sin información</p>';  
 }else{
+  $preciomotor=$valor["precio"];
+
   echo'<div class="row"><div class="col-sm-12"><label style="font-weight: bold;">
-ID:</label> '.nl2br($valor["id_motor"]).' </div><div class="col-sm-12"><label style="font-weight: bold;"> RPM:</label> '.nl2br($valor["rpm"]).' </div><button type="button"style="font-size:11px;margin:10px;" class="btn btn-success btn-xs" data-toggle="modal" data-target="#motor'.$id_motor.''.$valor["id_motor"].'">
+ID:</label> '.nl2br($valor["id_motor"]).' </div><div class="col-sm-12"><label style="font-weight: bold;"> RPM:</label> '.nl2br($valor["rpm"]).' </div><div class="col-sm-12"><label style="font-weight: bold;">  Precio Unidad:</label>$'.number_format($valor["precio"],'0', ',',',').'</div><button type="button"style="font-size:11px;margin:10px;" class="btn btn-success btn-xs" data-toggle="modal" data-target="#motor'.$id_motor.''.$valor["id_motor"].'">
   Más información
 </button></div>'; 
 }
@@ -196,14 +202,20 @@ if ($valor["tipo_descanso"] ==''){
     echo '<p>sin información</p>';  
 
 }else{
+  $preciodescanso=$valor["precio"];
  echo'<div class="row"><div class="col-sm-12"><label style="font-weight: bold;">
-ID:</label> '.nl2br($valor["id_rodamientos"]).' </div><div class="col-sm-12"><label style="font-weight: bold;"> Modelo:</label> '.nl2br($valor["modelo"]).'</div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;" data-toggle="modal" data-target="#descanso'.$id_rodamientos.''.$valor["id_rodamientos"].'">
+ID:</label> '.nl2br($valor["id_rodamientos"]).' </div><div class="col-sm-12"><label style="font-weight: bold;"> Modelo:</label> '.nl2br($valor["modelo"]).'</div><div class="col-sm-12"><label style="font-weight: bold;">  Precio Unidad:</label>$'.number_format($valor["precio"],'0', ',',',').'</div><button type="button" class="btn btn-success btn-xs" style="font-size:11px;margin:10px;" data-toggle="modal" data-target="#descanso'.$id_rodamientos.''.$valor["id_rodamientos"].'">
   Más información
 </button></div>'; 
 }
 }
 }
+
+$totalprecio=$preciodescanso+$preciomotor+$totalpreciosensor+$preciocilindro+$preciobanda+$totalpreciosprockets;
+
 echo'</td>
+<td><div class="col-sm-12"> $'.number_format($totalprecio,'0', ',',',').' </div></td>
+
 <td><img width="100" src="'.substr($value["rutaImg"], 3).'"></td>
 
 <td width="100"> <button class="btn btn-sm btn-info btnEditarCalidad" idCalidad="'.$value["id_calidad"].'" data-toggle="modal" data-target="#modal-editar-calidad">

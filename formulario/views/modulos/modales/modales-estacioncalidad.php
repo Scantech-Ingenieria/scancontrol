@@ -9,6 +9,12 @@
       </div>
       <div class="modal-body">
         <form id="formu-nuevo-calidad">
+             <div class="form-group row">
+            <label class="col-sm-2 col-form-label" style="padding-left:10px;padding-right:0px;">Descripción</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Descripción" name="Descripcion">
+            </div>
+          </div>
           <div class="form-group row">
             <label class="col-sm-2 col-form-label" style="padding-left:10px;padding-right:0px;">N° Puestos</label>
             <div class="col-sm-10">
@@ -169,6 +175,12 @@ echo'<option value="'.$value["id_rodamientos"].'">ID: '.$value["id_rodamientos"]
       </div>
       <div class="modal-body">
         <form id="formu-editar-calidad">
+             <div class="form-group row">
+            <label class="col-sm-2 col-form-label" style="padding-left:10px;padding-right:0px;">Descripción</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Descripción" name="Descripcion">
+            </div>
+          </div>
             <div class="form-group row">
             <label class="col-sm-2 col-form-label" style="padding-left:10px;padding-right:0px;">N° Puestos</label>
             <div class="col-sm-10">

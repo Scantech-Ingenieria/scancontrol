@@ -21,6 +21,7 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Descripción</th>
                 <th>Tipo Sensores</th>
                 <th>Cantidad Sensores</th>
                 <th>Tipo Sprockets</th>
@@ -48,7 +49,8 @@
 
             echo '
 <tr>
-<td>'.nl2br($value["id_unidad_pesaje"]).'</td>';
+<td>'.nl2br($value["id_unidad_pesaje"]).'</td>
+<td>'.nl2br($value["pesdesc"]).'</td>';
 if ($value["id_sensor"]=='') {
    echo '<td><p>Sin información</h5></p>';
 }else{

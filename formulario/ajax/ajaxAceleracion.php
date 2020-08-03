@@ -4,6 +4,7 @@ require_once "../models/aceleracion.modelo.php";
 Class ajaxAceleracion {
 	public function crearAceleracion(){
 		$datos = array(
+			            "descripcion"=>$this->descripcion,		
 			            "tipo"=>$this->tipo,
 						"cantidadsprockets"=>$this->cantidadsprockets,
 						"tipobandas"=>$this->tipobandas,
@@ -22,6 +23,7 @@ Class ajaxAceleracion {
 		$id_aceleracion = $this->id_aceleracion;
 		$respuesta = ControllerAceleracion::ctrEditarAceleracion($id_aceleracion);
 		$datos = array("id_unidad_acel"=>$respuesta["id_unidad_acel"],
+				        "descripcion"=>$respuesta["descripcion"],
 				        "tipo_sprockets"=>$respuesta["tipo_sprockets"],
 						"cantidad_sprockets"=>$respuesta["cantidad_sprockets"],
 						"banda_modular_tipo"=>$respuesta["banda_tipo"],
@@ -35,6 +37,7 @@ Class ajaxAceleracion {
 	}
 	public function actualizarAceleracion(){
 		$datos = array( "id_aceleracion"=>$this->id_aceleracion,
+			            "descripcion"=>$this->descripcion,
 						"tipo"=>$this->tipo,
 						"cantidadsprockets"=>$this->cantidadsprockets,
 						"tipobandas"=>$this->tipobandas,
@@ -61,6 +64,7 @@ Class ajaxAceleracion {
 $tipoOperacion = $_POST["tipoOperacion"];
 if($tipoOperacion == "insertaraceleracion") {
 	$crearNuevoAceleracion = new ajaxAceleracion();
+	$crearNuevoAceleracion -> descripcion = $_POST["Descripcion"];
 	$crearNuevoAceleracion -> tipo = $_POST["TipoSprockets"];
 	$crearNuevoAceleracion -> cantidadsprockets = $_POST["CantidadSprockets"];
 	$crearNuevoAceleracion -> tipobandas = $_POST["TipoBandas"];
@@ -81,6 +85,7 @@ if ($tipoOperacion == "editarAceleracion") {
 if ($tipoOperacion == "actualizarAceleracion") {
 	$actualizarAceleracion = new ajaxAceleracion();
 	$actualizarAceleracion -> id_aceleracion = $_POST["id_aceleracion"];
+	$actualizarAceleracion -> descripcion = $_POST["Descripcion"];
 	$actualizarAceleracion -> tipo = $_POST["TipoSprockets"];
 	$actualizarAceleracion -> cantidadsprockets = $_POST["CantidadSprockets"];
 	$actualizarAceleracion -> tipobandas = $_POST["TipoBandas"];

@@ -40,6 +40,7 @@ label{
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Descripción</th>                
                 <th>Tipo Sprockets</th>
                 <th>Cantidad Sprockets</th>
                 <th>Tipo Banda</th>
@@ -64,7 +65,8 @@ label{
           foreach ($tabla as $key => $value) {
         echo '
 <tr>
-<td>'.nl2br($value["id_unidad_descarga"]).'</td>';
+<td>'.nl2br($value["id_unidad_descarga"]).'</td>
+<td>'.nl2br($value["descdescrip"]).'</td>';
 if ($value["id_sprockets"]=='') {
    echo '<td><p>Sin información</h5></p>';
 }else{

@@ -67,7 +67,8 @@ $(document).ready(function(){
 			success: function(respuesta) {
 				var valor = JSON.parse(respuesta)
 				console.log(valor.id_unidad_acel)
-	$('#formu-editar-pesaje input[name="id_pesaje"]').val(valor.id_unidad_pesaje)
+				$('#formu-editar-pesaje input[name="Descarga"]').val(valor.descarga)
+	            $('#formu-editar-pesaje input[name="id_pesaje"]').val(valor.id_unidad_pesaje)
 				$('#formu-editar-pesaje select[name="TipoSensores"]').val(valor.tipo_sensores)
 				$('#formu-editar-pesaje input[name="CantidadSensores"]').val(valor.cantidad_sensores)
 				$('#formu-editar-pesaje select[name="TipoSprockets"]').val(valor.tipo_sprockets)

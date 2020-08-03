@@ -67,6 +67,7 @@ $("#formu-nuevo-alimentacion").submit(function (e) {
 				var valor = JSON.parse(respuesta)
 				console.log(valor.id_unidad_alim)
 				$('#formu-editar-alimentacion input[name="id_alimentacion"]').val(valor.id_unidad_alim)
+				$('#formu-editar-alimentacion input[name="Descripcion"]').val(valor.descripcion)
 				$('#formu-editar-alimentacion select[name="TipoSprockets"]').val(valor.tipo_sprockets)
 				$('#formu-editar-alimentacion input[name="CantidadSprockets"]').val(valor.cantidad_sprockets)
                 $('#formu-editar-alimentacion select[name="TipoBandas"]').val(valor.banda_modular_tipo)
@@ -76,12 +77,8 @@ $("#formu-nuevo-alimentacion").submit(function (e) {
 				$('#formu-editar-alimentacion select[name="TipoMotor"]').val(valor.tipo_motor)
 				$('#formu-editar-alimentacion select[name="TipoDescanso"]').val(valor.tipo_descanso)
 				$('#formu-editar-alimentacion input[name="rutaActual"]').val(valor.imagen)
-				$('#formu-editar-alimentacion #imgAlimentacion').attr("src", valor.imagen)
-		
-	
-
+				$('#formu-editar-alimentacion #imgAlimentacion').attr("src", valor.imagen)	
 			}
-
 		})
 
 	})

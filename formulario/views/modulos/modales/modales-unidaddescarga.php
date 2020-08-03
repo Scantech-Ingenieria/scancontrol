@@ -9,6 +9,13 @@
       </div>
       <div class="modal-body">
         <form id="formu-nuevo-descarga">
+                             <div class="form-group row">
+            <label class="col-sm-2 col-form-label" id="largo">Descripción </label> 
+             <div class="col-sm-10">
+ <input type="text" class="form-control" placeholder="Descripción"  name="Descripcion">
+
+        </div>
+       </div>
       <div class="form-group row">
             <label class="col-sm-2 col-form-label">Tipo Sprockets : </label> 
              <div class="col-sm-4">
@@ -155,6 +162,13 @@ echo'<option value="'.$value["id_cilindros"].'">ID: '.$value["id_cilindros"].' /
       </div>
       <div class="modal-body">
         <form id="formu-editar-descarga">
+                                    <div class="form-group row">
+            <label class="col-sm-2 col-form-label" id="largo">Descripción </label> 
+             <div class="col-sm-10">
+ <input type="text" class="form-control" placeholder="Descripción"  name="Descripcion">
+
+        </div>
+       </div>
   <div class="form-group row">
             <label class="col-sm-2 col-form-label">Tipo Sprockets : </label> 
              <div class="col-sm-4">

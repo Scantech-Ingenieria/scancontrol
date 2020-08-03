@@ -43,7 +43,7 @@
               <div class="form-group row">
             <label class="col-sm-2 col-form-label">Cliente</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" placeholder="Cliente" name="nombrecliente">
+              <input type="text" class="form-control" placeholder="Cliente" name="nombrecliente" >
             </div>
           </div>
   

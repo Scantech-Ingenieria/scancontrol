@@ -65,6 +65,7 @@ $(document).ready(function(){
 				var valor = JSON.parse(respuesta)
 				console.log(valor.id_calidad)
 				$('#formu-editar-calidad input[name="id_calidad"]').val(valor.id_calidad)
+				$('#formu-editar-calidad input[name="Descripcion"]').val(valor.descripcion)				
 				$('#formu-editar-calidad input[name="Puestos"]').val(valor.puestos)
 				$('#formu-editar-calidad select[name="TipoSprockets"]').val(valor.tipo_sprockets)
 				$('#formu-editar-calidad input[name="CantidadSprocket"]').val(valor.cantidad_sprockets)

@@ -6,6 +6,27 @@
    .popover-example { 
   list-style: none;
 }
+.rings{
+  position: relative;
+}
+  .rings span {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  color:black;
+  display:none;
+  background: white;
+  width: 100%;
+  padding: 3px;
+  font-size: 11px;
+}
+.rings:hover span {
+  display:block;
+}
+.rings:hover img {
+  opacity:0.3;
+}
  </style>
 <div 
  class="modal" id="listadoregistros" data-easein="shrinkIn"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
@@ -22,7 +43,9 @@
       <table class="table table-striped table-dark" style="background-color:#212529">
   <thead>
     <tr>
-      <th scope="col">ID Grader</th>
+    
+      <th scope="col">Cliente</th>
+      <th scope="col">Nombre Grader</th>
       <th scope="col">Estación Calidad</th>
       <th scope="col">Unidad Alimentación</th>
       <th scope="col">Unidad Aceleración</th>
@@ -39,22 +62,33 @@ foreach ($tablaare as $key => $value) {
     <tr>
 <div>
 
-<th scope="row"><?php echo $value["id_unidad_balanza"]; ?></th>
-    <td>     <ul class="popover-example">
-            <a data-original-title="Estación Calidad" data-animation="false" data-easein="bounce"   rel="popover" data-placement="top" data-html="true" data-content="Numero Puestos: <?php echo $value["puestosca"]; ?> <br> Tipo Sprockets: <?php echo $value["sprocketca"]; ?><br> Cantidad Sprockets: <?php echo $value["sprocketscantidadca"]; ?><br> Tipo Banda: <?php echo $value["tipobandaca"]; ?><br> Medida Banda: <?php echo $value["medidabandaca"]; ?><br> Eje: <?php echo $value["ejeca"]; ?><br> Cilindro : <?php echo $value["cilindrosca"]; ?><br> Tipo Botonera: <?php echo $value["tipobotonerasca"]; ?><br> Cantidad Botoneras: <?php echo $value["cantidadbotonerasca"]; ?><br> Tipo Sensor: <?php echo $value["tiposensoresca"]; ?>">Ver información</a></ul><img style="width: 100%;" id="img1" style="pointer-events: none;" src="<?php  echo substr($value['imgcalidad'], 3)?>"/>
-            
-            </td>
+
+<th scope="row"><?php echo $value["cliente"]; ?></th>
+
+<th scope="row"><?php echo $value["grader"]; ?></th>
+
+    <td>  
+<div class="rings">
+<span >
+Numero Puestos: <?php echo $value["puestosca"]; ?> <br> Modelo Sprockets: <?php echo $value["modelospro"]; ?><br> Cantidad Sprockets: <?php echo $value["sprocketscantidadca"]; ?><br> Serie Banda: <?php echo $value["seriebanda"]; ?><br> Supérficie: <?php echo $value["superficiebanda"]; ?><br> Eje: <?php echo $value["ejeca"]; ?><br> Nombre Cilindro : <?php echo $value["nombreci"]; ?><br> Tipo Botonera: <?php echo $value["tipobotonerasca"]; ?><br> Cantidad Botoneras: <?php echo $value["cantidadbotonerasca"]; ?><br> Tipo Sensor: <?php echo $value["tipose"]; ?><br> Cantidad Sensores: <?php echo $value["sensorescantidad"]; ?><br>RPM Motor: <?php echo $value["rpmmotor"]; ?><br>Racors: <?php echo $value["racorsca"]; ?><br>
+<button style="font-size: 10px;" class="btn btn-secondary btn-sm btn-block" >Ver Más Información</button>
+</span>
+  <img style="width: 100%;" id="img1" style="pointer-events: none;" src="<?php  echo substr($value['imgcalidad'], 3)?>"/>
+ </div>           
+    </td>
       <td>
-<ul class="popover-example">
-            <a data-original-title="Unidadd Alimentación" data-animation="false" data-easein="bounce"   rel="popover" data-placement="top" data-html="true" data-content="Tipo Sprockets: <?php echo $value["sprocketalim"]; ?> <br> Cantidad Sprockets: <?php echo $value["cantidadsprocketsalim"]; ?>"><img style="width: 100%;" id="img1" style="pointer-events: none;" src="<?php  echo substr($value['imgalim'], 3)?>"/></a>
-          </ul> 
+<div class="rings">
+<span>
+Modelo Sprockets: <?php echo $value["modelospro2"]; ?> <br> Cantidad Sprockets: <?php echo $value["cantidadsprocketsalim"]; ?> <br> Serie Banda: <?php echo $value["seriebanda2"]; ?><br> Supérficie: <?php echo $value["superficiebanda2"]; ?><br>Largo Banda: <?php echo $value["largobandaalim"]; ?><br> Eje: <?php echo $value["ejealim"]; ?>
+</span>
+<img style="width: 100%;" id="img1" style="pointer-events: none;" src="<?php  echo substr($value['imgalim'], 3)?>"/>
+      </div>        
       </td>
-      <td><img style="width: 100%;" id="img1" style="pointer-events: none;" src="<?php  echo substr($value['imgacel'], 3)?>"/> </td>
-      <td> <img style="width: 100%;" id="img1" style="pointer-events: none;" src="<?php  echo substr($value['imgacel'], 3)?>"/> </td>
+      <td>
+        <img style="width: 100%;" id="img1" style="pointer-events: none;" src="<?php  echo substr($value['imgacel'], 3)?>"/> </td>
+      <td> <img style="width: 100%;" id="img1" style="pointer-events: none;" src="<?php  echo substr($value['imgpesajes'], 3)?>"/> </td>
       <td> <img style="width: 100%;" id="img1" style="pointer-events: none;" src="<?php  echo substr($value['imgdes'], 3)?>"/> </td>
-
     </tr>
-
     <?php
   }
     ?>
@@ -62,7 +96,7 @@ foreach ($tablaare as $key => $value) {
 </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 
       </div>
     </div>
@@ -117,8 +151,9 @@ class="modal" id="calida<?php echo $id_calidad; ?>" data-easein="flipXIn"  tabin
        <table class="table table-bordered" style=" background: #075672;color:white;">
   <tbody>
     <tr>
-      <th scope="row">ID</th>
-      <td><?php echo $id_calidad; ?></td>
+      <th scope="row">Descripción</th>
+      <td><?php echo $value["cadescrip"]; ?></td>
+  
     </tr>
 
     <tr>
@@ -165,10 +200,7 @@ class="modal" id="calida<?php echo $id_calidad; ?>" data-easein="flipXIn"  tabin
 
        <table class="table table-bordered">
   <tbody>
-    <tr>
-      <th scope="row">ID</th>
-      <td><?php echo $value["id_sprockets"]; ?></td>
-    </tr>
+
 
     <tr>
       <th scope="row">Serie Sprockets</th>
@@ -211,10 +243,7 @@ echo "<h4>Sin Registro</h4>";
 ?>
        <table class="table table-bordered">
   <tbody>
-    <tr>
-      <th scope="row">ID</th>
-      <td><?php echo $value["id_banda"]; ?></td>
-    </tr>
+
 
     <tr>
       <th scope="row">Superficie</th>
@@ -265,10 +294,7 @@ echo "<h4>Sin Registro</h4>";
 ?>
        <table class="table table-bordered">
   <tbody>
-    <tr>
-      <th scope="row">ID</th>
-      <td><?php echo $value["id_cilindros"]; ?></td>
-    </tr>
+ 
 
     <tr>
       <th scope="row">Nombre</th>
@@ -320,10 +346,7 @@ echo "<h4>Sin Registro</h4>";
 ?>
  <table class="table table-bordered">
   <tbody>
-    <tr>
-      <th scope="row">ID</th>
-      <td><?php echo $value["id_sensor"]; ?></td>
-    </tr>
+
 
     <tr>
       <th scope="row">Tipo Sensor</th>
@@ -374,10 +397,6 @@ echo "<h4>Sin Registro</h4>";
 ?>
        <table class="table table-bordered">
   <tbody>
-    <tr>
-      <th scope="row">ID</th>
-      <td><?php echo $value["id_rodamientos"]; ?></td>
-    </tr>
 
     <tr>
       <th scope="row">Modelos</th>
@@ -421,10 +440,7 @@ echo "<h4>Sin Registro</h4>";
 ?>
        <table class="table table-bordered">
   <tbody>
-    <tr>
-      <th scope="row">ID</th>
-      <td><?php echo $value["id_motor"]; ?></td>
-    </tr>
+
 
     <tr>
       <th scope="row">Marca</th>
@@ -542,8 +558,8 @@ echo'
   </thead>
   <tbody>
    <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_unidad_alim"]).'</td>
+      <th scope="row">Descripción: </th>
+      <td>'.nl2br($value["alides"]).'</td>
     </tr> <tr>
       <th scope="row">Cantidad Sprockets : </th>
       <td>'.nl2br($value["cantidad_sprockets"]).'</td>
@@ -587,9 +603,6 @@ echo'
   </thead>
   <tbody>
    <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_sprockets"]).'</td>
-    </tr> <tr>
       <th scope="row">Serie: </th>
       <td>'.nl2br($value["spro_serie"]).'</td>
     </tr>
@@ -633,10 +646,7 @@ echo'
     </tr>
   </thead>
   <tbody>
-   <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_banda"]).'</td>
-    </tr> <tr>
+ <tr>
       <th scope="row">Superficie: </th>
       <td>'.nl2br($value["superficie"]).'</td>
     </tr>
@@ -682,10 +692,7 @@ echo'
     </tr>
   </thead>
   <tbody>
-   <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_motor"]).'</td>
-    </tr> <tr>
+  <tr>
       <th scope="row">RPM: </th>
       <td>'.nl2br($value["rpm"]).'</td>
     </tr>
@@ -727,10 +734,7 @@ echo "<h4>Sin Registro</h4>";
     </tr>
   </thead>
   <tbody>
-   <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_rodamientos"]).'</td>
-    </tr> <tr>
+  <tr>
       <th scope="row">Modelo: </th>
       <td>'.nl2br($value["modelo_descanso"]).'</td>
     </tr>
@@ -829,8 +833,8 @@ echo'
   </thead>
   <tbody>
    <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_unidad_acel"]).'</td>
+      <th scope="row">Descripción: </th>
+      <td>'.nl2br($value["aceldescrip"]).'</td>
     </tr> <tr>
       <th scope="row">Cantidad Sprockets : </th>
       <td>'.nl2br($value["cantidad_sprockets"]).'</td>
@@ -868,10 +872,7 @@ echo "<h4>Sin Registro</h4>";
     </tr>
   </thead>
   <tbody>
-   <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_sprockets"]).'</td>
-    </tr> <tr>
+ <tr>
       <th scope="row">Serie: </th>
       <td>'.nl2br($value["spro_serie"]).'</td>
     </tr>
@@ -917,10 +918,7 @@ echo "<h4>Sin Registro</h4>";
     </tr>
   </thead>
   <tbody>
-   <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_banda"]).'</td>
-    </tr> <tr>
+ <tr>
       <th scope="row">Superficie: </th>
       <td>'.nl2br($value["superficie"]).'</td>
     </tr>
@@ -967,10 +965,7 @@ echo'
     </tr>
   </thead>
   <tbody>
-   <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_motor"]).'</td>
-    </tr> <tr>
+ <tr>
       <th scope="row">RPM: </th>
       <td>'.nl2br($value["rpm"]).'</td>
     </tr>
@@ -1011,10 +1006,7 @@ echo "<h4>Sin Registro</h4>";
     </tr>
   </thead>
   <tbody>
-   <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_rodamientos"]).'</td>
-    </tr> <tr>
+ <tr>
       <th scope="row">Modelo: </th>
       <td>'.nl2br($value["modelo_descanso"]).'</td>
     </tr>
@@ -1117,8 +1109,8 @@ echo'
   </thead>
   <tbody>
    <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_unidad_descarga"]).'</td>
+      <th scope="row">Descripción: </th>
+      <td>'.nl2br($value["descdescrip"]).'</td>
     </tr> <tr>
       <th scope="row">Cantidad Sprockets : </th>
       <td>'.nl2br($value["cantidad_sprocket"]).'</td>
@@ -1168,10 +1160,7 @@ echo "<h4>Sin Registro</h4>";
     </tr>
   </thead>
   <tbody>
-   <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_sprockets"]).'</td>
-    </tr> <tr>
+
       <th scope="row">Serie: </th>
       <td>'.nl2br($value["spro_serie"]).'</td>
     </tr>
@@ -1217,10 +1206,7 @@ echo'
     </tr>
   </thead>
   <tbody>
-   <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_banda"]).'</td>
-    </tr> <tr>
+
       <th scope="row">Superficie: </th>
       <td>'.nl2br($value["superficie"]).'</td>
     </tr>
@@ -1266,10 +1252,7 @@ echo'
     </tr>
   </thead>
   <tbody>
-   <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_motor"]).'</td>
-    </tr> <tr>
+
       <th scope="row">RPM: </th>
       <td>'.nl2br($value["rpm"]).'</td>
     </tr>
@@ -1310,10 +1293,7 @@ echo "<h4>Sin Registro</h4>";
     </tr>
   </thead>
   <tbody>
-   <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_rodamientos"]).'</td>
-    </tr> <tr>
+
       <th scope="row">Modelo: </th>
       <td>'.nl2br($value["modelo_descanso"]).'</td>
     </tr>
@@ -1357,10 +1337,7 @@ echo "<h4>Sin Registro</h4>";
     </tr>
   </thead>
   <tbody>
-   <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_paletas"]).'</td>
-    </tr> <tr>
+ <tr>
       <th scope="row">Tipo: </th>
       <td>'.nl2br($value["tipo_paleta"]).'</td>
 
@@ -1484,10 +1461,7 @@ echo "<h4>Sin Registro</h4>";
     </tr>
   </thead>
   <tbody>
-   <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_cilindros"]).'</td>
-    </tr> <tr>
+ <tr>
       <th scope="row">Nombre: </th>
       <td>'.nl2br($value["nombre_cilindro"]).'</td>
     </tr>
@@ -1591,8 +1565,8 @@ echo'
   </thead>
   <tbody>
    <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_unidad_pesaje"]).'</td>
+      <th scope="row">Descripción: </th>
+      <td>'.nl2br($value["pesdesc"]).'</td>
     </tr> <tr>
       <th scope="row">Cantidad Sensores : </th>
       <td>'.nl2br($value["cantidad_sensores"]).'</td>
@@ -1612,48 +1586,39 @@ echo'
     <tr>
       <th scope="row">Plataforma :</th>
       <td>
-      <div class="row">
-      <div class="col-sm-6">
-      Entrada 
- </div>
-<div class="col-sm-2">
-'.nl2br($value["entradaalto"]).'
- </div>
- <div class="col-sm-2">
-'.nl2br($value["entradaancho"]).'
- </div>
- <div class="col-sm-2">
-'.nl2br($value["entradaespesor"]).'
- </div>
-       </div>
-          <div class="row">
-      <div class="col-sm-6">
-      Pesaje 
- </div>
-<div class="col-sm-2">
-'.nl2br($value["pesajealto"]).'
- </div>
- <div class="col-sm-2">
-'.nl2br($value["pesajeancho"]).'
- </div>
- <div class="col-sm-2">
-'.nl2br($value["pesajeespesor"]).'
- </div>
-       </div>
-          <div class="row">
-      <div class="col-sm-6">
-      Entrada 
- </div>
-<div class="col-sm-2">
-'.nl2br($value["salidaalto"]).'
- </div>
- <div class="col-sm-2">
-'.nl2br($value["salidaancho"]).'
- </div>
- <div class="col-sm-2">
-'.nl2br($value["salidaespesor"]).'
- </div>
-       </div>
+    
+
+
+<table class="table" style="background-color: #25a9d9;">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Alto</th>
+      <th scope="col">Ancho</th>
+      <th scope="col">Espesor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Entrada</th>
+      <td>'.nl2br($value["entradaalto"]).'</td>
+      <td>'.nl2br($value["entradaancho"]).'</td>
+      <td>'.nl2br($value["entradaespesor"]).'</td>
+    </tr>
+    <tr>
+      <th scope="row">Pesaje</th>
+      <td>'.nl2br($value["pesajealto"]).'</td>
+      <td>'.nl2br($value["pesajeancho"]).'</td>
+      <td>'.nl2br($value["pesajeespesor"]).'</td>
+    </tr>
+    <tr>
+      <th scope="row">Entrada</th>
+      <td>'.nl2br($value["salidaalto"]).'</td>
+      <td>'.nl2br($value["salidaancho"]).'</td>
+      <td>'.nl2br($value["salidaespesor"]).'</td>
+    </tr>
+  </tbody>
+</table>
        </td>
     </tr>
 
@@ -1687,10 +1652,7 @@ echo "<h4>Sin Registro</h4>";
     </tr>
   </thead>
   <tbody>
-   <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_sensor"]).'</td>
-    </tr> <tr>
+ <tr>
       <th scope="row">Tipo : </th>
       <td>'.nl2br($value["tipo_sensor"]).'</td>
     </tr>
@@ -1746,10 +1708,7 @@ echo "<h4>Sin Registro</h4>";
     </tr>
   </thead>
   <tbody>
-   <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_sprockets"]).'</td>
-    </tr> <tr>
+ <tr>
       <th scope="row">Serie: </th>
       <td>'.nl2br($value["seriesprockets"]).'</td>
     </tr>
@@ -1795,10 +1754,7 @@ echo'
     </tr>
   </thead>
   <tbody>
-   <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_banda"]).'</td>
-    </tr> <tr>
+ <tr>
       <th scope="row">Superficie: </th>
       <td>'.nl2br($value["superficiebanda"]).'</td>
     </tr>
@@ -1848,10 +1804,7 @@ echo'
     </tr>
   </thead>
   <tbody>
-   <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_motor"]).'</td>
-    </tr> <tr>
+ <tr>
       <th scope="row">RPM: </th>
       <td>'.nl2br($value["rpm"]).'</td>
     </tr>
@@ -1892,10 +1845,7 @@ echo "<h4>Sin Registro</h4>";
     </tr>
   </thead>
   <tbody>
-   <tr>
-      <th scope="row">ID: </th>
-      <td>'.nl2br($value["id_rodamientos"]).'</td>
-    </tr> <tr>
+ <tr>
       <th scope="row">Modelo: </th>
       <td>'.nl2br($value["modelodescanso"]).'</td>
     </tr>
