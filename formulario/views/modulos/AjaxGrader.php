@@ -51,7 +51,47 @@ if (!isset($resultadoalimentacion)) {
 }
 $grader = $_POST['grader'];
 $cliente = $_POST['cliente'];
-$query = "INSERT INTO unidades_balanza(cliente,grader,id_unidad_al,id_unidad_acel,id_unidad_desc,id_calidad,id_pesaje) VALUES('".$cliente."','".$grader."',".$resultadoalimentacion.",".$resultadoaceleracion.",".$resultadodescarga.",".$resultadocalidad.",".$resultadopesaje.")";	 
+$query = "INSERT INTO unidades_balanza(cliente,grader,id_unidad_al,id_unidad_acel,id_unidad_desc,id_calidad,id_pesaje) VALUES('".$cliente."','".$grader."',".$resultadoalimentacion.",".$resultadoaceleracion.",".$resultadodescarga.",".$resultadocalidad.",".$resultadopesaje.")";	
+
+if (isset($resultadoaceleracion)) {
+
+
+
+ $sql = "UPDATE unidad_acel SET id_unidad ='1' WHERE id_unidad_acel = '$resultadoaceleracion'";
+$conn->query($sql);
+}
+
+if (isset($resultadoalimentacion)) {
+$queryalim = "UPDATE unidad_alim
+SET id_unidad_al = '1'
+WHERE id_unidad_alim = '$resultadoalimentacion'";
+
+$conn->query($queryalim);
+
+}
+if (isset($resultadodescarga)) {
+$querydes = "UPDATE unidad_descarga
+SET id_unidad = '1'
+WHERE id_unidad_descarga = '$resultadodescarga'";
+
+$conn->query($querydes);
+ 
+}
+if (isset($resultadopesaje)) {
+$querypes = "UPDATE unidad_pesaje
+SET id_unidad = '1'
+WHERE id_unidad_pesaje = '$resultadopesaje'";
+$conn->query($querypes);
+
+}
+if (isset($resultadocalidad)) {
+$queryca = "UPDATE estacion_calidad
+SET id_unidad = '1'
+WHERE id_calidad = '$resultadocalidad'";
+
+$conn->query($queryca);
+}
+
  if ($conn->query($query) === TRUE) { 
   mysqli_insert_id($conn); 
    unset($_SESSION["shopping_cart"]);

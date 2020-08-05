@@ -38,7 +38,7 @@ Listado Grader
   <div class="anchocol" id="cuadro1"  ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return drope(event)">
        <h5 id="titulo">Estación Calidad</h5>
                 <?php  
-                $query = "SELECT * FROM estacion_calidad ORDER BY id_calidad ASC";  
+                $query = "SELECT * FROM estacion_calidad  where id_unidad IS NULL ORDER BY id_calidad ASC";  
                 $result = mysqli_query($connect, $query);  
                 if(mysqli_num_rows($result) > 0)  
                 {  
@@ -63,7 +63,7 @@ Listado Grader
 <div class="anchocol" id="cuadro2" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return drope(event)">
   <h5 id="titulo" >Unidad Alimentación</h5>
          <?php  
-                $query = "SELECT * FROM unidad_alim ORDER BY id_unidad_alim ASC";  
+                $query = "SELECT * FROM unidad_alim  where id_unidad_al IS NULL ORDER BY id_unidad_alim ASC";  
                 $result = mysqli_query($connect, $query);  
                 if(mysqli_num_rows($result) > 0)  
                 {  
@@ -86,7 +86,7 @@ Listado Grader
 <div class="anchocol" id="cuadro3" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return drope(event)">
   <h5 id="titulo">Unidad Aceleración</h5>
          <?php  
-                $query = "SELECT * FROM unidad_acel ORDER BY id_unidad_acel ASC";  
+                $query = "SELECT * FROM unidad_acel  where id_unidad IS NULL ORDER BY id_unidad_acel ASC";  
                 $result = mysqli_query($connect, $query);  
                 if(mysqli_num_rows($result) > 0)  
                 {  
@@ -110,7 +110,7 @@ Listado Grader
   <h5 id="titulo">Unidad Pesaje</h5>
     
          <?php  
-                $query = "SELECT * FROM unidad_pesaje ORDER BY id_unidad_pesaje ASC";  
+                $query = "SELECT * FROM unidad_pesaje  where id_unidad IS NULL ORDER BY id_unidad_pesaje ASC";  
                 $result = mysqli_query($connect, $query);  
                 if(mysqli_num_rows($result) > 0)  
                 {  
@@ -135,7 +135,7 @@ Listado Grader
   <h5 id="titulo">Unidad Descarga</h5>
     
          <?php  
-                $query = "SELECT * FROM unidad_descarga ORDER BY id_unidad_descarga ASC";  
+                $query = "SELECT * FROM unidad_descarga  where id_unidad IS NULL ORDER BY id_unidad_descarga ASC";  
                 $result = mysqli_query($connect, $query);  
                 if(mysqli_num_rows($result) > 0)  
                 {  

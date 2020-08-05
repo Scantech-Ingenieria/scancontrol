@@ -43,7 +43,7 @@
       <table class="table table-striped table-dark" style="background-color:#212529">
   <thead>
     <tr>
-    
+      <th scope="col">Url</th>    
       <th scope="col">Cliente</th>
       <th scope="col">Nombre Grader</th>
       <th scope="col">Estación Calidad</th>
@@ -62,6 +62,7 @@ foreach ($tablaare as $key => $value) {
     <tr>
 <div>
 
+<th scope="row"><a href="http://scancontrol.scantech.cl/frontend/?id=<?php echo $value["id_unidad_balanza"];?>">Detalles</a></th>
 
 <th scope="row"><?php echo $value["cliente"]; ?></th>
 

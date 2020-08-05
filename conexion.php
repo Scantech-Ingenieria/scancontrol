@@ -7,6 +7,8 @@ class Conexion {
 		$link = new PDO("mysql:host=localhost;dbname=scancontrol",
 			"root",
 			"",
+
+			
 		// $link = new PDO("mysql:host=localhost;dbname=fundac78_principal",
 		// 	"fundac78_fundac78",
 		// 	"gW]{&&iPjK3c",

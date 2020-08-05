@@ -91,12 +91,19 @@ Unidades Balanza       <i class="metismenu-state-icon pe-7s-angle-down caret-lef
                                                                                             
                                     </ul>
                                 </li>
+                                          <li id="tab-grader">
+                                    <a href="grader">
+                                        <i class="metismenu-icon pe-7s-plugin  "></i>
+                                      Grader 
+                                    </a>
+                                </li> 
                                 <li id="tab-tabla">
                                     <a href="tabla">
                                         <i class="metismenu-icon pe-7s-plugin  "></i>
                                        Conexión Balanzas
                                     </a>
-                                </li>          
+                                </li> 
+                                        
                                   <li class="app-sidebar__heading">Componentes</li>
                                          <li id="tab-automatico">
                                             <a href="automatico">

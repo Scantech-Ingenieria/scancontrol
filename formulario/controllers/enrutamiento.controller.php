@@ -24,8 +24,8 @@ class ControllerEnrutamiento {
          $ruta == "manifold"||
          $ruta == "tableroneumatico"||
          $ruta == "cilindros"||
-         $ruta == "motor"
-
+         $ruta == "motor"||
+         $ruta == "grader"
 
 
 

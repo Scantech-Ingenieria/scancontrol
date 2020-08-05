@@ -28,6 +28,8 @@ require_once "controllers/manifold.controller.php";
 require_once "controllers/cilindros.controller.php";
 require_once "controllers/tableroneumatico.controller.php";
 require_once "controllers/motor.controller.php";
+require_once "controllers/grader.controller.php";
+
 
 
 
@@ -56,6 +58,10 @@ require_once "models/manifold.modelo.php";
 require_once "models/cilindros.modelo.php";
 require_once "models/tableroneumatico.modelo.php";
 require_once "models/motor.modelo.php";
+require_once "models/grader.modelo.php";
+
+
+
 
 
 

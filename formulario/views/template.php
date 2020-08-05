@@ -42,7 +42,7 @@
 /// Url actual
 let url = window.location.href;
 /// Elementos de li
-const tabs = ["estacioncalidad", "unidadalimentacion","tabla","unidadaceleracion","unidaddescarga","bandas","paletas","sprockets","vdf","automatico","registros","rodamientos","sensor","unidadpesaje","tableroelectrico","fuentepoder","plc","manifold","tableroneumatico","clientes","cilindros","motor"];
+const tabs = ["estacioncalidad", "unidadalimentacion","tabla","unidadaceleracion","unidaddescarga","bandas","paletas","sprockets","vdf","automatico","registros","rodamientos","sensor","unidadpesaje","tableroelectrico","fuentepoder","plc","manifold","tableroneumatico","clientes","cilindros","motor","grader"];
 tabs.forEach(e => {
     /// Agregar .php y ver si lo contiene en la url
     if (url.indexOf(e ) !== -1) {
@@ -88,6 +88,8 @@ function setActive(id) {
 <script type="text/javascript" src="views/dist/js/cilindros.js"></script>
 <script type="text/javascript" src="views/dist/js/tableroneumatico.js"></script>
 <script type="text/javascript" src="views/dist/js/motor.js"></script>
+<script type="text/javascript" src="views/dist/js/grader.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="views/dist/js/rutaAmigable.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
